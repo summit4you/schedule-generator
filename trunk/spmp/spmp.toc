@@ -7,9 +7,8 @@
 \contentsline {subsubsection}{\numberline {1.1.4}Schedule and Budget summary}{6}
 \contentsline {section}{\numberline {2}References}{7}
 \contentsline {section}{\numberline {3}Project Organisation}{8}
-\contentsline {subsection}{\numberline {3.1}External interfaces}{8}
-\contentsline {subsection}{\numberline {3.2}Internal structure}{8}
-\contentsline {subsection}{\numberline {3.3}Roles and responsibilities}{8}
+\contentsline {subsection}{\numberline {3.1}Internal structure}{8}
+\contentsline {subsection}{\numberline {3.2}Roles and responsibilities}{8}
 \contentsline {section}{\numberline {4}Managerial process plans}{9}
 \contentsline {subsection}{\numberline {4.1}Start-up plan}{9}
 \contentsline {subsubsection}{\numberline {4.1.1}Estimation plan}{9}
@@ -20,16 +19,18 @@
 \contentsline {subsubsection}{\numberline {4.2.1}Work activities}{10}
 \contentsline {subsubsection}{\numberline {4.2.2}Schedule control plan}{10}
 \contentsline {subsubsection}{\numberline {4.2.3}Resource allocation}{10}
-\contentsline {subsection}{\numberline {4.3}Control plan}{10}
+\contentsline {subsection}{\numberline {4.3}Controle plannen}{10}
 \contentsline {subsubsection}{\numberline {4.3.1}Requirements control plan}{10}
-\contentsline {subsubsection}{\numberline {4.3.2}Schedule control plan}{10}
-\contentsline {subsubsection}{\numberline {4.3.3}Quality control plan}{11}
-\contentsline {subsubsection}{\numberline {4.3.4}Reporting plan}{11}
+\contentsline {subsubsection}{\numberline {4.3.2}Plannigscontroleplan}{10}
+\contentsline {subsubsection}{\numberline {4.3.3}Kwaliteitscontroleplan}{11}
+\contentsline {subsubsection}{\numberline {4.3.4}Rapporteringsplan}{11}
 \contentsline {section}{\numberline {5}Technical process plans}{12}
-\contentsline {subsection}{\numberline {5.1}Process model}{12}
-\contentsline {subsection}{\numberline {5.2}Methods tools and techniques}{12}
-\contentsline {subsection}{\numberline {5.3}Infrastructure plan}{12}
-\contentsline {subsection}{\numberline {5.4}Product acceptance plan}{12}
-\contentsline {section}{\numberline {6}Additional plans}{13}
-\contentsline {section}{\numberline {7}Annexes}{14}
-\contentsline {subsection}{\numberline {7.1}Oorspronkelijke opdracht}{14}
+\contentsline {subsection}{\numberline {5.1}Proces model}{12}
+\contentsline {subsection}{\numberline {5.2}Methods tools and techniques}{13}
+\contentsline {subsection}{\numberline {5.3}Infrastructure plan}{13}
+\contentsline {subsection}{\numberline {5.4}Productaanvaarding plan}{13}
+\contentsline {section}{\numberline {6}Supporting process plans}{14}
+\contentsline {subsection}{\numberline {6.1}Configuration management plan}{14}
+\contentsline {subsection}{\numberline {6.2}Verification and validation plan}{14}
+\contentsline {subsection}{\numberline {6.3}Documentation plan}{14}
+\contentsline {subsection}{\numberline {6.4}Oorspronkelijke opdracht}{14}
