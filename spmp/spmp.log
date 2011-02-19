@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  17 FEB 2011 17:26
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  19 FEB 2011 23:41
 entering extended mode
-**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/spmp.tex
-("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/spmp.tex"
+**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/spmp/spmp.tex
+("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/spmp/spmp.tex"
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
@@ -261,7 +261,7 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 )
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp.aux")
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp\spmp.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
@@ -309,25 +309,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
-[2] ("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp.toc")
-\tf@toc=\write3
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+
+ []
+
+[2] ("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp\spmp.to
+c")
+\tf@toc=\write3
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--117
+Underfull \hbox (badness 10000) in paragraph at lines 115--118
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
@@ -353,16 +353,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--124
  []
 
 
-Overfull \hbox (7.66736pt too wide) in paragraph at lines 135--178
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
+
+ []
+
+
+Overfull \hbox (7.66736pt too wide) in paragraph at lines 136--179
  [] 
  []
 
 [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 203--204
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
@@ -372,25 +372,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--206
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
+
+ []
+
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 229--230
-
+Overfull \hbox (6.8616pt too wide) in paragraph at lines 219--221
+[]\OT1/cmr/m/n/10 Tijdens meet-ings waarop alle leden aan-wezig zijn, wor-den p
+er-so-nen toegewezen
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 230--231
-
- []
-
+Missing character: There is no ü in font cmr10!
 
 Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
- []
-
-
-Overfull \hbox (3.7784pt too wide) in paragraph at lines 232--233
-[]\OT1/cmr/m/n/10 Zjef: Code im-plemeta-tion leader (con-troleert code en houdt
- alles bij elkaar),
  []
 
 
@@ -398,22 +394,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
  []
 
-[8]
-Missing character: There is no ë in font cmr10!
 
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
+
+ []
+
+
+Overfull \hbox (3.7784pt too wide) in paragraph at lines 234--235
+[]\OT1/cmr/m/n/10 Zjef: Code im-plemeta-tion leader (con-troleert code en houdt
+ alles bij elkaar),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--235
+
+ []
+
+[8]
 Overfull \hbox (5.94962pt too wide) in paragraph at lines 262--263
 \OT1/cmr/m/n/10 Er zal in-dien mo-gelijk enkel gew-erkt wor-den met open source
  soft-ware. Gedurende
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 269--270
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
-
  []
 
 
@@ -421,12 +421,146 @@ Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 272--273
 
  []
 
-[10] [11] [12] [13]
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 273--274
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
+
+ []
+
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 342--343
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--346
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
+
+ []
+
+[12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 396--397
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
+
+ []
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -434,44 +568,45 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.349 \textbf
+l.419 \textbf
              {abstract}\\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 349--356
+Underfull \hbox (badness 10000) in paragraph at lines 419--426
 
  []
 
-[14]
-Overfull \hbox (1.22287pt too wide) in paragraph at lines 360--362
+[14] [15]
+Overfull \hbox (1.22287pt too wide) in paragraph at lines 430--432
 \OT1/cmr/m/n/10 An ad-min-is-tra-tor, or a pro-gram ad-min-is-tra-tor en-ters d
 ata about
  []
 
-[15] [16]
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp.aux") ) 
+[16]
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp\spmp.aux") 
+) 
 Here is how much of TeX's memory you used:
- 3935 strings out of 495285
- 57270 string characters out of 3179830
+ 3937 strings out of 495285
+ 57336 string characters out of 3179830
  130123 words of memory out of 3000000
- 7113 multiletter control sequences out of 15000+200000
- 9358 words of font info for 34 fonts, out of 3000000 for 9000
+ 7114 multiletter control sequences out of 15000+200000
+ 9704 words of font info for 35 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,6n,38p,968b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/
-Program Files (x86)/MiKTeX 2.8/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Pr
-ogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program F
-iles (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program File
-s (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files (
-x86)/MiKTeX 2.8/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on spmp.pdf (16 pages, 117282 bytes).
+ 36i,6n,38p,973b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.8/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
+C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:
+/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program
+ Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program File
+s (x86)/MiKTeX 2.8/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on spmp.pdf (16 pages, 131372 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

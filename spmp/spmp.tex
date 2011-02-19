@@ -9,7 +9,7 @@
 \graphicspath{{fotosklein/}}
 \title{Software project management plan voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{17 februari 2011 Versie 0.2} 
+\date{17 februari 2011 Versie 0.3} 
 
 \begin{document}
 
@@ -27,10 +27,11 @@
 \section*{Change History}
 \begin{itemize}
 \item[.] 16/2/2011 versie 0.1: Aanmaak document \\[-3mm]
-\item[.] 17/2/2011 versie 0.2: Overzetting naar Tech\\[-3mm]
+\item[.] 17/2/2011 versie 0.2: Overzetting naar Tech, toevoeging hoofdstuk 1 en 4\\[-3mm]
+\item[.] 19/2/2011 versie 0.3: toevoeging hoofdstuk 5 en 6\\[-3mm]
 \end{itemize}
 
-\section*{Preface}
+%\section*{Preface}
 
 \newpage
 \tableofcontents
@@ -209,21 +210,22 @@ Na het opstellen van de stuctuur van het project in een grondig UML schema zal d
 \newpage
 \section{Project Organisation}
 
-Zjef
-
-\subsection{External interfaces}
-
-niks dus \\
-ragnild vermelden
+%\subsection{External interfaces}
 
 \subsection{Internal structure}
 
-google code vermelden \\
-svn gedoe
+Het software development team bestaat uit vier leden. Hierdoor zullen de verschillende onderdelen van het project op individuele basis of in subteams  van twee personen plaatsvinden.
+
+Tijdens meetings waarop alle leden aanwezig zijn, worden personen toegewezen aan nieuwe opdrachten, of wordt verslag uitgebracht over een lopende opdracht.
+Communicatie binnenin een subgroep gebeurt naar believen bijvoorbeeld tijdens een onderlinge meeting of via e-mail.
+
+Om globale controle, management en beheer van alle code en documenten te kunnen waarborgen, wordt van alle personen of groepen vereist dat ze hun geleverde of geüpdate code en documenten op een gemeenschappelijke plaats beschikbaar stellen.
+Hiervoor wordt google-code (http://code.google.com/) gebruikt en svn tortoise (http://tortoisesvn.tigris.org/).
 
 \subsection{Roles and responsibilities}
 
-Wie doet wat?
+Elk teamlid waakt over de kwaliteit en het naleven van deadlines voor de bevoegdheid waar zij eindverantwoordelijkheid over hebben.
+Verder wordt van ieder lid ook kennis over een specifiek onderwerp verwacht, hetzij door voorkennis, hetzij door training.
 
 \begin{itemize}
 \item[] Adam: Webmaster, document manager \\[-5mm]
@@ -232,8 +234,6 @@ Wie doet wat?
 \item[] Zjef: Code implemetation leader (controleert code en houdt alles bij elkaar), Database specialist \\[-5mm]
 \end{itemize}
  
-We werken ego-less omdat we toch maar met 4
-
 \newpage
 \section{Managerial process plans}
 
@@ -243,7 +243,7 @@ We werken ego-less omdat we toch maar met 4
 
 \subsubsection{Estimation plan}
 
-Allereerst heeft men een overzicht gemaakt van de taken die moeten volbracht worden opdat het project slaagt. Aan de hand van deze informatie, heeft men dan ingeschat hoeveel tijd er zal moeten gespendeerd worden aan het project. Voorlopig is men uitgegaan van een weekindeling (zie ook 1.1.4. Scheduling and Budget Summary), waarbij er elke week een onderdeel van het project moet afgemaakt worden. 
+Allereerst heeft men een overzicht gemaakt van de taken die moeten volbracht worden opdat het project slaagt. Aan de hand van deze informatie, heeft men dan ingeschat hoeveel tijd er zal moeten gespendeerd worden aan het project. Voorlopig is men uitgegaan van een weekindeling (zie ook  1.1.4. Scheduling and Budget Summary), waarbij er elke week een onderdeel van het project moet afgemaakt worden. 
 
 Op het einde van week 2, zal er een UML klassendiagramma van het volledig project beschikbaar zijn. Aan de hand hiervan zal de voorlopige schatting dan herbekeken, meer uitgediept en indien nodig aangepast worden.
 
@@ -255,7 +255,7 @@ Gedurende het project zal er nood zijn aan kennis over Java, het ontwerpen van s
 
 Het beschikbare team bestaat uit vier leden, die ervaring hebben met Java en het ontwerpen van sites. Het is de bedoeling dat ze zich gedurende de eerste twee weken van het project zullen bezighouden met het vergaren van kennis over de andere topics. Na deze fase van het project zullen de taken verder en in meer detail verdeeld worden over de teamleden.
 
-Aangezien er maar 4 teamleden zijn, gaat men uit van egoless programming. De bedoeling is dat iedereen zich met alles een beetje bezighoudt, op die manier is er geen nood aan een hiërarchische structuur en kan men elkaar beter controleren. 
+Aangezien er maar 4 teamleden zijn, gaat men uit van egoless programming. De bedoeling is dat iedereen zich met alles een beetje bezighoudt, op die manier is er geen nood aan een hi\"{e}rarchische structuur en kan men elkaar beter controleren. 
 
 \subsubsection{Resource acquisition plan}
 
@@ -264,6 +264,8 @@ Er zal indien mogelijk enkel gewerkt worden met open source software. Gedurende 
 \subsubsection{Project staff training plan}
 
 Het is de bedoeling dat het team zelf aan de nodige informatie komt. Er wordt ook onderling overlegd zodat ze elkaar kunnen helpen bij het vergaren van bepaalde vaardigheden of kennis die vereist is.
+
+De belangrijkste programmeertalen die elk teamlid zal moeten aanleren zijn de volgende:
 
 \begin{itemize}
 \item[.] Adam: Java, Javascript, XHTML, CSS grondiger \\[-5mm]
@@ -280,17 +282,13 @@ Vooropig heeft men hier nog geen goed beeld over kunnen vormen. Dit zal men aanp
 
 \subsubsection{Schedule control plan}
 
-Voorlopig is er nog maar een zeer algemeen tijdsschema opgesteld (zie ook 5.1.1. Estimation Plan en 1.1.4. Scheduling and Budget Summary). Naarmate het project vordert zal men dit ook verder uitdiepen. Men heeft wel al rekening gehouden met verlofdagen en andere projecten die ook moeten volbracht worden in dezelfde periode als externe factoren.
+Voorlopig is er nog maar een zeer algemeen tijdsschema opgesteld (zie ook 4.1.1. Estimation Plan en 4.1.4. Scheduling and Budget Summary). Naarmate het project vordert zal men dit ook verder uitdiepen. Men heeft wel al rekening gehouden met verlofdagen en andere projecten die ook moeten volbracht worden in dezelfde periode als externe factoren.
 
 \subsubsection{Resource allocation}
 
 Iedereen van het team zal over alle resources beschikken.
 
-
-
-
-
-\subsection{Control plan}
+\subsection{Controle plannen}
 
 % MATTHIAS
 
@@ -298,38 +296,111 @@ Iedereen van het team zal over alle resources beschikken.
 
 Om een goed beeld te krijgen van de vorderingen van het project en de kwaliteit van het geleverde werk, zullen de teamleden elke week vergaderen. Iedereen vertelt wat hij die week bereikt heeft en welke  problemen hij daarbij mogelijk gehad heeft. Het is ook de bedoeling dat iedereen een beeld heeft van elk onderdeel van het project; dit lijkt haalbaar omdat het team slecht uit vier leden bestaat (egoless programming). Een extra voordeel is hierbij dat iedereen controle heeft over wat de anderen doen en zo kunnen fouten vermeden of opgespoord worden.
 
-\subsubsection{Schedule control plan}
+\subsubsection{Plannigscontroleplan}
 
 Er zal ook elke week tijdens vergaderingen gekeken worden of men heeft volbracht wat gepland is. Indien dit niet het geval is, zal men de oorzaak hiervan onderzoeken en kijken of de planning voor de toekomst nog wel realistisch en of ook deze niet herbekeken moet worden.
 
-\subsubsection{Quality control plan}
+\subsubsection{Kwaliteitscontroleplan}
 
 Men zal steeds kijken of de ontwikkelde code voldoet aan de door het team op voorhand vastgelegde vereisten. Indien dit niet het geval is, zal men dit toch proberen te bekomen.
 Aangezien iedereen elkaar controleert en evalueert, zal dit de kwaliteit ten goede komen.
 
-\subsubsection{Reporting plan}
+\subsubsection{Rapporteringsplan}
 
 Er zal wekelijks door iedereen mondeling verslag worden uitgebracht; waarbij elk teamlid vertelt wat de doelstelling waren en of deze al dan niet bereikt zijn. Bovendien zal er steeds de mogelijkheid zijn voor andere groepsleden om vragen te stellen.
 
 \newpage
 \section{Technical process plans}
 
-Alexander gaat dit schrijven. wat we gaan gebruiken
+\subsection{Proces model}
 
-\subsection{Process model}
+Tijdens het project zal onderstaande planning worden opgevolgd. Concrete invulling van elke van
+de processtappen zal slecht gebeuren op korte termijn bij het begin van elke fase. Het verloop van
+de processtappen zal worden gedocumenteerd aan de hand van een logboek beschikbaar op de
+projectwebsite.
+
+\textbf{Initialisatie fase:}
+\begin{itemize}
+\item[-] In ontvangst name van de projectbeschrijving\\[-5mm]
+\item[-] Groepsoverleg\\[-5mm]
+\item[-] Opzoeken van informatie en software tools\\[-5mm]
+\item[-] Opstellen SPMP\\[-5mm]
+\end{itemize}
+
+
+\textbf{Design fase:}
+\begin{itemize}
+\item[-]Groepsoverleg\\[-5mm]
+\item[-]UML design\\[-5mm]
+\item[-]Opstellen SRD en SDD\\[-5mm]
+\end{itemize}
+
+\textbf{Implementatie fase:}
+
+\textit{Iteratie I}
+\begin{itemize}
+\item[-] Doelstellingen formuleren\\[-5mm]
+\item[-] Taakverdeling\\[-5mm]
+\item[-] Implementatie\\[-5mm]
+\item[-] SCRUM bijeenkomst I\\[-5mm]
+\item[-] Implementatie\\[-5mm]
+\item[-] Revisie\\[-5mm]
+\end{itemize}
+
+\textit{Iteratie II}
+\begin{itemize}
+\item[-] Doelstellingen formuleren\\[-5mm]
+\item[-] Taakverdeling\\[-5mm]
+\item[-] Implementatie\\[-5mm]
+\item[-] SCRUM bijeenkomst II\\[-5mm]
+\item[-] Revisie\\[-5mm]
+\end{itemize}
+
+\textbf{Terminatie fase:}
+\begin{itemize}
+\item[-] Groepsoverleg\\[-5mm]
+\item[-] Eindproduct afleveren\\[-5mm]
+\item[-] Presentatie resultaten\\[-5mm]
+\item[-] Einde project\\[-5mm]
+\end{itemize}
+
 
 \subsection{Methods tools and techniques}
 
+Tijdens het project zal de Agile methodologie worden gevolgd. Dit houdt in dat concrete doelstelling (en de stappen nodig om deze te bereiken) steeds op korte termijn zullen worden gedefinieerd. Een snelle evaluatie van de verwezenlijkte resultaten is dus noodzakelijk. Dit wordt gegarandeerd door wekelijks overleg tussen de groepsleden en externe feedback afkomstig van de geplande scrum meetings.
+Het project zal worden uitgevoerd in de programmeertaal Java. Als werkomgeving voor het schrijven en documenteren van de code wordt gekozen voor Eclips. Voor meer informatie wordt doorverwezen naar http://www.java.com/ en http://www.eclipse.org/.
+Bij het documenteren en beschrijven van de code zal zoveel mogelijk beroep worden gedaan op Unified Modeling Language (UML). Voor meer informatie over deze standaard http://www.uml.org/. Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN).
+
 \subsection{Infrastructure plan}
 
-\subsection{Product acceptance plan}
+\subsection{Productaanvaarding plan}
 
-%\newpage
-%\section{Supporting process plans}
+Enkel werkende en foutloze code zal worden afgeleverd aan het einde van het project mits goedkeuring van elk van de groepsleden. Verdere evaluatie van het project wordt volledig bepaal door de opdrachtgever, Prof. Ragnhild Verstraeten.
+
+\newpage
+\section{Supporting process plans}
 %Na het project
-%\subsection{Configuration management plan}
-%\subsection{Verification and validation plan}
-%\subsection{Documentation plan}
+\subsection{Configuration management plan}
+
+Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN). Alle groepsleden hebben volledige toegang tot deze account en dus ook tot alle projectdocumenten en -bestanden. Elk groepslid zal verantwoordelijk worden gesteld voor het beheer van zijn bijdrage tot het project. Daarbij zal aan het einde van elke projectfase een back-up worden gemaakt van alle bestanden om eventueel falen van de Google server het hoofd te kunnen bieden.
+
+\subsection{Verification and validation plan}
+
+Wekelijks zal de groep samenkomen om de ontwikkelingen van het project te bespreken, elkaars werk te controleren en eventuele problemen op te lossen. Anderzijds zullen tijdens de scrum samenkomsten ook externen commentaar kunnen geven op het project verloop.
+
+\subsection{Documentation plan}
+
+Tijdens het project zullen onderstaande documenten zeker worden afgeleverd.
+\begin{itemize}
+\item[-] Software Project Management Plans (SPMP)\\[-5mm]
+\item[-] Software Design Descriptions (SDD)\\[-5mm]
+\item[-] Software Requirements Specifications (SRS)\\[-5mm]
+\end{itemize}
+
+Voor het opstellen van deze documenten wordt steeds gebruik gemaakt van de IEEE standaards vermeld in de referenties van dit document.
+Vervolgens zal ook het projectverloop worden gedocumenteerd ondervorm van een logboek dat beschikbaar zal zijn op de projectwebsite en later zal worden toegevoegd aan dit document onder de vorm van een bijlage.
+Elke groepslid is verantwoordelijk voor het documenteren van zijn bijdragen tot het project. Elk onderdeel van de documentatie zal door alle groepsleden worden nagelezen en gecontroleerd.
+
 %\subsection{quality assurance plan}
 %\subsection{Reviews and audits}
 %\subsection{Problem resolution plan}
