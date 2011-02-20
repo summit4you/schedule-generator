@@ -9,7 +9,7 @@
 \graphicspath{{fotosklein/}}
 \title{Software project management plan voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{17 februari 2011 Versie 0.3} 
+\date{17 februari 2011 Versie 1.0} 
 
 \begin{document}
 
@@ -24,11 +24,12 @@
 
 \newpage
 
-\section*{Change History}
+\section*{Aanpassingsgeschiedenis}
 \begin{itemize}
 \item[.] 16/2/2011 versie 0.1: Aanmaak document \\[-3mm]
 \item[.] 17/2/2011 versie 0.2: Overzetting naar Tech, toevoeging hoofdstuk 1 en 4\\[-3mm]
-\item[.] 19/2/2011 versie 0.3: toevoeging hoofdstuk 5 en 6\\[-3mm]
+\item[.] 19/2/2011 versie 0.3: Toevoeging hoofdstuk 5 en 6\\[-3mm]
+\item[.] 20/2/2011 versie 1.0: Verberingen doorgevoerd en titels vertaald\\[-3mm]
 \end{itemize}
 
 %\section*{Preface}
@@ -37,16 +38,16 @@
 \tableofcontents
 
 \newpage
-\section{Overview}
+\section{Overzicht}
 
 % This clause of the SPMP shall provide an overview of the purpose, scope, and objectives of the project, the project
 % assumptions and constraints, a list of project deliverables, a summary of the project schedule and budget, and the plan
 % for evolution of the SPMP.
 % ADAM
 
-\subsection{Project summary}
+\subsection{Samenvatting van het project}
 
-\subsubsection{Purpose, scope and objectives}
+\subsubsection{Doel, bedoeling en objectieven}
 
 % This subclause of the SPMP shall define the purpose, scope, and objectives of the project and the products to be
 % delivered. This subclause should also describe any considerations of scope or objectives to be excluded from the
@@ -65,10 +66,10 @@ De volledige (Engelstalige) opdracht kan gevonden worden in het onderdeel `Bijla
 
 Het doel van het project is de ontwikkeling van een programma dat toelaat om lessenroosters te genereren en weer te geven op een universiteit. Het moet toelaten om data in te voeren (zoals vakken, professoren, lokalen,...) en beperkingen op het plannen van het rooster. Het moet het beste rooster kunnen opstellen. Het moet toelaten om dat rooster manueel aan te passen en te bekijken.
 
-Het programma moet gebruik maken van een website en de data moet opgeslaan worden in een database. Alles moet open-source zijn.
+Het programma moet gebruik maken van een website en de data moet opgeslagen worden in een database. Alles moet open-source zijn.
 
 
-\subsubsection{Assumptions and constraints}
+\subsubsection{Veronderstellingen en beperkingen}
 
 % This subclause of the SPMP shall describe the assumptions on which the project is based and imposed constraints on
 % project factors such as the schedule, budget, resources, software to be reused, acquirer software to be incorporated,
@@ -76,9 +77,9 @@ Het programma moet gebruik maken van een website en de data moet opgeslaan worde
 
 Het project is een opdracht voor het vak `Software Engineering', gedoceerd door Prof. Ragnhild Verstraeten. Daarom worden de meeste constraints bepaald door de opdracht die gegeven is. \\
 Er is tijd tot eind mei (20/5/2011) om het project af te werken. Een tijdsbestek van 3 maanden. We moeten alles open source programmeren en mogen enkel gebruik maken van open-source onderdelen. Het project moet uitgevoerd worden in een object-georienteerde taal en het programma moet op Wilma kunnen draaien.\\
-Aangezien de aard van het project werd beslist dat de database met gebruikers die de kalender zullen gebruiken compatibel moet zijn met de bestaande database aan de VUB.
+Aangezien de aard van het project, werd er beslist dat de database met gebruikers van de software compatibel moet zijn met de bestaande database van de VUB.
 
-\subsubsection{Project Deliverables}
+\subsubsection{Deliverables van het Project}
 
 % This subclause of the SPMP shall list the work products that will be delivered to the acquirer, the delivery dates,
 % delivery locations, and quantities required to satisfy the terms of the project agreement. In addition, this subclause
@@ -112,7 +113,7 @@ Datum	& To Do & delivery media  \\
 \end{tabular}
 \end{center}
 
-Om de code door te kunnen geven aan elk groepslid en ook aan de opdrachtgever wordt gebruik gemaakt van een online repository in combinatie met subversion om de version control in orde te houden. De repository bevindt zich op een server van google code. De link ernaar is te vinden op onze website.
+Om de code toegankelijk te maken voor elk groepslid en de opdrachtgever, wordt gebruik gemaakt van een online repository in combinatie met subversion om de version control in orde te houden. De repository bevindt zich op een server van google code. De link ernaar is te vinden op onze website.
 De verslagen zoals het SPMP, SDD en SRC, zullen in pdf beschikbaar gesteld worden op onze website.
 De exacte inhoud van de SCRUM meetings werd opgegeven door de opdrachtgever. De volgende dingen worden erin getoond en besproken: \\[-5mm]
 \begin{itemize}
@@ -121,12 +122,12 @@ De exacte inhoud van de SCRUM meetings werd opgegeven door de opdrachtgever. De 
  \item[-] Een bespreking van de functionaliteiten die toegevoegd zullen worden in de volgende iteratie\\[-5mm]
  \item[-] Een bespreking van de obstakels en risico`s die tegengekomen kunnen worden in de volgende iteratie \\[-5mm]
  \item[-] Een bespreking van de statistieken zoals werkuren per persoon \\[-5mm]
- \item[-] Een bespreking mogelijke vertragingen en oplossingen om die vertragingen zo klein mogelijk te houden en ze te voorkomen in de toekomst.\\[-5mm]
+ \item[-] Een bespreking van mogelijke vertragingen en oplossingen om die vertragingen zo klein mogelijk te houden en te voorkomen in de toekomst.\\[-5mm]
 \end{itemize}
 
 
 
-\subsubsection{Schedule and Budget summary}
+\subsubsection{Planning en Budget}
 
 % This subclause of the SPMP shall provide a summary of the schedule and budget for the software project. The level of
 % detail should be restricted to an itemization of the major work activities and supporting processes as, for example,
@@ -190,7 +191,7 @@ Na het opstellen van de stuctuur van het project in een grondig UML schema zal d
 
 \newpage
 
-\section{References}
+\section{Verwijzingen}
 
 % This clause of the SPMP shall provide a complete list of all documents and other sources of information referenced in
 % the SPMP. Each document should be identified by title, report number, date, author, path/name for electronic access,
@@ -208,21 +209,21 @@ Na het opstellen van de stuctuur van het project in een grondig UML schema zal d
 
 
 \newpage
-\section{Project Organisation}
+\section{Organisatie van het Project}
 
 %\subsection{External interfaces}
 
-\subsection{Internal structure}
+\subsection{Interne structuur}
 
 Het software development team bestaat uit vier leden. Hierdoor zullen de verschillende onderdelen van het project op individuele basis of in subteams  van twee personen plaatsvinden.
 
 Tijdens meetings waarop alle leden aanwezig zijn, worden personen toegewezen aan nieuwe opdrachten, of wordt verslag uitgebracht over een lopende opdracht.
 Communicatie binnenin een subgroep gebeurt naar believen bijvoorbeeld tijdens een onderlinge meeting of via e-mail.
 
-Om globale controle, management en beheer van alle code en documenten te kunnen waarborgen, wordt van alle personen of groepen vereist dat ze hun geleverde of geüpdate code en documenten op een gemeenschappelijke plaats beschikbaar stellen.
+Om globale controle, management en beheer van alle code en documenten te kunnen waarborgen, wordt van alle personen of groepen vereist dat ze hun ingeleverde of ge\"{u}pdate code en documenten op een gemeenschappelijke plaats beschikbaar stellen.
 Hiervoor wordt google-code (http://code.google.com/) gebruikt en svn tortoise (http://tortoisesvn.tigris.org/).
 
-\subsection{Roles and responsibilities}
+\subsection{Rollen en verantwoordelijkheden}
 
 Elk teamlid waakt over de kwaliteit en het naleven van deadlines voor de bevoegdheid waar zij eindverantwoordelijkheid over hebben.
 Verder wordt van ieder lid ook kennis over een specifiek onderwerp verwacht, hetzij door voorkennis, hetzij door training.
@@ -235,21 +236,21 @@ Verder wordt van ieder lid ook kennis over een specifiek onderwerp verwacht, het
 \end{itemize}
  
 \newpage
-\section{Managerial process plans}
+\section{Bestuurlijke proces plannen}
 
 % MATTHIAS
 
 \subsection{Start-up plan}
 
-\subsubsection{Estimation plan}
+\subsubsection{Schattingsplan}
 
 Allereerst heeft men een overzicht gemaakt van de taken die moeten volbracht worden opdat het project slaagt. Aan de hand van deze informatie, heeft men dan ingeschat hoeveel tijd er zal moeten gespendeerd worden aan het project. Voorlopig is men uitgegaan van een weekindeling (zie ook  1.1.4. Scheduling and Budget Summary), waarbij er elke week een onderdeel van het project moet afgemaakt worden. 
 
-Op het einde van week 2, zal er een UML klassendiagramma van het volledig project beschikbaar zijn. Aan de hand hiervan zal de voorlopige schatting dan herbekeken, meer uitgediept en indien nodig aangepast worden.
+Op het einde van week 2, zal er een UML klassendiagramma van het volledig project beschikbaar zijn. Aan de hand hiervan zal de voorlopige planning herherbekeken, meer uitgediept en indien nodig aangepast worden.
 
 De software en de middelen die men nu denkt nodig te hebben, zijn voorlopig beschikbaar. Er zullen dus geen bijkomende kosten zijn.
 
-\subsubsection{Staffing plan}
+\subsubsection{Personeelsplan}
 
 Gedurende het project zal er nood zijn aan kennis over Java, het ontwerpen van sites, databasestructuren en  webcontainers (zoals Tomcat). 
 
@@ -257,11 +258,11 @@ Het beschikbare team bestaat uit vier leden, die ervaring hebben met Java en het
 
 Aangezien er maar 4 teamleden zijn, gaat men uit van egoless programming. De bedoeling is dat iedereen zich met alles een beetje bezighoudt, op die manier is er geen nood aan een hi\"{e}rarchische structuur en kan men elkaar beter controleren. 
 
-\subsubsection{Resource acquisition plan}
+\subsubsection{Plan voor het bekomen van middelen}
 
-Er zal indien mogelijk enkel gewerkt worden met open source software. Gedurende de eerste twee weken zullen de teamleden deze software verzamelen, zodat men na deze eerste fase zich geen zorgen meer hoeft te maken over het vergaren van software. 
+Er zal enkel gewerkt worden met open source software. Gedurende de eerste twee weken zullen de teamleden deze software verzamelen, zodat men na deze eerste fase zich geen zorgen meer hoeft te maken over het vergaren van software. 
 
-\subsubsection{Project staff training plan}
+\subsubsection{Personeelstrainingsplan}
 
 Het is de bedoeling dat het team zelf aan de nodige informatie komt. Er wordt ook onderling overlegd zodat ze elkaar kunnen helpen bij het vergaren van bepaalde vaardigheden of kennis die vereist is.
 
@@ -274,25 +275,24 @@ De belangrijkste programmeertalen die elk teamlid zal moeten aanleren zijn de vo
 \item[.] Zjef: MySQL \\[-5mm]
 \end{itemize}
 
-\subsection{Work plan}
+\subsection{Werkplan}
 
-\subsubsection{Work activities}
+\subsubsection{Werkactiviteiten}
 
 Vooropig heeft men hier nog geen goed beeld over kunnen vormen. Dit zal men aanpassen en bekijken na de eerste fase van het project. Dan beschikt men ook over het UML klassendiagramma die het overzicht van de work activities en hun onderlinge relatie zal verduidelijken.
 
-\subsubsection{Schedule control plan}
+\subsubsection{Plan voor het controleren van de planningen}
 
 Voorlopig is er nog maar een zeer algemeen tijdsschema opgesteld (zie ook 4.1.1. Estimation Plan en 4.1.4. Scheduling and Budget Summary). Naarmate het project vordert zal men dit ook verder uitdiepen. Men heeft wel al rekening gehouden met verlofdagen en andere projecten die ook moeten volbracht worden in dezelfde periode als externe factoren.
 
-\subsubsection{Resource allocation}
-
-Iedereen van het team zal over alle resources beschikken.
+%\subsubsection{Resource allocation}
+%Iedereen van het team zal over alle resources beschikken.
 
 \subsection{Controle plannen}
 
 % MATTHIAS
 
-\subsubsection{Requirements control plan}
+\subsubsection{Plan voor controle van de eisen}
 
 Om een goed beeld te krijgen van de vorderingen van het project en de kwaliteit van het geleverde werk, zullen de teamleden elke week vergaderen. Iedereen vertelt wat hij die week bereikt heeft en welke  problemen hij daarbij mogelijk gehad heeft. Het is ook de bedoeling dat iedereen een beeld heeft van elk onderdeel van het project; dit lijkt haalbaar omdat het team slecht uit vier leden bestaat (egoless programming). Een extra voordeel is hierbij dat iedereen controle heeft over wat de anderen doen en zo kunnen fouten vermeden of opgespoord worden.
 
@@ -310,14 +310,12 @@ Aangezien iedereen elkaar controleert en evalueert, zal dit de kwaliteit ten goe
 Er zal wekelijks door iedereen mondeling verslag worden uitgebracht; waarbij elk teamlid vertelt wat de doelstelling waren en of deze al dan niet bereikt zijn. Bovendien zal er steeds de mogelijkheid zijn voor andere groepsleden om vragen te stellen.
 
 \newpage
-\section{Technical process plans}
+\section{Technische plannen}
 
 \subsection{Proces model}
 
-Tijdens het project zal onderstaande planning worden opgevolgd. Concrete invulling van elke van
-de processtappen zal slecht gebeuren op korte termijn bij het begin van elke fase. Het verloop van
-de processtappen zal worden gedocumenteerd aan de hand van een logboek beschikbaar op de
-projectwebsite.
+Tijdens het project zal onderstaande planning worden opgevolgd. Concrete invulling van elke van de processtappen zal slecht gebeuren op korte termijn bij het begin van elke fase. Het verloop van de processtappen zal worden gedocumenteerd aan de hand van een logboek beschikbaar op de
+projectwebsite. \\[3mm]
 
 \textbf{Initialisatie fase:}
 \begin{itemize}
@@ -336,6 +334,8 @@ projectwebsite.
 \end{itemize}
 
 \textbf{Implementatie fase:}
+\begin{quotation}
+	
 
 \textit{Iteratie I}
 \begin{itemize}
@@ -356,6 +356,8 @@ projectwebsite.
 \item[-] Revisie\\[-5mm]
 \end{itemize}
 
+\end{quotation}
+
 \textbf{Terminatie fase:}
 \begin{itemize}
 \item[-] Groepsoverleg\\[-5mm]
@@ -365,30 +367,30 @@ projectwebsite.
 \end{itemize}
 
 
-\subsection{Methods tools and techniques}
+\subsection{Methode hulpmiddelen en technieken}
 
 Tijdens het project zal de Agile methodologie worden gevolgd. Dit houdt in dat concrete doelstelling (en de stappen nodig om deze te bereiken) steeds op korte termijn zullen worden gedefinieerd. Een snelle evaluatie van de verwezenlijkte resultaten is dus noodzakelijk. Dit wordt gegarandeerd door wekelijks overleg tussen de groepsleden en externe feedback afkomstig van de geplande scrum meetings.
 Het project zal worden uitgevoerd in de programmeertaal Java. Als werkomgeving voor het schrijven en documenteren van de code wordt gekozen voor Eclips. Voor meer informatie wordt doorverwezen naar http://www.java.com/ en http://www.eclipse.org/.
 Bij het documenteren en beschrijven van de code zal zoveel mogelijk beroep worden gedaan op Unified Modeling Language (UML). Voor meer informatie over deze standaard http://www.uml.org/. Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN).
 
-\subsection{Infrastructure plan}
+%\subsection{Infrastructuur plan}
 
 \subsection{Productaanvaarding plan}
 
 Enkel werkende en foutloze code zal worden afgeleverd aan het einde van het project mits goedkeuring van elk van de groepsleden. Verdere evaluatie van het project wordt volledig bepaal door de opdrachtgever, Prof. Ragnhild Verstraeten.
 
 \newpage
-\section{Supporting process plans}
+\section{Ondersteunende processplannen}
 %Na het project
 \subsection{Configuration management plan}
 
 Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN). Alle groepsleden hebben volledige toegang tot deze account en dus ook tot alle projectdocumenten en -bestanden. Elk groepslid zal verantwoordelijk worden gesteld voor het beheer van zijn bijdrage tot het project. Daarbij zal aan het einde van elke projectfase een back-up worden gemaakt van alle bestanden om eventueel falen van de Google server het hoofd te kunnen bieden.
 
-\subsection{Verification and validation plan}
+\subsection{Verificatie en validatieplan}
 
 Wekelijks zal de groep samenkomen om de ontwikkelingen van het project te bespreken, elkaars werk te controleren en eventuele problemen op te lossen. Anderzijds zullen tijdens de scrum samenkomsten ook externen commentaar kunnen geven op het project verloop.
 
-\subsection{Documentation plan}
+\subsection{Documentatieplan}
 
 Tijdens het project zullen onderstaande documenten zeker worden afgeleverd.
 \begin{itemize}
