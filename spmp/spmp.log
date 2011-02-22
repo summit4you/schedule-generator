@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  20 FEB 2011 22:12
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  22 FEB 2011 09:03
 entering extended mode
 **C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/spmp/spmp.tex
 ("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/spmp/spmp.tex"
@@ -382,20 +382,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--208
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
+
+ []
+
 [7]
-Overfull \hbox (6.8616pt too wide) in paragraph at lines 220--222
+Overfull \hbox (6.8616pt too wide) in paragraph at lines 222--224
 []\OT1/cmr/m/n/10 Tijdens meet-ings waarop alle leden aan-wezig zijn, wor-den p
 er-so-nen toegewezen
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 232--233
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
-
  []
 
 
@@ -404,48 +404,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 234--235
  []
 
 
-Overfull \hbox (3.7784pt too wide) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
+
+ []
+
+
+Overfull \hbox (3.7784pt too wide) in paragraph at lines 237--238
 []\OT1/cmr/m/n/10 Zjef: Code im-plemeta-tion leader (con-troleert code en houdt
  alles bij elkaar),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
+Underfull \hbox (badness 10000) in paragraph at lines 237--238
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
+
+ []
+
 [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 317--319
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 322--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 323--324
+Underfull \hbox (badness 10000) in paragraph at lines 319--321
 
  []
 
@@ -460,12 +460,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 325--326
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
@@ -475,12 +475,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 333--334
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--343
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--344
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
 
  []
 
@@ -505,12 +505,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 347--348
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 353--354
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
 
  []
 
@@ -530,12 +530,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 356--357
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 
  []
 
@@ -549,18 +549,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
+
+ []
+
 [12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 397--398
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 398--399
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 399--400
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--402
 
  []
 
@@ -571,19 +581,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.421 \textbf
+l.423 \textbf
              {abstract}\\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 421--428
+Underfull \hbox (badness 10000) in paragraph at lines 423--430
 
  []
 
 [14] [15]
-Overfull \hbox (1.22287pt too wide) in paragraph at lines 432--434
+Overfull \hbox (1.22287pt too wide) in paragraph at lines 434--436
 \OT1/cmr/m/n/10 An ad-min-is-tra-tor, or a pro-gram ad-min-is-tra-tor en-ters d
 ata about
  []
@@ -607,7 +617,7 @@ ram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program
  Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fi
 les (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program File
 s (x86)/MiKTeX 2.8/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on spmp.pdf (16 pages, 129262 bytes).
+Output written on spmp.pdf (16 pages, 129478 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
