@@ -1,0 +1,60 @@
+<h1>22-2-2010: Algemene vergadering raad van bestuur ivm UML diagramma</h1>
+<p>
+<b>Aanwezig</b>:</br> Alexander De Cock </br> Zjef Van de Poel </br> Adam Cooman </br> Matthias Caenepeel (2de deel)</br></br>
+
+<b>Locatie:</b> Kot van Alexander
+</p>
+<h2>Punten op de agenda:</h2>
+<ul>
+<li>Maken UML diagramma</li>
+<li>Bespreken van structuur van programma</li>
+</ul>
+
+<h2>Resultaten:</h2>
+<ul>
+<li>Beslist om te werken met Eclipse</li>
+<li>Tekenen van structuur die weergeeft welke verschillende variabelen in ons programma aanwezig gaan zijn en in welke structuur ze gelinkt zullen worden.</li>
+</ul>
+
+
+<h2>Eerste deel van de vergadering: 10:15 tot 12:00</h2>
+<p>
+- Er werd beslist om Eclipse te gebruiken om het diagramma op te stellen </br>
+<u>Voordelen:</u> Iedereen heeft het en we werken met minder verschillende programma's</br>
+<u>Nadelen:</u> De code kan niet automatisch gegenereerd worden.</br></br>
+
+- Er werd begonnen met het tekenen van het UML diagramma.</br></br>
+
+Gebruikers van het systeem werden bepaald: Students, Professors, Admins en Guest.</br>
+Students en Professors zijn humans met firstName en surName. die naam kan door Guests ingetypt worden om het rooster van andere mensen te kunnen bekijken (zodat de guest niet de accountnaam moet kennen van die persoon.</br>
+Omdat de studenten rolnummers hebben en professoren personneelsnummers werden die variabelen niet op dat niveau toegevoegd.</br>
+Om de vakken onder te verdelen werd gebruik gemaakt van faclity, program en course. Een faclity bevat een lijst van programs en een program bevat een lijst van courses. Een course bevat een professor</br>
+De klasse student bevat dan een lijst programs en een lijst courses om flexibele keuzevakken toe te laten.</br>
+
+Voor de lokalen werd beslist om ze ook aan een gebouw te linken, zodat bij de verdeling van de lokalen rekening gehouden kan worden dat een bepaalde groep best in een bepaald gebouw les krijgt (ingenieurs in gebouw K,...)</br></br>
+
+- Toen probeerde we de aanpassingsrechten voor de verschillende gebruikers toe te voegen aan deze structuur werd gediscussieerd wat de algemene aanpak zou zijn, vooral waar welke gegevens opgeslaan werden en in welke vorm. Als we voor alles een database gebruikten was het schrijven van het klassendiagramma niet meer zo belangrijk omdat er dan twee totaal verschillendende programma's werken voor het lezen en voor het aanpassen van de databases. </br>
+Door tekort aan kennis van MySQL en PHP werd deze discussie op de lange baan geschoven. Omdat het UML diagramma zelf in dat geval een goeie structuur van de databases weergaf werd verder gewerkt, maar niet na een goed hapje eten en een leuke les.</br>
+
+</p>
+<h2>Tweede deel van de vergadering: 15:15 tot 17:15</h2>
+<p>
+- Matthias, die er in de voormiddag door omstandigheden niet kon bij zijn vervoegde ons om verder te vergaderen.</br></br>
+
+-  Discussie over de gordijnen, de zon zat slecht, dus we stemden voor het open of toe zijn van de gordijnen. Elk kamp had zijn voordelen: </br>
+<u>Open:</u> Lekker gezellig met de zon en lekker warm</br>
+<u>Toe:</u> De zon zat in onze ogen en verminderde de leesbaarheid van onze laptopschermen</br>
+Er werd beslist om de gordijnen toch maar toe te doen.</br></br>
+
+- De structuur Course werd uitgebreidt. Er werd een record met informatie aan toegevoegd die nu op opaweb staat. de hoofdprofessor van het vak kan die aanpassen. Het vak werd onderverdeeld in verschillende subCourses. Om theorie en oefeningen op verschillende locaties toe te laten. Een subcourse bevat dan zijn type (WPO, THEORIE, LABO) en het aantal uur dat het onderdeel duurt. Het subCourse krijgt een aparte professor (assistent), een lijst met hardware die nodig is om het vak te geven (beamer, bord,...) en het aantal uur dat dit deel van het vak gegeven wordt.</br>
+Aan de klasse Room werd dan ook de beschikbare hardware toegevoegd, alsook het aantal studenten dat er kan les krijgen en het gebouw.</br></br>
+
+- Er werd een discussie gehouden over de macht van de koning in de feodale structuur en wikipedia werd gecontacteerd ivm koning clovis.</br></br>
+
+- De constraints die kunnen opgegeven worden door de professoren en secretaresses in verband met hun vakken werden opgesomd en genoteerd.</br></br>
+
+</p>
+
+<h2>Resultaat</h2>
+UML diagramma dat u kan vinden onder de volgende <a href="UML.rar">link</a> </br>
+Er is waarschijnlijk Eclipse nodig met de UML uitbreiding om dit te kunnen openen.
