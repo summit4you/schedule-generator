@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  23 FEB 2011 19:02
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  23 FEB 2011 21:42
 entering extended mode
 **C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/srs/srs.tex
 ("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/srs/srs.tex"
@@ -282,24 +282,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 [2] ("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\srs\srs.toc"
 )
 \tf@toc=\write3
- [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 97--100
+ [3]
+Underfull \hbox (badness 10000) in paragraph at lines 41--43
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 107--111
-
- []
-
-[5]
-Overfull \hbox (0.90675pt too wide) in paragraph at lines 128--129
+[4] [5]
+Overfull \hbox (0.90675pt too wide) in paragraph at lines 120--121
 \OT1/cmr/m/n/10 Tom-cat. De servlets zijn in JAVA geschreven en gener-eren de g
 evraagde XHTML
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--129
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
@@ -310,7 +305,7 @@ See the caption package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.166 \caption
+l.158 \caption
               {Overzicht van de communicatie en de gebruikte protocols tusse...
 
 If you do not understand this error, please take a closer look
@@ -320,22 +315,22 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 202--205
+Underfull \hbox (badness 10000) in paragraph at lines 194--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--224
+Underfull \hbox (badness 10000) in paragraph at lines 213--216
 
  []
 
@@ -347,7 +342,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.246 \\
+l.238 \\
         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -360,19 +355,19 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.247 
+l.239 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--282
+Underfull \hbox (badness 10000) in paragraph at lines 270--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 283--284
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
@@ -391,7 +386,7 @@ Here is how much of TeX's memory you used:
 C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/
 Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on srs.pdf (9 pages, 95876 bytes).
+Output written on srs.pdf (9 pages, 97012 bytes).
 PDF statistics:
  52 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
