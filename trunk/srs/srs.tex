@@ -1,13 +1,12 @@
 \documentclass{article}
 \usepackage[dutch]{babel}
 \usepackage[official]{eurosym}
-\usepackage{graphicx}
-\usepackage{epic,eepic}
+%\usepackage{graphicx}
+%\usepackage{epic,eepic}
 \usepackage{mathtools}
 \usepackage{caption}
 \usepackage{textcomp}
-%\graphicspath{{fotosklein/}}
-\title{Software Requirements Speciﬁcations voor Schedule-Generator}
+\title{Software Requirements Specifications voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
 \date{23 februari 2011 Versie 0.1} 
 
@@ -116,34 +115,69 @@ Web based \\
 
 \section{Specific requirements}
 
-ADAM
-
 \subsection{External interface requirements}
+
 \subsubsection{User interfaces}
 
-Webinterface \\
-XHTML met CSS en misschien een beetje Javascript \\
-user-afhankelijke pagina die getoond wordt \\
+De opdracht gebiedt ons om met een website als user interface te werken. Om dit te verwezenlijken zal XHTML in combinatie met CSS gebruikt worden (mogelijk ook javascript). 
 
 Na het inloggen krijgt de gebruiker een pagina te zien met verschillende tabs. Voor elke gebruikersklasse en de functionaliteiten die ze krijgen bestaat een ander tabblad. Op die manier is het gemakkelijker om functionaliteiten toe te voegen en overzichtelijk weer te geven. Guests krijgen bijvoorbeeld maar een enkele tab te zien waarin ze een naam kunnen intypen en waarin de kalender weergegeven wordt. Studenten krijgen een tweede tab erbij waarin ze hun vakkenlijst kunnen aanpassen etc.
 
-\subsubsection{Hardware interfaces}
+\subsubsection{Communications and software interfaces}
 
-Java, Tomcat, server
+Om de communicatie tussen de browser van de gebruiker en de server te doen wordt gebruik gemaakt van HTTP. De HTTP paketten zullen op de server ge\"{i}nterpreteerd worden door servlets die op de server uitgevoerd worden via Tomcat. De servlets zijn in JAVA geschreven en genereren de gevraagde XHTML en CSS code die dat terug naar de gebruiker gestuurd worden.\\ 
 
-\subsubsection{Software interfaces}
+De servlets communiceren met de database via MySQL en interpreteren de gegevens voor de gebruiker. Het proces kan overzichtelijk weergegeven worden in volgend blokschema:
+
+\unitlength=0.3\textwidth
+\begin{center}
+\begin{picture}(3,1)
+%serverlijnen
+\put(0.2,0.2){Server}
+\put(0,0){\line(1,0){1.6}}
+\put(0,0){\line(0,1){1}}
+\put(1.6,0){\line(0,1){1}}
+\put(0,1){\line(1,0){1.6}}
+%browser
+\put(2.4,0.6){Browser}
+\put(2.3,0.9){\line(1,0){0.5}}
+\put(2.8,0.4){\line(0,1){0.5}}
+\put(2.3,0.4){\line(0,1){0.5}}
+\put(2.3,0.4){\line(1,0){0.5}}
+%database
+\put(0.15,0.6){Database}
+\put(0.1,0.9){\line(1,0){0.5}}
+\put(0.6,0.4){\line(0,1){0.5}}
+\put(0.1,0.4){\line(0,1){0.5}}
+\put(0.1,0.4){\line(1,0){0.5}}
+%servlet
+\put(1.1,0.6){Servlet}
+\put(1.0,0.9){\line(1,0){0.5}}
+\put(1.5,0.4){\line(0,1){0.5}}
+\put(1.0,0.4){\line(0,1){0.5}}
+\put(1.0,0.4){\line(1,0){0.5}}
+%lijn MySQL
+\put(0.65,0.7){MySQL}
+\put(0.62,0.65){\line(1,0){0.36}}
+%lijn HTTP
+\put(1.8,0.7){HTTP}
+\put(1.52,0.65){\line(1,0){0.76}}
+\end{picture}\\[3mm]
+\caption{Overzicht van de communicatie en de gebruikte protocols tussen de verschillende delen van het programma}
+\end{center}
+
+De verschillende versies software die we gebruiken zijn de volgende:
 
 \begin{itemize}
-\item[.] MySQL: JDBC driver for MySQL 5.1.15 \\[-3mm]
-\item[.] Tomcat \\[-3mm]
+\item[.] MySQL: JDBC driver for MySQL 5.1.15 \\[-5mm]
+\item[.] Tomcat \\[-5mm]
 \end{itemize}
 
-\subsubsection{Communications interfaces}
+\subsubsection{Hardware interfaces}
 
-HTTP
+De Hardware interfaces die we gebruiken worden vastgelegd door de opdrachtgever. Ons programma moet op Wilma kunnen draaien. De hardware interface die we hebben is dus een Linux besturingssysteem.
 
 \newpage
-
 \subsection{Functional requirements}
 
 ALEXANDER
