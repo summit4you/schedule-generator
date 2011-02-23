@@ -1,0 +1,293 @@
+\documentclass{article}
+\usepackage[dutch]{babel}
+\usepackage[official]{eurosym}
+\usepackage{graphicx}
+\usepackage{epic,eepic}
+\usepackage{mathtools}
+\usepackage{caption}
+\usepackage{textcomp}
+%\graphicspath{{fotosklein/}}
+\title{Software Requirements Speciﬁcations voor Schedule-Generator}
+\author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
+\date{23 februari 2011 Versie 0.1} 
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% \newpage
+% Signature page
+
+% \newpage
+
+\section*{Aanpassingsgeschiedenis}
+\begin{itemize}
+\item[.] 23/2/2011 versie 0.1: Aanmaak document \\[-3mm]
+\end{itemize}
+
+%\section*{Preface}
+
+\newpage
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\subsection{Purpose}
+
+MATTHIAS
+
+% Delineate the purpose of the SRS.
+% Specify the intended audience for the SRS.
+
+Audience nu: Wij, de groepsleden en Ragnhild
+
+\subsection{Scope}
+% Identify the software product(s) to be produced by name (e.g., Host DBMS, Report Generator, etc.);
+% Explain what the software product(s) will, and, if necessary, will not do;
+% Describe the application of the software being speciﬁed, including relevant beneﬁts, objectives, and goals;
+% Be consistent with similar statements in higher-level speciﬁcations (e.g., the system requirements speciﬁcation), if they exist.
+
+Schedule generator. wat het kan en niet kan en voordelen
+(zie spmp)
+
+%\subsection{Definitions, acronyms and abbreviations}
+
+
+
+\subsection{references}
+
+%Provide a complete list of all documents referenced elsewhere in the SRS;
+%Identify each document by title, report number (if applicable), date, and publishing organization;
+%Specify the sources from which the references can be obtained.
+
+verwijs naar opdracht\\
+verwijs naar standaard\\
+...
+
+\subsection{Overview}
+
+% Describe what the rest of the SRS contains;
+% Explain how the SRS is organized.
+
+
+
+\newpage
+
+\section{Overall description}
+% \subsection{Product perspective}
+
+% blokdiagram van programma en verschillende softwareinterfaces die we gebruiken
+% MySQL, Tomcat, Java Runtime Enviroment voor generator zelf ...
+
+% \subsubsection{System interfaces}
+% \subsubsection{User interfaces}
+% \subsubsection{Hardware interfaces}
+% \subsubsection{Software interfaces}
+% \subsubsection{Communications interfaces}
+% \subsubsection{Memory}
+% \subsubsection{Operations}
+% \subsubsection{Site adaptation requirements}
+
+\subsection{Product functions}
+
+%samenvatting van de belangrijkste functionaliteiten. \\
+
+Gebruikers krijgen een account waarop ze een gepersonaliseerd lessenrooster te zien krijgen. Ze kunnen de vakken die ze volgen aanpassen en de roosters van andere studenten bekijken. \\
+Het programma houdt een database bij van de vakken en hun eigenschappen, de lokalen en hun eigenschappen en de beschikbaarheden van de verschillende professoren.\\
+Het kan ook een lessenrooster opstellen dat met alle constraints rekening houdt.\\
+
+\subsection{User characteristics}
+
+De gebruikers zijn studenten en professoren van een universiteit en we veronderstellen dat die wel met een site kunnen werken.
+
+\subsection{constraints}
+
+Linux, Wilma, ... \\
+Open-source \\
+Java \\
+Web based \\
+
+% \subsection{Assumptions and dependencies}
+
+\newpage
+
+\section{Specific requirements}
+
+ADAM
+
+\subsection{External interface requirements}
+\subsubsection{User interfaces}
+
+Webinterface \\
+XHTML met CSS en misschien een beetje Javascript \\
+user-afhankelijke pagina die getoond wordt \\
+
+Na het inloggen krijgt de gebruiker een pagina te zien met verschillende tabs. Voor elke gebruikersklasse en de functionaliteiten die ze krijgen bestaat een ander tabblad. Op die manier is het gemakkelijker om functionaliteiten toe te voegen en overzichtelijk weer te geven. Guests krijgen bijvoorbeeld maar een enkele tab te zien waarin ze een naam kunnen intypen en waarin de kalender weergegeven wordt. Studenten krijgen een tweede tab erbij waarin ze hun vakkenlijst kunnen aanpassen etc.
+
+\subsubsection{Hardware interfaces}
+
+Java, Tomcat, server
+
+\subsubsection{Software interfaces}
+
+\begin{itemize}
+\item[.] MySQL: JDBC driver for MySQL 5.1.15 \\[-3mm]
+\item[.] Tomcat \\[-3mm]
+\end{itemize}
+
+\subsubsection{Communications interfaces}
+
+HTTP
+
+\newpage
+
+\subsection{Functional requirements}
+
+ALEXANDER
+
+\subsubsection{User class 0: Unknown}
+
+login  \\
+enter as guest  \\
+Link naar email van beheerder
+
+\subsubsection{User class 1: Guest}
+
+Bekijk rooster van student, educator, lokaal \\
+Bekijk eigenschappen van Vakken \\
+Bekijk eigenschappen van Studenten \\
+Bekijk eigenschappen van Proffen \\
+Bekijk eigenschappen van Lokalen \\
+Link naar email van beheerder
+
+\subsubsection{User class 2: Student}
+
+Breidt de functionaliteit van guest uit (kan kijken naar rooster) \\
+Vakkenlijst aanpassen (door program toe te voegen of enkele vakken) \\
+kan gegevens aanpasse (login naam, paswoord, ...) \\
+
+\subsubsection{User class 3: Educator}
+
+Breidt ook guest uit (kan kijken naar rooster)
+
+Vakken aanpassen (enkel die die hij zelf geeft), constraints, description,...
+Beschikbaarheid aanpassen
+
+\subsubsection{User class 4: Facility Manager}
+
+Kan Lokalen aanpassen \\
+Kan Lokalen toevoegen/verwijderen \\
+...
+
+\subsubsection{User class 5: Program Manager}
+
+Kan proffen op vakken zetten \\
+Kan vakken per programma aanpassen \\
+Kan vakken toevoegen \\
+
+\subsubsection{User class 6: Account Manager}
+
+Kan accounts wijzigen/toevoegen/verwijderen,... van Student en Educator
+
+\subsubsection{User class 7: Secretaresse}
+
+Heeft elke functionaliteit van guest, Program Manager, Account Manager, Facility Manager \\
+Kan Rooster aanpassen
+
+\subsubsection{User class X: Admin}
+
+Kan alles \\
+genereren \\
+Kan Managers maken
+
+
+\subsubsection{Opmerking over User Classes}
+
+We verkiezen een methode waarbij de rechten van een account niet volledig vast liggen door zijn user class, maar veel losser kunnen bepaald worden. De user classes uit de vorige puntjes zijn templates, richtwaarden waar van afgeweken kan worden. De structuur moet dus per feature beschreven worden in een latere versie van het SRS.
+
+\\ 
+\\
+
+ZJEF
+
+\subsection{Performance requirements}
+
+Schatting maken van aantal gebruikers dat tegelijkertijd aanwezig kan zijn\\
+daaruit volgt de grootte van de codedatabase en snelheid.
+
+
+\subsection{Design constraints}
+
+Linux, Wilma, Open-source
+
+\subsection{Software system attributes}
+
+% \subsubsection{Reliability}
+% This should specify the factors required to establish the required reliability of the software system at time of delivery.
+
+
+% \subsubsection{Availability}
+% This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+
+
+\subsubsection{Security}
+%This should specify the factors that protect the software from accidental or malicious access, use, modification, destruction, or disclosure. Specific requirements in this area could include the need to
+% a) Utilize certain cryptographical techniques;
+% b) Keep specific log or history data sets;
+% c) Assign certain functions to different modules;
+% d) Restrict communications between some areas of the program;
+% e) Check data integrity for critical variables.
+
+Als de gebruiker zich aanmeldt, wordt een code gegenereerd voor die gebruiker (random nummer) die lokaal bijgehouden wordt door de gebruiker.\\
+Bij elk commando van de gebruiker wordt de code meegegeven.\\
+Op de server wordt een tijdelijke lijst bijgehouden die de code aan accounts verbindt. (en inlogtijd,... om ze na een tijd weg te kunnen smijten als de gebruiker niet letterlijk uitlogt). \\
+Bij elk commando van de gebruiker wordt de code in de lijst opgezocht, de rechten van de bijhorende gebruiker gecontroleerd en al dan niet kan het commando uitgevoerd worden.\\[5mm]
+
+Logboek van aanpassingen door Managers wordt bijgehouden.\\
+
+% \subsubsection{Maintainability}
+% This should specify attributes of software that relate to the ease of maintenance of the software itself. There may be some requirement for certain modularity, interfaces, complexity, etc. Requirements should not be placed here just because they are thought to be good design practices.
+
+
+% \subsubsection{Portability}
+% This should specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems. This may include the following:
+% a) Percentage of components with host-dependent code;
+% b) Percentage of code that is host dependent;
+% c) Use of a proven portable language;
+% d) Use of a particular compiler or language subset;
+% e) Use of a particular operating system.
+
+% \subsection{Other requirements}
+
+%\newpage
+%\section*{Index}
+
+
+
+
+%\begin{figure}
+%\begin{center}
+%\includegraphics[width=\textwidth]{Bangladesh}
+%\caption*{Bangladesh}
+%\end{center}
+%\end{figure}
+
+%\begin{tabular}[t]{llll}
+%Mandi & Katholiek & 25\% & Platte neus -- spleetogen \\
+%Gohli & Moslims   & 75\% & Grote ogen -- scherpere neus \\
+%Kooch & Hindu     & 1\%  & Mengeling van de twee \\
+%\end{tabular}
+%\\[5mm]
+
+%\begin{itemize}
+%\item[.] Slaapmatje \\[-3mm]
+%\item[.] Kleren: 3 korte broeken, 6 onderbroeken, 4 T-shirts\\[-3mm]
+%\item[.] Longi: voor 's avonds en als pyjama\\[-3mm]
+%\item[.] Tandenborstel en twee tubes tandpasta\\[-3mm]
+%\end{itemize}
+
+
+ \end{document}
