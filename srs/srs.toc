@@ -1,0 +1,29 @@
+\select@language {dutch}
+\contentsline {section}{\numberline {1}Introduction}{4}
+\contentsline {subsection}{\numberline {1.1}Purpose}{4}
+\contentsline {subsection}{\numberline {1.2}Scope}{4}
+\contentsline {subsection}{\numberline {1.3}references}{4}
+\contentsline {subsection}{\numberline {1.4}Overview}{4}
+\contentsline {section}{\numberline {2}Overall description}{5}
+\contentsline {subsection}{\numberline {2.1}Product functions}{5}
+\contentsline {subsection}{\numberline {2.2}User characteristics}{5}
+\contentsline {subsection}{\numberline {2.3}constraints}{5}
+\contentsline {section}{\numberline {3}Specific requirements}{6}
+\contentsline {subsection}{\numberline {3.1}External interface requirements}{6}
+\contentsline {subsubsection}{\numberline {3.1.1}User interfaces}{6}
+\contentsline {subsubsection}{\numberline {3.1.2}Communications and software interfaces}{6}
+\contentsline {subsubsection}{\numberline {3.1.3}Hardware interfaces}{7}
+\contentsline {subsection}{\numberline {3.2}Functional requirements}{8}
+\contentsline {subsubsection}{\numberline {3.2.1}User class 0: Unknown}{8}
+\contentsline {subsubsection}{\numberline {3.2.2}User class 1: Guest}{8}
+\contentsline {subsubsection}{\numberline {3.2.3}User class 2: Student}{8}
+\contentsline {subsubsection}{\numberline {3.2.4}User class 3: Educator}{8}
+\contentsline {subsubsection}{\numberline {3.2.5}User class 4: Facility Manager}{8}
+\contentsline {subsubsection}{\numberline {3.2.6}User class 5: Program Manager}{8}
+\contentsline {subsubsection}{\numberline {3.2.7}User class 6: Account Manager}{8}
+\contentsline {subsubsection}{\numberline {3.2.8}User class 7: Secretaresse}{9}
+\contentsline {subsubsection}{\numberline {3.2.9}User class X: Admin}{9}
+\contentsline {subsubsection}{\numberline {3.2.10}Opmerking over User Classes}{9}
+\contentsline {subsection}{\numberline {3.3}Performance requirements}{9}
+\contentsline {subsection}{\numberline {3.4}Design constraints}{9}
+\contentsline {subsubsection}{\numberline {3.4.1}Security}{9}
