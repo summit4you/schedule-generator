@@ -1,7 +1,10 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  27 FEB 2011 10:18
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  1 MAR 2011 08:40
 entering extended mode
-**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/spmp/spmp.tex
-("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/spmp/spmp.tex"
+**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/documenten/spmp/
+spmp.tex
+
+("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/documenten/spmp/
+spmp.tex"
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
@@ -261,7 +264,8 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 )
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp\spmp.aux")
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
+spmp.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
@@ -276,8 +280,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
-
-("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\ts1cmr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 14.
@@ -324,8 +327,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
-[2] ("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp\spmp.to
-c")
+[2]
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
+spmp.toc")
 \tf@toc=\write3
  [3]
 Underfull \hbox (badness 10000) in paragraph at lines 66--67
@@ -384,16 +388,6 @@ Overfull \hbox (7.66736pt too wide) in paragraph at lines 138--181
  []
 
 [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
@@ -408,20 +402,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
+
+ []
+
 [7]
-Overfull \hbox (6.8616pt too wide) in paragraph at lines 223--225
+Overfull \hbox (6.8616pt too wide) in paragraph at lines 225--227
 []\OT1/cmr/m/n/10 Tijdens meet-ings waarop alle leden aan-wezig zijn, wor-den p
 er-so-nen toegewezen
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--237
-
  []
 
 
@@ -430,50 +424,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--238
  []
 
 
-Overfull \hbox (3.7784pt too wide) in paragraph at lines 238--239
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
+
+ []
+
+
+Overfull \hbox (3.7784pt too wide) in paragraph at lines 240--241
 []\OT1/cmr/m/n/10 Zjef: Code im-plemeta-tion leader (con-troleert code en houdt
  alles bij elkaar),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 275--276
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
-[9]
+
 Underfull \hbox (badness 10000) in paragraph at lines 278--279
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--280
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 280--281
 
  []
 
 Missing character: There is no Ž in font cmr10!
 Missing character: There is no Ž in font cmr10!
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 322--324
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 328--329
+Underfull \hbox (badness 10000) in paragraph at lines 324--326
 
  []
 
@@ -488,12 +482,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 330--331
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 336--337
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 337--338
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
@@ -503,12 +497,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 338--339
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
+Underfull \hbox (badness 10000) in paragraph at lines 339--340
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
@@ -533,12 +527,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 352--353
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 353--354
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
 
  []
 
@@ -558,12 +552,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--362
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 362--363
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 
  []
 
@@ -577,18 +571,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 371--372
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
+
+ []
+
 [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 402--403
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 404--405
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 406--407
 
  []
 
@@ -599,46 +603,46 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.426 \textbf
+l.428 \textbf
              {abstract}\\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 426--433
+Underfull \hbox (badness 10000) in paragraph at lines 428--435
 
  []
 
 [13] [14]
-Overfull \hbox (1.22287pt too wide) in paragraph at lines 437--439
+Overfull \hbox (1.22287pt too wide) in paragraph at lines 439--441
 \OT1/cmr/m/n/10 An ad-min-is-tra-tor, or a pro-gram ad-min-is-tra-tor en-ters d
 ata about
  []
 
 [15]
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\spmp\spmp.aux") 
-) 
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
+spmp.aux") ) 
 Here is how much of TeX's memory you used:
  3941 strings out of 495285
- 57384 string characters out of 3179830
+ 57483 string characters out of 3179830
  129123 words of memory out of 3000000
  7118 multiletter control sequences out of 15000+200000
  9704 words of font info for 35 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,8n,38p,973b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.8/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<
-C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:
-/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/P
-rogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program
- Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files 
-(x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86
-)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/Mi
-KTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKT
-eX 2.8/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on spmp.pdf (15 pages, 155139 bytes).
+ 36i,8n,38p,984b,264s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.8/fonts/enc/dvips/cm-super/cm-supe
+r-ts1.enc}<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:
+/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
+ Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.8/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on spmp.pdf (15 pages, 155094 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
