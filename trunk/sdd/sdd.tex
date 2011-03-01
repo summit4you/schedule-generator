@@ -20,7 +20,7 @@
 
 \title{Software Design Descriptions voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{23 februari 2011 Versie 0.1} 
+\date{23 februari 2011 Versie 1.0} 
 
 \begin{document}
 
@@ -38,6 +38,7 @@
 \item[.] 23/2/2011 versie 0.1: Aanmaak document \\[-3mm]
 \item[.] 27/2/2011 versie 0.2: Toevoeging delen over interfaces \\[-3mm]
 \item[.] 28/2/2011 versie 0.3: Toevoeging hoofdstuk over algoritme en Logical \\[-3mm]
+\item[.] 38/2/2011 versie 1.0: Verbeteringen doorgevoerd \\[-3mm]
 \end{itemize}
 
 %\section*{Preface}
@@ -45,13 +46,13 @@
 \newpage
 \tableofcontents
 
-\newpage
-\section{Introduction}
-TODO
-\subsection{Purpose}
-\subsection{Scope}
-\subsection{Context}
-\subsection{Summary}
+%\newpage
+%\section{Introduction}
+%TODO
+%\subsection{Purpose}
+%\subsection{Scope}
+%\subsection{Context}
+%\subsection{Summary}
 
 %\newpage
 %\section{References}
@@ -64,26 +65,44 @@ TODO
 \subsection{Identified stakeholders and design concerns}
 
 \subsection{Design viewpoint 1: Compositie}
-ALEXANDER
-samenwerking van alle onderdelen + uitleg
+
 \subsubsection{Design concerns}
-Alle verschillende onderdelen opsommen en hun taken beschrijven.
+Het doel van dit ontwerpstandpunt bestaat er in alle componenten van het systeem te identificeren, hun attributen te kenmerken en hun onderlinge verbanden te beschrijven. Deze beschrijving zal gebeuren aan de hand van een \textit{component diagram} en het \textit{deployment diagram}. Beide  zijn een onderdeel van de UML 2.0 modelleertaal.  
 
-\subsubsection{Design elements}
-Entiteiten, verbanden en attribuut.
+\subsubsection{Deployment Diagram}
 
-\subsubsection{Function attributes}
-Legt het verband tussen de entiteiten. (da's eigenlijk de transferfunctie ma Rahnild weet toch wa da is; dus laat zitten jong)
+Een deployement diagram geeft weer op welke manier de hard- en software wordt geconfigureerd tijdens de normale werking van het systeem. Hieronder volgt een beschrijving van de belangrijkste componenten in het diagram. 
 
-\subsubsection{Subordinates attributes}
-Entiteiten in entiteiten (overal UML als exampletaal)
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{DeploymentDiagram.png}%
+\caption{Deployment Diagram}%
+\end{figure}
+
+\begin{description}
+\item[Gebruiker] Een gebruiker die beschikt over een account kan zich aanmelden op de website via zijn gebruikersnaam en wachtwoord. Vervolgens zal hij beschikken over de functionaliteiten, eigen aan zijn gebruikertype. Als de gebruiker geen account heeft kan hij de site betreden als gast. Er wordt dan geen gebruikersgebonden informatie bijgehouden. Meer informatie over de verschillende gebruikertypes en functionaliteiten is voorzien in het SRS.
+ 
+\item[Persoonlijke Computer] Toestel dat de hard- en software aan de gebruikerszijde bevat. Er worden geen onderstellingen gemaakt over de eigenschappen van dit toestel met uitzondering dat het instaat is een webbrowser te draaien met eigenschappen gelijkaardig aan die van Internet Explorer, Google Chrome of Fire Fox.
+ 
+\item[Webbrowser] Er worden geen specifieke onderstelling gemaakt met uitzondering van de reeds vermelde.
+ 
+\item[Systeemserver] Tijdens de ontwikkeling van het project wordt Wilma als systeemserver gebruikt. De specificaties van de server worden volledig bepaald door de opdrachtgever en kunnen terug gevonden worden op \\ http://wilma.vub.ac.be/.
+ 
+\item[Tomcat] Dit is een webcontainer ontwikkeld door Apache die onder andere toelaat servlets te draaien op een Linux server. Deze servlets zullen de vragen van de gebruiker opvangen en op dynamische wijze webinhoud generen als antwoord. Deze webinhoud zal hoofdzakelijk worden beschreven via XHTML en CVS. Voor meer informatie over Tomcat kan men terecht op \\ http://tomcat.apache.org/.
+ 
+\item[Database] De database  maakt onderdeel van de hardware van de systeemserver en bevat zowel de account informatie als de informatie die relevant is voor het opstellen van de lessenroosters. Om gegevens uit de database toegankelijk te maken voor elementen uit de Java runtime environment (JRE) zal gebruikt worden gemaakt van JDBC. Dit is een Java Application Programming Interface ontwikkeld door Sun. Een overzicht wordt gegeven op \\ http://www.oracle.com/technetwork/java/javase/tech/index-jsp-136101.html
+\end{Description}
+
+
+\subsubsection{Component Diagram}
+
+Zal later worden toegevoegd
+
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------
 
 \subsection{Design viewpoint 2: Logical}
 \subsubsection{Design concerns}
-Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses nodig die alle
-verschillende participerende objecten voorstellen.
+Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses nodig die alle verschillende participerende objecten voorstellen.
 
 \subsubsection{Elementen}
 \paragraph{Entiteiten}
@@ -141,7 +160,6 @@ verschillende participerende objecten voorstellen.
 \end{figure}
 
 De klasse waarbij de pijl vertrekt erft van de klasse waar de pijl aankomt. De klasse waarbij er src staat zit in een lijst in de klasse waarbij er dst staat. Zo zit er bijvoorbeeld een lijst van educators in de klasse faculty. \\
-Deze structuur zal nog worden uitgebreid met methode die de rooster opstellen en dan hieruit vertrekkende de fitnessvalue bepalen. De bovenstaande structuur zal met andere woorden nog worden uitgebreid.
 
 
 \newpage
@@ -339,13 +357,41 @@ ul.tabbernav li.tabberactive a:hover{}
 
 \subsubsection{Interface: Browser - Server: HTTP}
 
-TODO
+\paragraph{Concerns}
+Omdat de algemene kalender en andere gegevens in een database op de server zullen opgeslaan zijn en omdat de gebruiker vanop zijn computer thuis via de website die informatie te zien moet krijgen, moet er een communicatie tussen de server en de browser van de gebruiker zijn. Zoals bij de meeste websites werd gekozen om het het HTTP protocol te werken. We laten niet toe dat de gebruikers rechtstreeks met de database communiceren om te vermijden dat ze informatie te zien krijgen die ze niet mogen zien, en om de informatie op een overzichtelijke manier te structureren. Daarom werken we met Servlets die op server runnen en die de besproken taken verrichten. De volgende paragrafen beschrijven dus de communicatie tussen de browser van de gebruiker en de servlets.
+
+\paragraph{Attributes}
+
+Uit het HTTP protocol zullen de GET en POST functies gebruikt worden door onze toepassing. Een HTTP pakket bestaat uit twee delen, de \textit{header} en de \textit{body}.
+\begin{description}
+\item[GET] Deze methode vraagt een bepaalde pagina aan de server en zet alles in de \textit{header}. Het is de methode die gebruikt wordt bij het klikken op een link van een site. Deze zal dus de meest gebruikte methode zijn om te communiceren met de server. \\
+\item[POST] Deze methode stuurt informatie door in de \textit{body} van het paket.\\
+\end{description}
+De manier waarop de informatie doorgestuurd zal worden hangt af van de plaats. Gevoelige informatie, zoals wachtwoorden zal via een POST verzonden worden, omdat de header gemakkelijk zichtbaar is voor gebruikers. Lange informatie, zoals beschrijvingen van vakken zal ook via de POST methode verzonden worden, omdat de lengte van de \textit{header} beperkt is. \\
+
+Andere informatie, zoals het opvragen van het lessenrooster zal via de GET methode gebeuren. De waarden van de zoekactie worden dan in de link geplaatst door een script dat nog ontwikkeld moet worden en waarvan de interface met de XHTML pagina gelijkenissen zal vertonen met die voor de tabbladen. \\
+
+We gebruiken HttpServlets die de doGet methode bevatten om een Get aanvraag binnen te krijgen en die te beantwoorden. Beschouw als voorbeeld de volgende servlet. Hij stuurt het antwoord Hallo terug naar de gebruiker als die de juiste URL ingegeven heeft. Welke URL dat is wordt beschreven in een XML bestand dat zich op de server bevindt en een bepaalde URL aan een Servlet koppelt.
+
+\begin{verbatim}
+public class test2 extends HttpServlet {
+public void doGet(HttpServletRequest request,
+                  HttpServletResponse response)
+  throws ServletException, IOException {
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    out.println("Hallo");
+  }
+}	
+\end{verbatim}
+
+Het gebruik van de POST methode wordt op dit moment nog onderzocht door het team en zal binnenkort verduidelijkt worden.
 
 
 \subsubsection{Interface: Database interface}
 
 \paragraph{Concerns}
-Wijzigbare parameters moeten opgeslagen worden in een file. Hiervoor wordt gebruik gemaakt van XML. Deze interface biedt de mogelijkheid om vanuit het programma eenvoudige XML bestanden uit te lezen en aan te maken.
+De interface met de MySQL database, bevattende alle objecten beschreven in 2.1, dient op een algemene manier aangesproken te kunnen worden vanuit de andere onderdelen van het project.
 
 \paragraph{Elementen}
 
@@ -385,7 +431,10 @@ Wijzigbare parameters moeten opgeslagen worden in een file. Hiervoor wordt gebru
 
 \paragraph{Schema}
 
-
+\begin{figure}[H]
+\includegraphics[width=\columnwidth]{XML.png}%
+\caption{Voorbeeld van een \textit{XMLDocument}}%
+\end{figure}
 
 \newpage
 
@@ -408,8 +457,8 @@ Het algoritme dient in staat te zijn om een lessenrooster te maken dat aan bepaa
 \item[] \textit{Hard constraints} \\[-3mm]
 \begin{enumerate}
  \item Het lessenrooster van een student mag niet overlappen. \\[-3mm]
- \item Er mag van een vak hoogstens 4 uur per dag gegeven worden. \\[-3mm]
- \item Student mogen maximum 8 uur les per dag krijgen. \\[-3mm]
+ \item Er mag van een vak bijvoorbeeld hoogstens 4 uur per dag gegeven worden. \\[-3mm]
+ \item Student mogen bijvoorbeeld maximum 8 uur les per dag krijgen. \\[-3mm]
 \end{enumerate}
 \item[] \textit{Soft constraints} \\[-3mm]
 \begin{enumerate}
@@ -425,8 +474,9 @@ Het algoritme zal deze tabel in een eerste fase zo opbouwen dat er aan de fixed 
 
 Om het algoritme te kunnen uitvoeren is er natuurlijk de nodige informatie nodig om tot een lessenrooster te kunnen komen. De informatie die nodig is, zal uit een database worden gehaald en dan in klassenstructuur gegoten worden. Deze klassenstructuur is besproken in "Design Viewpoint 2: Logical".
 Het schema en bijbehorende uitleg kan daar gevonden worden.
+Deze structuur zal nog worden uitgebreid met methode die de rooster opstellen en dan hieruit vertrekkende de fitnessvalue bepalen. De bovenstaande structuur zal met andere woorden nog worden uitgebreid.
 
-\subsection{Design rationale}
+%\subsection{Design rationale}
 
 
 %\begin{figure}
