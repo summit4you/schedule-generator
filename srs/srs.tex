@@ -8,7 +8,7 @@
 \usepackage{textcomp}
 \title{Software Requirements Specifications voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{23 februari 2011 Versie 0.1} 
+\date{23 februari 2011 Versie 1.0} 
 
 \begin{document}
 
@@ -24,7 +24,8 @@
 \section*{Aanpassingsgeschiedenis}
 \begin{itemize}
 \item[.] 23/2/2011 versie 0.1: Aanmaak document, toevoeging  \\[-3mm]
-\item[.] 25/2/2011 versie 0.2: Toevoeging tekst vanaf Performance Requirements tot einde
+\item[.] 25/2/2011 versie 0.2: Toevoeging tekst vanaf Performance Requirements tot einde \\[-3mm]
+\item[.] 28/2/2011 versie 1.0: Toevoeging functionele vereisten, verbeteringen doorgevoerd \\[-3mm]
 \end{itemize}
 
 %\section*{Preface}
@@ -48,25 +49,24 @@ Het doelpubliek is het team dat aan het project werkt en de docent die het team 
 % Describe the application of the software being specified, including relevant benefits, objectives, and goals;
 % Be consistent with similar statements in higher-level specifications (e.g., the system requirements speciÞcation), if they exist.
 
-Schedule generator: deze software (geschreven in Java) zal in staat zijn om een lessenrooster samen te stellen dat aan bepaalde voorwaarden voldoet.  \\
-Website: dit is de software die de site omvat waarop de gebruikers zullen werken. \\
-Database: deze zal de informatie over het lessenrooster bijhouden en ordenen. \\
-Servelets: deze software zal ervoor zorgen dat de site doet wat de gebruiker vraagt. 
+\begin{description}
+\item[Schedule generator] deze software (geschreven in Java) zal in staat zijn om een lessenrooster samen te stellen dat aan bepaalde voorwaarden voldoet.  \\
+\item[Website] dit is de software die de site omvat waarop de gebruikers zullen werken. \\
+\item[Database] deze zal de informatie over het lessenrooster bijhouden en ordenen. \\
+\item[Servelets] deze software zal ervoor zorgen dat de site doet wat de gebruiker vraagt. 
+\end{description}
 
 %\subsection{Definitions, acronyms and abbreviations}
-\subsection{references}
+%\subsection{references}
 %Provide a complete list of all documents referenced elsewhere in the SRS;
 %Identify each document by title, report number (if applicable), date, and publishing organization;
 %Specify the sources from which the references can be obtained.
-
-IEEE Recommended Practice for Software Requirements Specifications
-De organisation pdf die de opdracht bevat.
 
 \subsection{Overview}
 % Describe what the rest of the SRS contains;
 % Explain how the SRS is organized.
 
-De rest van de SRS zal de software vereisten verder uitdiepen.
+De rest van de SRS zal de software vereisten van de schedule generator verder uitdiepen. De verschillende gebruikers zullen gedefinieerd worden en de functionaliteiten die die gebruikers krijgen zullen opgesomd en besproken worden.
 
 \newpage
 
@@ -171,65 +171,407 @@ De verschillende versies software die we gebruiken zijn de volgende:
 De Hardware interfaces die we gebruiken worden vastgelegd door de opdrachtgever. Ons programma moet op Wilma kunnen draaien. De hardware interface die we hebben is dus een Linux besturingssysteem.
 
 \newpage
-\subsection{Functional requirements}
 
-ALEXANDER
+\subsection{Functionele Vereisten}
 
-\subsubsection{User class 0: Unknown}
+In deze subsectie van het SRS  wordt een overzicht gegeven van alle functionaliteiten van de software. Om de ontwikkeling van de functionaliteiten tijdens het productie te kunnen opvolgen, wordt elke functionaliteit voorzien van een naam, code en omschrijving. Daarnaast worden de functionaliteiten ook nog eens opgedeeld in verschillende categorieën en indien mogelijk toegekend aan een bepaald gebruikertype.
 
-login  \\
-enter as guest  \\
-Link naar email van beheerder
+\subsubsection{Categorie op basis van prioriteit}
+Enerzijds kan men de functionaliteiten opdelen volgens hun prioriteit. Dit leidt tot onderstaande categorieën:
+\begin{itemize}	
+\item[-] \textit{noodzakelijke functionaliteiten}: functionaliteiten waarvan de aanwezigheid in het eindproduct wordt gegarandeerd omdat ze noodzakelijk zijn voor een minimale werking van het systeem. Deze functionaliteiten hebben de hoogste prioriteit tijdens de verwezenlijking van het project. \\
+\item[-] \textit{mogelijke functionaliteiten}: functionaliteiten waarvan de uitvoering haalbaar is maar zonder garantie op aanwezigheid in het eindproduct. Deze functionaliteiten hebben een matige prioriteit \\
+\item[-] \textit{extra functionaliteiten}: functionaliteiten waarvoor de prioriteit laag is. \\
+\end{itemize}
 
-\subsubsection{User class 1: Guest}
+\subsubsection{Categorie op basis van datapad}
+Anderzijds kan men functionaliteiten ook opdelen volgens het pad die de data tijdens hun uitvoering volgt. Dit geeft aanleiding tot volgende categorieën
 
-Bekijk rooster van student, educator, lokaal \\
-Bekijk eigenschappen van Vakken \\
-Bekijk eigenschappen van Studenten \\
-Bekijk eigenschappen van Proffen \\
-Bekijk eigenschappen van Lokalen \\
-Link naar email van beheerder
+\begin{itemize}
+\item[-] \textit{Invoerfunctionaliteiten}:  alle functionaliteiten die de gebruiker toelaten informatie op te sturen naar de database op de server. 
+\item[-] \textit{Uitvoerfunctionaliteiten}: alle functionaliteiten die de gebruiker toelaten informatie op te vragen uit de database op de server.
+\item[-] \textit{Verwerkingsfunctionaliteiten}: alle functionaliteiten die gegevens, zonder tussenkomst van de gebruiker, uit de database verwerken en de daarbij bekomen resultaten terug schrijven naar de database op de server.
+\end{itemize}
 
-\subsubsection{User class 2: Student}
+\subsubsection{Gebruikertype }
+Om bepaalde functionaliteiten te kunnen plaatsen in een context wordt het gebruikertype dat toegang heeft tot deze functionaliteit indien mogelijk vermeld. Vandaar volgt hier een korte beschrijving van de gebruikertypes:
+\begin{itemize}
+\item[-] \textit{Software beheerder}: Verantwoordelijke voor het beheren technische aspecten van de software. Deze omvatten o.a. instaleren van de software, laten aanmaken van de databasestructuur en het configureren van de lessenroosterplanner. Daarnaast heeft deze gebruiker ook toegang tot een logboek en kan hij bepaalde gebeurtenissen ongedaan te maken.
+\item[-] \textit{Account beheerder}: Deze gebruiker kan de omschrijving van bestaande gebruikertypes wijzigen en nieuwe gebruikertypes definiëren. Hij is ook verantwoordelijk voor het aanmaken van de andere beheerder accounts.
+\item[-] \textit{Rooster beheerder}: Deze gebruiker is instaat lessenrooster manueel aan te passen, lessenroosters door de roosterplanner te laten genereren en algemene beperkingen voor de roosterplanner in te stellen (bvb: feestdagen). De rooster beheerder zal ook eventuele conflict situaties in het rooster moeten oplossen. 
+\item[-] \textit{Student beheerder}: Deze gebruiker is verantwoordelijk voor het aanmaken van de studenten accounts en het toekennen van programma’s en vakken aan studenten. De vakken toegewezen door de student beheerder zullen in rekening worden gebracht tijdens het opstellen van de lessenroosters. 
+\item[-] \textit{Docent beheerder}: Deze gebruiker is verantwoordelijk voor het aanmaken van de docent accounts en het toekennen van vakken aan docenten. 
+\item[-] \textit{Programma beheerder}: Deze gebruiker is verantwoordelijk voor het aanmaken van vakken, programma’s en faculteiten.
 
-Breidt de functionaliteit van guest uit (kan kijken naar rooster) \\
-Vakkenlijst aanpassen (door program toe te voegen of enkele vakken) \\
-kan gegevens aanpasse (login naam, paswoord, ...) \\
+\item[-] \textit{Faciliteit beheerder}: Deze gebruiker is verantwoordelijk voor het aanmaken van de faciliteiten. Deze faciliteiten zullen vervolgens door roosterplanner worden verdeeld over de verschillende vakken in overeenkomst met de beperkingen opgelegd door de docent van het vak.
 
-\subsubsection{User class 3: Educator}
+\item[-] \textit{Docent}: Gebruiker waarvan een lijst van gegeven vakken wordt bijgehouden. De docent is verantwoordelijk voor het beheer van de vakken die hem door een programma beheerder zijn toebedeeld. De docent is ook instaat beperkingen op te leggen de in rekening moeten worden gebracht tijdens het opstellen van de lessenroosters.
+\item[-] \textit{Student}: Gebruiker waarvan een lijst van gevolgde programma’s en vakken wordt bijgehouden. Deze lijst word aan de student toegekend door een student beheerder maar kan door de student zelf worden aangevuld. Deze aanvullingen worden echter niet in rekening gebracht tijdens het opstellen van de lessenroosters. Een student kan, naast de gegevens waarover een gast beschikt, ook nog een persoonlijk lessenrooster opvragen dat  wordt opgesteld aan de hand van zijn vakkenlijst.
+\item[-] \textit{Gast}: Gebruiker waarvan geen gebruikergegevens worden bijgehouden in de database op de server. Deze gebruiker heeft enkel toegang tot de geplande lessenroosters. Deze kan hij opvragen op basis van vak, student, programma, docent en semester.
+\item[-] \textit{Onbekende gebruiker}: Gebruiker die zich nog niet heeft geïdentificeerd tegenover het systeem. Deze gebruiker heeft enkel toegang tot de aanmeldpagina van de website waarbij hij kan kiezen zich aan te melden of de rest van de site te betreden als gast.
+\end{itemize}
 
-Breidt ook guest uit (kan kijken naar rooster)
+\subsubsection{Identificatie}
 
-Vakken aanpassen (enkel die die hij zelf geeft), constraints, description,...
-Beschikbaarheid aanpassen
+\begin{itemize}
+\item[A.1] Aanmelden \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{onbekende gebruiker} \\
+Omschrijving: Doorsturen van gebruikersnaam en wachtwoord om toegang te krijgen tot de account gebonden gegevens en functionaliteiten \\[-3mm]
 
-\subsubsection{User class 4: Facility Manager}
+\item[A.3] Aanmelden als gast \\
+Categorie: \textsl{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textsl{onbekende gebruiker} \\
+Omschrijving: De website betreden zonder een account. Zie gast voor meer details. \\[-3mm]
 
-Kan Lokalen aanpassen \\
-Kan Lokalen toevoegen/verwijderen \\
-...
+\item[A.3] Afmelden \\
+\textit{Categorie: }noodzakelijke invoerfunctionaliteit \\
+\textit{Gebruikertype:} iedereen behalve onbekende gebruiker \\
+Omschrijving: De site verlaten \\[-3mm]
+\end{itemize}
 
-\subsubsection{User class 5: Program Manager}
+\subsubsection{Opvragen van gegevens}
+\begin{itemize}
+\item[B.1] Opvragen van faculteit \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Laat toe na te gaan welke programma’s zijn gebonden aan welke faculteit \\[-3mm]
 
-Kan proffen op vakken zetten \\
-Kan vakken per programma aanpassen \\
-Kan vakken toevoegen \\
+\item[B.2] Opvragen van programma \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Laat toe na te gaan welke vakken behoren tot welk programma \\[-3mm]
 
-\subsubsection{User class 6: Account Manager}
+\item[B.3] Opvragen van vak \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Geeft toegang tot vak gebonden gegevens \\[-3mm]
 
-Kan accounts wijzigen/toevoegen/verwijderen,... van Student en Educator
+\item[B.4] Opvragen van student \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Laat toe de gevolgde programma’s en vakken van een student na te gaan \\[-3mm]
 
-\subsubsection{User class 7: Secretaresse}
+\item[B.5] Opvragen van docent  \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{docent} \\
+Omschrijving: Laat toe na te gaan voor welke vakken een docent verantwoordelijk is \\[-3mm]
 
-Heeft elke functionaliteit van guest, Program Manager, Account Manager, Facility Manager \\
-Kan Rooster aanpassen
+\item[B.6] Opvragen van lessenrooster op programma niveau \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Geeft een rooster weer met alle vakken van een programma\\[-3mm]
 
-\subsubsection{User class X: Admin}
+\item[B.7] Opvragen van lessenrooster op vak niveau \\
+Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Geeft weer wanneer een vak is gepland \\[-3mm]
 
-Kan alles \\
-genereren \\
-Kan Managers maken
+\item[B.8] Opvragen van lessenrooster op student niveau \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{student} \\
+Omschrijving: Geeft het persoonlijk rooster van een student weer \\[-3mm]
 
+\item[B.9] Opvragen van lessenrooster op docent niveau \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{docent} \\
+Omschrijving: Geeft het persoonlijk rooster van een docent weer \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van vakken}
+
+\begin{itemize}
+\item[C.1] Vakken aanmaken \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder }\\
+Omschrijving: \\[-3mm]
+
+\item[C.2] Vakken verwijderen \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[C.3] Vakken wijzigen als docent \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Docent} \\
+Omschrijving: Laat toe de vakomschrijving te wijzigen \\[-3mm]
+
+\item[C.4] Vakken wijzigen als beheerder \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder }\\
+Omschrijving: Laat toe de naam, docent en omschrijving van een vak te wijzigen  \\[-3mm]
+
+\item[C.5] Vakken koppelen aan een student \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Student beheerder} \\
+Omschrijving: Zie student beheerder \\[-3mm]
+
+\item[C.6] Vakken koppelen aan een docent \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Docent beheerder} \\
+Omschrijving: Zie docent en docent beheerder \\[-3mm]
+
+\item[C.7] Vakken onderverdelen in programma’s \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[C.8] Vakken inladen uit bestand \\
+Categorie: \textit{extra invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: Via een nader te bepalen bestand type vakken inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van programma }
+
+\begin{itemize}
+\item[D.1] Programma’s aanmaken \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: Programma’s worden gebruikt om vakken te bundelen \\[-3mm]
+
+\item[D.2] Programma’s inladen uit bestand \\
+Categorie: \textit{extra  invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: Via en nader te bepalen bestand type  programma’s inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+
+\item[D.3] Programma’s verwijderen \\
+Categorie: \textit{noodzakelijke invoerfunctionalitei}t \\
+Gebruikertype: \textit{Programma beheerder }\\
+Omschrijving: \\[-3mm]
+
+\item[D.4] Programma’s wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[D.5] Programma’s koppelen aan een student \\
+Categorie: \textit{noodzakelijke/mogelijk  invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder, student} \\
+Omschrijving: Zie Programma beheerder \\[-3mm]
+
+\item[D.6] Programma’s onderverdelen per faculteit \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van faculteiten }
+
+\begin{itemize}
+\item[E.1] Faculteiten aanmaken \\
+Categorie: \textit{mogelijke invoerfunctionaliteit }\\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: Faculteiten worden gebruikt om programma’s in te bundelen \\[-3mm]
+
+\item[E.2] Faculteiten inladen uit bestand  \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder} \\
+Omschrijving: Via een nader te bepalen bestand type faculteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+
+\item[E.3] Faculteiten verwijderen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder }\\
+Omschrijving: Gebruiker kan kiezen of programma’s en vakken van een faculteit mee worden verwijderd \\[-3mm]
+
+\item[E.4] Faculteiten wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Programma beheerder }\\
+Omschrijving: Bepalen welke programma’s tot welke faculteit behoren \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van  faciliteiten}
+
+\begin{itemize}
+\item[F.1] Faciliteiten aanmaken \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder} \\
+Omschrijving: Faciliteiten omvatten zowel locaties (vb lokaal) als benodigdheden (vb projector) \\[-3mm]
+
+\item[F.2] Faciliteiten inladen uit bestand \\
+Categorie: \textit{extra  invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder} \\
+Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+
+\item[F.3] Faciliteiten verwijderen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder}  \\
+Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
+
+\item[F.4] Faciliteiten wijzigen  \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten  beheerder} \\
+Omschrijving: \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van accounts}
+
+\begin{itemize}
+\item[G.1] Gebruikers aanmaken \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[G.2] Gebruikers inladen uit bestand \\
+Categorie: \textit{extra invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: Via een nader te bepalen bestand type gebruikers inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+
+\item[G.3] Gebruikers verwijderen \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: Alle gegevens van de gebruiker worden uit de database verwijderd \\[-3mm]
+
+\item[G.4] Gebruikers wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[G.5] Gebruikers blokkeren \\
+Categorie: \textit{mogelijke  invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder}\\
+Omschrijving: Een geblokkeerde gebruiker krijgt geen toegang tot het systeem tijdens het aanmelden \\[-3mm]
+
+\item[G.6] Gebruikertypes aanmaken \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: Laat toe functionaliteit te bundelen in gebruikertypes op maat.\\[-3mm]
+
+\item[G.7] Gebruikertypes verwijderen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: Sommige gebruikertypes zijn beschermd tegen verwijdering om verdere werking van de software te garanderen. \\[-3mm]
+
+\item[G.8] Gebruikertypes wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: Sommige gebruikertypes zijn beschermd tegen aanpassingen om verdere werking van de software te garanderen. \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van beperkingen}
+
+\begin{itemize} 
+\item[H.1] Tijdsbeperking aanmaken  \\
+Categorie: \textit{noodzakelijke  invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder, docent} \\
+Omschrijving: een tijdsbeperking legt op waneer een vak wel of niet kan worden geplant \\[-3mm]
+
+\item[H.2] Tijdsbeperking verwijderen \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder, docent} \\
+Omschrijving: \\[-3mm]
+
+\item[H.3] Tijdsbeperking wijzigen \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder, docent} \\
+Omschrijving: \\[-3mm]
+
+\item[H.4] Faciliteitbeperking aanmaken \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder, docent} \\
+Omschrijving: een faciliteitbeperking legt op welke faciliteiten er nodig zijn voor een vak \\[-3mm]
+
+\item[H.5] Faciliteitbeperking verwijderen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder, docent} \\
+Omschrijving: \\[-3mm]
+
+\item[H.6] Faciliteitbeperking wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder, docent} \\
+Omschrijving: \\[-3mm]
+\end{itemize}
+
+\subsubsection{Roosterplanner}
+
+\begin{itemize}
+\item[I.1] Configureren van roosterplanner \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder, Rooster beheerder} \\
+Omschrijving: Bepaald met welke gegevens de roosterplanner moet rekening houden \\[-3mm]
+
+\item[I.2] Starten van roosterplanner \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder} \\
+Omschrijving: Data noodzakelijk voor de planning mag na het starten niet meer worden aangepast .Het starten van de roosterplanner bevriest dus sommige gegevens tot zijn planningstaak is gestopt. \\[-3mm]
+
+\item[I.3] Stoppen van roosterplanner \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder} \\
+Omschrijving: Het handmatig stoppen van de roosterplanner. De planner kan alter weer worden gestart om zijn taak verder te zetten. \\[-3mm]
+
+\item[I.4] Status van de roosterplanner opvragen \\
+Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder} \\
+Omschrijving: Het handmatig stoppen van de roosterplanner. De planner kan alter weer worden gestart om zijn taak verder te zetten. \\[-3mm]
+
+\item[I.5] Melden van conflicten in het rooster \\
+Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder} \\
+Omschrijving: Als de rooster planner geen rooster kan vinden dat voldoet meldt hij dit als een conflict \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van lessenroosters}
+\begin{itemize}
+\item[J.1] Lessenroosters bereken \\
+Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
+Gebruikertype: \textit{Roosterbeheerder} \\
+Omschrijving: De rooster planner berekend automatisch roosters die voldoen aan de opgegeven beperkingen. \\[-3mm]
+
+\item[J.2] Lessenroosters aanmaken \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[J.3] Lessenroosters verwijderen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder }\\
+Omschrijving: \\[-3mm]
+
+\item[J.4] Lessenroosters wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Rooster beheerder} \\
+Omschrijving: Lessen roosters kunnen handmatig worden aangespast \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van logboek }
+
+\begin{itemize}
+\item[K.1] Logboek aanmaken \\
+Categorie: \textit{extra  invoerfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: Als een logboek is aangemaakt zullen belangrijke gebeurtenissen in het systeem worden bijgehouden \\[-3mm]
+
+\item[K.2] Logboek bekijken \\
+Categorie: \textit{extra uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[K.3] Gebeurtenissen registreren \\
+Categorie: \textit{extra  verwerkingsfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: \\[-3mm]
+
+\item[K.4] Gebeurtenissen ongedaan maken \\
+Categorie: \textit{extra invoerfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: \\[-3mm]
+
+\end{itemize}
+
+\subsubsection{Overige}
+
+\begin{itemize}
+\item[X.1] Aanmaken van de software databasestructuur via SQL \\
+Categorie: \textit{noodzakelijke verwerkingsfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: De software brengt zelf een datastructuur aan die nodig is voor het opslaan van de gegevens  \\[-3mm]
+
+\item[X.2] Aanpassen van de “look en feel” van de website \\
+Categorie: \textit{extra invoerfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: Dit wordt mogelijk gemaakt door et toegankelijk maken van de opmaak bestanden. \\[-3mm]
+\end{itemize}
 
 \subsubsection{Opmerking over User Classes}
 
@@ -282,10 +624,7 @@ De opgelegde beperkingen, met betrekking op het design, zijn de volgende:
 
 \textbf{User access restriction}
 
-Verschillende gebruikers krijgen verschillende rechten toegewezen. Deze bepalen tot welke informatie en tools hij toegang krijgt. Deze rechten zijn gekoppeld aan de account van deze gebruiker.
-Na het inloggen zullen enkel de informatie en tools waarvoor de gebruiker gemachtigd is, getoond worden. 
-Om verdere beveiliging te verzekeren, wordt ook de communicatie met de server beveiligd. 
-Bij het inloggen krijgt de webinterface van de gebruiker een access code toegestuurd, op dat moment gegenereerd door de server. Deze houdt bij welke rechten bij deze code horen. De webinterface stuurt de verkregen code mee door met elke instructie naar de server, waarop deze kan controleren of de gebruiker gemachtigd is om de desbetreffende instructie uit te voeren.\\
+Verschillende gebruikers krijgen verschillende rechten toegewezen. Deze bepalen tot welke informatie en tools hij toegang krijgt. Deze rechten zijn gekoppeld aan de account van deze gebruiker. Na het inloggen zullen enkel de informatie en tools waarvoor de gebruiker gemachtigd is, getoond worden. Om verdere beveiliging te verzekeren, wordt ook de communicatie met de server beveiligd. Bij het inloggen krijgt de webinterface van de gebruiker een access code toegestuurd, op dat moment gegenereerd door de server. Deze houdt bij welke rechten bij deze code horen. De webinterface stuurt de verkregen code mee door met elke instructie naar de server, waarop deze kan controleren of de gebruiker gemachtigd is om de desbetreffende instructie uit te voeren.\\
 
 \textbf{Data integriteit}
 

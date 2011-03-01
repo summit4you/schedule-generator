@@ -1,7 +1,10 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  25 FEB 2011 15:06
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  28 FEB 2011 21:08
 entering extended mode
-**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/srs/srs.tex
-("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/srs/srs.tex"
+**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/documenten/srs/s
+rs.tex
+
+("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/documenten/srs/s
+rs.tex"
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
@@ -215,7 +218,8 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 )
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\srs\srs.aux")
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\srs\s
+rs.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
@@ -230,8 +234,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
 LaTeX Font Info:    ... okay on input line 13.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 13.
-
-("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\ts1cmr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 13.
@@ -279,22 +282,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
-[2] ("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\srs\srs.toc"
-)
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+
+Overfull \hbox (22.13957pt too wide) in paragraph at lines 28--29
+[]\OT1/cmr/m/n/10 28/2/2011 ver-sie 1.0: To-evoeg-ing func-tionele vereis-ten, 
+ver-be-terin-gen doorgevo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+[2]
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\srs\s
+rs.toc")
 \tf@toc=\write3
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 41--43
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
 
  []
 
 [4] [5]
-Overfull \hbox (0.90675pt too wide) in paragraph at lines 120--121
+Overfull \hbox (0.90675pt too wide) in paragraph at lines 121--122
 \OT1/cmr/m/n/10 Tom-cat. De servlets zijn in JAVA geschreven en gener-eren de g
 evraagde XHTML
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--121
+Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
@@ -305,7 +340,7 @@ See the caption package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.158 \caption
+l.159 \caption
               {Overzicht van de communicatie en de gebruikte protocols tusse...
 
 If you do not understand this error, please take a closer look
@@ -315,26 +350,379 @@ Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+
+ []
+
 [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 194--197
+Missing character: There is no ë in font cmr10!
+Missing character: There is no ë in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--216
+Underfull \hbox (badness 10000) in paragraph at lines 183--184
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+ []
+
+Missing character: There is no ë in font cmr10!
 [8]
+Missing character: There is no ë in font cmr10!
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no ï in font cmr10!
+ [9]
+Underfull \hbox (badness 10000) in paragraph at lines 217--221
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--226
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--231
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--244
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--249
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 250--254
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 255--259
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--264
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 265--269
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--274
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 275--279
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--288
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--298
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--303
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 304--308
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 309--313
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 314--318
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 319--323
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--332
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 333--337
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--342
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--347
+
+ []
+
+[12]
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--352
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--357
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--366
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 367--371
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--376
+
+ []
+
+Missing character: There is no ’ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--381
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--390
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 391--395
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 396--400
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--405
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 410--414
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--419
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 425--429
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 430--434
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 435--439
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--444
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 445--449
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 454--458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--463
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 464--468
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 469--473
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--478
+
+ []
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 479--483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 493--497
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 498--502
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--507
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 508--512
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 516--520
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 521--525
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 526--530
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--535
+
+ []
+
+
+Overfull \hbox (8.3618pt too wide) in paragraph at lines 540--544
+\OT1/cmr/m/n/10 Omschrijving: Als een log-boek is aange-maakt zullen be-lan-gri
+-jke gebeurtenis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 540--544
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 545--549
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 550--554
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 555--559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 565--569
+
+ []
+
+[17]
+Missing character: There is no “ in font cmr10!
+Missing character: There is no ” in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 570--574
+
+ []
+
 
 ! LaTeX Error: There's no line here to end.
 
@@ -342,7 +730,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.238 \\
+l.581 \\
         
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -355,84 +743,81 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.239 
+l.582 
       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (66.83415pt too wide) in paragraph at lines 252--253
+Overfull \hbox (66.83415pt too wide) in paragraph at lines 595--596
 []\OT1/cmr/m/n/10 Systeem moet draaien op een linux server, meer bepaald Wilma 
 (http://wilma.vub.ac.be/) 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--253
+Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--254
+Underfull \hbox (badness 10000) in paragraph at lines 596--597
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 254--255
+Underfull \hbox (badness 10000) in paragraph at lines 597--598
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 598--599
 
  []
 
 
-Overfull \hbox (12.32452pt too wide) in paragraph at lines 284--288
+Overfull \hbox (12.32452pt too wide) in paragraph at lines 627--628
 []\OT1/cmr/m/n/10 Verschillende ge-bruik-ers kri-j-gen ver-schil-lende rechten 
 toegewezen. Deze bepalen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--288
+Underfull \hbox (badness 10000) in paragraph at lines 627--628
 
  []
 
-[9]
-Overfull \hbox (6.41725pt too wide) in paragraph at lines 291--293
+[18]
+Overfull \hbox (6.41725pt too wide) in paragraph at lines 631--633
 []\OT1/cmr/m/n/10 Enerzijds zal er de mo-geli-jkheid geleverd wor-den, aan de d
 aar-voor gemachtigde
  []
 
 
-Overfull \hbox (65.44518pt too wide) in paragraph at lines 291--293
-\OT1/cmr/m/n/10 ge-bruiker(s), om op de server een back-up van de databases (zo
-als ac-counts,leslokalen,vakken,...)
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 291--293
+Underfull \hbox (badness 10000) in paragraph at lines 631--633
 
  []
 
-[10] ("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\srs\srs.aux
-") ) 
+[19]
+("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\srs\s
+rs.aux") ) 
 Here is how much of TeX's memory you used:
- 3789 strings out of 495285
- 55563 string characters out of 3179830
- 117284 words of memory out of 3000000
- 6975 multiletter control sequences out of 15000+200000
- 9023 words of font info for 33 fonts, out of 3000000 for 9000
+ 3793 strings out of 495285
+ 55704 string characters out of 3179830
+ 118284 words of memory out of 3000000
+ 6977 multiletter control sequences out of 15000+200000
+ 9722 words of font info for 35 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,6n,38p,568b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pf
-b><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
-/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on srs.pdf (10 pages, 97975 bytes).
+ 36i,6n,38p,844b,191s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.p
+fb><C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:
+/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on srs.pdf (19 pages, 141353 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
+ 92 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
