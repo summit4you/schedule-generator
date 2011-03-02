@@ -1,13 +1,14 @@
 package xml;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  * XML element that has child elements (these can be {@link ElementWithValue} or ElementWithChildren itself)
  * @author Zjef
- * @version 1.0
+ * @version 1.1
  */
-public class ElementWithChildren extends XMLElement
+public class ElementWithChildren extends XMLElement implements Serializable
 {
 	final private static String tab="	 ";
 	

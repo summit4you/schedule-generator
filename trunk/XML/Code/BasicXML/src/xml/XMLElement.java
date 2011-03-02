@@ -1,12 +1,14 @@
 package xml;
 
+import java.io.Serializable;
+
 /**
  * Element of a xml file.<br>
  * Use the subclasses {@link ElementWithChildren} or {@link ElementWithValue} as elements for an {@link XMLDocument}
  * @author Zjef
- * @version 1.0
+ * @version 1.1
  */
-abstract class XMLElement
+abstract class XMLElement implements Serializable
 {	
 	private String name;
 	
