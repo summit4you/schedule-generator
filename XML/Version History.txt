@@ -1,2 +1,5 @@
-Latest version:
-V1.0
+Latest version: V1.1
+
+Version Notes:
+
+V1.1: Added support for Serializing XMLDocument, XMLElement, ElementWithChildren and ElementWithValue

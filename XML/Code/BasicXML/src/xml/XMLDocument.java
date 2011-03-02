@@ -3,18 +3,19 @@ package xml;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.Serializable;
 import java.util.Vector;
 
 /**
  * Represents an xml file.<br>
  * This can be used to load ({@link #load}) an existing xml file or to write ({@link #write}) a new xml file.
  * @author Zjef
- * @version 1.0
+ * @version 1.1
  * @see ElementWithChildren
  * @see ChildlessElement
  * @see Child
  */
-public class XMLDocument
+public class XMLDocument implements Serializable
 {
 	public static final String xmlExtension=".xml";
 	
