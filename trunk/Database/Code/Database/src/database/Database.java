@@ -290,8 +290,6 @@ public class Database implements Serializable
 	
 	/**
 	 * Behaves the same as {@link #readAll(T, Vector)}, but the methods are specified by their name in a String.<br><br>
-	 * Use of this function is discouraged by Zjef, since it is not safe against spelling mistakes and refactoring, whereas {@link #readAll(Databasable, Vector)} is.<br>
-	 * But it is included for its convenience.<br><br>
 	 * To construct the string 'getters':<br>
 	 * <ul>
 	 * <li>Take the name of the method, without the brackets</li>
