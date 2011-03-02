@@ -7,8 +7,8 @@
 \contentsline {subsubsection}{\numberline {1.2.3}Component Diagram}{5}
 \contentsline {subsection}{\numberline {1.3}Design viewpoint 2: Logical}{5}
 \contentsline {subsubsection}{\numberline {1.3.1}Design concerns}{5}
-\contentsline {subsubsection}{\numberline {1.3.2}Elementen}{5}
-\contentsline {paragraph}{\numberline {1.3.2.1}Entiteiten}{5}
+\contentsline {subsubsection}{\numberline {1.3.2}Elementen}{6}
+\contentsline {paragraph}{\numberline {1.3.2.1}Entiteiten}{6}
 \contentsline {paragraph}{\numberline {1.3.2.2}Relaties}{6}
 \contentsline {paragraph}{\numberline {1.3.2.3}UML Diagrammma}{6}
 \contentsline {subsection}{\numberline {1.4}Design viewpoint 3: Interfaces}{8}
