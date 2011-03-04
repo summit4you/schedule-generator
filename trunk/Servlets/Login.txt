@@ -1,0 +1,101 @@
+package mypackage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class test
+ */
+public class test2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+	
+	/**
+     * @see HttpServlet#HttpServlet()
+     */
+    public test2() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    
+    
+//	Methode die geimplementeerd is is anders dan diegene met de cookie, 
+//	voordeel is dat ze nu wel al werkt. Ik heb de nummer met een GET methode doorgestuurd.
+//	dat gaat op de volgende manier:
+//	Als de servlet de volgende locatie heeft: adam/servlet
+//	wordt een variabele id met waarde 100 als volgt meegegeven: adam/servlet?id=100
+//	in doGet kan de waarde van de variabele opgevraagd worden met request.getParameter("id");
+//	als id niet opgegeven is geeft dat een null weer, zo kunnen we kijken of de user al ingelogd is
+//	de doPost die na het wachtwoord ingeven de nummer genereert moet dan gewoon aan alle links
+//	de id van die gebruiker toevoegen en hij kan werken.
+
+//	voordelen:	Er moeten geen variabelen opgeslaan worden op de gebruikerspc (geen cookie)
+//				Er kunnen gewone links gebruikt worden om ergens naartoe te gaan. zonder dat 
+//    				een script ergens de nummer ook moet doorsturen. Hoe dat doorsturen juist
+//    				gaat weet ik zelf nog niet, want klikken op een link = GET en GET heeft 
+//    				geen body om nog dingen mee te sturen. het script zou dan van de GET een
+//    				POST moeten maken en daarmee werken. Dat gaat, maar dan wordt elke link
+//    				beheerd door een javascript.
+//    			Het werkt al, run de code en klik is
+//    			
+//   nadelen:	Iedereen met een half brein kan dit hacken. Als een kwaadaardig persoon de id
+//   				ziet staan in de url bar van een gebruiker kan hij onmiddelijk op zijn
+//   				account. Er kan waarschijnlijk IP controle toegevoegd worden om dit soort
+//   				hacks moeilijker te maken. dan gaan we er vanuit dat het IP adres niet
+//   				verandert tijdens een sessie van een gebruiker.
+//   			Het volgt onze vooropgestelde methode niet 	
+//    
+//	Mijn implementatie is waarschijnlijk zwakjes en berust waarschijnlijk niet voldoende op
+//	object georienteerd programmeren. We moeten allesinds is goed samenzitten om een lijst
+//	te maken met servlets die vanalles uitvoeren.
+    
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+    public void doGet(HttpServletRequest request,
+			HttpServletResponse response)
+	throws ServletException, IOException {
+    	String ID = request.getParameter("id");
+    	System.out.print(ID);
+    	
+    	response.setContentType("text/html");
+	    PrintWriter out = response.getWriter();
+	    
+	    if (ID.isEmpty()==true)
+		{
+	    	out.println("<FORM METHOD=\"POST\" ACTION=\"/sample/test\">\n" +
+	    		    "<P>\n" + 
+	    		    "<LABEL for=\"firstname\">Account: </LABEL>\n" +
+	    		    "<INPUT TYPE=\"TEXT\" NAME=\"NAME\" SIZE=30> <BR>\n" +
+	    		    "<LABEL for=\"password\">Password: </LABEL>\n" +
+	    		    "<INPUT TYPE=\"PASSWORD\" NAME=\"PASS\" SIZE=30> <BR>\n" +
+	    		    "<INPUT type=\"submit\" value=\"Send\">\n" +
+	    		    "</P>\n" +
+	    		    "</FORM>\n");
+		} else
+		{
+	    	out.println("Welcome user" + ID);
+		}
+	    
+		
+	}
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.setContentType("text/html");
+		String NAME = request.getParameter("NAME");
+		String PASS = request.getParameter("PASS");
+		System.out.print(NAME);
+		System.out.print(PASS);
+		PrintWriter out = response.getWriter();
+	    out.println("Hallo, u bent " + NAME + " en uw wachtwoord is " + PASS + "<br>" +
+	    		"<a href=\"test?id=100\">klik hier</a>");
+
+    }
+}
