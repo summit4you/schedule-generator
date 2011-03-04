@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * XML element that has child elements (these can be {@link ElementWithValue} or ElementWithChildren itself)
  * @author Zjef
- * @version 1.1
+ * @version 2.0
  */
 public class ElementWithChildren extends XMLElement implements Serializable
 {
@@ -26,6 +26,7 @@ public class ElementWithChildren extends XMLElement implements Serializable
 	 */
 	protected ElementWithChildren()
 	{
+		super();
 		children=new Vector<XMLElement>();
 	}
 	
@@ -78,19 +79,18 @@ public class ElementWithChildren extends XMLElement implements Serializable
 	@Override
 	protected String getFileText()
 	{
-		String text="<"+getName()+">"+'\n';
+		String text=getHeader()+'\n';
 		for (XMLElement i:children)
 		{
-			text+=tab+i.getFileText().replaceAll("\n","\n"+tab).concat("\n");
+			text+=tab+i.getFileText().replaceAll("\n","\n"+tab)+"\n";
 		}
-		text+="</"+getName()+">";
+		text+=getFooter();
 		return text;
 	}
 
 	@Override
 	protected void processText(String text)
 	{
-		extractName(text);
 		addChildren(XMLParser.parseText(text.substring(text.indexOf('>')+1,text.indexOf("</"+text.substring(1,text.indexOf(">")+1)))));
 	}
 }

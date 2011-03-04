@@ -9,11 +9,11 @@ import java.util.Vector;
 /**
  * Represents an xml file.<br>
  * This can be used to load ({@link #load}) an existing xml file or to write ({@link #write}) a new xml file.
- * @author Zjef
- * @version 1.1
  * @see ElementWithChildren
  * @see ChildlessElement
  * @see Child
+ * @author Zjef
+ * @version 1.1
  */
 public class XMLDocument implements Serializable
 {
