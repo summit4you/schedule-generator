@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Provides a static method {@link #parseText} to load an xml file created with this jar
  * @author Zjef
- * @version 1.0
+ * @version 2.0
  */
 class XMLParser
 {
@@ -26,14 +26,17 @@ class XMLParser
 			text=text.substring(elementText.length(),text.length());
 			
 			XMLElement element;
-			if (elementText.substring(0,elementText.length()-part.length()).contains("</"))
+			String name=XMLElement.extractName(elementText);
+			Vector<XMLTag> tags=XMLElement.extractTags(elementText);
+			if ((!tags.contains(XMLTag.code))&&elementText.substring(0,elementText.length()-part.length()).contains("</"))
 			{
-				element=new ElementWithChildren();
+				element=new ElementWithChildren(name);
 			}
 			else
 			{
-				element=new ElementWithValue();
+				element=new ElementWithValue(name,"");
 			}
+			element.addTags(tags);
 			element.processText(elementText);
 			elements.add(element);
 		}

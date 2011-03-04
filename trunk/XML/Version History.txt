@@ -1,5 +1,7 @@
-Latest version: V1.1
+Latest version: V2.0
 
 Version Notes:
+
+V2.0: Added 'tags' (eg <name tag=code>bla bla<name tag=code> ) allowing html code to be written as a value in an XML element
 
 V1.1: Added support for Serializing XMLDocument, XMLElement, ElementWithChildren and ElementWithValue
