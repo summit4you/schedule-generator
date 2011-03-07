@@ -19,7 +19,7 @@ import java.lang.annotation.Target;
  * <li>a <code>Boolean</code></li>
  * </ul> 
  * @author Zjef
- * @version 1.0
+ * @version 0.1
  * @see Databasable
  * @see InDatabase
  */
