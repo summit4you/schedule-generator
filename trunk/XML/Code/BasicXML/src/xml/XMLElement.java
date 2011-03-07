@@ -7,7 +7,7 @@ import java.util.Vector;
  * Element of a xml file.<br>
  * Use the subclasses {@link ElementWithChildren} or {@link ElementWithValue} as elements for an {@link XMLDocument}
  * @author Zjef
- * @version 2.0
+ * @version 3.0
  */
 abstract class XMLElement implements Serializable
 {	
@@ -100,11 +100,11 @@ abstract class XMLElement implements Serializable
 	 * Initializes the component from a piece of text read from an xml file
 	 * @param text
 	 */
-	abstract protected void processText(String text);
+	abstract protected void processText(String text,XMLParser parser);
 	
 	protected static String extractName(String text)
 	{
-		if (text.contains(XMLTag.tagDelimiter))
+		if (text.substring(0,text.indexOf('>')).contains(XMLTag.tagDelimiter))
 		{
 			return text.substring(text.indexOf('<')+1,text.indexOf(XMLTag.tagDelimiter)-1);
 		}
@@ -143,14 +143,4 @@ abstract class XMLElement implements Serializable
 	 * @return String representation of this <code>XMLElement</code>
 	 */
 	abstract protected String getFileText();
-	
-	/**
-	 * @return a <code>String</code> representing this <code>XMLElement</code>.<br>
-	 * This includes its name and value (in case of {@link ElementWithValue}) or child elements (in case of {@link ElementWithChildren})
-	 */
-	@Override
-	public String toString()
-	{
-		return getFileText();
-	}
 }

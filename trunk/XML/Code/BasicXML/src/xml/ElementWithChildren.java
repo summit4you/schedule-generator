@@ -6,7 +6,7 @@ import java.util.Vector;
 /**
  * XML element that has child elements (these can be {@link ElementWithValue} or ElementWithChildren itself)
  * @author Zjef
- * @version 2.0
+ * @version 3.0
  */
 public class ElementWithChildren extends XMLElement implements Serializable
 {
@@ -89,8 +89,8 @@ public class ElementWithChildren extends XMLElement implements Serializable
 	}
 
 	@Override
-	protected void processText(String text)
+	protected void processText(String text,XMLParser parser)
 	{
-		addChildren(XMLParser.parseText(text.substring(text.indexOf('>')+1,text.indexOf("</"+text.substring(1,text.indexOf(">")+1)))));
+		addChildren(parser.parseText(text.substring(text.indexOf('>')+1,text.indexOf("</"+text.substring(1,text.indexOf(">")+1)))));
 	}
 }

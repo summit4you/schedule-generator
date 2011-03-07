@@ -1,7 +1,17 @@
-Latest version: V2.0
+Latest version: V3.0
+
 
 Version Notes:
 
-V2.0: Added 'tags' (eg <name tag=code>bla bla<name tag=code> ) allowing html code to be written as a value in an XML element
 
-V1.1: Added support for Serializing XMLDocument, XMLElement, ElementWithChildren and ElementWithValue
+V3.0:	Added the 'link' tag enabeling links between different XML files.
+	
+	Searching XMLDocuments and ElementWithChildren for XMLElements is made easier; it is now possible to search for "child.child.element" with getElement(String element) in XMLDocument and ElementWithChildren
+	
+	The toString() method of ElementWithValue is changed. It now returns the same as getValue(). For ElementWithChildren, it now returns the standard toString() from Object.
+
+
+V2.0: 	Added 'tags' (eg <name tag=code>bla bla<name tag=code> ) allowing html code to be written as a value in an XML element
+
+
+V1.1:	Added support for Serializing XMLDocument, XMLElement, ElementWithChildren and ElementWithValue
