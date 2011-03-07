@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Represents an element of an xml file, without any children, but a certain value (which can be empty)
  * @author Zjef
- * @version 2.0
+ * @version 3.0
  */
 public class ElementWithValue extends XMLElement implements Serializable
 {
@@ -38,12 +38,25 @@ public class ElementWithValue extends XMLElement implements Serializable
 	@Override
 	protected String getFileText()
 	{
-		return getHeader()+value+getFooter();
+		return getHeader()+getValue()+getFooter();
 	}
 
 	@Override
-	protected void processText(String text)
+	protected void processText(String text,XMLParser parser)
 	{
+		if (text.contains(XMLTag.linkDelimiter))
+		{
+			
+		}
 		setValue(text.substring(text.indexOf('>')+1,text.indexOf(getFooter())));
+	}
+	
+	/**
+	 * @return the same as {@link #getValue()}
+	 */
+	@Override
+	public String toString()
+	{
+		return getValue();
 	}
 }

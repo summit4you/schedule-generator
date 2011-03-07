@@ -13,7 +13,7 @@ import java.util.Vector;
  * @see ChildlessElement
  * @see Child
  * @author Zjef
- * @version 1.1
+ * @version 3.0
  */
 public class XMLDocument implements Serializable
 {
@@ -58,13 +58,14 @@ public class XMLDocument implements Serializable
 			{
 				text+=(char)c;
 			}
-			addElements(XMLParser.parseText(text));
+			XMLParser parser=new XMLParser();
+			addElements(parser.parseText(text));
+			parser.finish();
+			in.close();
 		} catch (Exception e)
 		{
-			e.printStackTrace();
 			return false;
 		}
-		
 		return true;
 	}
 	
@@ -130,19 +131,57 @@ public class XMLDocument implements Serializable
 	}
 	
 	/**
-	 * @param name - name of the wanted element of this document
+	 * @param name - name of the wanted element of this document<br>
+	 * This can include '.' to access child elements. Multiple '.' are supported.
 	 * @return The element with the same name, or <code>null</code> if none of the elements has this name
 	 */
 	public XMLElement getElement(String name)
 	{
-		for (XMLElement i:elements)
+		XMLElement res=null;
+		Vector<XMLElement> els=elements;
+		String local=name;
+		do
 		{
-			if (i.getName().equals(name))
+			if (name.charAt(0)=='.')
 			{
-				return i;
+				name=name.replaceFirst(".","");
 			}
-		}
-		return null;
+			if (res!=null)
+			{
+				if (res instanceof ElementWithChildren)
+				{
+					els=((ElementWithChildren)res).getElements();
+				}
+				else
+				{
+					return null;
+				}
+			}
+			res=null;
+			if (name.contains("."))
+			{
+				local=name.substring(0,name.indexOf('.'));
+			}
+			else
+			{
+				local=name;
+			}
+			
+			for (XMLElement i:els)
+			{
+				if (i.getName().equals(local))
+				{
+					res=i;
+					break;
+				}
+			}
+			if (res==null)
+			{
+				return null;
+			}
+			name=name.replaceFirst(local,"");
+		}while (name.contains("."));
+		return res;
 	}
 	
 	/**
