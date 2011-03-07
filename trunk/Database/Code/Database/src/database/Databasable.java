@@ -24,7 +24,7 @@ package database;
  * </ul>
  * 
  * @author Zjef
- * @version 1.0
+ * @version 0.1
  * @see InDatabase
  * @see OutDatabase
  */

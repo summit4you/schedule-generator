@@ -1,7 +1,6 @@
 package database;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +12,7 @@ import java.util.Vector;
  * Read the requirements at {@link Databasable} to enable classes to read and write their objects to a database.
  * 
  * @author Zjef
- * @version 0.1 - methods (which enable an interface to the database) are declared and visible for external code, but are not implemented
+ * @version 0.2 - methods (which enable an interface to the database) are declared and visible for external code, but are not implemented
  */
 public class Database implements Serializable
 {
@@ -80,25 +79,27 @@ public class Database implements Serializable
 	/**
 	 * Writes a {@link Databasable} object into its table in this database.<br>
 	 * The ID of the object is checked. If an element in the table with the same ID already exists, it is overwritten, otherwise a new element is created in the table<br><br>
-	 * If the specified object has any getters that return other {@link Databasable} objects (or Vectors containing such objects), then these objects will also be written/updated in this database.<br><br>
+	 * If the specified object has any getters that return other {@link Databasable} objects (or Vectors containing such objects), then these objects will also be written/updated in this database if <code>updateRef</code> is <code>true</code>.<br><br>
 	 * If this table does not exist, it is created. The table has the same name as the class of the object.
 	 * @param object - object to write/update in this database
+	 * @param updateRef - whether the referenced Databasable objects have to be updated too (<code>true</code>), or if only their ID has to be stored (<code>false</code>)
 	 * @see #writeAll(Vector)
 	 */
-	public void write(Databasable object)
+	public void write(Databasable object,boolean updateRef)
 	{
 		//TODO
 	}
 	
 	/**
 	 * Writes all elements of the vector to their table in this database.<br>
-	 * If the specified objects have any getters that return other {@link Databasable} objects (or Vectors containing such objects), then these objects will also be written/updated in this database.<br><br>
+	 * If the specified objects have any getters that return other {@link Databasable} objects (or Vectors containing such objects), then these objects will also be written/updated in this database if <code>updateRef</code> is <code>true</code>.<br><br>
 	 * The ID's of the objects are checked. If an element in the table with the same ID already exists, it is overwritten, otherwise a new element is created in the table<br><br>
 	 * All objects in this vector need to be instances of the same class.
 	 * @param objects - objects to write
+	 * @param updateRef - whether the referenced Databasable objects have to be updated too (<code>true</code>), or if only their ID has to be stored (<code>false</code>)
 	 * @see #write(Databasable)
 	 */
-	public void writeAll(Vector<? extends Databasable> objects)
+	public void writeAll(Vector<? extends Databasable> objects,boolean updateRef)
 	{
 		//TODO
 	}
@@ -172,169 +173,22 @@ public class Database implements Serializable
 	}
 	
 	/**
-	 * Returns 1 element from a table in this database, selected by its ID;
-	 * @param cl - class of the object to be fetched
-	 * @param id - ID of the object to be fetched
-	 * @return the object stored in this database with the specified ID.<br>
-	 * If no element with this ID exists, or if the table does not exist, this methods returns <code>null</code>
-	 * @see #read(T, Method)
-	 * @see #read(T, String)
-	 * @see #read(T, Vector)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, String)
-	 * @see #readAll(T, Vector)
+	 * Searches and returns the first element in the database that meets the specifications of the {@link Search}
+	 * @param search - criterion
+	 * @return First object that matches the search criterion; <code>null</code> if no such object exists.
 	 */
-	public <T extends Databasable> T read(Class<T> cl,ID id)
+	public <T extends Databasable> T read(Search search)
 	{
 		//TODO
 		return null;
 	}
 	
 	/**
-	 * Reads all elements from a table in this database.<br>
-	 * Returns an empty vector if this table is empty or does not exist.
-	 * @param cl - class (implementing {@link Databasable}) of the elements to load
-	 * @return vector with all elements of the specified table
-	 * @see #read(Class, ID)
-	 * @see #read(T, Method)
-	 * @see #read(T, String)
-	 * @see #read(T, Vector)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, String)
-	 * @see #readAll(T, Vector)
+	 * Searches and returns the all elements in the database that meet the specifications of the {@link Search}
+	 * @param search - criterion
+	 * @return All objects that matches the search criterion; <code>null</code> if no such object exists.
 	 */
-	public <T extends Databasable> Vector<T> readAll(Class<T> cl)
-	{
-		//TODO
-		return null;
-	}
-	
-	/**
-	 * Returns the first element in the table (linked to the class of the getter) of this database that fits the constraint imposed by the getter method.<br>
-	 * @param getter - getter method (that has to annotated with {@link InDatabase}) with which to extract the first element from the table
-	 * @param object - object from which to check the getter.
-	 * @return the first element in the database that fits the constraint imposed by the getter method; <code>null</code> if no such element exists or the table does not exist.<br>
-	 * Also returns <code>null</code> when T does not equal
-	 * @see #read(Class, ID)
-	 * @see #read(T, String)
-	 * @see #read(T, Vector)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, String)
-	 * @see #readAll(T, Vector)
-	 */
-	public <T extends Databasable> T read(T object,Method getter)
-	{
-		return null;
-	}
-	
-	/**
-	 * Returns the first element in the table (linked to the class of the getters) of this database that fits all constraints imposed by all the getters.
-	 * @param getters - getter methods (all annotated with {@link InDatabase}) that determine the constraints to select elements from the table in this database.<br>
-	 * All getters need to be declared in the same class implementing {@link Databasable}.
-	 * @param object - object from which to check the getters
-	 * @return the first element in the table of this database that fits all constraints imposed by the getters; <code>null</code> if no such element exists or the table does not exist.
-	 * @see #read(Class, ID)
-	 * @see #read(T, Method)
-	 * @see #read(T, String)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, String)
-	 * @see #readAll(T, Vector)
-	 */
-	public <T extends Databasable> T read(T object,Vector<Method> getters)
-	{
-		//TODO
-		return null;
-	}
-	
-	/**
-	 * Returns all elements in the table (linked to the class of the getter) of this database that fit the constraints imposed by the getter.
-	 * @param getter - getter method that determines the constraint to select elements from the table in this database.
-	 * @param object - object from which to check the getter 
-	 * @return a vector with all objects that fit the constraint imposed by the getter; returns an empty vector if none of the elements fits the constraint or if the table does not exist.
-	 * @see #read(Class, ID)
-	 * @see #read(T, Method)
-	 * @see #read(T, String)
-	 * @see #read(T, Vector)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, String)
-	 * @see #readAll(T, Vector)
-	 */
-	public <T extends Databasable> Vector<T> readAll(T object,Method getter)
-	{
-		//TODO
-		return null;
-	}
-	
-	/**
-	 * Returns all elements in the table (linked to the class of the getters) of this database that fit the constraints imposed by all the getters.
-	 * @param getters - getter methods (all annotated with {@link InDatabase}) that determine the constraints to select elements from the table in this database.<br>
-	 * All getters need to be declared in the same class implementing {@link Databasable}.
-	 * @param object - object from which to check the getters
-	 * @return a vector with all objects that fit the constraints imposed by the getters; returns an empty vector if none of the elements fits all constraints or if the table does not exist.
-	 * @see #read(Class, ID)
-	 * @see #read(T, Method)
-	 * @see #read(T, String)
-	 * @see #read(T, Vector)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, String)
-	 */
-	public <T extends Databasable> Vector<T> readAll(T object,Vector<Method> getters)
-	{
-		//TODO
-		return null;
-	}
-	
-	/**
-	 * Behaves the same as {@link #readAll(T, Vector)}, but the methods are specified by their name in a String.<br><br>
-	 * To construct the string 'getters':<br>
-	 * <ul>
-	 * <li>Take the name of the method, without the brackets</li>
-	 * <li>For multiple methods, separate by a semicolon, ';'
-	 * </ul>
-	 * Example<br>
-	 * We want to select the following three getters:<br>
-	 * <code>
-	 * public int getMyInt()<br>
-	 * { ... }<br>
-	 * public int getMyInt2()<br>
-	 * { ... }<br>
-	 * public boolean getMyBool()<br>
-	 * { ... }<br>
-	 * </code>
-	 * Then getters=<code>"getMyInt;getMyInt2;getMyBool"</code><br><br>
-	 * @param methods - name(s) of the getter(s) that determine the constraints to select the elements from the table in this database.<br>
-	 * All getters need to be declared in the same class implementing {@link Databasable}.
-	 * @param object - object from which to check the getters
-	 * @return a vector containing all objects that fit the constraints imposed by the getter(s); returns an empty vector if none of the elements fits all constraints or if the table does not exist.
-	 * @see #read(Class, ID)
-	 * @see #read(T, Method)
-	 * @see #read(T, Vector)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, String)
-	 * @see #readAll(T, Vector)
-	 */
-	public <T extends Databasable> T read(T object,String methods)
-	{
-		//TODO
-		return null;
-	}
-	
-	/**
-	 * Does the same as {@link #read(T,String)}, but instead of returning the first matching element, this method returns all matching elements.
-	 * @see #read(Class, ID)
-	 * @see #read(T, Method)
-	 * @see #read(T, String)
-	 * @see #read(T, Vector)
-	 * @see #readAll(Class)
-	 * @see #readAll(T, Method)
-	 * @see #readAll(T, Vector)
-	 */
-	public <T extends Databasable> Vector<T> readAll(T object,String methods)
+	public <T extends Databasable> Vector<T> readAll(Search search)
 	{
 		//TODO
 		return null;

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * A unique ID can be generated with {@link Database#getUniqueID(Class)}, but can also be managed externally.<br>
  * To check if two ID's (assigned to two objects from the same class) are equal, use {@link #equals(Object)}
  * @author Zjef
- * @version 1.0
+ * @version 0.1
  */
 public class ID implements Serializable
 {
