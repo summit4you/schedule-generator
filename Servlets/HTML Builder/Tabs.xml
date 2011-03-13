@@ -1,0 +1,28 @@
+<login>
+	<name>Login</name>
+	<top tag=code tag=link><div class="tabbertab" title="§SiteLanguage.tab1title§"></top tag=code tag=link>
+	<bottom tag=code tag=link></div></bottom tag=code tag=link>
+	<functions>
+		<login>
+<form action="/sample/test" method="post">
+<table id="login" border=0 style="width:200px" align="center"><tbody>
+<tr><td style="text-align: right">§SiteLanguage.loginaccount§</td><td><input type="text" name="NAME"></input></td></tr>
+<tr><td style="text-align: right">§SiteLanguage.loginpassword§</td><td><input type="password" name="PASS"></input></td></tr>
+<tr><td colspan=2 style="text-align: center"><input type="submit" value="§SiteLanguage.loginbutton§"></input></td></tr>
+</tbody></table>
+</form>
+</login>
+		<io>test io</io>
+		<nick>test nick</nick>
+	</functions>
+</login>
+
+<cast>
+	<name>Team</name>
+	<top tag=code tag=link><div class="tabbertab" title="§SiteLanguage.tab1title§"></top tag=code tag=link>
+	<bottom tag=code tag=link></div></bottom tag=code tag=link>
+	<functions>
+		<mama>test mama</mama>
+		<sophie>test sophie</sophie>
+	</functions>
+</cast>
