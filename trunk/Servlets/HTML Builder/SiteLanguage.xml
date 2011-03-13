@@ -1,0 +1,8 @@
+<title>SiteTest</title>
+
+<tab1title>Login</tab1title>
+<tab2title>Team</tab2title>
+
+<loginaccount>Gebruikersnaam</loginaccount>
+<loginpassword>Wachtwoord</loginpassword>
+<loginbutton>Verstuur</loginbutton>
