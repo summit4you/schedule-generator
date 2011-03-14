@@ -1,6 +1,10 @@
-Latest version: 0.2
+Latest version: 1.0
 
 Version Notes:
+
+1.0	Working version
+	Some changes in access methods compared to v0.2
+
 
 0.2:	This version only provides the interfacing classes and methods, but does not implement these classes and methods yet.
 
