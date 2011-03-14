@@ -5,15 +5,18 @@ import java.lang.reflect.Method;
 import java.util.Vector;
 
 /**
- * Search criterion for a database
+ * Search criterion for a database search with the methods {@link Database#read(Search)} and {@link Database#readAll(Search)}
  * @author Zjef
- * @version 0.2
+ * @version 1.0
  */
-public class Search implements Serializable
+public class Search implements Serializable,Syntaxable
 {
+	final public static String classSeparator=";";
+	
 	private Class<?extends Databasable> cl;
 	private Vector<Method> getters;
 	private Vector<Object> results;
+	private ID id;
 	
 	/**
 	 * This constructor creates a Search object with which you can load all instances from a database (using the {@link Database#readAll()})
@@ -22,6 +25,20 @@ public class Search implements Serializable
 	public Search(Class<?extends Databasable> cl)
 	{
 		this.cl=cl;
+		this.getters=null;
+		this.results=null;
+		this.id=null;
+	}
+	
+	/**
+	 * Enables a search for an object based on its unique ID
+	 * @param cl - class of the object to be searched
+	 * @param id - {@link ID} of the object to be retrieved
+	 */
+	public Search(Class<? extends Databasable> cl,ID id)
+	{
+		this.cl=cl;
+		this.id=id;
 		this.getters=null;
 		this.results=null;
 	}
@@ -38,7 +55,12 @@ public class Search implements Serializable
 	{
 		this.cl=cl;
 		this.getters=(Vector<Method>)getters.clone();
-		this.results=(Vector<Object>)results.clone();
+		this.results=new Vector<Object>();
+		for (Object i:results)
+		{
+			addObject(i);
+		}
+		this.id=null;
 	}
 	
 	/**
@@ -65,7 +87,12 @@ public class Search implements Serializable
 	{
 		this.cl=cl;
 		getMethods(getters);
-		this.results=(Vector<Object>)results.clone();
+		this.results=new Vector<Object>();
+		for (Object i:results)
+		{
+			addObject(i);
+		}
+		this.id=null;
 	}
 	
 	/**
@@ -79,12 +106,64 @@ public class Search implements Serializable
 		this.results=new Vector<Object>();
 		for (Object i:results)
 		{
-			this.results.add(i);
+			addObject(i);
 		}
 	}
 	
+	private void addObject(Object object)
+	{
+		results.add(object instanceof Databasable?((Databasable) object).getId():object);
+	}
+	
+	protected Class<? extends Databasable> getCl()
+	{
+		return cl;
+	}
+	
+	protected ID getID()
+	{
+		return id;
+	}
+	
+	/**
+	 * Extracts methods from the string
+	 */
 	private void getMethods(String getters)
 	{
-		//TODO
+		this.getters=new Vector<Method>();
+		String[] names=getters.split(classSeparator);
+		for (String i:names)
+		{
+			try
+			{
+				this.getters.add(cl.getDeclaredMethod(i));
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public String getText()
+	{
+		String text="SELECT * FROM "+Extract.getTableName(cl);
+		if (id!=null)
+		{
+			return text+" WHERE ID="+id.toString();
+		}
+		else if (getters==null)
+		{
+			return text;
+		}
+		else
+		{
+			text+=" WHERE ";
+			for (int i=0;i<getters.size();i++)
+			{
+				text+=Extract.methodToString(getters.get(i))+"="+Extract.valueToString(results.get(i))+" AND ";
+			}
+			return text.substring(0,text.length()-5);
+		}
 	}
 }

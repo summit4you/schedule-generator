@@ -3,7 +3,9 @@ package database;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 /**
@@ -21,7 +23,10 @@ public class Database implements Serializable
 	private String url,name,password;
 	private boolean connected;
 	private Connection connect;
-
+	private Vector<String> tables;
+	Vector<Databasable> cache;
+	private Vector<Databasable> toLoad;
+	
 	/**
 	 * Creates object to communicate to MySQL database.<br>
 	 * Connection with the database is not established upon calling this
@@ -40,6 +45,8 @@ public class Database implements Serializable
 		this.name=name;
 		this.password=password;
 		connected=false;
+		cache=new Vector<Databasable>();
+		toLoad=new Vector<Databasable>();
 	}		
 	
 	public String getURL()
@@ -63,74 +70,102 @@ public class Database implements Serializable
 	}
 	
 	/**
-	 * Returns a unique ID for an object from the specified class.<br>
-	 * This automatically reserves this ID. If for some reason the object, to which this ID is allocated, is never written to this database ({@link #write(Databasable) write}), release the use of this ID again by calling {@link #delete(Class, ID)}<br>
-	 * This ensures that the ID can be used again in the future.
-	 * @param cl - class of the object for which to receive a unique ID
-	 * @return - unique ID for the class
-	 * @see #releaseID(ID)
+	 * Creates a new object in the database.
+	 * @param databasable - object to create
 	 */
-	public ID getUniqueID(Class<? extends Databasable> cl)
+	protected void create(Databasable databasable)
 	{
-		//TODO
-		return null;
+		if (!tables.contains(Extract.getTableName(databasable)))
+		{
+			update(Extract.getNewTable(databasable.getClass()).getText());
+			tables.add(Extract.getTableName(databasable));
+		}
+		update("INSERT INTO "+Extract.getTableName(databasable)+" () VALUES ()");
+		databasable.setID(getLastInsertedID());
 	}
 	
 	/**
 	 * Writes a {@link Databasable} object into its table in this database.<br>
-	 * The ID of the object is checked. If an element in the table with the same ID already exists, it is overwritten, otherwise a new element is created in the table<br><br>
-	 * If the specified object has any getters that return other {@link Databasable} objects (or Vectors containing such objects), then these objects will also be written/updated in this database if <code>updateRef</code> is <code>true</code>.<br><br>
-	 * If this table does not exist, it is created. The table has the same name as the class of the object.
-	 * @param object - object to write/update in this database
-	 * @param updateRef - whether the referenced Databasable objects have to be updated too (<code>true</code>), or if only their ID has to be stored (<code>false</code>)
+	 * If the {@link ID} of this object is <code>null</code>, a new element is created in the database and the object is given a unique ID.<br>
+	 * If the ID is not <code>null</code>, the the element with the same ID in the database is updated.<br>
+	 * If this object stores any other Databasable objects, they are not updated themselves. If there are any referred objects without ID, then a new entry for these new objects is created. Only an entry, not the data of these objects.<br><br>
+	 * If the table associated with the object does not exist yet, it is created. The table has the same name as the class of the object.
+	 * @param databasable - object to write/update in this database
 	 * @see #writeAll(Vector)
 	 */
-	public void write(Databasable object,boolean updateRef)
+	synchronized public void write(Databasable databasable)
 	{
-		//TODO
+		if (databasable.getId()==null)
+		{
+			create(databasable);
+		}
+		
+		Insertion ins=Extract.getUpdate(databasable);
+		for (Databasable i:ins.getReferences())
+		{
+			if (i.getId()==null)
+			{
+				create(i);
+			}
+		}
+		update(ins.getText());
+	}
+	
+	private ID getLastInsertedID()
+	{
+		ResultSet result=query("SELECT LAST_INSERT_ID()");
+		try
+		{
+			result.first();
+			return new ID(result.getInt(1));
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**
-	 * Writes all elements of the vector to their table in this database.<br>
-	 * If the specified objects have any getters that return other {@link Databasable} objects (or Vectors containing such objects), then these objects will also be written/updated in this database if <code>updateRef</code> is <code>true</code>.<br><br>
-	 * The ID's of the objects are checked. If an element in the table with the same ID already exists, it is overwritten, otherwise a new element is created in the table<br><br>
-	 * All objects in this vector need to be instances of the same class.
-	 * @param objects - objects to write
-	 * @param updateRef - whether the referenced Databasable objects have to be updated too (<code>true</code>), or if only their ID has to be stored (<code>false</code>)
-	 * @see #write(Databasable)
+	 * See {@link #write(Databasable) write}
 	 */
-	public void writeAll(Vector<? extends Databasable> objects,boolean updateRef)
+	public void writeAll(Vector<? extends Databasable> objects)
 	{
-		//TODO
+		for (Databasable i:objects)
+		{
+			write(i);
+		}
 	}
 	
 	/**
 	 * Deletes an object from its table in this database.<br>
 	 * This method only checks for a match between the ID from the element in the table and the specified object.
-	 * @param object - the object to delete
+	 * @param databasable - the object to delete
 	 *  @see #delete(Class, ID)
 	 * @see #deleteAll(Vector)
 	 * @see #deleteAll(Class)
 	 * @see #deleteAll(Class, Vector)
 	 */
-	public void delete(Databasable object)
+	public void delete(Databasable databasable)
 	{
-		//TODO
+		delete(databasable.getClass(),databasable.getId());
 	}
 	
 	/**
 	 * Deletes all objects from their table in this database.<br>
 	 * This method only checks for a match between the ID from the element in the table and the specified object.<br><br>
 	 * All objects need to be instances of the same class.
-	 * @param objects - objects to delete
+	 * @param databasables - objects to delete
 	 * @see #delete(Databasable)
 	 * @see #delete(Class, ID)
 	 * @see #deleteAll(Class)
 	 * @see #deleteAll(Class, Vector)
 	 */
-	public void deleteAll(Vector<? extends Databasable> objects)
+	public void deleteAll(Vector<? extends Databasable> databasables)
 	{
-		//TODO
+		for (Databasable i:databasables)
+		{
+			delete(i);
+		}
 	}
 	
 	/**
@@ -144,7 +179,7 @@ public class Database implements Serializable
 	 */
 	public void delete(Class<? extends Databasable> cl,ID id)
 	{
-		//TODO
+		update("DELETE FROM "+Extract.getTableName(cl)+" WHERE ID ="+id.toString());
 	}
 	
 	/**
@@ -158,7 +193,10 @@ public class Database implements Serializable
 	 */
 	public void deleteAll(Class<? extends Databasable> cl,Vector<ID> ids)
 	{
-		//TODO
+		for (ID i:ids)
+		{
+			delete(cl,i);
+		}
 	}
 	
 	/**
@@ -169,59 +207,174 @@ public class Database implements Serializable
 	 */
 	public void deleteAll(Class<? extends Databasable> cl)
 	{
-		//TODO
+		update("DELETE FROM "+Extract.getTableName(cl));
 	}
 	
 	/**
-	 * Searches and returns the first element in the database that meets the specifications of the {@link Search}
-	 * @param search - criterion
-	 * @return First object that matches the search criterion; <code>null</code> if no such object exists.
+	 * Deletes the entire table and its elements from this database.
+	 * @param cl - class of which to delete the table
 	 */
-	public <T extends Databasable> T read(Search search)
+	public void deleteTable(Class<? extends Databasable> cl)
 	{
-		//TODO
-		return null;
+		String tableName=Extract.getTableName(cl);
+		update("DROP TABLE "+tableName);
+		tables.remove(tableName);
 	}
 	
 	/**
-	 * Searches and returns the all elements in the database that meet the specifications of the {@link Search}
-	 * @param search - criterion
-	 * @return All objects that matches the search criterion; <code>null</code> if no such object exists.
+	 * When objects are read from the database, a copy of them is also stored in the cache.<br> 
+	 * When asked to read an object that is already stored in the cache, the stored version is returned instead of loading it from the database.<br>
+	 * This method clears the cache.
 	 */
-	public <T extends Databasable> Vector<T> readAll(Search search)
+	public void clearCache()
 	{
-		//TODO
+		cache.removeAllElements();
+	}
+
+	protected Databasable getFromCache(Class<? extends Databasable> cl,ID id)
+	{
+		if (id==null)
+		{
+			return null;
+		}
+		for (Databasable i:cache)
+		{
+			if ((i.getClass()==cl)&&(i.getId().equals(id)))
+			{
+				return i;
+			}
+		}
+		for (Databasable i:toLoad)
+		{
+			if ((i.getClass()==cl)&&(i.getId().equals(id)))
+			{
+				return i;
+			}
+		}
 		return null;
+	}
+	
+	protected void addToLoad(Databasable databasable)
+	{
+		toLoad.add(databasable);
+	}
+	
+	protected void addCache(Databasable databasable)
+	{
+		cache.add(databasable);
+		toLoad.remove(databasable);
+	}
+	
+	protected Vector<Databasable> getLoadList()
+	{
+		return (Vector<Databasable>) toLoad.clone();
 	}
 
 	/**
-	 * Makes connection with the specified database
-	 * 
-	 * @throws ClassNotFoundException
-	 *             when the JDBC driver is not present
-	 * @throws SQLException
-	 *             if no connection could be established with the database. Make
-	 *             sure URL,account name and password are all correct.
+	 * Searches and returns one in the database that meets the specifications of the {@link Search}
+	 * @param search - criterion
+	 * @return object that matches the search criterion; <code>null</code> if no such object exists.
 	 */
-	public void connect() throws ClassNotFoundException, SQLException
+	synchronized public <T extends Databasable> T read(Search search)
+	{
+		Databasable d=getFromCache(search.getCl(),search.getID());
+		if (d!=null)
+		{
+			return (T) d;
+		}
+		ResultSet res=query(search.getText()+" LIMIT 1");
+		return (T) Extract.readResult(res,search.getCl(),this).get(0);
+	}
+	
+	/**
+	 * Searches and returns all elements in the database that meet the specifications of the {@link Search}
+	 * @param search - criterion
+	 * @return All objects that matches the search criterion; <code>null</code> if no such object exists.
+	 */
+	synchronized public <T extends Databasable> Vector<T> readAll(Search search)
+	{
+		ResultSet res=query(search.getText());
+		return (Vector<T>) Extract.readResult(res,search.getCl(),this);
+	}
+
+	/**
+	 * Makes connection with the specified database.<br>
+	 * This is <b>not</b> automatically done when creating a new instance of Database.
+	 */
+	public boolean connect()
 	{
 		if (connected)
 		{
-			return;
+			return true;
 		}
-		Class.forName(driverClassName);
-		connect = DriverManager.getConnection("jdbc:mysql://" + url, name, password);
-		connected = true;
+		try
+		{
+			Class.forName(driverClassName).newInstance();
+			connect = DriverManager.getConnection("jdbc:mysql://" + url, name, password);
+			connected = true;
+			loadTableNames();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return connected;
 	}
 
 	/**
 	 * Closes the connection with the database after a connection has been made
-	 * 
-	 * @throws SQLException
 	 */
-	public void disconnect() throws SQLException
+	public void disconnect()
 	{
-		connect.close();
-		connected = false;
+		try
+		{
+			connect.close();
+			connected = false;
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	private void loadTableNames()
+	{
+		tables=new Vector<String>();
+		ResultSet res=query("show tables");
+		try
+		{
+			while (res.next())
+			{
+				tables.add(res.getString(1));
+			}
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	protected ResultSet query(String instruction)
+	{
+		Statement statement;
+		try
+		{
+			statement = connect.createStatement();
+			return statement.executeQuery(instruction);
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	private void update(String instruction)
+	{
+		try
+		{
+			Statement statement=connect.createStatement();
+			statement.executeUpdate(instruction);
+			statement.close();
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }
