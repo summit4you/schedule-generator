@@ -1,0 +1,5 @@
+Latest version: 1.0
+
+Version Notes:
+
+1.0: Classes needed by the servlet to manage a websession
