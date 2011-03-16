@@ -1,0 +1,9 @@
+Reason for the package 'visibilityModifiers'
+
+-I want a 'clean' interface for the users of this jar. Therefore I hide the internally used methods with the modifier 'protected'.
+
+-I want a 'clean' structure of the project. Therefore I want the test classes in a separate folder and package.
+
+=> The test classes are dying to test the methods, but can't see them due to the protected modifier.
+
+Enter the visibilityModifiers. These extends the desired classes and change the visibility of said methods. 

@@ -9,7 +9,7 @@ import java.util.Vector;
  * @author Zjef
  * @version 3.0
  */
-abstract class XMLElement implements Serializable
+public abstract class XMLElement implements Serializable
 {	
 	private String name;
 	protected Vector<XMLTag> tags;

@@ -8,11 +8,11 @@ import java.util.Vector;
  * @author Zjef
  * @version 3.0
  */
-class LinkProcessor
+public class LinkProcessor
 {
 	private Vector<XMLDocument> docs;
 	
-	public LinkProcessor()
+	protected LinkProcessor()
 	{
 		docs=new Vector<XMLDocument>(0);
 	}

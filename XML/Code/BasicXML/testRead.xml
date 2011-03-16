@@ -1,0 +1,21 @@
+<val1>1</val1>
+
+<parent>
+	<child>value</child>
+	<child1></child1>
+</parent>
+
+<html tag=code>
+	<html>
+		Html code <br>
+		Enz...
+	</html>
+</html tag=code>
+
+<link tag=link>Waarde=§testLinks.parent.child§</link tag=link>
+
+<parent2>
+	<child1>
+		<child2>value</child2>
+	</child1>
+</parent2>
