@@ -13,7 +13,7 @@ import java.util.Vector;
  * @see ChildlessElement
  * @see Child
  * @author Zjef
- * @version 3.0
+ * @version 3.1
  */
 public class XMLDocument implements Serializable
 {
@@ -49,6 +49,7 @@ public class XMLDocument implements Serializable
 	 */
 	public boolean load()
 	{
+		this.elements.removeAllElements();
 		try
 		{
 			FileReader in=new FileReader(filename);
@@ -138,40 +139,18 @@ public class XMLDocument implements Serializable
 	public XMLElement getElement(String name)
 	{
 		XMLElement res=null;
-		Vector<XMLElement> els=elements;
-		String local=name;
-		do
+		Vector<XMLElement> els=getElements();
+		
+		String[] parts=name.split("\\.");
+		
+		for (String i:parts)
 		{
-			if (name.charAt(0)=='.')
-			{
-				name=name.replaceFirst(".","");
-			}
-			if (res!=null)
-			{
-				if (res instanceof ElementWithChildren)
-				{
-					els=((ElementWithChildren)res).getElements();
-				}
-				else
-				{
-					return null;
-				}
-			}
 			res=null;
-			if (name.contains("."))
+			for (XMLElement el:els)
 			{
-				local=name.substring(0,name.indexOf('.'));
-			}
-			else
-			{
-				local=name;
-			}
-			
-			for (XMLElement i:els)
-			{
-				if (i.getName().equals(local))
+				if (el.getName().equals(i))
 				{
-					res=i;
+					res=el;
 					break;
 				}
 			}
@@ -179,8 +158,15 @@ public class XMLDocument implements Serializable
 			{
 				return null;
 			}
-			name=name.replaceFirst(local,"");
-		}while (name.contains("."));
+			else if (res instanceof ElementWithValue)
+			{
+				return res;
+			}
+			else if (res instanceof ElementWithChildren)
+			{
+				els=((ElementWithChildren) res).getElements();
+			}
+		}
 		return res;
 	}
 	

@@ -1,8 +1,11 @@
-Latest version: V3.0
+Latest version: V3.1
+
+(Latest Unit test version: 1.0)
 
 
 Version Notes:
 
+v3.1:	Improved way how element searches (parent.child.child) are processed.
 
 V3.0:	Added the 'link' tag enabeling links between different XML files.
 	
