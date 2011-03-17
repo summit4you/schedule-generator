@@ -5,10 +5,11 @@
 %\usepackage{epic,eepic}
 \usepackage{mathtools}
 \usepackage{caption}
+\usepackage{hyperref}
 \usepackage{textcomp}
 \title{Software Requirements Specifications voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{23 februari 2011 Versie 1.0} 
+\date{23 februari 2011 Versie 1.1} 
 
 \begin{document}
 
@@ -26,6 +27,13 @@
 \item[.] 23/2/2011 versie 0.1: Aanmaak document, toevoeging  \\[-3mm]
 \item[.] 25/2/2011 versie 0.2: Toevoeging tekst vanaf Performance Requirements tot einde \\[-3mm]
 \item[.] 28/2/2011 versie 1.0: Toevoeging functionele vereisten, verbeteringen doorgevoerd \\[-3mm]
+\item[.] 17/3/2011 versie 1.1: Opmerkingen van opdrachtgever in acht genomen en aanpassingen doorgevoerd waar nodig\\[-3mm]
+\end{itemize}
+
+\section*{Nog aan te passen}
+\begin{itemize}
+	\item[.] De inhoud van secties 3.1.1 en 3.1.2 horen eigenlijk thuis in een SDD. Alles in heel sectie 3 moet geformuleerd worden in termen van requirements, dus met een vaste structuur, een unieke ID, pre- en postcondities etc. Een requirement moet zo geformuleerd worden dat ze als het ware kan afgevinkt worden op het einde. \\
+	\item[.] 3.2.12 "Roosterplanner" lijkt ons een heel belangrijk en non-triviaal onderdeel van de opgave. Het lijkt ons hier aangewezen iets gedetailleerdere (en eventueel opgesplitste) requirements te voorzien. Bvb I.5 "Melden van conflicten in het rooster" zou toch specifieker kunnen. Tot hoeveel detail wil je minimaal voorzien, gaat hij exact aan kunnen geven waar en waarom een conflict zich voordoet (soms kan dit complex zijn). \\
 \end{itemize}
 
 %\section*{Preface}
@@ -122,6 +130,7 @@ Om de communicatie tussen de browser van de gebruiker en de server te doen wordt
 
 De servlets communiceren met de database via MySQL en interpreteren de gegevens voor de gebruiker. Het proces kan overzichtelijk weergegeven worden in volgend blokschema:
 
+
 \unitlength=0.3\textwidth
 \begin{center}
 \begin{picture}(3,1)
@@ -158,6 +167,7 @@ De servlets communiceren met de database via MySQL en interpreteren de gegevens 
 \end{picture}\\[3mm]
 \caption{Overzicht van de communicatie en de gebruikte protocols tussen de verschillende delen van het programma}
 \end{center}
+
 
 De verschillende versies software die we gebruiken zijn de volgende:
 
@@ -503,7 +513,7 @@ Omschrijving: Het handmatig stoppen van de roosterplanner. De planner kan alter 
 \item[I.4] Status van de roosterplanner opvragen \\
 Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Het handmatig stoppen van de roosterplanner. De planner kan alter weer worden gestart om zijn taak verder te zetten. \\[-3mm]
+Omschrijving: Het handmatig opvragen van de status van de roosterplanner. \\[-3mm]
 
 \item[I.5] Melden van conflicten in het rooster \\
 Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
