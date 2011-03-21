@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>SiteTest</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script type="text/javascript" src="tabber-minimized.js"></script>
+
+<link rel="stylesheet" href="style.css" type="text/css" >
+</link> 
+
+</head>
+
+<body style="display: block; margin: 0px;" >
+
+<script type="text/javascript">
+	function calcHeight()
+	{
+	  //find the height of the internal page
+	  var the_height=document.getElementById('calendar').contentWindow.document.body.scrollHeight;
+
+	  //change the height of the iframe
+	  document.getElementById('calendar').height=the_height+20;
+	  
+	  //find the width of the internal page
+	  var the_width=document.getElementById('calendar').contentWindow.document.body.scrollWidth;
+
+	  //change the height of the iframe
+	  document.getElementById('calendar').width=the_width+20;
+	}
+	
+	function changeBackground()
+	{
+		var iframe=document.getElementById('calendar');
+		iframe.contentWindow.document.body.style.backgroundColor="white"; 
+	}
+</script>
+
+ 
+<table id="container" border="0" align="center" width="100%" style="border-collapse: collapse; min-height:100%" >
+<tbody >
+
+<tr>
+<td style="text-align: left; vertical-align: top;"> 
+<div class="tabber">
+<div class="tabbertab" title="Calendar">
+	Hier kan nog vanalles komen<br>
+	<Iframe id="calendar" src="week.php?cal=eit,eit2&width=600&lang=dutch&start=0800&end=1800&days=5" scrolling="no" onload="calcHeight();changeBackground();" frameborder="0"></Iframe> 
+	<br>
+	En hieronder ook nog<br>
+</div>
+ 
+<div class="tabbertab" title="Ander Tabje">
+<div align=center>
+Iets anders
+</div>
+</div>
+ 
+</div>
+ 
+</td>
+</tr>
+
+</tbody>
+</table>
+ 
+ 
+</body>
+</html>

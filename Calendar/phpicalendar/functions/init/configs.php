@@ -48,7 +48,8 @@ if (isset($_COOKIE[$cookie_name]) && !isset($_POST['unset']) && $current_view !=
 # default to english and overwrite other strings as available
 unset($lang); 
 include_once(BASE.'languages/english.inc.php');
-$language = strtolower($phpiCal_config->language);
+//$language = strtolower($phpiCal_config->language);
+$language = strtolower($_GET['lang']);
 $lang_file = BASE.'languages/'.$language.'.inc.php';
 if (is_file($lang_file)) {
 	include_once($lang_file);

@@ -3,7 +3,7 @@
 	<table border="0" cellspacing="0" cellpadding="0" class="maintable">
 		<tr>
 			<td valign="top">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0" class="calborder">
+				<table width="{WIDTH}" border="0" cellspacing="0" cellpadding="0" class="calborder">
 					<tr>
 						<td align="center" valign="middle">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -13,10 +13,10 @@
 									<div style="padding-top: 3px;">
 									<table width="120" border="0" cellpadding="0" cellspacing="0">
 										<tr valign="top">
-											<td><a class="psf" href="day.php?cal={CAL}&amp;getdate={GETDATE}"><img src="templates/{TEMPLATE}/images/day_on.gif" alt="{L_DAY}" title="{L_DAY}" border="0" /></a></td>
-											<td><a class="psf" href="week.php?cal={CAL}&amp;getdate={GETDATE}"><img src="templates/{TEMPLATE}/images/week_on.gif" alt="{L_WEEK}" title="{L_WEEK}" border="0" /></a></td>
-											<td><a class="psf" href="month.php?cal={CAL}&amp;getdate={GETDATE}"><img src="templates/{TEMPLATE}/images/month_on.gif" alt="{L_MONTH}" title="{L_MONTH}" border="0" /></a></td>
-											<td><a class="psf" href="year.php?cal={CAL}&amp;getdate={GETDATE}"><img src="templates/{TEMPLATE}/images/year_on.gif" alt="{L_YEAR}" title="{L_YEAR}" border="0" /></a></td>
+											<td><a class="psf" href="day.php?cal={CAL}&amp;getdate={GETDATE}&amp;{P_LINK}"><img src="templates/{TEMPLATE}/images/day_on.gif" alt="{L_DAY}" title="{L_DAY}" border="0" /></a></td>
+											<td><a class="psf" href="week.php?cal={CAL}&amp;getdate={GETDATE}&amp;{P_LINK}"><img src="templates/{TEMPLATE}/images/week_on.gif" alt="{L_WEEK}" title="{L_WEEK}" border="0" /></a></td>
+											<td><a class="psf" href="month.php?cal={CAL}&amp;getdate={GETDATE}&amp;{P_LINK}"><img src="templates/{TEMPLATE}/images/month_on.gif" alt="{L_MONTH}" title="{L_MONTH}" border="0" /></a></td>
+											<td><a class="psf" href="year.php?cal={CAL}&amp;getdate={GETDATE}&amp;{P_LINK}"><img src="templates/{TEMPLATE}/images/year_on.gif" alt="{L_YEAR}" title="{L_YEAR}" border="0" /></a></td>
 										</tr>
 									</table>
 									</div>
@@ -29,22 +29,22 @@
 						<td>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tfixed">
 								<tr>
-									<td align="left" valign="top" width="15" class="rowOff2" onmouseover="this.className='rowOn2'" onmouseout="this.className='rowOff2'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={PREV_WEEK}'">
-										<div class="V12">&nbsp;<a class="psf" href="week.php?cal={CAL}&amp;getdate={PREV_WEEK}">&laquo;</a></div>
+									<td align="left" valign="top" width="15" class="rowOff2" onmouseover="this.className='rowOn2'" onmouseout="this.className='rowOff2'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={PREV_WEEK}&amp;{P_LINK}'">
+										<div class="V12">&nbsp;<a class="psf" href="week.php?cal={CAL}&amp;getdate={PREV_WEEK}&amp;{P_LINK}">&laquo;</a></div>
 									</td>
-									<td align="left" valign="top" width="15" class="rowOff" onmouseover="this.className='rowOn'" onmouseout="this.className='rowOff'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={PREV_DAY}'">
-										<div class="V12">&nbsp;<a class="psf" href="week.php?cal={CAL}&amp;getdate={PREV_DAY}">&lsaquo;</a></div>
+									<td align="left" valign="top" width="15" class="rowOff" onmouseover="this.className='rowOn'" onmouseout="this.className='rowOff'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={PREV_DAY}&amp;{P_LINK}'">
+										<div class="V12">&nbsp;<a class="psf" href="week.php?cal={CAL}&amp;getdate={PREV_DAY}&amp;{P_LINK}">&lsaquo;</a></div>
 									</td>
-									<td align="right" valign="top" width="15" class="rowOff" onmouseover="this.className='rowOn'" onmouseout="this.className='rowOff'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={NEXT_DAY}'">
-										<div class="V12"><a class="psf" href="week.php?cal={CAL}&amp;getdate={NEXT_DAY}">&rsaquo;</a>&nbsp;</div>
+									<td align="right" valign="top" width="15" class="rowOff" onmouseover="this.className='rowOn'" onmouseout="this.className='rowOff'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={NEXT_DAY}&amp;{P_LINK}'">
+										<div class="V12"><a class="psf" href="week.php?cal={CAL}&amp;getdate={NEXT_DAY}&amp;{P_LINK}">&rsaquo;</a>&nbsp;</div>
 									</td>
-									<td align="right" valign="top" width="15" class="rowOff" onmouseover="this.className='rowOn'" onmouseout="this.className='rowOff'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={NEXT_WEEK}'">
-										<div class="V12"><a class="psf" href="week.php?cal={CAL}&amp;getdate={NEXT_WEEK}">&raquo;</a>&nbsp;</div>
+									<td align="right" valign="top" width="15" class="rowOff" onmouseover="this.className='rowOn'" onmouseout="this.className='rowOff'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={NEXT_WEEK}&amp;{P_LINK}'">
+										<div class="V12"><a class="psf" href="week.php?cal={CAL}&amp;getdate={NEXT_WEEK}&amp;{P_LINK}">&raquo;</a>&nbsp;</div>
 									</td>
 									<td width="1"></td>
 									<!-- loop daysofweek on -->
-									<td {COLSPAN} align="center" class="{ROW1}" onmouseover="this.className='{ROW2}'" onmouseout="this.className='{ROW3}'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={DAYLINK}'">
-										<a class="ps3" href="day.php?cal={CAL}&amp;getdate={DAYLINK}"><span class="V9BOLD">{DAY}</span></a> 
+									<td {COLSPAN} align="center" class="{ROW1}" onmouseover="this.className='{ROW2}'" onmouseout="this.className='{ROW3}'" onclick="window.location.href='week.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}'">
+										<a class="ps3" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}"><span class="V9BOLD">{DAY}</span></a> 
 									</td>
 									<!-- loop daysofweek off -->
 								</tr>
@@ -93,7 +93,7 @@
 						</td>
 					</tr>
 				</table>
-				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<table width="{WIDTH}" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td class="tbll"><img src="images/spacer.gif" alt="" width="8" height="4" /></td>
 						<td class="tblbot"><img src="images/spacer.gif" alt="" width="8" height="4" /></td>
@@ -104,9 +104,7 @@
 			<td width="10">
 				<img src="images/spacer.gif" width="10" height="1" alt=" " />
 			</td>
-			<td width="170" valign="top" class="sidebar">
-				{SIDEBAR}
-			</td>
+			
 		</tr>
 	</table>
 </center>

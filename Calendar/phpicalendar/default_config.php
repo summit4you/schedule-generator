@@ -16,9 +16,9 @@ class Configs{
 		$this->default_cal 				= ' ';//$this->ALL_CALENDARS_COMBINED;		// Exact filename of calendar without .ics. Or set to $this->ALL_CALENDARS_COMBINED to open all calenders combined into one.
 		$this->language 				= 'English';		// Language support - 'English', 'Polish', 'German', 'French', 'Dutch', 'Danish', 'Italian', 'Japanese', 'Norwegian', 'Spanish', 'Swedish', 'Portuguese', 'Catalan', 'Traditional_Chinese', 'Esperanto', 'Korean'
 		$this->week_start_day 			= 'Monday';			// Day of the week your week starts on
-		$this->week_length				= '7';				// Number of days to display in the week view
-		$this->day_start 				= '0800';			// Start time for day grid
-		$this->day_end					= '1800';			// End time for day grid
+		$this->week_length				= $_GET['days'];//'7';				// Number of days to display in the week view
+		$this->day_start 				= $_GET['start'];//'0800';			// Start time for day grid
+		$this->day_end					= $_GET['end'];//'1800';			// End time for day grid
 		$this->gridLength 				= '15';				// Grid distance in minutes for day view, multiples of 15 preferred
 		$this->num_years 				= '1';				// Number of years (up and back) to display in 'Jump to'
 		$this->month_event_lines 		= '0';				// Number of lines to wrap each event title in month view, 0 means display all lines.
@@ -74,7 +74,7 @@ class Configs{
 		// You can increase the number of unique colors by adding additional images (monthdot_n.gif)
 		// and in the css file (default.css) classes .alldaybg_n, .eventbg_n and .eventbg2_n
 		// Colors will repeat from the beginning for calendars past $this->unique_colors (7 by default), with no limit.
-		$this->unique_colors			= '7';
+		$this->unique_colors			= '1';
 
 		return true;
 	}

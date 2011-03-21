@@ -312,12 +312,13 @@ function openevent($event_date, $time, $uid, $arr, $lines = 0, $length = 0, $lin
 		$event_text = $matches[2];
 	} else {
 		$full_event_text = $event_text;
-		$event_text = strip_tags($event_text, '<b><i><u><img>');
+		//$event_text = strip_tags($event_text, '<b><i><u><img>');
 	}
 	
 	if (!empty($link_class)) $link_class = ' class="'.$link_class.'"';
 
 	if (!empty($event_text)) {
+		//$event_text=str_replace("\n","£",$event_text);
 		$title = strip_tags(str_replace('<br />',"\n",$title));
 		if ($lines > 0) {
 			$event_text = word_wrap($event_text, $length, $lines);
@@ -342,7 +343,7 @@ function openevent($event_date, $time, $uid, $arr, $lines = 0, $length = 0, $lin
 			$return .= '<a'.$link_class.' title="'.$title.'" href="'.$res[1].'">';
 		}
 		$return .= $pre_text.$event_text.$post_text.'</a>'."\n";
-		$return = str_replace("£","<br>",$return);
+		//$return = str_replace("£","\n",$return);
 	}
 
 	return $return;

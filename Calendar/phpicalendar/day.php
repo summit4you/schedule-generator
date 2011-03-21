@@ -62,6 +62,11 @@ $page->replace_files(array(
 	));
 
 $page->replace_tags(array(
+//	'lang'				=> $_GET['lang'],
+//	'end'				=> $_GET['end'],
+//	'start'				=> $_GET['start'],
+//	'days'				=> $_GET['days'],
+//	'width'				=> $_GET['width'],
 	'version'			=> $phpiCal_config->phpicalendar_version,
 	'charset'			=> $phpiCal_config->charset,
 	'default_path'		=> $phpiCal_config->default_path,
