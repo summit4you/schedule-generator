@@ -14,7 +14,7 @@ import java.util.Vector;
  * Read the requirements at {@link Databasable} to enable classes to read and write their objects to a database.
  * 
  * @author Zjef
- * @version 0.2 - methods (which enable an interface to the database) are declared and visible for external code, but are not implemented
+ * @version 1.01
  */
 public class Database implements Serializable
 {
@@ -283,13 +283,14 @@ public class Database implements Serializable
 			return (T) d;
 		}
 		ResultSet res=query(search.getText()+" LIMIT 1");
-		return (T) Extract.readResult(res,search.getCl(),this).get(0);
+		Vector<T> objects=(Vector<T>) Extract.readResult(res,search.getCl(),this).get(0);
+		return objects.size()>0?objects.get(0):null;
 	}
 	
 	/**
 	 * Searches and returns all elements in the database that meet the specifications of the {@link Search}
 	 * @param search - criterion
-	 * @return All objects that matches the search criterion; <code>null</code> if no such object exists.
+	 * @return All objects that matches the search criterion; an empty <code>Vector</code> if no such object exists.
 	 */
 	synchronized public <T extends Databasable> Vector<T> readAll(Search search)
 	{
