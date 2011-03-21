@@ -336,7 +336,7 @@ public class Database implements Serializable
 		}
 	}
 	
-	private void loadTableNames()
+	protected void loadTableNames()
 	{
 		tables=new Vector<String>();
 		ResultSet res=query("show tables");

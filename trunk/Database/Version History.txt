@@ -1,6 +1,13 @@
-Latest version: 1.011
+Latest version: 1.02
+
+(testing version 1.0)
 
 Version Notes:
+
+1.02	Added tests with JUnit
+	Bug Fixes
+		-Fixed error when reading an object with an empty vector of Databasable objects
+		-Fixed error when writing an empty vector
 
 1.011	Bug Fix
 		-bug in Bug Fix of 1.01
