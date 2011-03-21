@@ -57,9 +57,7 @@ $page = new Page(BASE.'templates/'.$phpiCal_config->template.'/week.tpl');
 $page->replace_files(array(
 	'header'			=> BASE.'templates/'.$phpiCal_config->template.'/header.tpl',
 	'event_js'			=> BASE.'functions/event.js',
-	'footer'			=> BASE.'templates/'.$phpiCal_config->template.'/footer.tpl',
-    'sidebar'           => BASE.'templates/'.$phpiCal_config->template.'/sidebar.tpl',
-    'search_box'        => BASE.'templates/'.$phpiCal_config->template.'/search_box.tpl'
+	'footer'			=> BASE.'templates/'.$phpiCal_config->template.'/footer.tpl'
 	));
 
 $page->replace_tags(array(
@@ -119,30 +117,30 @@ $page->replace_tags(array(
 	'l_this_site_is'	=> $lang['l_this_site_is']			
 	));
 	
-if ($phpiCal_config->allow_preferences != 'yes') {
-	$page->replace_tags(array(
-	'allow_preferences'	=> ''
-	));
-}	
+// if ($phpiCal_config->allow_preferences != 'yes') {
+	// $page->replace_tags(array(
+	// 'allow_preferences'	=> ''
+	// ));
+// }	
 	
-if ($phpiCal_config->allow_login == 'yes') {
-	$page->replace_tags(array(
-	'l_invalid_login'	=> $lang['l_invalid_login'],
-	'l_password'		=> $lang['l_password'],
-	'l_username'		=> $lang['l_username'],
-	'l_login'			=> $lang['l_login'],
-	'l_logout'			=> $lang['l_logout']
-	));
-}
+// if ($phpiCal_config->allow_login == 'yes') {
+	// $page->replace_tags(array(
+	// 'l_invalid_login'	=> $lang['l_invalid_login'],
+	// 'l_password'		=> $lang['l_password'],
+	// 'l_username'		=> $lang['l_username'],
+	// 'l_login'			=> $lang['l_login'],
+	// 'l_logout'			=> $lang['l_logout']
+	// ));
+// }
 
-if ($phpiCal_config->show_search != 'yes') {
-	$page->nosearch($page);
-}	
+// if ($phpiCal_config->show_search != 'yes') {
+	// $page->nosearch($page);
+// }	
 	
 $page->draw_week($page);
-$page->tomorrows_events($page);
-$page->get_vtodo($page);
-$page->draw_subscribe($page);
+//$page->tomorrows_events($page);
+//$page->get_vtodo($page);
+//$page->draw_subscribe($page);
 
 $page->output();
 

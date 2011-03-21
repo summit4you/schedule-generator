@@ -15,24 +15,24 @@
 					<!-- loop monthdays on -->
 					<!-- switch notthismonth on -->
 					<td class="yearoff">
-						<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{DAY}</a>
+						<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{DAY}</a>
 					</td>
 					<!-- switch notthismonth off -->
 					<!-- switch istoday on -->
 					<td class="yearon">
-						<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{DAY}</a>
+						<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{DAY}</a>
 						<div align="center">
-							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{ALLDAY}</a>
-							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{EVENT}</a>
+							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{ALLDAY}</a>
+							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{EVENT}</a>
 						</div>
 					</td>
 					<!-- switch istoday off -->
 					<!-- switch ismonth on -->
 					<td class="yearreg">
-						<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{DAY}</a>
+						<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{DAY}</a>
 						<div align="center">
-							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{ALLDAY}</a>
-							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{EVENT}</a>
+							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{ALLDAY}</a>
+							<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{EVENT}</a>
 						</div>
 					</td>
 					<!-- switch ismonth off -->

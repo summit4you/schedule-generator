@@ -53,6 +53,11 @@ $page->replace_files(array(
 	));
 
 $page->replace_tags(array(
+//	'lang'				=> $_GET['lang'],
+//	'end'				=> $_GET['end'],
+//	'start'				=> $_GET['start'],
+//	'days'				=> $_GET['days'],
+//	'width'				=> $_GET['width'],
 	'version'			=> $phpiCal_config->phpicalendar_version,
 	'event_js'			=> '',
 	'current_view'		=> $current_view,

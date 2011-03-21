@@ -950,8 +950,8 @@ HEREDOC;
 		$first_of_year 		= $minical_year.'0101';
 
 		// Add links in to the month/year views.
-		$dateFormat_month_local = str_replace('%B', '<a class="ps3" href="month.php?cal='.$cal.'&amp;getdate='.$first_of_month.'">%B</a>', $dateFormat_month);
-		$dateFormat_month_local = str_replace('%Y', '<a class="ps3" href="year.php?cal='.$cal.'&amp;getdate='.$first_of_year.'">%Y</a>', $dateFormat_month_local);
+		$dateFormat_month_local = str_replace('%B', '<a class="ps3" href="month.php?cal='.$cal.'&amp;getdate='.$first_of_month.'&amp;{P_LINK}">%B</a>', $dateFormat_month);
+		$dateFormat_month_local = str_replace('%Y', '<a class="ps3" href="year.php?cal='.$cal.'&amp;getdate='.$first_of_year.'&amp;{P_LINK}">%Y</a>', $dateFormat_month_local);
 
 		//$start_day 			= strtotime($phpiCal_config->week_start_day);
 		$start_day			= strtotime(dateOfWeek($getdate, $phpiCal_config->week_start_day));
@@ -1239,6 +1239,12 @@ HEREDOC;
 		if ($cpath){
 			$this->page = str_replace('&amp;getdate', '&amp;cpath='.$cpath.'&amp;getdate', $this->page);
 		}
+		
+		 $this->replace_tags(array(
+			 'width'				=> $_GET['width'],
+			 'p_link'				=> 'width='.$_GET['width'].'&amp;lang='.$_GET['lang'].'&amp;start='.$_GET['start'].'&amp;end='.$_GET['end'].'&amp;days='.$_GET['days']
+		 ));
+		
 		print($this->page);
 	}
 }

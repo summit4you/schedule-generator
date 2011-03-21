@@ -1,4 +1,4 @@
-<table width="100%" border="0" cellspacing="1" cellpadding="2" class="monthback tfixed">
+<table width="{WIDTH}" border="0" cellspacing="1" cellpadding="2" class="monthback tfixed">
 	<tr>
 		<!-- loop weekday on -->
 		<td valign="top" height="12" class="dateback">
@@ -12,7 +12,7 @@
 		<!-- switch notthismonth on -->
 		<td class="monthoff">
 			<div align="right">
-				<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{DAY}</a>
+				<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{DAY}</a>
 			</div>
 			{ALLDAY}
 			{EVENT}	
@@ -21,7 +21,7 @@
 		<!-- switch istoday on -->
 		<td class="monthon">
 			<div align="right">
-				<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{DAY}</a>
+				<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{DAY}</a>
 			</div>
 			{ALLDAY}
 			{EVENT}	
@@ -30,7 +30,7 @@
 		<!-- switch ismonth on -->
 		<td class="monthreg">
 			<div align="right">
-				<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}">{DAY}</a>
+				<a class="psf" href="day.php?cal={CAL}&amp;getdate={DAYLINK}&amp;{P_LINK}">{DAY}</a>
 			</div>
 			{ALLDAY}
 			{EVENT}	
