@@ -2,15 +2,14 @@ package database;
 
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Vector;
 
 /**
  * Extracts the {@link Databasable} information of objects and classes, for reading and writing to the database.
  * @author Zjef
- * @version 1.0
+ * @version 1.02
  */
-class Extract
+public class Extract
 {
 	/**
 	 * Generates a table name for each {@link Databasable} class
@@ -57,12 +56,17 @@ class Extract
 				{
 					Vector vec=new Vector();
 					Class c=i.getAnnotation(OutDatabase.class).value();
-					String[] elements=result.getString(methodToString(i)).split(Search.classSeparator);
-					for (String s:elements)
+					String data=result.getString(methodToString(i));
+					if (!data.equals(""))
 					{
-						vec.add(strToObject(s,c,database));
+						String[] elements=data.split(Search.classSeparator);
+						
+						for (String s:elements)
+						{
+							vec.add(strToObject(s,c,database));
+						}
+						i.invoke(ob,vec);
 					}
-					i.invoke(ob,vec);
 				}
 				else if (implementsDatabasable(inputType))
 				{
@@ -225,6 +229,10 @@ class Extract
 		}
 		else if (obj instanceof Vector)
 		{
+			if (((Vector) obj).size()==0)
+			{
+				return "";
+			}
 			String res="";
 			for (Object i:(Vector<?>)obj)
 			{
