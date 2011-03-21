@@ -1,12 +1,15 @@
-Latest version: 1.01
+Latest version: 1.011
 
 Version Notes:
 
+1.011	Bug Fix
+		-bug in Bug Fix of 1.01
+		
 1.01	Bug fix
-			-error when executing a search of the database that returns no result
+		-error when executing a search of the database that returns no result
 
-1.0		Working version
-		Some changes in access methods compared to v0.2
+1.0	Working version
+	Some changes in access methods compared to v0.2
 
 
 0.2:	This version only provides the interfacing classes and methods, but does not implement these classes and methods yet.
