@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Syntax for inserting an element in an existing table
  * @author Zjef
- * @version 1.0
+ * @version 2.0
  */
 class Insertion implements Syntaxable
 {
@@ -47,6 +47,24 @@ class Insertion implements Syntaxable
 		return fieldValues;
 	}
 
+	protected void extractDatabasables(Object value)
+	{
+		if (value instanceof Databasable)
+		{
+			references.add((Databasable)value);
+		}
+		else if (value instanceof Vector)
+		{
+			for (Object i:(Vector)value)
+			{
+				extractDatabasables(i);
+			}
+		}
+		else if (Extract.implementsSomething(value.getClass(),DatabasableAsValue.class))
+		{
+			extractDatabasables(((DatabasableAsValue)value).toValue());
+		}
+	}
 	
 	protected void add(String fieldName,Object fieldValue)
 	{
@@ -54,18 +72,7 @@ class Insertion implements Syntaxable
 		{
 			this.fieldNames.add(fieldName);
 			this.fieldValues.add(fieldValue);
-			
-			if (fieldValue instanceof Databasable)
-			{
-				references.add((Databasable)fieldValue);
-			}
-			else if (fieldValue instanceof Vector)
-			{
-				if ((((Vector)fieldValue).size()>0)&&(((Vector)fieldValue).get(0) instanceof Databasable))
-				{
-					references.addAll((Vector)fieldValue);		
-				}
-			}
+			extractDatabasables(fieldValue);
 		}
 	}
 	

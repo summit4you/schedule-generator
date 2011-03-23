@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * Extracts the {@link Databasable} information of objects and classes, for reading and writing to the database.
  * @author Zjef
- * @version 1.02
+ * @version 2.0
  */
 public class Extract
 {
@@ -79,6 +79,10 @@ public class Extract
 				else if (inputType==ID.class)
 				{
 					i.invoke(ob,new ID(result.getInt("ID")));
+				}
+				else if (implementsSomething(inputType,DatabasableAsValue.class))
+				{
+					i.invoke(ob,strToObject(result.getObject(methodToString(i)).toString(),inputType,database));
 				}
 				else
 				{
@@ -223,6 +227,10 @@ public class Extract
 	 */
 	protected static String objectToStr(Object obj)
 	{
+		if (obj instanceof DatabasableAsValue)
+		{
+			return objectToStr(((DatabasableAsValue) obj).toValue());
+		}
 		if (obj instanceof Databasable)
 		{
 			return ((Databasable) obj).getId().toString();
@@ -252,9 +260,14 @@ public class Extract
 	
 	protected static boolean implementsDatabasable(Class<?> cl)
 	{
-		for (Class<?> i:cl.getInterfaces())
+		return implementsSomething(cl,Databasable.class);
+	}
+	
+	protected static boolean implementsSomething(Class<?> underTest,Class<?> something)
+	{
+		for (Class<?> i:underTest.getInterfaces())
 		{
-			if (i==Databasable.class)
+			if ((i==something)||(implementsSomething(i,something)))
 			{
 				return true;
 			}
@@ -283,6 +296,18 @@ public class Extract
 		{
 			return Double.parseDouble(s);
 		}
+		else if (implementsSomething(cl,DatabasableAsValue.class))
+		{
+			try
+			{
+				DatabasableAsValue obj=(DatabasableAsValue) cl.newInstance();
+				obj.loadFromValue(strToObject(s,cl.getDeclaredMethod(DatabasableAsValue.toValueName).getReturnType(),database));
+				return obj;
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 		else if (implementsDatabasable(cl))
 		{
 			Databasable d=database.getFromCache((Class<? extends Databasable>) cl,new ID(s));
@@ -303,7 +328,6 @@ public class Extract
 			{
 				return d;
 			}
-//			return database.read(new Search((Class<? extends Databasable>) cl,new ID(s)));
 		}
 		return null;
 	}

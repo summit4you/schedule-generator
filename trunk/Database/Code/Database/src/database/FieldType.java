@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Different types for fields in a table
  * @author Zjef
- * @version 1.0
+ * @version 2.0
  */
 enum FieldType implements Syntaxable
 {
@@ -47,10 +47,22 @@ enum FieldType implements Syntaxable
 		{
 			return TEXT;
 		}
+		else if (Extract.implementsSomething(cl,DatabasableAsValue.class))
+		{
+			try
+			{
+				return getType(cl.getDeclaredMethod(DatabasableAsValue.toValueName).getReturnType());
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 		else if (Extract.implementsDatabasable(cl))
 		{
 			return INT;
 		}
+		
+		new DatabasableException("If you see this error, please contact ZVdP with the entire error message you get from eclipse");
 		return null;
 	}
 }

@@ -25,11 +25,11 @@ package database;
  * </ul>
  * 
  * @author Zjef
- * @version 1.0
+ * @version 2.0
  * @see InDatabase
  * @see OutDatabase
  */
-public interface Databasable
+public interface Databasable extends DatabasableObject
 {
 	public static final String getter="getID", setter="setID";
 

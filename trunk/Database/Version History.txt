@@ -1,8 +1,13 @@
-Latest version: 1.02
+Latest version: 2.0
 
-(testing version 1.0)
+(testing version 1.01)
 
 Version Notes:
+
+2.0	Added DatabasableAsValue interface and subinterfaces
+		allows storing objects in another format, such as an int, String,...
+	
+	bug fixes in the testing files: V1.01
 
 1.02	Added tests with JUnit
 	Bug Fixes
