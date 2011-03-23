@@ -1,0 +1,43 @@
+<tab1>
+<name>login</name>
+<top tag=code><div class="tabbertab" title="test"></top tag=code>
+<bottom tag=code></div></bottom tag=code>
+<functions>
+<login tag=code>
+<form action="/sample/test" method="post">
+<table id="login" border=0 style="width:200px" align="center"><tbody>
+<tr><td style="text-align: right">accountnaam</td><td><input type="text" name="NAME"></input></td></tr>
+<tr><td style="text-align: right">wachtwoord</td><td><input type="password" name="PASS"></input></td></tr>
+<tr><td colspan=2 style="text-align: center"><input type="submit" value="Send"></input></td></tr>
+</tbody></table>
+</form>	
+</login tag=code>
+<functie2>
+adam 2
+</functie2>
+<functie3>
+test 3
+</functie3>
+</functions>
+</tab1>
+
+<tab2>
+<name>test</name>
+<top></top>
+<bottom></bottom>
+<functions>
+<function2.1>test 2.1</function2.1>
+<function2.2>test 2.2</function2.2>
+
+</functions>
+</tab2>
+
+<tab3>
+<name>tabblad</name>
+<top>dit is de top van tabblad 3</top>
+<bottom>dit is de bottom van tabblad 3</bottom>
+<functions>
+<function3.1>test 3.1</function3.1>
+<function3.2>test 3.2</function3.2>
+</functions>
+</tab3>
