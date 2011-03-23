@@ -10,12 +10,12 @@ public class User
 {
 	public String name;
 	
-	User(String name)
+	public User(String name)
 	{
 		this.name=name;
 	}
 	
-	User()
+	public User()
 	{
 		this.name="Unkown";
 	}

@@ -1,49 +1,108 @@
 package sessionTracking;
 
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Enumeration;
+
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * <b>JUnit test to check the functionalities of the package sessionTracking</b> </br>
+ * - test1: Create 100 sessions with a lifetime of 1 sec. Wait 1.5 sec and see if all session
+ * are removed. </br>
+ * - test2: Create 100 sessions with a lifetime of 1 sec. Wait 1.5 sec and constantly see if 
+ * refresh the last created session. See if this session remains.  </br>
+ * - test3: Create 100 sessions with a lifetime of 5 min. Get existing and none existing
+ * sessions out of the inner table  </br>
+ * @author Alexander
+ * @version 1.2
+ * @see {@link Session}
+ */
 public class SessionTest
-{
-	/**
-	 * <b>Class used to for simple test </b> </br>
-	 * Makes a number of sessions with different lifetimes and prints the 
-	 * number of sessions in to the SessionTable. Ideal to see the 
-	 * SessionCleaner add work. </br></br>
-	 * This is not a JUnit test and should be replaced with one
-	 * @author Alexander
-	 * @version 1.1
-	 * @see {@link Session},{@link SessionTable}, {@link SessionCleaner}
-	 */
-	public static void main(String[] args)
-	{
-		System.out.println("+++ main has started +++");
-		User user = new User();
-		SessionTable table = Session.GetInnerTable();
-		SessionCleaner cleaner = Session.GetCleaner();
-		Session ses = null;
-		
+{	
+	User user;
+	
+    Session ses;
+	SessionTable table;
+	SessionCleaner cleaner;
+	
+    @Before
+    public void initTest() 
+    {
+    	
+        user = new User();
+		table = Session.getInnerTable();
+		cleaner = Session.getCleaner();
+		cleaner.stop();
+		System.out.println("SessionTest has initialized");
+    }
+
+    @After
+    public void endTest() 
+    {
+    	System.out.println("SessionTest has ended");
+    }
+    
+
+    @Test
+    public void testTest() 
+    {   
+    	System.out.println("SessionTest has begon:");
+    	//test1:
+    	System.out.print("	Test1 start...");
+		for (int i=0;i<100;i++)
+		{
+			ses = new Session(user,1000);
+		}
+		cleaner.start();
+		long startTime= System.currentTimeMillis();
+		while (System.currentTimeMillis()-startTime<1500)
+		{
+		}
 		cleaner.stop();
 		
-		for (int i=0;i<60;i++)
+		assertTrue(table.getNumberOfSessions()==0);
+		assertFalse(table.getEnumeration().hasMoreElements());
+		assertFalse(ses.isValid());
+		System.out.println("end");
+		
+    	//test2:
+		System.out.print("	Test2 start...");
+		for (int i=0;i<100;i++)
 		{
-			ses = new Session(user,i*1000);
+			ses = new Session(user,1000);
 		}
-		
-		int i=0;
-		int old=0;
-		
 		cleaner.start();
-		
-		while (table.getNumberOfSessions()>0)
-		{	
-			old=i;
-			i=table.getNumberOfSessions();
-			if (i!=old)
-			{
-				System.out.println(i);
-			}
-			
+		startTime= System.currentTimeMillis();
+		while (System.currentTimeMillis()-startTime<1500)
+		{
+			ses.refresh();
 		}
+		cleaner.stop();
 		
-		System.out.println("+++ main has ended +++");
-	}
+		assertTrue(table.getNumberOfSessions()==1);
+		assertTrue(table.getEnumeration().nextElement()==ses);
+		assertTrue(ses.isValid());
+		System.out.println("end");
+		
+    	//test3:
+		System.out.print("	Test3 start...");
+		for (int i=0;i<100;i++)
+		{
+			ses = new Session(user);
+		}
+		cleaner.start();
+		assertTrue(Session.getSession(ses.getSessionID())==ses);
+		ses.end();
+		assertFalse(Session.getSession(ses.getSessionID())==ses);
+		assertFalse(Session.getSession(null)==ses);
+		cleaner.stop();
+		System.out.println("end");
+    }
+
 
 }

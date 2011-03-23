@@ -9,7 +9,7 @@ import java.util.Enumeration;
  * class should be accessed in a synchronized way. This is not
  * a concern if you use the methods of the Session class.
  * @author Alexander
- * @version 1.1
+ * @version 1.2
  * @see  {@link Session}, {@link SessionTable}
  */
 public class SessionCleaner implements Runnable

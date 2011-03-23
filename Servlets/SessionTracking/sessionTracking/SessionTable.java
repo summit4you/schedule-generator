@@ -9,37 +9,37 @@ import java.util.UUID;
  * Only needed methods of HashTabel are made accessible. Also the number
  * of element contained in the table can now be checked.
  * @author Alexander
- * @version 1.1
+ * @version 1.2
  * @see {@link HashTable}, {@link Session}, {@link SessionCleaner}
  */
 
 public class SessionTable 
 {
-	private Hashtable<UUID, Session> tabel;
+	private Hashtable<String, Session> table;
 	private int numberOfSessions;
 	
 	SessionTable()
 	{
-		tabel = new Hashtable<UUID, Session>();
+		table = new Hashtable<String, Session>();
 		numberOfSessions=0;
 	}
 	
 	public void addSession(Session ses)
 	{
-		if (!tabel.containsKey(ses.getSessionID()))
+		if (!table.containsKey(ses.getSessionID()))
 		{
 			numberOfSessions=numberOfSessions+1;
 		}
-		tabel.put(ses.getSessionID(), ses);
+		table.put(ses.getSessionID(), ses);
 	}
 	
 	public void removeSession(Session ses)
 	{
-		if (tabel.containsKey(ses.getSessionID()))
+		if (table.containsKey(ses.getSessionID()))
 		{
 			numberOfSessions=numberOfSessions-1;
 		}
-		tabel.remove(ses.getSessionID());
+		table.remove(ses.getSessionID());
 	}
 	
 	public int getNumberOfSessions()
@@ -47,14 +47,18 @@ public class SessionTable
 		return numberOfSessions;
 	}
 
-	public Session getSession(UUID id)
+	public Session getSession(String id)
 	{
-		return tabel.get(id);
+		if (id!=null)
+		{
+			return table.get(id);
+		}
+		return null;
 	} 
 	
 	public Enumeration<Session> getEnumeration()
 	{
-		return tabel.elements();
+		return table.elements();
 	}
 }
 

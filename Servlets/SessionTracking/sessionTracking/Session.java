@@ -14,23 +14,23 @@ import java.util.UUID;
  * again with the refresh method.
  * 
  * @author Alexander
- * @version 1.1
+ * @version 1.2
  * @see {@link SessionTable}, {@link SessionCleaner}
  */
 public class Session
 {
 	
-	static final long DEFAULT_LIFE_TIME = 5*60*10^3;
+	static final long DEFAULT_LIFE_TIME = 5*60*1000;
 	
 	static private SessionTable innerTable = new SessionTable();
 	static private SessionCleaner cleaner = new SessionCleaner(innerTable);
 	
-	private UUID sessionID;
+	private String sessionID;
 	private long timeOfCreation;
 	private long lifeTime;
 	private User user;
 	
-	Session()
+	public Session()
 	{
 		setUser(null);
 		setTimeOfCreation();
@@ -39,7 +39,7 @@ public class Session
 		addToInnerTable();
 	}
 	
-	Session(User u)
+	public Session(User u)
 	{
 		setUser(u);
 		setTimeOfCreation();
@@ -48,7 +48,7 @@ public class Session
 		addToInnerTable();
 	}
 	
-	Session(User u,long life)
+	public Session(User u,long life)
 	{
 		setUser(u);
 		setTimeOfCreation();
@@ -64,7 +64,7 @@ public class Session
 	
 	private void generateID()
 	{
-		sessionID = UUID.randomUUID();
+		sessionID = UUID.randomUUID().toString();
 	}
 	
 	private void addToInnerTable()
@@ -88,7 +88,7 @@ public class Session
 		return timeOfCreation;
 	}
 
-	public UUID getSessionID()
+	public String getSessionID()
 	{
 		return sessionID;
 	}
@@ -155,12 +155,12 @@ public class Session
 	* Retruns a session from te table if the requested session is valid.
 	* @return requested session or null 
 	*/
-	public static Session GetSession(UUID id)
+	public static Session getSession(String id)
 	{
 		synchronized(innerTable)
 		{
 			Session ses = innerTable.getSession(id);
-			if (ses.isValid())
+			if ((ses!=null) && ses.isValid())
 			{
 				return ses;
 			}
@@ -172,12 +172,12 @@ public class Session
 		}
 	}
 	
-	public static SessionTable GetInnerTable()
+	public static SessionTable getInnerTable()
 	{
 		return innerTable;
 	}
 	
-	public static SessionCleaner GetCleaner()
+	public static SessionCleaner getCleaner()
 	{
 		return cleaner;
 	}
