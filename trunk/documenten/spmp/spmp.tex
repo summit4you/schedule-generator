@@ -6,6 +6,7 @@
 \usepackage{mathtools}
 \usepackage{hyperref}
 \usepackage{caption}
+\usepackage{arydshln}
 \usepackage{textcomp}
 \graphicspath{{fotosklein/}}
 \title{Software project management plan voor Schedule-Generator}
@@ -30,7 +31,7 @@
 \item[.] 16/2/2011 versie 0.1: Aanmaak document \\[-3mm]
 \item[.] 17/2/2011 versie 0.2: Overzetting naar Tech, toevoeging hoofdstuk 1 en 4\\[-3mm]
 \item[.] 19/2/2011 versie 0.3: Toevoeging hoofdstuk 5 en 6\\[-3mm]
-\item[.] 20/2/2011 versie 1.0: Verberingen doorgevoerd en titels vertaald\\[-3mm]
+\item[.] 20/2/2011 versie 1.0: Verbeteringen doorgevoerd en titels vertaald\\[-3mm]
 \item[.] 25/2/2011 versie 1.1: Opmerkingen opdrachtgever in achting genomen en verbeteringen doorgevoerd\\[-3mm]
 \item[.] 03/3/2011 versie 1.2: Deadlines toegevoegd om iteratie 1 te verwezenlijken \\[-3mm]
 \item[.] 03/3/2011 versie 2.0: Volledige revisie van het document doorgevoerd en grondige aanpassingen gedaan zodat het weer volledig up-to-date is met de huidige stand van het project \\[-3mm]
@@ -112,7 +113,7 @@ Datum	& To Do & delivery media  \\
 \hline
 20/05/2011 &	Einde 2de iteratie & code via svn\\
 \hline
-25/05/2011 &	presentatie eindresulaat & presentatie\\
+25/05/2011 &	presentatie eindresultaat & presentatie\\
 \hline
 \end{tabular}
 \end{center}
@@ -172,7 +173,7 @@ Het project wordt in 5 fasen onderverdeeld: Initialisatie, Design, Iteratie 1, I
 	\item[] Servlets schrijven die requests van gebruikers verwerken \\[-5mm]
 	\item[] Servlets draaien op de server \\[-5mm]
 	\item[] Kalender maken om lessenrooster weer te geven \\[-5mm]
-\end{itemize}\\[-5mm]
+\end{itemize}
 \end{itemize}
 
 \textbf{Iteratie II}
@@ -310,80 +311,74 @@ Deze verdeling zal gerbuikt worden om de verschillende taken aan teamleden toe t
 
 \subsubsection{Schattingsplan}
 
-Allereerst heeft men een overzicht gemaakt van de taken die moeten volbracht worden opdat het project slaagt. Aan de hand van deze informatie, heeft men dan ingeschat hoeveel tijd er zal moeten gespendeerd worden aan het project. Voorlopig is men uitgegaan van een weekindeling (zie ook  1.1.4. Scheduling and Budget Summary), waarbij er elke week een onderdeel van het project moet afgemaakt worden. 
+Allereerst heeft men een overzicht gemaakt van de taken die moeten volbracht worden opdat het project slaagt. Aan de hand van deze informatie, heeft men dan ingeschat hoeveel tijd er zal moeten gespendeerd worden aan het project. Voorlopig is men uitgegaan van een weekindeling, waarbij er elke week een onderdeel van het project moet afgemaakt worden. 
 
-De volledige planning van het project ziet er als volgt uit:
+\textbf{Initialisatie fase:}
+\begin{itemize}
+\item[-] \textit{Doel:} Verkennen van de opdracht en de nodige kennis vergaren om de opdracht tot een goed einde te brengen. \\[-5mm]
+\item[-] \textit{Subtaken:}\\[-5mm]
+\begin{itemize}
+	\item[] Opzoeken van informatie en software tools\\[-5mm]
+	\item[] Opstellen SPMP\\[-5mm]
+	\item[] Website maken en hosten om projectvooruitgang op te slaan\\[-5mm]
+	\item[] Opzetten van subversion account voor synchronisatie van bestanden \\[-5mm]
+\end{itemize}
+\item[-] \textbf{tijdsschatting:} De deadline voor het SPMP op 22 februari bepaald het einde van deze fase, daarom werd er 1 week voor uitgetrokken.\\[-5mm]
+\end{itemize}
 
-\begin{center}
-\begin{tabular}[t]{|c|c|l|}
-\hline
-Nr. & Datum & Activiteit  \\
-\hline
-\hline 
-1	& 14/2 &	Research: Programmeertalen (Java) \\
- & & Sitetalen (XHTML, CSS, Javascript) \\ 
- & & Server (Tomcat), Database (MySQL) \\
- \hline
-2	& 21/2 &	Research: Hetzelfde \\
- & & bestaande structuren zoeken die we kunnen gebruiken. \\
- & & Opstellen algemene structuur programma in UML diagramma\\
- & & Deadlines maken voor aparte onderdelen \\
- \hline
-3	& 28/2 &	programmeren, SRD en SDD afwerken \\
-\hline
-4	& 7/3 &	programmeren \\
- & & \textbf{Deadlines tegen 8 maart} \\
- & & ZJEF: Kalenderstructuur opmaken in JAVA. \\
- & & ADAM: Basislayout site afwerken \\
- & & ADAM en ALEXANDER: inlogscherm in HTML en servlet  \\
- & & ALEXANDER: Tomcat op de server installeren en testen \\
- & & ALEXANDER: UML klassendiagramma aanpassen.  \\
- & & MATTHIAS: Datastructuur aan JAVA zijde afwerken \\
- & & MATTHIAS: constraints oplijsten + vertalen naar JAVA \\
-\hline
-5	& 14/3 &	17/3 SCRUM meeting\\
- & & \textbf{Deadlines tegen 17 maart} \\
- & & ZJEF: Database interface afgewerkt, presentatie over database \\
- & & ADAM en ALEXANDER: Inloggen op site met server \\
- & & presentatie erover maken (beveiliging, servlets, tomcat,...) \\
- & & MATTHIAS: werking algoritme bepalen \\
- & & presentatie voorbereiden over algoritme en UML klassendiagramma \\
- & & ALGEMEEN: presentatie maken over toekomstige plannen, fouten,... \\
- \hline
-6	& 21/3 &	programmeren \\
-\hline
-7	& 28/3 &	programmeren \\
- & & \textbf{Deadlines tegen 30 maart} \\
- & & MATTHIAS: Manier om constraints weer te geven implementeren \\
- & & ALEXANDER en ADAM: HTMLBuilder integreren in bestaande servlet. \\
- & & gegevens van de database op de site kunnen weergeven. \\
- & & ZJEF: Mogelijkheid tot aanpassen van de kalender invoegen. \\
- & & Database interface grondig documenteren in SDD \\
- & & ADAM: SPMP nalezen en up to date brengen. \\
- & & ALEXANDER: SRS nalezen en up to date brengen. \\
- & & ZJEF: SDD nalezen en up to date brengen. \\
-\hline
-8	& 4/4 &	eerste iteratie af:  \\
- & & \textbf{Deadlines tegen 1 april} \\
- & & MATTHIAS: Lessenrooster opstellen met fixed constraints \\
- & & ADAM ALEXANDER en ZJEF: Opvragen van gegevens afgewerkt \\
-\hline 
-9	 & 11/4 &	paasvakantie: programmeren \\
-\hline
-10 & 18/4 &	paasvakantie: programmeren \\
-\hline
-11 & 25/4 &	SCRUM \\
-\hline
-12 & 2/5  &	programmeren\\
-\hline
-13 &	9/5 &	programmeren, code af \\
-\hline
-14 &	16/5 &	grondig debuggen + presentaties voorbereiden \\
-\hline
-15 &	23/5 &	tweede iteratie af: volledig project werkt \\
-\hline
-\end{tabular}
-\end{center}
+\textbf{Design fase:}
+\begin{itemize}
+\item[-] \textit{Doel:} Ontwerpen van structuur van het programma \\[-5mm]
+\item[-] \textit{Subtaken:}\\[-5mm]
+\begin{itemize}
+	\item[] UML design\\[-5mm]
+	\item[]Opstellen SRD en SDD\\[-5mm]
+\end{itemize}
+\item[-] \textbf{tijdsschatting:}	De deadline voor het maken van het SRS en het SDD liggen op 8 maart. Omdat in deze documenten het design van het programma vastgelegd wordt heeft het team dus 2 weken tijd om het design af te werken. Er werd geschat dat er maar 1 week nodig is om dit design te verwezenlijken. zodat er vroeger met het programmeren begonnen kon worden.\\[-5mm]
+\end{itemize}
+
+\textbf{Iteratie I}
+\begin{itemize}
+\item[-] \textit{Doel:} Kunnen inloggen op de site en de data die in de database opgeslaan is op de juiste plaatsen kunnen weergeven, lessenroosters kunnen genereren die aan fixed constraints voldoen\\[-5mm]
+\item[-] \textit{Subtaken:} \\[-5mm]
+\begin{itemize}
+	\item[] Klassenstructuur bouwen om nodige eigenschappen weer te geven \\[-5mm]
+	\item[] Algoritme maken dat simpel lessenrooster genereert \\[-5mm]
+	\item[] Elementen in de database kunnen opslaan en lezen. \\[-5mm]
+	\item[] Website maken \\[-5mm]
+	\item[] Servlets schrijven die requests van gebruikers verwerken \\[-5mm]
+	\item[] Servlets draaien op de server \\[-5mm]
+	\item[] Kalender maken om lessenrooster weer te geven \\[-5mm]
+\end{itemize}
+\item[-] \textbf{tijdsschatting:} Het einde van iteratie 1 ligt ook vast. Door voor de twee vorige fases van het project elk een week te voorzien, zijn er 6 weken beschikbaar om de iteratie af te werken.
+Het Algoritme kan redelijk los van de rest van het programma ontwikkeld worden. 
+De grootste bottleneck in het begin is het aanspreken van de database. Omdat het schrijven van de interface geen simpele materie is zullen na de eerste week dummy-methoden beschikbaar zijn die de rest van het team al kan gebruiken. De eigenlijke implementatie ervan houdt dan de rest van het team niet te veel tegen. Er wordt wel verwacht dat ze na de tweede week klaar is. 
+De klassenstructuur opstellen krijgt ook een grote prioriteit, omdat de gegevens allemaal op de website moeten kunnen weergegeven worden. Daarom wordt verwacht dat deze ook al na de tweede week klaar is.
+De website layout krijgt ook prioriteit omdat de servlets deze layout moeten gebruiken. De basisfuncties die nodig zijn om de doelstellingen van iteratie 1 te halen kunnen op zich apart geimplementeerd worden, maar ze hebben de lay-out nodig om in de website geintegreerd te worden. Deze taak krijgt daarom ook een week de tijd.
+De mogelijkheid om de servlets op de server te kunnen draaien zijn niet prioritair omdat de werking van de server gesimuleerd kan worden op de computers van de teamleden. tegen het einde van iteratie 1 moet deze functionaliteit wel afgewerkt zijn. 
+\end{itemize}
+
+\textbf{Iteratie II}
+\begin{itemize}
+\item[-] \textit{Doel:} Einddoelstellingen halen\\[-5mm]
+\item[-] \textit{Subtaken:}\\[-5mm]
+\begin{itemize}
+	\item[] Te bepalen \\[-5mm]
+\end{itemize}
+\item[-] \textbf{tijdsschatting:} \\[-5mm]
+\end{itemize}
+
+\textbf{Terminatie fase:}
+\begin{itemize}
+\item[-] \textit{Doel:} Eindproduct afleveren en voortellen \\[-5mm]
+\item[-] \textit{Subtaken:}\\[-5mm]
+\begin{itemize}
+	\item[] Presentatie maken \\[-5mm]
+	\item[] Documentatie afwerken \\[-5mm]
+\end{itemize}
+\item[-] \textbf{tijdsschatting:} \\[-5mm]
+\end{itemize}
+
 De software en de middelen die men nu denkt nodig te hebben, zijn voorlopig beschikbaar. Er zullen dus geen bijkomende kosten zijn.
 
 \subsubsection{Personeelsplan}
@@ -396,7 +391,69 @@ Aangezien er maar 4 teamleden zijn, gaat men uit van egoless programming. De bed
 
 \subsubsection{Plan voor het bekomen van middelen}
 
-Er zal enkel gewerkt worden met open source software. Gedurende de eerste twee weken zullen de teamleden deze software verzamelen, zodat men na deze eerste fase zich geen zorgen meer hoeft te maken over het vergaren van software. 
+Er zal enkel gewerkt worden met open source software. Gedurende de eerste twee weken zullen de teamleden deze software verzamelen, zodat men na deze eerste fase zich geen zorgen meer hoeft te maken over het vergaren van software. Er werd beslist om alles in windows te ontwikkelen. de teamleden die geen windows computer hadden werden voorzien van het nodige materieel.
+
+De programma's die gebruikt worden door het team zijn de volgende: \\
+
+Voor de aanmaak van de documenten:
+\begin{center}
+\begin{tabular}{|p{4cm}|p{1.5cm}|p{6cm}|}
+\hline
+TeXnicCenter & 1.0 & Omgeving voor het aanmaken van de documenten in LaTeX \\
+\hdashline[1pt/5pt] 
+MikTeX & 2.8 & Programma voor het compileren van de LaTeX bestanden  \\
+\hline
+\end{tabular}
+\end{center}
+
+De programmeeromgeving die gebruikt wordt is Eclipse. Er moeten de volgende packages en libraries aan toegevoegd worden:
+\begin{center}
+\begin{tabular}{|p{4cm}|p{1.5cm}|p{6cm}|}
+\hline
+Java EE Development Tools & 3.2.2 &   \\
+\hdashline[1pt/5pt]    
+JST Server Adapters & 3.2.2 &  \\
+\hdashline[1pt/5pt] 
+JST Server UI & 3.2.2 &  \\
+\hdashline[1pt/5pt] 
+Ganava & 1.0.1 & Library die toelaat om HTML code te genereren in JAVA \\
+\hdashline[1pt/5pt] 
+MySQL & & \\
+\hline
+Java JDK & 1.6.0-24 &  \\
+\hdashline[1pt/5pt] 
+Apache Tomcat & 7.0.8 & Het framework dat op de server geinstalleerd wordt om de servlets te runnen \\
+\hline
+\end{tabular}
+\end{center}
+
+Om de verschillende mappen te synchroniseren met het web worden de volgende programma's gebruikt:
+\begin{center}
+\begin{tabular}{|p{4cm}|p{1.5cm}|p{6cm}|}
+\hline
+TortoiseSVN & 1.6.12 & Programma gebruikt om de bestanden met de groep te delen en te synchroniseren \\
+\hdashline[1pt/5pt] 
+FileZilla & 3.3.5.1 & FTP client om met de server te communiceren en om de website online te zetten \\
+\hdashline[1pt/5pt] 
+Putty & & \\
+\hline
+\end{tabular}
+\end{center}
+
+Daarnaast zijn voor elk groepslid nog een browser nodig en een programma om pdf bestanden weer te geven.\\
+Om de website te laten werken wordt gebruik gemaakt van open-source javascripts die gemaakt werden door derden:
+
+\begin{center}
+\begin{tabular}{|c|c|p{9cm}|}
+\hline
+Scriptnaam & versie & Beschrijving \\
+\hline
+\hline
+Tabber & & Javascript dat de tabbladen genereert op de website \\
+ & & \\
+\hline
+\end{tabular}
+\end{center}
 
 \subsubsection{Personeelstrainingsplan}
 
@@ -415,7 +472,150 @@ De belangrijkste programmeertalen die elk teamlid zal moeten aanleren zijn de vo
 
 \subsubsection{Werkactiviteiten}
 
-Vooropig heeft men hier nog geen goed beeld over kunnen vormen. Dit zal men aanpassen en bekijken na de eerste fase van het project. Dan beschikt men ook over het UML klassendiagramma die het overzicht van de work activities en hun onderlinge relatie zal verduidelijken.
+Voorlopig heeft men hier nog geen goed beeld over kunnen vormen. Dit zal men aanpassen en bekijken na de eerste fase van het project. Dan beschikt men ook over het UML klassendiagramma die het overzicht van de work activities en hun onderlinge relatie zal verduidelijken.
+
+
+\begin{center}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 1	& 14/2 &	\textbf{Hoofdtaak:} Research \\
+\hline
+ & & Programmeertalen (Java) \\
+ & & Sitetalen (XHTML, CSS, Javascript) \\ 
+ & & Server (Tomcat), Database (MySQL) \\
+ \hline
+\end{tabular}
+ 
+ 
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+ \hline
+Week 2	& 21/2 &	\textbf{Hoofdtaak:} Research \\
+\hline
+ & & bestaande structuren zoeken die we kunnen gebruiken. \\
+ & & Opstellen algemene structuur programma in UML diagramma \\
+ & & Deadlines maken voor aparte onderdelen \\
+ \hline
+ \end{tabular}
+ 
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+ \hline
+Week 3	& 28/2 &	\textbf{Hoofdtaak:} programmeren \\
+\hline
+ & & \textbf{Deadlines tegen 29 februari} \\
+ & & ALGEMEEN: SRD en SDD afwerken \\
+\hline
+\end{tabular}
+
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 4	& 7/3 &	\textbf{Hoofdtaak:} programmeren \\
+\hline
+ & & \textbf{Deadlines tegen 8 maart} \\
+ & & ZJEF:  Kalenderstructuur opmaken in JAVA. \\
+ & & ADAM: Basislayout site afwerken \\
+ & & ADAM en ALEXANDER: inlogscherm in HTML en servlet  \\
+ & & ALEXANDER:  Tomcat op de server installeren en testen \\
+ & & ALEXANDER: UML klassendiagramma aanpassen.  \\
+ & & MATTHIAS: Datastructuur aan JAVA zijde afwerken \\
+ & & MATTHIAS: constraints oplijsten + vertalen naar JAVA \\
+\hline
+\end{tabular}
+ 
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 5	& 14/3 & \textbf{	Hoofdtaak:} SCRUM meeting op 17/3, programmeren\\
+\hline
+ & & \textbf{Deadlines tegen 17 maart} \\
+ & & ZJEF: Database interface afgewerkt, presentatie over database \\
+ & & ADAM en ALEXANDER:  Inloggen op site met server \\
+ & & presentatie erover maken (beveiliging, servlets, tomcat,...) \\
+ & & MATTHIAS: werking algoritme bepalen \\
+ & & presentatie voorbereiden over algoritme en UML klassendiagramma \\
+ & & ALGEMEEN: presentatie maken over toekomstige plannen, fouten,... \\
+ \hline
+ \end{tabular}
+ 
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+ \hline
+Week 6	& 21/3 &	\textbf{Hoofdtaak:} programmeren \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 7	& 28/3 &	\textbf{Hoofdtaak:} programmeren \\
+\hline
+ & & \textbf{Deadlines tegen 30 maart} \\
+ & & MATTHIAS: Manier om constraints weer te geven implementeren \\
+ & & ALEXANDER en ADAM: HTMLBuilder integreren in bestaande servlet. \\
+ & & gegevens van de database op de site kunnen weergeven. \\
+ & & ZJEF: Mogelijkheid tot aanpassen van de kalender invoegen. \\
+ & & Database interface grondig documenteren in SDD \\
+ & & ADAM: SPMP nalezen en up to date brengen. \\
+ & & ALEXANDER: SRS nalezen en up to date brengen. \\
+ & & ZJEF: SDD nalezen en up to date brengen. \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 8	& 4/4 &	\textbf{Hoofdtaak:} 1ste iteratie afwerken  \\
+\hline
+\hline
+ & & \textbf{Deadlines tegen 1 april} \\
+ & & MATTHIAS: Lessenrooster opstellen met fixed constraints \\
+ & & ADAM ALEXANDER en ZJEF: Opvragen van gegevens afgewerkt \\
+\hline 
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+Week 9	 & 11/4 &	\textbf{Hoofdtaak:} paasvakantie: programmeren \\
+\hline
+\hline
+ & & \textbf{Deadlines tegen 1 april} \\
+ & & Te bepalen \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 10 & 18/4 &	\textbf{Hoofdtaak:} paasvakantie: programmeren \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 11 & 25/4 &	\textbf{Hoofdtaak:} SCRUM \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 12 & 2/5  &	\textbf{Hoofdtaak:} programmeren\\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 13 &	9/5 &	\textbf{Hoofdtaak:} code afwerken \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 14 &	16/5 &	\textbf{Hoofdtaak:} debuggen + presentaties maken \\
+\hline
+\end{tabular}
+
+\begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
+\hline
+Week 15 &	23/5 &	\textbf{Hoofdtaak:} 2de iteratie  \\
+\hline
+\end{tabular}
+
+\end{center}
 
 \subsubsection{Plan voor het controleren van de planningen}
 
@@ -434,7 +634,7 @@ Aangezien de SRS nog niet helemaal is afgerond, heeft men nog geen beeld van de 
 
 \subsubsection{Plannigscontroleplan}
 
-Er zal ook elke week tijdens vergaderingen gekeken worden of men heeft volbracht wat gepland is. Indien dit niet het geval is, zal men de oorzaak hiervan onderzoeken en kijken of de planning voor de toekomst nog wel realistisch en of ook deze niet herbekeken moet worden. De data van de vergaderingen liggen nog niet vast, wel is het zeker dat er elke week minstens ŽŽn vergadering is.
+Er zal ook elke week tijdens vergaderingen gekeken worden of men heeft volbracht wat gepland is. Indien dit niet het geval is, zal men de oorzaak hiervan onderzoeken en kijken of de planning voor de toekomst nog wel realistisch en of ook deze niet herbekeken moet worden. De data van de vergaderingen liggen nog niet vast, wel is het zeker dat er elke week minstens een vergadering is.
 
 \subsubsection{Kwaliteitscontroleplan}
 
@@ -509,7 +709,7 @@ projectwebsite. \\[3mm]
 
 Tijdens het project zal de Agile methodologie worden gevolgd. Dit houdt in dat concrete doelstelling (en de stappen nodig om deze te bereiken) steeds op korte termijn zullen worden gedefinieerd. Een snelle evaluatie van de verwezenlijkte resultaten is dus noodzakelijk. Dit wordt gegarandeerd door wekelijks overleg tussen de groepsleden en externe feedback afkomstig van de geplande scrum meetings.
 Het project zal worden uitgevoerd in de programmeertaal Java. Als werkomgeving voor het schrijven en documenteren van de code wordt gekozen voor Eclips. Voor meer informatie wordt doorverwezen naar http://www.java.com/ en http://www.eclipse.org/.
-Bij het documenteren en beschrijven van de code zal zoveel mogelijk beroep worden gedaan op Unified Modeling Language (UML). Voor meer informatie over deze standaard http://www.uml.org/. Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN).
+Bij het documenteren en beschrijven van de code zal zoveel mogelijk beroep worden gedaan op Unified Modeling Language (UML). Voor meer informatie over deze standaard http://www.uml.org/. Voor het beheren van de project documenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN).
 
 %\subsection{Infrastructuur plan}
 
@@ -522,7 +722,7 @@ Enkel werkende code zal worden afgeleverd aan het einde van het project mits goe
 %Na het project
 \subsection{Configuration management plan}
 
-Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN). Alle groepsleden hebben volledige toegang tot deze account en dus ook tot alle projectdocumenten en -bestanden. Elk groepslid zal verantwoordelijk worden gesteld voor het beheer van zijn bijdrage tot het project. Daarbij zal aan het einde van elke projectfase\footnote{Zie 5.1 Procesmodel  voor de indeling van de fases.} een back-up worden gemaakt van alle bestanden om eventueel falen van de Google server het hoofd te kunnen bieden.
+Voor het beheren van de projectdocumenten en -bestanden wordt gebruikt gemaakt van een GoogleCode account en Subversion (SVN). Alle groepsleden hebben volledige toegang tot deze account en dus ook tot alle project documenten en -bestanden. Elk groepslid zal verantwoordelijk worden gesteld voor het beheer van zijn bijdrage tot het project. Daarbij zal aan het einde van elke projectfase\footnote{Zie 5.1 Procesmodel  voor de indeling van de fases.} een back-up worden gemaakt van alle bestanden om eventueel falen van de Google server het hoofd te kunnen bieden.
 
 \subsection{Verificatie en validatieplan}
 
@@ -538,7 +738,7 @@ Tijdens het project zullen onderstaande documenten zeker worden afgeleverd.
 \end{itemize}
 
 Voor het opstellen van deze documenten wordt steeds gebruik gemaakt van de IEEE standaards vermeld in de referenties van dit document.
-Vervolgens zal ook het projectverloop worden gedocumenteerd ondervorm van een logboek dat beschikbaar zal zijn op de projectwebsite en later zal worden toegevoegd aan dit document onder de vorm van een bijlage.
+Vervolgens zal ook het projectverloop worden gedocumenteerd onder vorm van een logboek dat beschikbaar zal zijn op de projectwebsite en later zal worden toegevoegd aan dit document onder de vorm van een bijlage.
 Elke groepslid is verantwoordelijk voor het documenteren van zijn bijdragen tot het project. Elk onderdeel van de documentatie zal door alle groepsleden worden nagelezen en gecontroleerd.
 
 %\subsection{quality assurance plan}
@@ -559,7 +759,7 @@ Elke groepslid is verantwoordelijk voor het documenteren van zijn bijdragen tot 
 
 \subsection{Oorspronkelijke opdracht}
 \begin{quotation}
-\\
+
 \textbf{abstract}\\
 The program MyCourses provides as optimal as possible a plan for scheduling courses. Every university is faced each year with the same problem : How to schedule a large number of courses in an optimal way while fulfilling a number of constraints, such as available lecture rooms, limited availability of lecturers, students' selections of the courses, and similar. MyCourses should be implemented as an interactive program that (i) enables entering data, such as courses, the faculty members, the available facilities and some constraints related to the course scheduling, (ii) calculates and proposes a scheduling for courses, (iii) makes it possible to manually update the proposed schedule, but keeping track of the consistent scheduling, and (iv) provides a presentation of scheduled courses.\\[3mm]
 \textbf{introduction}\\
@@ -584,30 +784,5 @@ Different users can use the program to present data. Examples of presentations: 
 
 %\newpage
 %\section*{Index}
-
-
-
-
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=\textwidth]{Bangladesh}
-%\caption*{Bangladesh}
-%\end{center}
-%\end{figure}
-
-%\begin{tabular}[t]{llll}
-%Mandi & Katholiek & 25\% & Platte neus -- spleetogen \\
-%Gohli & Moslims   & 75\% & Grote ogen -- scherpere neus \\
-%Kooch & Hindu     & 1\%  & Mengeling van de twee \\
-%\end{tabular}
-%\\[5mm]
-
-%\begin{itemize}
-%\item[.] Slaapmatje \\[-3mm]
-%\item[.] Kleren: 3 korte broeken, 6 onderbroeken, 4 T-shirts\\[-3mm]
-%\item[.] Longi: voor 's avonds en als pyjama\\[-3mm]
-%\item[.] Tandenborstel en twee tubes tandpasta\\[-3mm]
-%\end{itemize}
-
 
  \end{document}
