@@ -103,13 +103,17 @@ Het bevat ook een schedule generator die in staat is een lessenrooster te genere
 \subsection{User characteristics}
 
 De gebruikers zijn studenten die in staat om zijn om de verschillende lessenroosters te bekijken en docenten die in staat zijn het rooster op te vragen, maar evenwel aanpassingen te maken aan de informatie van de vakken waarvoor zij verantwoordelijk zijn.
+Daarnaast zijn er ook verschillende klassen beheerders die verantwoordelijk zijn voor groepen vakken, groepen studenten, gebouwen en het lessenrooster zelf. Deze beheerders moeten de nodige aanpassingen ook op de website kunnen doorvoeren.
 
 \subsection{constraints}
 
-Het geheel moeten worden gedraaid op de server Wilma die als besturingssysteem Linux heeft.\\
-Alle code moet open source zijn.\\
-Er moet geprogrammeerd worden in Java.\\
-Men heeft internet nodig om aan de diensten te kunnen.
+De grootste constraints werden door de opdrachtgever vastgelegd. De eigenlijke opdracht staat in het SPMP, maar de constraints die erin stonden waren de volgende:
+\begin{itemize}
+	\item[-] Alle code moet open source zijn.\\
+	\item[-] Er moet geprogrammeerd worden in een object-georienteerde programmeertaal. Er werd gekozen voor JAVA, omdat het team daar het meest ervaring mee heeft.\\
+	\item[-] Alle input van gebruikers moet via de website gebeuren. \\
+	\item[-] De website en het programma draaien op de server Wilma aan de VUB. \\
+\end{itemize}
 
 % \subsection{Assumptions and dependencies}
 
@@ -126,7 +130,7 @@ Na het inloggen krijgt de gebruiker een pagina te zien met verschillende tabs. V
 
 \subsubsection{Communications and software interfaces}
 
-Om de communicatie tussen de browser van de gebruiker en de server te doen wordt gebruik gemaakt van HTTP. De HTTP paketten zullen op de server ge\"{i}nterpreteerd worden door servlets die op de server uitgevoerd worden via Tomcat. De servlets zijn in JAVA geschreven en genereren de gevraagde XHTML en CSS code die dat terug naar de gebruiker gestuurd worden.\\ 
+Om de communicatie tussen de browser van de gebruiker en de server te doen wordt gebruik gemaakt van HTTP. De HTTP pakketten zullen op de server ge\"{i}nterpreteerd worden door servlets die op de server uitgevoerd worden via Tomcat. De servlets zijn in JAVA geschreven en genereren de gevraagde XHTML en CSS code die dat terug naar de gebruiker gestuurd worden.\\ 
 
 De servlets communiceren met de database via MySQL en interpreteren de gegevens voor de gebruiker. Het proces kan overzichtelijk weergegeven worden in volgend blokschema:
 
@@ -165,7 +169,7 @@ De servlets communiceren met de database via MySQL en interpreteren de gegevens 
 \put(1.8,0.7){HTTP}
 \put(1.52,0.65){\line(1,0){0.76}}
 \end{picture}\\[3mm]
-\caption{Overzicht van de communicatie en de gebruikte protocols tussen de verschillende delen van het programma}
+Overzicht van de communicatie en de gebruikte protocols tussen de verschillende delen van het programma
 \end{center}
 
 
@@ -587,9 +591,6 @@ Omschrijving: Dit wordt mogelijk gemaakt door et toegankelijk maken van de opmaa
 
 We verkiezen een methode waarbij de rechten van een account niet volledig vast liggen door zijn user class, maar veel losser kunnen bepaald worden. De user classes uit de vorige puntjes zijn templates, richtwaarden waar van afgeweken kan worden. De structuur moet dus per feature beschreven worden in een latere versie van het SRS.
 
-\\ 
-\\
-
 %ZJEF
 
 \subsection{Performance requirements}
@@ -662,30 +663,6 @@ worden.
 
 %\newpage
 %\section*{Index}
-
-
-
-
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=\textwidth]{Bangladesh}
-%\caption*{Bangladesh}
-%\end{center}
-%\end{figure}
-
-%\begin{tabular}[t]{llll}
-%Mandi & Katholiek & 25\% & Platte neus -- spleetogen \\
-%Gohli & Moslims   & 75\% & Grote ogen -- scherpere neus \\
-%Kooch & Hindu     & 1\%  & Mengeling van de twee \\
-%\end{tabular}
-%\\[5mm]
-
-%\begin{itemize}
-%\item[.] Slaapmatje \\[-3mm]
-%\item[.] Kleren: 3 korte broeken, 6 onderbroeken, 4 T-shirts\\[-3mm]
-%\item[.] Longi: voor 's avonds en als pyjama\\[-3mm]
-%\item[.] Tandenborstel en twee tubes tandpasta\\[-3mm]
-%\end{itemize}
 
 
  \end{document}
