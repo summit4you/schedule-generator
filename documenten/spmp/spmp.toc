@@ -1,36 +1,62 @@
 \select@language {dutch}
-\contentsline {section}{\numberline {1}Overzicht}{4}{section.1}
-\contentsline {subsection}{\numberline {1.1}Samenvatting van het project}{4}{subsection.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1}Doel, bedoeling en objectieven}{4}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}Veronderstellingen en beperkingen}{4}{subsubsection.1.1.2}
-\contentsline {subsubsection}{\numberline {1.1.3}Deliverables van het Project}{4}{subsubsection.1.1.3}
-\contentsline {subsubsection}{\numberline {1.1.4}Planning en Budget}{5}{subsubsection.1.1.4}
-\contentsline {subsection}{\numberline {1.2}Evolution of the plan}{6}{subsection.1.2}
-\contentsline {section}{\numberline {2}Verwijzingen}{7}{section.2}
-\contentsline {section}{\numberline {3}Organisatie van het Project}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Interne structuur}{8}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Rollen en verantwoordelijkheden}{8}{subsection.3.2}
-\contentsline {section}{\numberline {4}Bestuurlijke proces plannen}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Start-up plan}{10}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Schattingsplan}{10}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Personeelsplan}{12}{subsubsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.3}Plan voor het bekomen van middelen}{12}{subsubsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.4}Personeelstrainingsplan}{13}{subsubsection.4.1.4}
-\contentsline {subsection}{\numberline {4.2}Werkplan}{13}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Werkactiviteiten}{13}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Plan voor het controleren van de planningen}{15}{subsubsection.4.2.2}
-\contentsline {subsection}{\numberline {4.3}Controle plannen}{15}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Plan voor controle van de eisen}{15}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Plannigscontroleplan}{15}{subsubsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.3}Kwaliteitscontroleplan}{15}{subsubsection.4.3.3}
-\contentsline {subsubsection}{\numberline {4.3.4}Rapporteringsplan}{16}{subsubsection.4.3.4}
-\contentsline {section}{\numberline {5}Technische plannen}{17}{section.5}
-\contentsline {subsection}{\numberline {5.1}Proces model}{17}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Methode hulpmiddelen en technieken}{18}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Productaanvaarding plan}{18}{subsection.5.3}
-\contentsline {section}{\numberline {6}Ondersteunende processplannen}{19}{section.6}
-\contentsline {subsection}{\numberline {6.1}Configuration management plan}{19}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Verificatie en validatieplan}{19}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Documentatieplan}{19}{subsection.6.3}
-\contentsline {section}{\numberline {7}Bijlagen}{20}{section.7}
-\contentsline {subsection}{\numberline {7.1}Oorspronkelijke opdracht}{20}{subsection.7.1}
+\contentsline {section}{\numberline {1}Overzicht}{5}{section.1}
+\contentsline {subsection}{\numberline {1.1}Samenvatting van het project}{5}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Doel, bedoeling en objectieven}{5}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Veronderstellingen en beperkingen}{5}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}Deliverables van het Project}{5}{subsubsection.1.1.3}
+\contentsline {subsubsection}{\numberline {1.1.4}Planning en Budget}{6}{subsubsection.1.1.4}
+\contentsline {subsection}{\numberline {1.2}Evolution of the plan}{7}{subsection.1.2}
+\contentsline {section}{\numberline {2}Verwijzingen}{8}{section.2}
+\contentsline {section}{\numberline {3}Organisatie van het Project}{9}{section.3}
+\contentsline {subsection}{\numberline {3.1}Interne structuur}{9}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Rollen en verantwoordelijkheden}{9}{subsection.3.2}
+\contentsline {section}{\numberline {4}Bestuurlijke proces plannen}{11}{section.4}
+\contentsline {subsection}{\numberline {4.1}Start-up plan}{11}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Schattingsplan}{11}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Personeelsplan}{13}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Plan voor het bekomen van middelen}{13}{subsubsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.4}Personeelstrainingsplan}{14}{subsubsection.4.1.4}
+\contentsline {subsection}{\numberline {4.2}Werkplan}{15}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Werkactiviteiten}{15}{subsubsection.4.2.1}
+\contentsline {subsection}{\numberline {4.3}Controle plannen}{18}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Plan voor controle van de eisen}{18}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Plannigscontroleplan}{18}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Kwaliteitscontroleplan}{18}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Rapporteringsplan}{18}{subsubsection.4.3.4}
+\contentsline {section}{\numberline {5}Technische plannen}{19}{section.5}
+\contentsline {subsection}{\numberline {5.1}Proces model}{19}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Methode hulpmiddelen en technieken}{20}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Productaanvaarding plan}{20}{subsection.5.3}
+\contentsline {section}{\numberline {6}Ondersteunende processplannen}{21}{section.6}
+\contentsline {subsection}{\numberline {6.1}Configuration management plan}{21}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Verificatie en validatieplan}{21}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Documentatieplan}{21}{subsection.6.3}
+\contentsline {section}{\numberline {7}Bijlagen}{22}{section.7}
+\contentsline {subsection}{\numberline {7.1}Oorspronkelijke opdracht}{22}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Minutes van de vergaderingen}{24}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Vergadering van 22-2-2010}{24}{subsubsection.7.2.1}
+\contentsline {paragraph}{Punten op de agenda:}{24}{section*.4}
+\contentsline {paragraph}{Resultaten:}{24}{section*.5}
+\contentsline {paragraph}{Eerste deel van de vergadering: 10:15 tot 12:00}{24}{section*.6}
+\contentsline {paragraph}{Tweede deel van de vergadering: 15:15 tot 17:15}{25}{section*.7}
+\contentsline {subsubsection}{\numberline {7.2.2}Vergadering van 23-2-2010}{26}{subsubsection.7.2.2}
+\contentsline {paragraph}{Punten op de agenda:}{26}{section*.8}
+\contentsline {paragraph}{Resultaten:}{26}{section*.9}
+\contentsline {paragraph}{Deel 1 van de vergadering: 9:00 tot 11:30}{26}{section*.10}
+\contentsline {paragraph}{Deel 2 van de vergadering: 15:00 tot 17:00}{27}{section*.11}
+\contentsline {subsubsection}{\numberline {7.2.3}Vergadering van 24-2-2011}{28}{subsubsection.7.2.3}
+\contentsline {paragraph}{Punten op de agenda:}{28}{section*.12}
+\contentsline {paragraph}{Resultaten:}{28}{section*.13}
+\contentsline {paragraph}{Deel 1 van de vergadering: 12:30 tot 16:00}{28}{section*.14}
+\contentsline {subsubsection}{\numberline {7.2.4}Vergadering van 1-3-2011}{28}{subsubsection.7.2.4}
+\contentsline {paragraph}{Punten op de agenda:}{28}{section*.15}
+\contentsline {paragraph}{Resultaten:}{29}{section*.16}
+\contentsline {paragraph}{Deel 1 van de vergadering: 14:00 tot 16:20}{29}{section*.17}
+\contentsline {subsubsection}{\numberline {7.2.5}Vergadering van 8-3-2011}{32}{subsubsection.7.2.5}
+\contentsline {paragraph}{Punten op de agenda:}{32}{section*.18}
+\contentsline {paragraph}{Resultaten:}{32}{section*.19}
+\contentsline {paragraph}{Deel 1 van de vergadering: 15:20 tot}{32}{section*.20}
+\contentsline {subsubsection}{\numberline {7.2.6}Vergadering van 22-3-2011}{35}{subsubsection.7.2.6}
+\contentsline {paragraph}{Punten op de agenda:}{35}{section*.21}
+\contentsline {paragraph}{Resultaten:}{35}{section*.22}
+\contentsline {paragraph}{Minutes 12:30 tot 14:00 en van 16:00 tot 18:00}{35}{section*.23}
