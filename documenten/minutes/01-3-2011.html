@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+<html>
+<head>
+<title>Vergadering 01-03-2011</title>
+</head>
+<body>
+<h1>01-03-2010: Algemene vergadering raad van bestuur </h1>
+
+<p>
+<b>Aanwezig</b>: </br>
+Alexander De Cock </br>
+Zjef Van de Poel </br>
+Adam Cooman </br>
+Matthias Caenepeel (Na zijn kakske)</br></br>
+<b>Locatie:</b>Keuken Alexander en Matthias 
+</p>
+
+<h2>Punten op de agenda:</h2>
+<ul>
+<li>XML file interface en Database interface uitleggen</li>
+<li>Doelstellingen eerste iteratie bespreken</li>
+<li>Taakverdeling eerste iteratie bespreken</li>
+<li>Deadlines opstellen</li>
+<li>JUnit bespreken</li>
+</ul>
+
+<h2>Resultaten:</h2>
+<ul>
+<li>Inhoud voor de komende taken voor iteratie 1 opgesteld</li>
+<li>Deadlines voor de komende taken voor iteratie 1 opgesteld</li>
+</ul>
+
+<h2> Deel 1 van de vergadering: 14:00 tot 16:20</h2>
+<p>
+Zjef begon met de demonstratie van zijn interface voor het communiceren met de xml bestanden en voor het communiceren met de database. De beschrijving van die interfaces kan gevonden worden in het SDD. <br>
+Matthias Had tijdens het weekend de klassestructuur opgesteld die in het SDD beschreven wordt onder 'Logical'. Deze werd overlopen en aangepast waar nodig.<br>
+Omdat matthias met MAC werkt en het veel problemen gaf om de juiste software werkende te krijgen op MAC (vooral svn) werd een windows laptop gezocht voor hem. Deze werd hem officieel overhandigd, geformatteerd en geinstalleerd nadat een klein probleem met de voeding gerepareerd was. <br><br>
+
+De lijst met noodzakelijke functionaliteiten werd opgesteld om te realiseren voor de eerste iteratie. Ze werden uit het SRS gehaald.<br><br>
+
+<u>Volledig identificatie (3.2.4 van het SRS)</u> <br>
+Aanmelden, aanmelden als gast, afmelden <br>
+<u>Opvragen van gegevens (3.2.5 van het SRS)</u> <br>
+Opvragen faculteit, programma, vak, student, docent <br>
+lessenrooster op programma, student, docent <br>
+<u>Beheren van vakken (3.2.6)</u> <br>
+Aanmaken, verwijderen, wijzigen als beheerder, koppelen (aan student, aan docent), onderverdelen in programma's <br>
+<u>Beheren van programma (3.2.7 van SRS)</u><br>
+Aanmaken, verwijderen, wijzigen, koppelen als beheerder <br>
+<u>Beheren van accounts (3.2.10 van SRS)</u><br>
+Aanmaken, verwijderen, wijzigen <br>
+<u> Overige </u> <br>
+Aanmaken van software databasestructuur via SQL <br><br>
+
+Daarnaast werden de mogelijke fucntionaliteiten in verband met het lessenrooster ook opgenomen in de lijst omdat daarmee de andere functionaliteiten getest kunnen worden. We moeten dus alle functionaliteiten implementeren die toelaten om handmatig een lessenrooster op te stellen. <br><br>
+
+<u>Beheren van beperkingen (3.2.11 van SRS)</u> <br>
+Tijdsbeperkingen aanmaken, verwijderen wijzigen <br>
+Beheren van lessenroosters <br><br>
+
+
+Van al deze noodzakelijke functionaliteiten werden de volgende vooropgesteld voor iteratie 1 <br>
+<u>Volledig identificatie (3.2.4 van het SRS)</u> <br>
+Aanmelden, aanmelden als gast, afmelden <br>
+<u> Overige </u> <br>
+Aanmaken van software databasestructuur via SQL <br>
+<u>Opvragen van gegevens (3.2.5 van het SRS)</u> <br>
+Opvragen faculteit, programma, vak, student, docent <br>
+lessenrooster op programma, student, docent <br><br>
+
+De andere functionaliteiten zijn nodig om deze punten te realiseren, maar de aanpassingen zullen op de server zelf gebeuren in de servlet, niet via de site.<br>
+Om de lessenrooster editor te maken is er keuze tussen een JAVA applet of javascript. Er werd beslist om bestaande oplossingen te zoeken en dan deze keuze te maken. <br><br>
+
+De volgende deadlines werden vastgelegd (allemaal nog in 2011): <br>
+<u>Tegen 2 maart:</u> ZJEF: Schatting voor tijd die nodig is voor het afwerken van de database interface <br><br>
+
+<u>Tegen 8 maart:</u> ALEX: Tomcat op de server installeren en testen. Account klasse definieren. UML klassendiagramma aanpassen.<br>
+<u>Tegen 8 maart:</u> ADAM: Basislayout site afwerken (tabellen, locaties,... geen grafische elementen) <br>
+<u>Tegen 8 maart:</u> ADAM en ALEX: inlogscherm in HTML en servlet laten overeen komen <br>
+<u>Tegen 8 maart:</u> ZJEF: Kalenderstructuur opmaken in JAVA. <br>
+<u>Tegen 8 maart:</u> ZJEF: JUnit tutorial uitleggen aan de rest van het team en regels opstellen waaraan de testmethodes moeten voldoen <br>
+<u>Tegen 8 maart:</u> MATTHIAS: Datastructuur aan JAVA zijde afwerken (zie design viewpoint 2: Logical van het SDD) en constraints oplijsten + vertalen naar JAVA <br>
+<br>
+<u>Tegen 17 maart: SCRUM</u> MATTHIAS: werking algoritme bepalen en presentatie voorbereiden over UML klassendiagramma (SDD viewpoint 2) <br>
+<u>Tegen 17 maart: SCRUM</u> ADAM en ALEXANDER: Inloggen op site met echte connectie met server + presentatie erover (beveiliging, servlets, tomcat,... (SDD Viewpoint 3))<br>
+<u>Tegen 17 maart: SCRUM</u> ZJEF: Database interface afgewerkt en geeft presentatie over database <br>
+<u>Tegen 17 maart: SCRUM</u> presentatie maken over toekomstige plannen, fouten, al de rest voor de SCRUM <br>
+<br>
+<u>Tegen 1 april: ITER1</u> MATTHIAS: Lessenrooster kunnen opstellen dat aan de fixed constraints voldoet.<br>
+<u>Tegen 1 april: ITER1</u> ADAM en ALEX en ZJEF: Inloggen en Opvragen van gegevens afgewerkt (SRS 3.2.5)<br><br>
+
+Adam zal zich bezig houden met het maken van het Gant diagramma van deze deadlines om overzicht te krijgen en te voldoen aan de wensen van de heilige opdrachtgever.
+<br><br>
+
+
+
+</p>
+</body>
+</html>
+
+

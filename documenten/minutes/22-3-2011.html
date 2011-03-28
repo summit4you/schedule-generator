@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+<html>
+<head>
+<title>Vergadering 22-03-2011</title>
+</head>
+<body>
+<h1>22-03-2010: Algemene vergadering raad van bestuur</h1>
+
+<p>
+<b>Aanwezig</b>: </br>
+Alexander De Cock </br>
+Zjef Van de Poel </br>
+Adam Cooman </br>
+Matthias Caenepeel (Na bezoek aan de Colruyt en al etend)</br>
+</br>
+
+<b>Locatie:</b>Keuken Alexander en Matthias 
+</p>
+
+<h2>Punten op de agenda:</h2>
+<ul>
+<li>Updaten van Adam na zijn week ziekte</li>
+<li>Bespreken van de doorgevoerde veranderingen: Database, Algoritme, kalender, session tracking, HTML builder,...</li>
+<li>Opstellen nieuwe deadlines en taken voor de komende weken</li>
+<li>Bespreken moeilijkheden van configuratie management voor de verschillende versies van de interfaces</li>
+</ul>
+
+<h2>Resultaten:</h2>
+<ul>
+<li>Nieuwe deadlines opgesteld</li>
+<li>Site inhoud grondiger gespecifieerd</li>
+</ul>
+
+<h2> Minutes 12:30 tot 14:00 en van 16:00 tot 18:00</h2>
+<h3>Bespreken van de vorige taken</h3>
+<p>
+<b>Algoritme:</b> Er werd beslist om CHOCO Java library te gebruiken voor het oplossen van het kalenderprobleem. </br>
+<b>Database:</b> Er zijn een paar bugfixes doorgevoerd. We zitten nu op versie 1.2 </br>
+<b>Kalender:</b> PHP iCalendar is ingevoerd in een tabblad van de site. Er kunnen parameters meegegeven worden in het iFrame om aanpassingen door te voeren </br>
+<b>Session Tracking:</b> De session tracking werkt en de gebruikers worden automatisch na 5 minuten uitgelogd </br>
+<b>HTML builder:</b> De HTML builder werkt, maar moet nog uitgebreid en gedocumenteerd worden. Hij moet nu in de bestaande servlet met session tracking geintegreerd worden</br>
+</p>
+<h3>Nieuwe deadlines tegen woensdag 30/3</h3>
+<p>
+<b>MATTHIAS:</b> Degelijke tijd/locatie/subcourse structuur opstellen en daarnaast een methode schrijven die toelaat om de subcourse op plaatsen en tijdstippen te plaatsen zodat aan een constraint voldoen is. </br>
+<b>ALEXANDER en ADAM:</b> HTMLBuilder integreren in bestaande servlet. </br> 
+Verschillende methoden implementeren die de gegevens van de database op de site kunnen weergeven. </br>
+<b>ZJEF: </b> Mogelijkheid tot aanpassen van de kalender invoegen. </br>
+Database interface grondig documenteren in SDD </br>
+<b>ADAM: </b> SPMP nalezen en up to date brengen. Aanpassen van stukken delegeren. </br>
+<b>ALEXANDER: </b> SRS nalezen en up to date brengen. Aanpassen van stukken delegeren. </br>
+<b>ZJEF: </b> SDD nalezen en up to date brengen. Aanpassen van stukken delegeren. </br>
+</p>
+
+<h3>Bespreken van de tabbladen en functies van de site</h3>
+
+Er werd beslist om de breedte van de site van 600 pixels te veranderen naar 1024 pixels. </br></br>
+
+Dan werden de verschillende tabbladen nog is opgesomd en de functies die erin moeten gespecifieerd, zodat Adam en Alexander eraan kunnen beginnen werken. </br> </br>
+
+<b>Login tab</b> </br>
+login form </br>
+log in as guest </br></br>
+
+Als gast => </br>
+<b>Search tab:</b> </br>
+Naam kiezen van student of prof (philfunctie) of schuiver met faculteiten en dan schuiver met programma's => Rooster bekijken </br> </br>
+
+Als student => </br>
+<b>Account tab:</b> </br>
+Wachtwoord veranderen </br>
+
+<b>Mijn cursussen</b>
+Programma wordt weergegeven en de cursussen die daarin zitten worden getoond en Lijst van cursussen die hij als keuzevakken heeft (met de mogelijkheid om ze te verbergen) </br>
+Voeg vak toe </br>
+Voeg programma toe </br>
+(voor educators) edit course </br></br>
+
+<b>Lessenrooster tab:</b> </br>
+toont persoonlijk lessenrooster </br></br>
+
+Voor educators => </br>
+<b>Availability tab</b> </br>
+lijst van constraints die de professor opgegeven heeft (edit, add, delete) </br></br>
+
+Voor Admins => </br>
+<b>Building management tab</b> </br>
+Lijst van buildings met daarin een lijst van lokalen </br>
+per builing: add, edit, delete </br>
+per lokaal: add, edit delete </br></br>
+
+<b>Courses management tab</b> </br>
+toont lijst van programs en courses die erin zitten en dan de subcourses </br>
+add/delete/edit program knop </br>
+add/delete/edit course knop </br>
+add/delete/edit subcourse knop </br></br>
+
+<b>Facultaire kalender tab</b> (ingeven van de algemene niet-educator gebonden constraints) </br>
+Lijst met constraints weergeven </br>
+add/edit/delete constraint </br></br>
+
+<b>Kalender editor tab</b> </br>
+toont kalender en kan kiezen welke vakken er in getoond kunnen worden </br>
+kan vakken van programmas weergeven en aparte vakken toevoegen aan de lijst die weergegeven wordt </br></br>
+
+<b>Accounts management tab</b> (voor de admins) </br>
+Lijst van accounts weergeven, bij elke account: delete of edit </br>
+add account </br>
+search account </br></br>
+
+<b>Grote rode knop tab</b> </br>
+Start uitrekenen van lessenrooster </br></br>
+
+</p>
+</body>
+</html>
+
+
