@@ -25,11 +25,11 @@
 \contentsline {paragraph}{\numberline {1.3.5.4}POST}{12}{paragraph.1.3.5.4}
 \contentsline {subsubsection}{\numberline {1.3.6}Interface: Database interface}{13}{subsubsection.1.3.6}
 \contentsline {paragraph}{\numberline {1.3.6.1}Concerns}{13}{paragraph.1.3.6.1}
-\contentsline {paragraph}{\numberline {1.3.6.2}Elementen}{13}{paragraph.1.3.6.2}
-\contentsline {subsubsection}{\numberline {1.3.7}Interface: File interface}{14}{subsubsection.1.3.7}
-\contentsline {paragraph}{\numberline {1.3.7.1}Concerns}{14}{paragraph.1.3.7.1}
-\contentsline {paragraph}{\numberline {1.3.7.2}Elementen}{14}{paragraph.1.3.7.2}
-\contentsline {paragraph}{\numberline {1.3.7.3}Schema}{15}{paragraph.1.3.7.3}
-\contentsline {subsection}{\numberline {1.4}Design viewpoint 4: Algoritme voor kalenderplanning}{16}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}Design concerns}{16}{subsubsection.1.4.1}
-\contentsline {subsubsection}{\numberline {1.4.2}Design elements}{17}{subsubsection.1.4.2}
+\contentsline {paragraph}{\numberline {1.3.6.2}design}{14}{paragraph.1.3.6.2}
+\contentsline {subsubsection}{\numberline {1.3.7}Interface: XML interface}{15}{subsubsection.1.3.7}
+\contentsline {paragraph}{\numberline {1.3.7.1}Concerns}{15}{paragraph.1.3.7.1}
+\contentsline {paragraph}{\numberline {1.3.7.2}Design}{15}{paragraph.1.3.7.2}
+\contentsline {paragraph}{\numberline {1.3.7.3}Features}{16}{paragraph.1.3.7.3}
+\contentsline {subsection}{\numberline {1.4}Design viewpoint 4: Algoritme voor kalenderplanning}{18}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Design concerns}{18}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}Design elements}{19}{subsubsection.1.4.2}

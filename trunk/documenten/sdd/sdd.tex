@@ -21,7 +21,7 @@
 
 \title{Software Design Descriptions voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{23 februari 2011 Versie 1.1} 
+\date{28 maart 2011 Versie 2.0} 
 
 \begin{document}
 
@@ -36,11 +36,12 @@
 
 \section*{Aanpassingsgeschiedenis}
 \begin{itemize}
-\item[.] 23/2/2011 versie 0.1: Aanmaak document \\[-3mm]
-\item[.] 27/2/2011 versie 0.2: Toevoeging delen over interfaces \\[-3mm]
-\item[.] 28/2/2011 versie 0.3: Toevoeging hoofdstuk over algoritme en Logical \\[-3mm]
-\item[.] 28/2/2011 versie 1.0: Verbeteringen doorgevoerd \\[-3mm]
-\item[.] 17/3/2011 versie 1.1: Opmerkingen opdrachtgever in acht genomen en nodige aanpassingen gedaan. Gebruik van de GET en POST methode in de Site - Servlet interface grondiger uitgelegd \\[-3mm]
+\item[.] 23/2/2011 versie 0.1: Aanmaak document 
+\item[.] 27/2/2011 versie 0.2: Toevoeging delen over interfaces 
+\item[.] 28/2/2011 versie 0.3: Toevoeging hoofdstuk over algoritme en Logical
+\item[.] 28/2/2011 versie 1.0: Verbeteringen doorgevoerd 
+\item[.] 17/3/2011 versie 1.1: Opmerkingen opdrachtgever in acht genomen en nodige aanpassingen gedaan. Gebruik van de GET en POST methode in de Site - Servlet interface grondiger uitgelegd 
+\item[.] 28/3/2011 versie 2.0: Volledige revisie van het document en aanpassingen/toevoegingen doorgevoerd waar nodig.
 \end{itemize}
 
 \section*{Nog te doen}
@@ -48,7 +49,7 @@
 \item[.] Sectie 1.5 is nog wat karig, hoewel de inhoud die er is alvast interessant is. Wat ontbreekt is nog het eigenlijke design. \\[-3mm]
 \item[.] Component Diagram toevoegen aan design viewpoint 1 \\[-3mm]
 \end{itemize}
-
+\item[.] UML diagrammas van Alexander toevoegen waar nodig
 %\section*{Preface}
 
 \newpage
@@ -435,50 +436,143 @@ Om meer variabelen mee te sturen met een form, is het mogelijk om onzichtbare IN
 \subsubsection{Interface: Database interface}
 
 \paragraph{Concerns}
-De interface met de MySQL database, bevattende alle objecten beschreven in 2.1, dient op een algemene manier aangesproken te kunnen worden vanuit de andere onderdelen van het project.
+De interface met de MySQL database wordt geleverd door de reeds bestaande java library MySQL Connector/J1 \footnote{http://dev.mysql.com/downloads/connector/j/}.
+Deze biedt de mogelijkheid om queries uit te voeren vanuit Java code en de resultaten van deze query uit te lezen.
 
-\paragraph{Elementen}
+Om eenvoudig en flexibel te kunnen werken met de database vanuit de object georiënteerde code is er een extra interface geschreven rond de MySQL Connector.
+Deze levert op een eenvoudig te implementeren manier de mogelijkheid om rechtstreeks Java objecten op te slaan en deze ook dusdanig als objecten uit te lezen, met inbegrip van alle onderlinge verbanden tussen de objecten.
 
+\paragraph{design}
+
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{DATA1.jpg}%
+\caption{Overzicht}%
+\end{figure}
+
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{DATA2.jpg}%
+\caption{Overzicht van belangrijkste klasses en methodes}%
+\end{figure}
+
+De interface biedt communicatie met de database op basis van objecten die aangeboden of opgevraagd worden aan de interface. De interface zal dan zelf de nodige informatie extraheren vanuit het object om het in de database op te slaan, of zal de juiste informatie in het object steken om het uit de database te lezen.
+Om deze data extractie correct te laten gebeuren, moet het object aan een bepaald protocol voldoen.
+Dit protocol dient zich aan onder de vorm van de java interface klasse 'Databasable'.
+Het object dient deze klasse te implementeren.
+
+De getters en setters van de parameters die in en uit de database gehaald moeten worden, moeten worden aangeduid met een Annotation. De interface zal tijdens het vertalen via Reflection in Java zo de juiste methodes kunnen selecteren uit de klasse.
+Meer bepaald:
 \begin{itemize}
-\item[-] Database \\[-5mm]
-\begin{itemize}
-\item[-] \textbf{Database}: Handle naar de database. Levert methodes om tabellen in te lezen, opzoekingen te 		doen, objecten weg te schrijven en dergelijke.
-\item[-] \textbf{Table}: Een enkele tabel uit de database
-\item[-] \textbf{Element}: Een element van een tabel
-\end{itemize}		
-\item[-] Interface \\[-5mm]
-\begin{itemize}
-\item[-] \textbf{Databasable}: Inteface* die duidelijk maakt dat een object van een klasse die 	\textit{Databasable} implementeert, in de database geschreven, of uit de database gelezen 	kan worden. \\[-5mm]
-\item[-] \textbf{InDatabase}: Annotation* die duidelijk maakt dat een bepaalde parameter van een object in de 		database bewaard moet worden. \\[-5mm]
-\item[-] \textbf{OutDatabase}: Annotation* die duidelijk maakt dat een bepaalde parameter van een object  uit de 		database gelezen en naar het object gekopieerd moet worden. \\[-5mm]
-\end{itemize}		
-\end{itemize}		
-		
-*: Java terminologie
-
-\subsubsection{Interface: File interface}
-
-\paragraph{Concerns}
-Wijzigbare parameters moeten opgeslagen worden in een file. Hiervoor wordt gebruik gemaakt van XML. Deze interface biedt de mogelijkheid om vanuit het programma eenvoudige XML bestanden uit te lezen en aan te maken.
-
-\paragraph{Elementen}
-
-\begin{itemize}
-\item[-] \textbf{XMLDocument}: Object verwijzende naar een XML bestand. Een XMLDocument bevat een lijst van 	XMLElement \\[-5mm]
-\item[-] \textbf{XMLElement}: Element van een XML bestand. Een element heeft een bepaalde waarde, of bevat zelf een 	aantal andere elementen. \\[-5mm]
-\begin{itemize}
-	\item[-] \textbf{ElementWithValue}: Element met een waarde \\[-5mm]
-	\item[-] \textbf{ElementWithChildren}: Element met lijst van andere elementen, zijn \textit{Children}.(\textit{Children} kunnen op hun beurt ook weer \textit{ElementWithChildren} of \textit{ElementWithValue} zijn) \\[-5mm]
-\end{itemize}		
-\item[-] \textbf{XMLParser}: Levert methodes om een XML bestand, gecreëerd met deze interface, weer in te laden naar 	een XMLDocument 
+	\item[-] Getters annoteren met @InDatabase
+	\item[-] Setters annoteren met @OutDatabase
 \end{itemize}
 
-\paragraph{Schema}
 
-\begin{figure}[H]
-\includegraphics[width=\columnwidth]{XML.png}%
-\caption{Voorbeeld van een \textit{XMLDocument}}%
+Tijdens het wegschrijven van een object worden alle parameters die teruggegeven worden door de @InDatabase getters opgeslagen in de database.
+Tijdens het uitlezen worden alle @OutDatabase setters opgeroepen met de waarde die uitgelezen werd uit de database.
+
+Elk object krijgt een unieke ID (uniek binnen zijn klasse) wanneer hij naar de Database wordt geschreven. Hierdoor moet een parameter van de klasse 'ID' bijgehouden worden. 
+De gebruiker dient deze slechts te voorzien  samen met de methodes van de interface Databasable; de invulling van deze ID gebeurt automatisch.
+
+Door dit protocol wordt het schrijven van een object naar de database vereenvoudigd tot het schrijven van:
+\begin{verbatim}
+myDatabase.write(myObj);
+\end{verbatim}
+
+Het uitlezen gebeurt via een 'Search' object, waarmee een bepaald zoek criterium kan opgesteld worden:
+\begin{verbatim}
+myObj=myDatabase.read(mySearch);
+\end{verbatim}
+
+De interface zorgt er ook voor dat de links tussen verschillende objecten ook mee afgehandeld worden. Zie de voorbeelden voor meer detail.
+Alle voorwaarden om de Databasable interface correct te implementeren zijn te vinden in de Javadoc commentaar van Databasable.
+
+Voorbeelden van correcte implementatie zijn te vinden in de google-code repository bij:
+trunk/Database/Voorbeeld
+
+%\paragraph{Elementen}
+%
+%\begin{itemize}
+%\item[-] Database \\[-5mm]
+%\begin{itemize}
+%\item[-] \textbf{Database}: Handle naar de database. Levert methodes om tabellen in te lezen, opzoekingen te 		doen, objecten weg te schrijven en dergelijke.
+%\item[-] \textbf{Table}: Een enkele tabel uit de database
+%\item[-] \textbf{Element}: Een element van een tabel
+%\end{itemize}		
+%\item[-] Interface \\[-5mm]
+%\begin{itemize}
+%\item[-] \textbf{Databasable}: Inteface* die duidelijk maakt dat een object van een klasse die 	\textit{Databasable} implementeert, in de database geschreven, of uit de database gelezen 	kan worden. \\[-5mm]
+%\item[-] \textbf{InDatabase}: Annotation* die duidelijk maakt dat een bepaalde parameter van een object in de 		database bewaard moet worden. \\[-5mm]
+%\item[-] \textbf{OutDatabase}: Annotation* die duidelijk maakt dat een bepaalde parameter van een object  uit de 		database gelezen en naar het object gekopieerd moet worden. \\[-5mm]
+%\end{itemize}		
+%\end{itemize}		
+%		
+%*: Java terminologie
+
+\subsubsection{Interface: XML interface}
+
+\paragraph{Concerns}
+
+Er bestaan reeds talloze XML parsers, maar omwille van flexibiliteit en modificeerbaarheid is er een eigen parser geschreven.
+Zo is het huidige format niet meer zuiver xml, maar zijn extra features toegevoegd die extra functionaliteiten toevoegen, maar op een manier dat 'echte' xml parsers de door deze parser gegenereerde xml nog steeds kan weergeven.
+
+\paragraph{Design}
+
+Een boomstructuur van java objecten wordt opgesteld vanuit een xml bestand, of omgekeerd.
+Uitgedrukt in BNF:
+\begin{verbatim}
+<XMLDocument> ::= {<XMLElement>}
+<XMLElement> ::= <ElementWithValue> | <ElementWithChildren>
+<ElementWithChildren> ::= <name><value>
+<ElementWithChildren> ::= <name>{<XMLElement>}
+<name> ::= {<any_character_no_space>}
+<value> ::= {<any_character>}
+\end{verbatim}
+
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{XML1.jpg}%
+\caption{Voorbeeld van XMLDocument}%
 \end{figure}
+
+\paragraph{Features}
+\textbf{Tags}
+Specifieke tags kunnen toegevoegd worden aan de elementen:
+\begin{verbatim}
+<element tag=XXX> ... </element tag=XXX>
+\end{verbatim}
+
+\textbf{Code tag}
+Door deze tag toe te voegen, wordt alle opmaak binnenin het element genegeerd. Dit kan gebruikt worden wanneer men bijvoorbeeld html code wil opslaan in een xml-element.
+Normaal gezien zouden de html tags interfereren met de xml tags, maar de code-tag zorgt ervoor dat alles wat binnen de tags van het element staat gewoon als tekst aanzien wordt
+\textbf{Link tag}
+Deze tag laat toe om links te genereren tussen verschillende xml bestanden.
+Links worden aangegeven door de link tag, waarna in de 'value' van het element een link kan worden toegevoegd tussen '§ §'.  
+Zie voorbeeld hieronder:
+
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{XML2.jpg}%
+\caption{Link tussen xml files}%
+\end{figure}
+
+Na het inladen van File1.xml heeft 'element' de waarde 'The selected language is Dutch'.
+
+%\paragraph{Elementen}
+%
+%\begin{itemize}
+%\item[-] \textbf{XMLDocument}: Object verwijzende naar een XML bestand. Een XMLDocument bevat een lijst van 	XMLElement \\[-5mm]
+%\item[-] \textbf{XMLElement}: Element van een XML bestand. Een element heeft een bepaalde waarde, of bevat zelf een 	aantal andere elementen. \\[-5mm]
+%\begin{itemize}
+%	\item[-] \textbf{ElementWithValue}: Element met een waarde \\[-5mm]
+%	\item[-] \textbf{ElementWithChildren}: Element met lijst van andere elementen, zijn \textit{Children}.(\textit{Children} kunnen op hun beurt ook weer \textit{ElementWithChildren} of \textit{ElementWithValue} zijn) \\[-5mm]
+%\end{itemize}		
+%\item[-] \textbf{XMLParser}: Levert methodes om een XML bestand, gecreëerd met deze interface, weer in te laden naar 	een XMLDocument 
+%\end{itemize}
+%
+%\paragraph{Schema}
+%
+%\begin{figure}[H]
+%\includegraphics[width=\columnwidth]{XML.png}%
+%\caption{Voorbeeld van een \textit{XMLDocument}}%
+%\end{figure}
 
 \newpage
 
