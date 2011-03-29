@@ -109,77 +109,12 @@ Een deployement diagram geeft weer op welke manier de hard- en software wordt ge
 %Zal later worden toegevoegd
 
 
-%-----------------------------------------------------------------------------------------------------------------------------------------------------
-
-\subsection{Design viewpoint 2: Logical}
-\subsubsection{Design concerns}
-Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses nodig die alle verschillende participerende objecten voorstellen.
-
-\subsubsection{Elementen}
-\paragraph{Entiteiten}
-
-\begin{itemize}
-	\item[-] Lessen structuur \\[-5mm]
-	\begin{itemize}
-	  \item[-] \textit{Course}: Les die gevolgd kan worden \\ [-5mm]
-	  \item[-] \textit{Subcourse}: Onderdeel van een les; bv hoorcollege, labo of oefeningenles \\[-5mm]
-	  \item[-] \textit{Program}: Verzameling van lessen die in een pakket zitten. Bijvoorbeeld 1e bachelor ingenieurswetenschappen \\[-5mm]
-	\end{itemize}
-	\item[-] Gebouwen strucuur \\[-5mm]
-	\begin{itemize}
-	  \item[-] \textit{Building}: Gebouw \\[-5mm]
-    \item[-] \textit{Room}: Lokaal in een gebouw waar les gegeven kan worden \\[-5mm]
-    \item[-] \textit{Hardware}: Materiaal beschikbaar in een lokaal \\[-5mm]
-	\end{itemize}
-	\item[-] Personen structuur \\[-5mm]
-	\begin{itemize}
-	  \item[-] \textit{Student}: Persoon die lessen kan volgen \\[-5mm]
-    \item[-] \textit{Educator}: Persoon die lessen kan geven; zowel professoren, docenten en assistenten \\[-5mm]
-	\end{itemize}
-	\item[-] Andere \\[-5mm]
-	\begin{itemize}
-	  \item[-] \textit{Faculty}: Faculteit van de universiteit \\[-5mm]
-	\end{itemize}
-\end{itemize}
-
-\paragraph{Relaties}
-
-\begin{itemize}
-\item[-] Lessen structuur \\[-5mm]
-	\begin{itemize}
-	\item[] Elke \textit{Course} bestaat uit een of meerdere \textit{SubCourses} die in opgeteld het gehele vak weergeven. \\[-5mm]
-	\item[] \textit{Courses} zelf worden gegroepeerd in een \textit{Program}. \\
-	\end{itemize}
-\item[-]Gebouwen structuur \\[-5mm]
-\begin{itemize}
-	\item[] Een gebouw beschikt over een lijst met \textit{Rooms}, die op zich een lijst met beschikbare \textit{Hardware} bijhoudt. \\[-5mm]
-	\item[] Een gebouw kan ingedeeld worden onder een faculteit. \\[-5mm]
-	\end{itemize}
-\item[-] Personen \\[-5mm]
-	\begin{itemize}
-	\item[] Elke \textit{Student} is ingeschreven in een \textit{Program} en een lijst met afzonderlijke \textit{Courses} die ze volgen.  \\[-5mm]
-	\item[] Een \textit{Educator} beschikt over een lijst \textit{Courses} en \textit{SubCourses} die ze geven. \\[-5mm]
-\end{itemize}		
-\end{itemize}
-
-\paragraph{UML Diagrammma}
-
-\begin{figure}%
-\includegraphics[width=\columnwidth]{UML.png}%
-\caption{UML Diagramma}%
-\label{UML}
-\end{figure}
-
-De klasse waarbij de pijl vertrekt erft van de klasse waar de pijl aankomt. De klasse waarbij er src staat zit in een lijst in de klasse waarbij er dst staat. Zo zit er bijvoorbeeld een lijst van educators in de klasse faculty. \\
-
-
-\newpage
 
 
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-\subsection{Design viewpoint 3: Interfaces}
+\subsection{Design viewpoint 2: Interfaces}
 % HTTP
 % Adam schrijft dit het is toegelaten dat je zelf de punten een beke invult
 
@@ -575,6 +510,78 @@ Na het inladen van File1.xml heeft 'element' de waarde 'The selected language is
 %\end{figure}
 
 \newpage
+
+%-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+\subsection{Design viewpoint 3: Logical}
+\subsubsection{Design concerns}
+Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses nodig die alle verschillende participerende objecten voorstellen.
+
+\subsubsection{Elementen}
+\paragraph{Entiteiten}
+
+\begin{itemize}
+	\item[-] Lessen structuur \\[-5mm]
+	\begin{itemize}
+	  \item[-] \textit{Course}: Les die gevolgd kan worden \\ [-5mm]
+	  \item[-] \textit{Subcourse}: Onderdeel van een les; bv hoorcollege, labo of oefeningenles \\[-5mm]
+	  \item[-] \textit{Program}: Verzameling van lessen die in een pakket zitten. Bijvoorbeeld 1e bachelor ingenieurswetenschappen \\[-5mm]
+	\end{itemize}
+	\item[-] Gebouwen strucuur \\[-5mm]
+	\begin{itemize}
+	  \item[-] \textit{Building}: Gebouw \\[-5mm]
+    \item[-] \textit{Room}: Lokaal in een gebouw waar les gegeven kan worden \\[-5mm]
+    \item[-] \textit{Hardware}: Materiaal beschikbaar in een lokaal \\[-5mm]
+	\end{itemize}
+	\item[-] Personen structuur \\[-5mm]
+	\begin{itemize}
+	  \item[-] \textit{Student}: Persoon die lessen kan volgen \\[-5mm]
+    \item[-] \textit{Educator}: Persoon die lessen kan geven; zowel professoren, docenten en assistenten \\[-5mm]
+	\end{itemize}
+	\item[-] Andere \\[-5mm]
+	\begin{itemize}
+	  \item[-] \textit{Faculty}: Faculteit van de universiteit \\[-5mm]
+	\end{itemize}
+\end{itemize}
+
+\paragraph{Relaties}
+
+\begin{itemize}
+\item[-] Lessen structuur \\[-5mm]
+	\begin{itemize}
+	\item[] Elke \textit{Course} bestaat uit een of meerdere \textit{SubCourses} die in opgeteld het gehele vak weergeven. \\[-5mm]
+	\item[] \textit{Courses} zelf worden gegroepeerd in een \textit{Program}. \\
+	\end{itemize}
+\item[-]Gebouwen structuur \\[-5mm]
+\begin{itemize}
+	\item[] Een gebouw beschikt over een lijst met \textit{Rooms}, die op zich een lijst met beschikbare \textit{Hardware} bijhoudt. \\[-5mm]
+	\item[] Een gebouw kan ingedeeld worden onder een faculteit. \\[-5mm]
+	\end{itemize}
+\item[-] Personen \\[-5mm]
+	\begin{itemize}
+	\item[] Elke \textit{Student} is ingeschreven in een \textit{Program} en een lijst met afzonderlijke \textit{Courses} die ze volgen.  \\[-5mm]
+	\item[] Een \textit{Educator} beschikt over een lijst \textit{Courses} en \textit{SubCourses} die ze geven. \\[-5mm]
+\end{itemize}		
+\end{itemize}
+
+\paragraph{UML Diagrammma}
+
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{UML_DataClasses.png}%
+\caption{Dataclasses}%
+\end{figure}
+
+\begin{figure}[H]%
+\includegraphics[width=\columnwidth]{UML_ConstraintClasses.png}%
+\caption{Constraint classes}%
+\end{figure}
+
+
+
+\newpage
+
+
+
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
