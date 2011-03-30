@@ -1,0 +1,24 @@
+INDEX VERSION 1.126+C:\Documents and Settings\GEBRUIKER\Mijn documenten\VUB\SoftwareEngeneering\SVN\WorkSpace\.metadata\.plugins\org.eclipse.jdt.core
+263354076.index
+3246345834.index
+2790599534.index
+3887871053.index
+432927475.index
+1567864198.index
+3498528257.index
+3575781812.index
+572854558.index
+68530565.index
+1033569266.index
+1424848871.index
+2648183536.index
+2785424289.index
+3129410078.index
+4011404537.index
+3214606800.index
+1706481680.index
+1693906690.index
+3196622054.index
+1886199721.index
+1848940051.index
+3068437388.index
