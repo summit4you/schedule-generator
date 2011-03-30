@@ -1,0 +1,81 @@
+package junitTests;
+
+import org.junit.*;
+import java.io.*;
+import java.lang.reflect.Method;
+import java.util.Vector;
+
+import htmlInterfaces.*;
+
+public class TestAnnotationTool
+{
+	private class Dummy implements HTMLTablable
+	{
+		private String name;
+		private int age;
+		
+		Dummy(String n,int a)
+		{
+			setAge(a);
+			setName(n);
+		}
+		
+		@FormOutput
+		public void setAge(int age)
+		{
+			this.age = age;
+		}
+		
+		@TableInput
+		public int getAge()
+		{
+			return age;
+		}
+		
+		@FormOutput
+		public void setName(String name)
+		{
+			this.name =new String(name);
+		}
+		
+		@TableInput
+		public String getName()
+		{
+			return name;
+		}
+		
+	}
+	
+	
+	Dummy dummy; 
+	TestAnnotationTool test;
+	
+    @Before
+    public void initTest()  
+    {
+    	test = new TestAnnotationTool();
+    	dummy = test.new Dummy(new String("Dum"),16);
+    }
+
+    @After
+    public void endTest()
+    {
+
+    }
+
+    @Test
+    public void testTest()
+    {
+		// test 1
+		Vector<Method> getters=AnnotationTool.FetchMethods(dummy.getClass(), TableInput.class);
+		assertTrue(getters.get(0).toString().equals("public int htmlInterfaces.Dummy.getAge()"));
+		assertTrue(getters.get(1).toString().equals("public java.lang.String htmlInterfaces.Dummy.getName()"));
+
+		Vector<Object> objects =AnnotationTool.ExecuteMethodsAsGetter(dummy,getters);
+		assertTrue(objects.get(0).toString().equals(16));
+		assertTrue(objects.get(1).toString().equals(new String("Dum")));
+
+    }
+
+}
+

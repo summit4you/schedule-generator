@@ -1,0 +1,6 @@
+127.0.0.1 - - [30/Mar/2011:08:36:12 +0200] "GET /SGWebsite/Login HTTP/1.1" 200 329
+127.0.0.1 - - [30/Mar/2011:08:36:12 +0200] "GET /favicon.ico HTTP/1.1" 200 21630
+127.0.0.1 - - [30/Mar/2011:08:36:23 +0200] "POST /SGWebsite/Login HTTP/1.1" 200 360
+127.0.0.1 - - [30/Mar/2011:08:36:24 +0200] "POST /SGWebsite/Login HTTP/1.1" 200 360
+127.0.0.1 - - [30/Mar/2011:08:36:25 +0200] "POST /SGWebsite/Login HTTP/1.1" 200 360
+127.0.0.1 - - [30/Mar/2011:08:36:32 +0200] "POST /SGWebsite/Login HTTP/1.1" 200 162

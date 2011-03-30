@@ -1,0 +1,25 @@
+package HTMLBuilder2;
+
+import xml.ElementWithValue;
+/**
+ * @author Alexander
+ * @version 1.0
+ * @see FetchMethods,FetchMethodAnnotation,</br>
+ * ExecuteMethodsAsSetters, ExecuteMethodsAsGetter
+ */
+public class HTMLFunction extends Template implements HTMLable
+{
+
+	@Override
+	protected void createFormat()
+	{
+		format = new ElementWithValue("HTMLFunction"," ");
+	}
+	
+	@Override
+	public String toHTML()
+	{
+		return null;
+	}
+
+}
