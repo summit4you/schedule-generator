@@ -1,0 +1,10 @@
+package htmlInterfaces;
+
+public class HTMLInterfaceTool 
+{
+	static public boolean checkHTMLInterface(HTMLTablable obj)
+	{
+		
+		return false;
+	}
+}

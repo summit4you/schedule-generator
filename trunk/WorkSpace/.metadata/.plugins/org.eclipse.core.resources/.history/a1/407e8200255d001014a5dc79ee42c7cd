@@ -1,0 +1,13 @@
+package htmlInterfaces;
+
+import java.lang.annotation.Annotation;
+import java.util.Vector;
+import AnnotationTool.*;
+
+public class HTMLInterfaceTool 
+{
+	public static void ExtractTableData(HTMLTablable obj)
+	{
+		Vector<Annotation> annotations=FetchMethodAnnotation(obj.getClass(),TableInput.class);
+	}
+}

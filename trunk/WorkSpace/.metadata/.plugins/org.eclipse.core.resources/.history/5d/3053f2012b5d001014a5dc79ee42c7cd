@@ -1,0 +1,43 @@
+package htmlInterfaces;
+
+/**
+ *<b>This is a class for testing and will be removed later on. </b></br>
+ * @author Alexander
+ * @version 0.1
+ * @see HTMLTablable
+ */
+
+@TableHead(numberOfInputs=2,title="<Table_Dummy>")
+public class Dummy implements HTMLTablable
+{
+	private String name;
+	private int age;
+	
+	Dummy(String n,int a)
+	{
+		setAge(a);
+		setName(n);
+	}
+	
+	public void setAge(int age)
+	{
+		this.age = age;
+	}
+	
+	@TableInput(order=2,text= "Table_Dummy_Age")	
+	public int getAge()
+	{
+		return age;
+	}
+	
+	public void setName(String name)
+	{
+		this.name =new String(name);
+	}
+	@TableInput(order=1,text= "Table_Dummy_Name")
+	public String getName()
+	{
+		return name;
+	}
+	
+}

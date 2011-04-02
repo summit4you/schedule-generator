@@ -1,0 +1,44 @@
+package htmlInterfaces;
+
+import htmlInterfaces.HTMLTablable.TableHead;
+import htmlInterfaces.HTMLTablable.TableInput;
+
+import java.lang.annotation.Annotation;
+import java.util.Vector;
+
+/**
+ * <b>Class containing static methods to handle HTMLinterfaces </b> </br>
+ * This class will be used by interfaces based on annotations.
+ * @author Alexander
+ * @version 1.0
+ * @see HTMLTablable, HTMLFormable
+ */
+public class HTMLInterfaceTool 
+{
+	/**
+	 * Checks if the HTMLTablable is well implemented in the given class
+	 * The implementation is considered successful if there is one HeadTable 
+	 * and the number of InputTable annotations is equal to number specified in
+	 * The HeadTable annotation. 
+	 */
+	public static boolean checkHTMLInterface(Class<? extends HTMLTablable> cl)
+	{
+		Vector<Annotation> classAnnotations= AnnotationTool.fetchMethodAnnotation(cl,TableHead.class);
+		if ((classAnnotations!=null) && (classAnnotations.size()==1))
+		{
+			int numberOfinputs=TableHead.class.cast(classAnnotations.get(1)).numberOfInputs();
+			Vector<Annotation> methodAnnotations= AnnotationTool.fetchClassAnnotation(cl,TableInput.class);
+			if ((methodAnnotations!=null)&& (methodAnnotations.size()==numberOfinputs))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static void fetchTableContent()
+	{
+		
+	}
+	
+}

@@ -1,0 +1,19 @@
+package htmlInterfaces;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.Vector;
+
+public class HTMLInterfaceTool 
+{
+	public static void ExtractTableData(HTMLTablable obj)
+	{	
+		Vector<String> values = new Vector<String>();
+		Vector<Method> methods =AnnotationTool.FetchMethods(obj.getClass(),TableInput.class);
+		Vector<Annotation> annotations=AnnotationTool.FetchMethodAnnotation(obj.getClass(),TableInput.class);
+		for (Method i:methods)
+		{
+			values.add(((i.invoke(obj).toString());
+		}
+	}
+}

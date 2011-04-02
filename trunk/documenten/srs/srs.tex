@@ -43,15 +43,15 @@
 
 \newpage
 
-\section{Introduction}
-\subsection{Purpose}
+\section{Inleiding}
+\subsection{Doelstelling}
 % Delineate the purpose of the SRS.
 % Specify the intended audience for the SRS.
 
 Het doel van de SRS is om een overzicht te geven van alle functionaliteiten die er moeten voorzien worden. \\
 Het doelpubliek is het team dat aan het project werkt en de docent die het team begeleidt en evalueert. \\
 
-\subsection{Scope}
+\subsection{Onderwerpen}
 % Identify the software product(s) to be produced by name (e.g., Host DBMS, Report Generator, etc.);
 % Explain what the software product(s) will, and, if necessary, will not do;
 % Describe the application of the software being specified, including relevant benefits, objectives, and goals;
@@ -70,7 +70,7 @@ Het doelpubliek is het team dat aan het project werkt en de docent die het team 
 %Identify each document by title, report number (if applicable), date, and publishing organization;
 %Specify the sources from which the references can be obtained.
 
-\subsection{Overview}
+\subsection{Overzicht}
 % Describe what the rest of the SRS contains;
 % Explain how the SRS is organized.
 
@@ -78,7 +78,7 @@ De rest van de SRS zal de software vereisten van de schedule generator verder ui
 
 \newpage
 
-\section{Overall description}
+\section{Algmene beschrijving}
 % \subsection{Product perspective}
 
 % blokdiagram van programma en verschillende softwareinterfaces die we gebruiken
@@ -93,19 +93,19 @@ De rest van de SRS zal de software vereisten van de schedule generator verder ui
 % \subsubsection{Operations}
 % \subsubsection{Site adaptation requirements}
 
-\subsection{Product functions}
+\subsection{Functionaliteiten}
 %samenvatting van de belangrijkste functionaliteiten. \\
 
 Gebruikers krijgen een gepersonaliseerde account waarop zij hun eigen lessenrooster alsook dat van andere richtingen kunnen opvragen (en in het geval van sommige gebruikers kunnen aanpassen).\\
 Het programma bevat een database waarin informatie over de verschillende vakken wordt bijgehouden (wie is de docent, hoeveel studenten zijn er ingeschreven, waar wordt het gedoceerd,...)\\
 Het bevat ook een schedule generator die in staat is een lessenrooster te genereren die aan bepaalde voorwaarden voldoet.
 
-\subsection{User characteristics}
+\subsection{Gebruikers omschrijving}
 
 De gebruikers zijn studenten die in staat om zijn om de verschillende lessenroosters te bekijken en docenten die in staat zijn het rooster op te vragen, maar evenwel aanpassingen te maken aan de informatie van de vakken waarvoor zij verantwoordelijk zijn.
 Daarnaast zijn er ook verschillende klassen beheerders die verantwoordelijk zijn voor groepen vakken, groepen studenten, gebouwen en het lessenrooster zelf. Deze beheerders moeten de nodige aanpassingen ook op de website kunnen doorvoeren.
 
-\subsection{constraints}
+\subsection{Beperkingen}
 
 De grootste constraints werden door de opdrachtgever vastgelegd. De eigenlijke opdracht staat in het SPMP, maar de constraints die erin stonden waren de volgende:
 \begin{itemize}
@@ -119,72 +119,7 @@ De grootste constraints werden door de opdrachtgever vastgelegd. De eigenlijke o
 
 \newpage
 
-\section{Specific requirements}
-
-\subsection{External interface requirements}
-
-\subsubsection{User interfaces}
-
-De opdracht gebiedt ons om met een website als user interface te werken. Om dit te verwezenlijken zal XHTML in combinatie met CSS gebruikt worden (mogelijk ook javascript). 
-Na het inloggen krijgt de gebruiker een pagina te zien met verschillende tabs. Voor elke gebruikersklasse en de functionaliteiten die ze krijgen bestaat een ander tabblad. Op die manier is het gemakkelijker om functionaliteiten toe te voegen en overzichtelijk weer te geven. Guests krijgen bijvoorbeeld maar een enkele tab te zien waarin ze een naam kunnen intypen en waarin de kalender weergegeven wordt. Studenten krijgen een tweede tab erbij waarin ze hun vakkenlijst kunnen aanpassen etc.
-
-\subsubsection{Communications and software interfaces}
-
-Om de communicatie tussen de browser van de gebruiker en de server te doen wordt gebruik gemaakt van HTTP. De HTTP pakketten zullen op de server ge\"{i}nterpreteerd worden door servlets die op de server uitgevoerd worden via Tomcat. De servlets zijn in JAVA geschreven en genereren de gevraagde XHTML en CSS code die dat terug naar de gebruiker gestuurd worden.\\ 
-
-De servlets communiceren met de database via MySQL en interpreteren de gegevens voor de gebruiker. Het proces kan overzichtelijk weergegeven worden in volgend blokschema:
-
-
-\unitlength=0.3\textwidth
-\begin{center}
-\begin{picture}(3,1)
-%serverlijnen
-\put(0.2,0.2){Server}
-\put(0,0){\line(1,0){1.6}}
-\put(0,0){\line(0,1){1}}
-\put(1.6,0){\line(0,1){1}}
-\put(0,1){\line(1,0){1.6}}
-%browser
-\put(2.4,0.6){Browser}
-\put(2.3,0.9){\line(1,0){0.5}}
-\put(2.8,0.4){\line(0,1){0.5}}
-\put(2.3,0.4){\line(0,1){0.5}}
-\put(2.3,0.4){\line(1,0){0.5}}
-%database
-\put(0.15,0.6){Database}
-\put(0.1,0.9){\line(1,0){0.5}}
-\put(0.6,0.4){\line(0,1){0.5}}
-\put(0.1,0.4){\line(0,1){0.5}}
-\put(0.1,0.4){\line(1,0){0.5}}
-%servlet
-\put(1.1,0.6){Servlet}
-\put(1.0,0.9){\line(1,0){0.5}}
-\put(1.5,0.4){\line(0,1){0.5}}
-\put(1.0,0.4){\line(0,1){0.5}}
-\put(1.0,0.4){\line(1,0){0.5}}
-%lijn MySQL
-\put(0.65,0.7){MySQL}
-\put(0.62,0.65){\line(1,0){0.36}}
-%lijn HTTP
-\put(1.8,0.7){HTTP}
-\put(1.52,0.65){\line(1,0){0.76}}
-\end{picture}\\[3mm]
-Overzicht van de communicatie en de gebruikte protocols tussen de verschillende delen van het programma
-\end{center}
-
-
-De verschillende versies software die we gebruiken zijn de volgende:
-
-\begin{itemize}
-\item[.] MySQL: JDBC driver for MySQL 5.1.15 \\[-5mm]
-\item[.] Tomcat \\[-5mm]
-\end{itemize}
-
-\subsubsection{Hardware interfaces}
-
-De Hardware interfaces die we gebruiken worden vastgelegd door de opdrachtgever. Ons programma moet op Wilma kunnen draaien. De hardware interface die we hebben is dus een Linux besturingssysteem.
-
-\newpage
+\section{Specifieke vereisten}
 
 \subsection{Functionele Vereisten}
 
@@ -207,7 +142,7 @@ Anderzijds kan men functionaliteiten ook opdelen volgens het pad die de data tij
 \item[-] \textit{Verwerkingsfunctionaliteiten}: alle functionaliteiten die gegevens, zonder tussenkomst van de gebruiker, uit de database verwerken en de daarbij bekomen resultaten terug schrijven naar de database op de server.
 \end{itemize}
 
-\subsubsection{Gebruikertype }
+\subsubsection{Gebruikertype}
 Om bepaalde functionaliteiten te kunnen plaatsen in een context wordt het gebruikertype dat toegang heeft tot deze functionaliteit indien mogelijk vermeld. Vandaar volgt hier een korte beschrijving van de gebruikertypes:
 \begin{itemize}
 \item[-] \textit{Software beheerder}: Verantwoordelijke voor het beheren technische aspecten van de software. Deze omvatten o.a. instaleren van de software, laten aanmaken van de databasestructuur en het configureren van de lessenroosterplanner. Daarnaast heeft deze gebruiker ook toegang tot een logboek en kan hij bepaalde gebeurtenissen ongedaan te maken.
@@ -224,6 +159,9 @@ Om bepaalde functionaliteiten te kunnen plaatsen in een context wordt het gebrui
 \item[-] \textit{Gast}: Gebruiker waarvan geen gebruikergegevens worden bijgehouden in de database op de server. Deze gebruiker heeft enkel toegang tot de geplande lessenroosters. Deze kan hij opvragen op basis van vak, student, programma, docent en semester.
 \item[-] \textit{Onbekende gebruiker}: Gebruiker die zich nog niet heeft geïdentificeerd tegenover het systeem. Deze gebruiker heeft enkel toegang tot de aanmeldpagina van de website waarbij hij kan kiezen zich aan te melden of de rest van de site te betreden als gast.
 \end{itemize}
+
+\subsubsection{Opmerking over de gebruikertypes}
+De reeds besproken gebruikertypes zullen standaard aanwezig zijn bij het afgeleverde product. Het echter mogelijk zijn voor de eindgebruiker om nieuwe gebruikertypes te definiëren of de rechte van bestaande gebruikertypes aan te passen. Onderstaande verdeling van functionaliteiten over de gebruikertypes is dus enkel van toepassing op de standaard instellingen van het product. Voor meer informatie over de uitvoering van de gebruikertypes wordt verwezen naar het SDD.
 
 \subsubsection{Identificatie}
 
@@ -336,7 +274,7 @@ Gebruikertype: \textit{Programma beheerder} \\
 Omschrijving: Via een nader te bepalen bestand type vakken inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
 \end{itemize}
 
-\subsubsection{Beheren van programma }
+\subsubsection{Beheren van programmas}
 
 \begin{itemize}
 \item[D.1] Programma’s aanmaken \\
@@ -394,26 +332,71 @@ Gebruikertype: \textit{Programma beheerder }\\
 Omschrijving: Bepalen welke programma’s tot welke faculteit behoren \\[-3mm]
 \end{itemize}
 
-\subsubsection{Beheren van  faciliteiten}
+\subsubsection{Beheren van faciliteiten}
 
 \begin{itemize}
 \item[F.1] Faciliteiten aanmaken \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Faciliteiten omvatten zowel locaties (vb lokaal) als benodigdheden (vb projector) \\[-3mm]
+Omschrijving: Faciliteiten omvatten lesbenodigdheden zoals projector,computer, etc. \\[-3mm]
 
-\item[F.2] Faciliteiten inladen uit bestand \\
+\item[F.3] Faciliteiten inladen uit bestand \\
 Categorie: \textit{extra  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
 Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
 
-\item[F.3] Faciliteiten verwijderen \\
+\item[F.4] Faciliteiten verwijderen \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder}  \\
 Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
 
-\item[F.4] Faciliteiten wijzigen  \\
+\item[F.5] Faciliteiten wijzigen  \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten  beheerder} \\
+Omschrijving: \\[-3mm]
+\end{itemize}
+
+\subsubsection{Beheren van gebouwen en lokalen}
+
+\begin{itemize}
+\item[L.1] Gebouw aanmaken \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder} \\
+Omschrijving: Een gebouw is een verzameling van leslokalen\\[-3mm]
+
+\item[L.2] Lokaal aanmaken \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder} \\
+Omschrijving: Een een lokaal moet steeds aan een gebouw worden toegekend.\\[-3mm]
+
+\item[L.3] Faciliteiten toekennen aan een lokaal \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder} \\
+Omschrijving: Verschillende faciliteiten kunnen aan een lokaal worden toegekend. Dit is belangerijk om na te gaan of een lokaal voldoet aan de beperkingen opgelegd voor een vak\\[-3mm]
+
+\item[L.4] Gebouwen inladen uit bestand \\
+Categorie: \textit{extra invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder} \\
+Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+
+\item[L.5] Lokaal wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder}  \\
+Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
+
+\item[L.6] Gebouw wijzigen \\
+Categorie: \textit{mogelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten  beheerder} \\
+Omschrijving: \\[-3mm]
+\end{itemize}
+
+\item[L.7] Lokaal verwijderen \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteiten beheerder}  \\
+Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
+
+\item[L.8] Gebouw verwijderen  \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten  beheerder} \\
 Omschrijving: \\[-3mm]
 \end{itemize}
@@ -468,32 +451,32 @@ Omschrijving: Sommige gebruikertypes zijn beschermd tegen aanpassingen om verder
 \item[H.1] Tijdsbeperking aanmaken  \\
 Categorie: \textit{noodzakelijke  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: een tijdsbeperking legt op waneer een vak wel of niet kan worden geplant \\[-3mm]
+Omschrijving: Een tijdsbeperking legt op waneer een vak kan worden geplant. Een docent die bijvoorbeeld een bepaalde dag in de week niet beschikbaar is, moeten dit kunnen meegeven. Algmene beperkingen, bijvoorbeeld: op welke dagen van de week er les kan worden gegeven, worden door de  rooster beheerder ingevoerd.\\[-3mm]
 
 \item[H.2] Tijdsbeperking verwijderen \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: \\[-3mm]
+Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn tijdsbeperkingen te verwijderen. \\[-3mm]
 
 \item[H.3] Tijdsbeperking wijzigen \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: \\[-3mm]
+Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn om tijdsbeperkingen te wijzigen.\\[-3mm]
 
 \item[H.4] Faciliteitbeperking aanmaken \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: een faciliteitbeperking legt op welke faciliteiten er nodig zijn voor een vak \\[-3mm]
+Omschrijving: Een faciliteitbeperking legt op welke faciliteiten er nodig zijn voor een vak. Op basis hier van kan worden nagegaan welke lokalen er in aanmekringen koen voor het vak. 
 
 \item[H.5] Faciliteitbeperking verwijderen \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: \\[-3mm]
+Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te verwijderen. \\[-3mm]
 
 \item[H.6] Faciliteitbeperking wijzigen \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: \\[-3mm]
+Omschrijving:Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te wijzigen. \\[-3mm]
 \end{itemize}
 
 \subsubsection{Roosterplanner}
@@ -502,12 +485,12 @@ Omschrijving: \\[-3mm]
 \item[I.1] Configureren van roosterplanner \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder, Rooster beheerder} \\
-Omschrijving: Bepaald met welke gegevens de roosterplanner moet rekening houden \\[-3mm]
+Omschrijving: Laat toe de technische parameters van de roosterplanner aan te passen \\[-3mm]
 
 \item[I.2] Starten van roosterplanner \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Data noodzakelijk voor de planning mag na het starten niet meer worden aangepast .Het starten van de roosterplanner bevriest dus sommige gegevens tot zijn planningstaak is gestopt. \\[-3mm]
+Omschrijving: Data noodzakelijk voor de planning mag na het starten niet meer worden aangepast. Het starten van de roosterplanner bevriest dus sommige gegevens tot zijn planningstaak is gestopt. \\[-3mm]
 
 \item[I.3] Stoppen van roosterplanner \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
@@ -587,17 +570,13 @@ Gebruikertype: \textit{Software beheerder} \\
 Omschrijving: Dit wordt mogelijk gemaakt door et toegankelijk maken van de opmaak bestanden. \\[-3mm]
 \end{itemize}
 
-\subsubsection{Opmerking over User Classes}
-
-We verkiezen een methode waarbij de rechten van een account niet volledig vast liggen door zijn user class, maar veel losser kunnen bepaald worden. De user classes uit de vorige puntjes zijn templates, richtwaarden waar van afgeweken kan worden. De structuur moet dus per feature beschreven worden in een latere versie van het SRS.
-
 %ZJEF
 
-\subsection{Performance requirements}
+\subsection{Performantie}
 
 Er zijn geen specifieke vereisten in verband met de snelheid van de software. Het is echter wel duidelijk uit de aard van het project, dat er een groot aantal gebruikers tegelijk de webinterface (en met gevolg de databases) moet kunnen consulteren.
 
-\subsection{Design constraints}
+\subsection{Ontwerpbeperkingen}
 
 De opdrachtgever heet de omgeving waarin de software moet draaien gespecificeerd.\\
 De opgelegde beperkingen, met betrekking op het design, zijn de volgende:
@@ -619,7 +598,7 @@ De opgelegde beperkingen, met betrekking op het design, zijn de volgende:
 % This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
 
 
-\subsubsection{Security}
+\subsubsection{Beveiliging}
 %This should specify the factors that protect the software from accidental or malicious access, use, modification, destruction, or disclosure. Specific requirements in this area could include the need to
 % a) Utilize certain cryptographical techniques;
 % b) Keep specific log or history data sets;
@@ -633,7 +612,7 @@ De opgelegde beperkingen, met betrekking op het design, zijn de volgende:
 %Bij elk commando van de gebruiker wordt de code in de lijst opgezocht, de rechten van de bijhorende gebruiker gecontroleerd en al dan niet kan het commando uitgevoerd worden.\\[5mm]
 %Logboek van aanpassingen door Managers wordt bijgehouden.\\
 
-\textbf{User access restriction}
+\textbf{Gebruikerristricties}
 
 Verschillende gebruikers krijgen verschillende rechten toegewezen. Deze bepalen tot welke informatie en tools hij toegang krijgt. Deze rechten zijn gekoppeld aan de account van deze gebruiker. Na het inloggen zullen enkel de informatie en tools waarvoor de gebruiker gemachtigd is, getoond worden. Om verdere beveiliging te verzekeren, wordt ook de communicatie met de server beveiligd. Bij het inloggen krijgt de webinterface van de gebruiker een access code toegestuurd, op dat moment gegenereerd door de server. Deze houdt bij welke rechten bij deze code horen. De webinterface stuurt de verkregen code mee door met elke instructie naar de server, waarop deze kan controleren of de gebruiker gemachtigd is om de desbetreffende instructie uit te voeren.\\
 
@@ -642,7 +621,7 @@ Verschillende gebruikers krijgen verschillende rechten toegewezen. Deze bepalen 
 Enerzijds zal er de mogelijkheid geleverd worden, aan de daarvoor gemachtigde gebruiker(s), om op de server een back-up van de databases (zoals accounts, leslokalen, vakken,...) te maken en desnoods een rollback uit te voeren.
 Anderzijds zal er op de server een logboek bijgehouden worden met de aanpassingen aan de databases, die door verschillende gebruikers gemaakt kunnen worden.\\
 
-\textbf{Account security}
+\textbf{Account beveiliging}
 
 Account paswoorden zullen, met een nog nader te bepalen, ge\"{e}ncrypteerd verstuurd en opgeslagen
 worden.

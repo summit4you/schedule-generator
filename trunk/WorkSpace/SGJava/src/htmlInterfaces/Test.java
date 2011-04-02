@@ -1,5 +1,8 @@
 package htmlInterfaces;
 
+import htmlInterfaces.HTMLFormable.FormOutput;
+import htmlInterfaces.HTMLTablable.TableInput;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Vector;
@@ -19,15 +22,16 @@ public class Test
 	public static void main(String[] args)
 	{
 		// test 1
+		System.out.println("Test 1 --------------------");
 		Dummy dum = new Dummy("Dum",16);
-		Vector<Method> getters=AnnotationTool.FetchMethods(dum.getClass(), TableInput.class);
+		Vector<Method> getters=AnnotationTool.fetchMethods(dum.getClass(), TableInput.class);
 		for (Method i:getters)
 		{
 			System.out.println(i.toString());
 		}
 		System.out.println();
 		
-		Vector<Object> objects =AnnotationTool.ExecuteMethodsAsGetter(dum,getters);
+		Vector<Object> objects =AnnotationTool.executeMethodsAsGetter(dum,getters);
 		for (Object i:objects)
 		{
 			System.out.println(i.toString());
@@ -35,7 +39,8 @@ public class Test
 		System.out.println();
 		
 		// test 2
-		Vector<Method> setters=AnnotationTool.FetchMethods(dum.getClass(), FormOutput.class);
+		System.out.println("Test 2 --------------------");
+		Vector<Method> setters=AnnotationTool.fetchMethods(dum.getClass(), FormOutput.class);
 		for (Method i:setters)
 		{
 			System.out.println(i.toString());
@@ -45,20 +50,31 @@ public class Test
 		Vector<Object> values=new Vector<Object>();
 		values.add(33);
 		values.add(new String("Dumdum"));
-		AnnotationTool.ExecuteMethodsAsSetters(dum,setters,values);
+		AnnotationTool.executeMethodsAsSetters(dum,setters,values);
 
 		System.out.println(dum.getAge());
 		System.out.println(dum.getName());
 		System.out.println();
 		
 		// test 3
-		Vector<Annotation> annotations=AnnotationTool.FetchMethodAnnotation(dum.getClass(),TableInput.class);
-		System.out.println(annotations.size());
+		System.out.println("Test 3 --------------------");
+		Vector<Annotation> annotations=AnnotationTool.fetchMethodAnnotation(dum.getClass(),TableInput.class);
 		for (Annotation i:annotations)
 		{
 			System.out.println(i.toString());
 		}
 		System.out.println();
+		
+		// test 4
+		System.out.println("Test 4 --------------------");
+		System.out.println(HTMLInterfaceTool.checkHTMLInterface(Dummy.class));
+		System.out.println();
+		
+		// test 5
+		System.out.println("Test 5 --------------------");
+		Vector<Vector<String>> vec=HTMLInterfaceTool.fetchTableContent(dum);
+		System.out.println(vec.get(0));
+		System.out.println(vec.get(1));
 	}
 
 }
