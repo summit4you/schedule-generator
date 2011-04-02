@@ -1,0 +1,11 @@
+package htmlInterfaces;
+
+import java.awt.List;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
+import java.util.Vector;
+
+public class HTMLInterfaceTool 
+{
+
+}

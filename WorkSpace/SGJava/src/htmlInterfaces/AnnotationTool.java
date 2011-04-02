@@ -5,16 +5,13 @@ import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.Vector;
 
-import sessionTracking.SessionCleaner;
-import sessionTracking.SessionTable;
-
 /**
  * <b>Class containing static methods to handle annotations </b> </br>
- * This class will be used by interface based on annotations.
+ * This class will be used by interfaces based on annotations.
  * @author Alexander
  * @version 1.0
- * @see FetchMethods,FetchMethodAnnotation,</br>
- * ExecuteMethodsAsSetters, ExecuteMethodsAsGetter
+ * @see FetchMethods,FetchMethodAnnotation,FetchClassAnnotation</br>
+ * ExecuteMethodsAsSetters, ExecuteMethodsAsGetter,
  */
 public class AnnotationTool
 {
@@ -26,7 +23,7 @@ public class AnnotationTool
 	 * @return List of annotated methods (can be empty but not null)
 	 */
 	@SuppressWarnings("unchecked")
-	public static Vector<Method> FetchMethods(Class cl,Class a)
+	public static Vector<Method> fetchMethods(Class<?> cl,Class a)
 	{
 		Vector<Method> methods=new Vector<Method>();
 		for (Method i:cl.getDeclaredMethods())
@@ -46,7 +43,7 @@ public class AnnotationTool
 	 * @param annotation = annotation class of interest
 	 * @return Vector of matching Annotations (can be empty but not null)
 	 */
-	public static Vector<Annotation> FetchMethodAnnotation(Class cl,Class annotation)
+	public static Vector<Annotation> fetchMethodAnnotation(Class<?> cl,Class annotation)
 	{
 		Vector<Annotation> selection=new Vector<Annotation>();
 		for (Method i:cl.getDeclaredMethods())
@@ -63,6 +60,18 @@ public class AnnotationTool
 		return selection;
 	}
 	
+	public static Annotation fetchClassAnnotation(Class<?> cl,Class annotation)
+	{
+		for (Annotation i:cl.getDeclaredAnnotations())
+		{
+			if (i.annotationType().equals(annotation))
+			{
+				return i;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Executes a list of methods on an object as if it were setters
 	 * @param object = object of which the methods are invoked
@@ -70,7 +79,7 @@ public class AnnotationTool
 	 * @param values = vector of parameters (order has to be right no type checking)
 	 * @return Vector of results (can be empty but not null)
 	 */
-	public static void ExecuteMethodsAsSetters(Object object, Vector<Method> methods, Vector<Object> values)
+	public static void executeMethodsAsSetters(Object object, Vector<Method> methods, Vector<Object> values)
 	{
 		Iterator<Object> iterator = values.iterator();
 		for (Method i:methods)
@@ -92,7 +101,7 @@ public class AnnotationTool
 	 * @param methods = vector of methods to invoke (methods must not have parameters)
 	 * @return List of results (can be empty but not null)
 	 */
-	public static Vector<Object> ExecuteMethodsAsGetter(Object object,Vector<Method> methods)
+	public static Vector<Object> executeMethodsAsGetter(Object object,Vector<Method> methods)
 	{
 		Vector<Object> values = new Vector<Object>();
 		for (Method i:methods)

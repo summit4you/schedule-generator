@@ -1,0 +1,9 @@
+package htmlInterfaces;
+
+public class HTMLInterfaceTool 
+{
+	public static void ExtractTableData()
+	{
+		
+	}
+}

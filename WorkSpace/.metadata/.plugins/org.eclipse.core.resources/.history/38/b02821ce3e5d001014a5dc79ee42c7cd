@@ -1,0 +1,19 @@
+package htmlInterfaces;
+
+import htmlInterfaces.HTMLTablable.TableHead;
+
+import java.lang.annotation.Annotation;
+import java.util.Vector;
+
+public class HTMLInterfaceTool 
+{
+	static public boolean checkHTMLInterface(HTMLTablable obj)
+	{
+		Vector<Annotation> classAnnotation= AnnotationTool.FetchClassAnnotation(obj.getClass(),TableHead.class);
+		if ((classAnnotation!=null) && (classAnnotation.size()==1))
+		{
+			return true;
+		}
+		return false;
+	}
+}

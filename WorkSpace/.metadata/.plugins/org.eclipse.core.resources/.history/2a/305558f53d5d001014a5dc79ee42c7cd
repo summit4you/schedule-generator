@@ -1,0 +1,12 @@
+package htmlInterfaces;
+
+import AnnotationTool.*;
+
+public class HTMLInterfaceTool 
+{
+	static public boolean checkHTMLInterface()
+	{
+		
+		return false;
+	}
+}

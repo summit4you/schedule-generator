@@ -1,0 +1,21 @@
+package htmlInterfaces;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+/**
+ * TableHead should be placed above every class that implements HTMLTablable.
+ * </br></br>
+ * numberOfInputs: Total number of elements in the table.</br>
+ * title: title of the table corresponding with this class</br>  
+ * @author Alexander
+ * @version 0.1
+ * @see HTMLTablable
+ */
+@Retention(RetentionPolicy.RUNTIME)
+public @interface TableHead 
+{
+	int numberOfInputs() default 1;
+	String title() default "<TextNotSpecified>";
+}
