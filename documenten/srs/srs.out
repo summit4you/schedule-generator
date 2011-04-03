@@ -1,33 +1,30 @@
-\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Purpose}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Scope}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{Overview}{section.1}% 4
-\BOOKMARK [1][-]{section.2}{Overall description}{}% 5
-\BOOKMARK [2][-]{subsection.2.1}{Product functions}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.2}{User characteristics}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.3}{constraints}{section.2}% 8
-\BOOKMARK [1][-]{section.3}{Specific requirements}{}% 9
-\BOOKMARK [2][-]{subsection.3.1}{External interface requirements}{section.3}% 10
-\BOOKMARK [3][-]{subsubsection.3.1.1}{User interfaces}{subsection.3.1}% 11
-\BOOKMARK [3][-]{subsubsection.3.1.2}{Communications and software interfaces}{subsection.3.1}% 12
-\BOOKMARK [3][-]{subsubsection.3.1.3}{Hardware interfaces}{subsection.3.1}% 13
-\BOOKMARK [2][-]{subsection.3.2}{Functionele Vereisten}{section.3}% 14
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Categorie op basis van prioriteit}{subsection.3.2}% 15
-\BOOKMARK [3][-]{subsubsection.3.2.2}{Categorie op basis van datapad}{subsection.3.2}% 16
-\BOOKMARK [3][-]{subsubsection.3.2.3}{Gebruikertype }{subsection.3.2}% 17
-\BOOKMARK [3][-]{subsubsection.3.2.4}{Identificatie}{subsection.3.2}% 18
-\BOOKMARK [3][-]{subsubsection.3.2.5}{Opvragen van gegevens}{subsection.3.2}% 19
-\BOOKMARK [3][-]{subsubsection.3.2.6}{Beheren van vakken}{subsection.3.2}% 20
-\BOOKMARK [3][-]{subsubsection.3.2.7}{Beheren van programma }{subsection.3.2}% 21
-\BOOKMARK [3][-]{subsubsection.3.2.8}{Beheren van faculteiten }{subsection.3.2}% 22
-\BOOKMARK [3][-]{subsubsection.3.2.9}{Beheren van faciliteiten}{subsection.3.2}% 23
-\BOOKMARK [3][-]{subsubsection.3.2.10}{Beheren van accounts}{subsection.3.2}% 24
-\BOOKMARK [3][-]{subsubsection.3.2.11}{Beheren van beperkingen}{subsection.3.2}% 25
-\BOOKMARK [3][-]{subsubsection.3.2.12}{Roosterplanner}{subsection.3.2}% 26
-\BOOKMARK [3][-]{subsubsection.3.2.13}{Beheren van lessenroosters}{subsection.3.2}% 27
-\BOOKMARK [3][-]{subsubsection.3.2.14}{Beheren van logboek }{subsection.3.2}% 28
-\BOOKMARK [3][-]{subsubsection.3.2.15}{Overige}{subsection.3.2}% 29
-\BOOKMARK [3][-]{subsubsection.3.2.16}{Opmerking over User Classes}{subsection.3.2}% 30
-\BOOKMARK [2][-]{subsection.3.3}{Performance requirements}{section.3}% 31
-\BOOKMARK [2][-]{subsection.3.4}{Design constraints}{section.3}% 32
-\BOOKMARK [3][-]{subsubsection.3.4.1}{Security}{subsection.3.4}% 33
+\BOOKMARK [1][-]{section.1}{Inleiding}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Doelstelling}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Onderwerpen}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Overzicht}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Algmene beschrijving}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Functionaliteiten}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Gebruikers omschrijving}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Beperkingen}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Specifieke vereisten}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Functionele Vereisten}{section.3}% 10
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Categorie op basis van prioriteit}{subsection.3.1}% 11
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Categorie op basis van datapad}{subsection.3.1}% 12
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Gebruikertype}{subsection.3.1}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.4}{Opmerking over de gebruikertypes}{subsection.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.5}{Identificatie}{subsection.3.1}% 15
+\BOOKMARK [3][-]{subsubsection.3.1.6}{Opvragen van gegevens}{subsection.3.1}% 16
+\BOOKMARK [3][-]{subsubsection.3.1.7}{Beheren van vakken}{subsection.3.1}% 17
+\BOOKMARK [3][-]{subsubsection.3.1.8}{Beheren van programmas}{subsection.3.1}% 18
+\BOOKMARK [3][-]{subsubsection.3.1.9}{Beheren van faculteiten}{subsection.3.1}% 19
+\BOOKMARK [3][-]{subsubsection.3.1.10}{Beheren van faciliteiten}{subsection.3.1}% 20
+\BOOKMARK [3][-]{subsubsection.3.1.11}{Beheren van gebouwen en lokalen}{subsection.3.1}% 21
+\BOOKMARK [3][-]{subsubsection.3.1.12}{Beheren van accounts}{subsection.3.1}% 22
+\BOOKMARK [3][-]{subsubsection.3.1.13}{Beheren van beperkingen}{subsection.3.1}% 23
+\BOOKMARK [3][-]{subsubsection.3.1.14}{Roosterplanner}{subsection.3.1}% 24
+\BOOKMARK [3][-]{subsubsection.3.1.15}{Beheren van lessenroosters}{subsection.3.1}% 25
+\BOOKMARK [3][-]{subsubsection.3.1.16}{Beheren van logboek }{subsection.3.1}% 26
+\BOOKMARK [3][-]{subsubsection.3.1.17}{Overige}{subsection.3.1}% 27
+\BOOKMARK [2][-]{subsection.3.2}{Performantie}{section.3}% 28
+\BOOKMARK [2][-]{subsection.3.3}{Ontwerpbeperkingen}{section.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Beveiliging}{subsection.3.3}% 30
