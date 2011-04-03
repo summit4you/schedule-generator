@@ -1,0 +1,8 @@
+Latest version: 0.1C
+
+HTMLBuilder V1.0A: eerste versie van Adam
+
+HTMLBuilder V0.1B: eerste versie Alexander (te veel xml overhead)
+
+HTMLBuilder V0.1C: tweed versie Alexander (wordt verder ontwikkelt in de workspace)
+
