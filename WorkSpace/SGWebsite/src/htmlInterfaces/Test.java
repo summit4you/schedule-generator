@@ -11,7 +11,7 @@ import java.util.Vector;
  * <b>This is a class for testing and will be removed later on. </b></br>
  * This class should be replaced with a JUnit TEST
  * @author Alexander
- * @version 0.1
+ * @version 1.1
  * @see HTMLTablable
  */
 public class Test
@@ -66,11 +66,6 @@ public class Test
 		System.out.println();
 		
 		// test 4
-		System.out.println("Test 4 --------------------");
-		System.out.println(HTMLInterfaceTool.checkHTMLInterface(Dummy.class));
-		System.out.println();
-		
-		// test 5
 		System.out.println("Test 5 --------------------");
 		Vector<Vector<String>> vec=HTMLInterfaceTool.fetchTableContent(dum);
 		System.out.println(vec);

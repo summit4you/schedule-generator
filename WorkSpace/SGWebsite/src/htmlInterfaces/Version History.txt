@@ -1,0 +1,9 @@
+Latest version: V1.1
+
+
+Version Notes:
+
+V1.1: TableHead annotation has been removed. 
+      extracTable() has been added to htmlinterfacetool
+ 
+V1.0: Tablable interface is finished and compatible with HTMLUtils methods
