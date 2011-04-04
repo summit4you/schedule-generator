@@ -1,4 +1,4 @@
-package HTMLBuilder;
+package htmlBuilder;
 
 import java.io.IOException;
 import java.io.PrintWriter;

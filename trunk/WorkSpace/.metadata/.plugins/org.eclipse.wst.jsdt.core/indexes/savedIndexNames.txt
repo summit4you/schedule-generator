@@ -1,6 +1,2 @@
-INDEX VERSION 1.122+C:\Documents and Settings\GEBRUIKER\Mijn documenten\VUB\SoftwareEngeneering\SVN\WorkSpace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1017418581.index
-645907527.index
+INDEX VERSION 1.122+C:\SVN\WorkSpace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 1033569266.index
-3802666712.index
-3084562068.index
