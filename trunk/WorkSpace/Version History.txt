@@ -1,0 +1,14 @@
+-Zjef 4 april 2011 21:20
+	Toevoegingen:
+
+		pseudoServlets/PseudoServlet
+		
+
+		sessionTracking/...		(files van Alexander die nog niet in de workspace zaten, gekopieerd vanaf servlets/sessiontracking)
+
+		other/FileIO
+
+	Wijzigingen:
+		Database versie 2.1
+			updated files:
+				database/FieldType		(case sensitive zoeken op database strings)
