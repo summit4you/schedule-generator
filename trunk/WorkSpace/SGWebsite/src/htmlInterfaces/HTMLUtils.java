@@ -4,14 +4,18 @@ import java.util.Vector;
 
 import com.hp.gagawa.java.elements.*;
 
+/**
+ * Toolbox used to automatically generate HTML code.
+ * @author Adam
+ * @version 1.1
+ */
 public class HTMLUtils
 {
-	
-	public HTMLUtils()
-	{
-		// TODO Auto-generated constructor stub
-	}
-	
+	/**
+	 * Makes a html table from a vector containing the rows of the
+	 * table. Every row is a vector of string. Every string is a 
+	 * table element. 
+	 */
 	static public Table toHTMLTable(Vector<Vector<String>> in)
 	{
 		Table tabel = new Table();
@@ -27,6 +31,11 @@ public class HTMLUtils
 		return tabel;
 	}
 	
+	/**
+	 * Makes a standard  form  identified by a string and servlet. 
+	 * Id is needed to resolve the form action link 
+	 * @author Adam
+	 */
 	static public Form makeStandardForm(String select, String servletname, String ID)
 	{
 		if (select.toLowerCase().equals("login"))

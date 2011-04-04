@@ -10,27 +10,11 @@ import java.lang.annotation.Target;
  * HTMLtable. The getter of every attribute, that has to be represented in the
  * table, should be marked with the annotation TableInput.
  * @author Alexander
- * @version 0.1
- * @see TableInput,TableHead 
+ * @version 1.1
+ * @see TableInput 
  */
 public interface HTMLTablable
-{
-	/**
-	 * TableHead should be placed above every class that implements HTMLTablable.
-	 * </br></br>
-	 * numberOfInputs: Total number of elements in the table.</br>
-	 * title: title of the table corresponding with this class</br>  
-	 * @author Alexander
-	 * @version 0.1
-	 * @see HTMLTablable
-	 */
-	@Retention(RetentionPolicy.RUNTIME)
-	public @interface TableHead 
-	{
-		int numberOfInputs() default 1;
-		String title() default "<TextNotSpecified>";
-	}
-	
+{	
 	/**
 	 * TableInput is used to mark the getters of the attributes that have to be
 	 * put into an HTML table. These getters should not have any parameters. The 
