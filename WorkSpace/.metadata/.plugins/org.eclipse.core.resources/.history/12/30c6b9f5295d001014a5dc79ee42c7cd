@@ -1,5 +1,0 @@
-package htmlInterfaces;
-
-public @interface TableHead {
-
-}

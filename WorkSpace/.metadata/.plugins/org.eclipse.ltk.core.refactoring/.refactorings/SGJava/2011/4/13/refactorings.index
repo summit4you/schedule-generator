@@ -1,9 +1,0 @@
-1301747272046	Rename type 'htmlInterfaceTool'
-1301757458218	Delete elements
-1301757735125	Delete elements
-1301759261609	Rename method 'FetchMethods'
-1301759298890	Rename method 'FetchMethodAnnotation'
-1301759307000	Rename method 'FetchClassAnnotation'
-1301759323828	Rename method 'ExecuteMethodsAsSetters'
-1301759371734	Rename method 'ExecuteMethodsAsGetter'
-1301763718562	Delete element
