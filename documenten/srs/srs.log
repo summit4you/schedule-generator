@@ -1,4 +1,8 @@
+<<<<<<< .mine
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  4 APR 2011 15:25
+=======
 This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.4)  4 APR 2011 15:52
+>>>>>>> .r78
 entering extended mode
 **C:/SVN/documenten/srs/srs.tex
 (C:/SVN/documenten/srs/srs.tex
@@ -865,6 +869,23 @@ Package rerunfilecheck Info: File `srs.out' has not changed.
 (rerunfilecheck)             Checksum: 61B1BD878176C7D18648B508B242C744;2231.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< .mine
+ 7492 strings out of 495285
+ 114328 string characters out of 3179830
+ 198869 words of memory out of 3000000
+ 10529 multiletter control sequences out of 15000+200000
+ 9722 words of font info for 35 fonts, out of 3000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 36i,6n,38p,844b,403s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+<C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
+:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
+ Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on srs.pdf (18 pages, 161203 bytes).
+=======
  4869 strings out of 494019
  73702 string characters out of 3146433
  146845 words of memory out of 3000000
@@ -880,6 +901,7 @@ ts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmsl10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmti10.pfb>
 Output written on srs.pdf (17 pages, 153908 bytes).
+>>>>>>> .r78
 PDF statistics:
  240 PDF objects out of 1000 (max. 8388607)
  50 named destinations out of 1000 (max. 500000)
