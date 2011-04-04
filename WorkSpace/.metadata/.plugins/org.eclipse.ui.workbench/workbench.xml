@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="63" version="2.0">
+<workbench progressCount="56" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="154" y="4">
 <fastViewData fastViewLocation="1024"/>
@@ -24,7 +24,7 @@
 <coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -33,16 +33,10 @@
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LoginServlet.java" partName="LoginServlet.java" path="C:/Documents and Settings/GEBRUIKER/Mijn documenten/VUB/SoftwareEngeneering/SVN/WorkSpace/SGWebsite/src/login/LoginServlet.java" title="LoginServlet.java" tooltip="SGWebsite/src/login/LoginServlet.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SGWebsite/src/login/LoginServlet.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1285" selectionTopPixel="0"/>
-</editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
@@ -50,8 +44,7 @@
 </view>
 <view id="org.eclipse.ui.views.AllMarkersView" partName="Markers">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.allSeverityField" categoryGroup="org.eclipse.ui.ide.type" markerContentGenerator="org.eclipse.ui.ide.allMarkersGenerator" partName="Markers">
-<expanded>
-<category IMemento.internal.id="Java Problems"/>
+<expanded>&#x0A;<category IMemento.internal.id="Java Problems"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.allSeverityField="839" org.eclipse.ui.ide.locationField="54" org.eclipse.ui.ide.markerType="205" org.eclipse.ui.ide.pathField="104" org.eclipse.ui.ide.resourceField="79"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.allSeverityField"/>
@@ -201,178 +194,7 @@
 </perspective>
 </perspectives>
 <workingSets/>
-<navigationHistory>
-<editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/HTMLBuilder2/ContainerTemplate.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/xml/XMLElement.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/HTMLBuilder2/HTMLTabblad.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/junitTests/TestAnnotationTool.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/sessionTracking/User.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/HTMLBuilder2/HTMLFunction.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/sessionTracking/Session.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/AnnotationTool.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/Dummy.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/FormInput.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/FormOutput.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/HTMLFormable.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/HTMLTablable.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/TableInput.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/htmlInterfaces/Test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/HTMLBuilder2/HTMLable.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/HTMLBuilder2/HTMLPage.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/HTMLBuilder2/Template.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGWebDevelopments/src/login/LoginServlet.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGWebDevelopments/src/login/Account.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGWebDevelopments/WebContent/WEB-INF/classes/sessionTracking/User.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGJavaDevelopments/src/sessionTracking/User.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGWebDevelopments/src/login/LoginServlet.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SGWebsite/src/login/LoginServlet.java"/>
-</editors>
-<item historyLabel="User.java" index="4">
-<position/>
-</item>
-<item historyLabel="TestAnnotationTool.java" index="3">
-<position info="not_deleted" x="45" y="0"/>
-</item>
-<item historyLabel="HTMLTabblad.java" index="2">
-<position/>
-</item>
-<item historyLabel="User.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLTabblad.java" index="2">
-<position/>
-</item>
-<item historyLabel="XMLElement.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ContainerTemplate.java" index="0">
-<position/>
-</item>
-<item historyLabel="HTMLFunction.java" index="5">
-<position/>
-</item>
-<item historyLabel="ContainerTemplate.java" index="0">
-<position/>
-</item>
-<item historyLabel="HTMLFunction.java" index="5">
-<position/>
-</item>
-<item historyLabel="Session.java" index="6">
-<position info="not_deleted" x="653" y="95"/>
-</item>
-<item historyLabel="AnnotationTool.java" index="7">
-<position info="not_deleted" x="238" y="284"/>
-</item>
-<item historyLabel="Session.java" index="6">
-<position info="not_deleted" x="653" y="95"/>
-</item>
-<item historyLabel="AnnotationTool.java" index="7">
-<position info="not_deleted" x="238" y="284"/>
-</item>
-<item historyLabel="HTMLFunction.java" index="5">
-<position/>
-</item>
-<item historyLabel="Dummy.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="FormInput.java" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="FormOutput.java" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLFormable.java" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLTablable.java" index="12">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TableInput.java" index="13">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Test.java" index="14">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="TableInput.java" index="13">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLTablable.java" index="12">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLFormable.java" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Dummy.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLFunction.java" index="5">
-<position/>
-</item>
-<item historyLabel="ContainerTemplate.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLable.java" index="15">
-<position info="not_deleted" x="70" y="0"/>
-</item>
-<item historyLabel="HTMLFunction.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLPage.java" index="16">
-<position info="not_deleted" x="104" y="0"/>
-</item>
-<item historyLabel="HTMLTabblad.java" index="2">
-<position info="not_deleted" x="102" y="0"/>
-</item>
-<item historyLabel="Template.java" index="17">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLPage.java" index="16">
-<position info="not_deleted" x="23" y="0"/>
-</item>
-<item historyLabel="HTMLTabblad.java" index="2">
-<position info="not_deleted" x="102" y="0"/>
-</item>
-<item historyLabel="Template.java" index="17">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="HTMLFunction.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ContainerTemplate.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="LoginServlet.java" index="18">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Account.java" index="19">
-<position/>
-</item>
-<item historyLabel="Account.java" index="19">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="User.java" index="20">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="User.java" index="21">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="User.java" index="20">
-<position/>
-</item>
-<item historyLabel="User.java" index="21">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="LoginServlet.java" index="22">
-<position info="not_deleted" x="768" y="0"/>
-</item>
-<item historyLabel="LoginServlet.java" index="22">
-<position info="not_deleted" x="768" y="0"/>
-</item>
-<item active="true" historyLabel="LoginServlet.java" index="23">
-<position info="not_deleted" x="1179" y="0"/>
-</item>
-</navigationHistory>
+<navigationHistory/>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
 <workbenchWindowAdvisor/>
@@ -389,6 +211,21 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestServlet.java" tooltip="SGWebsite/src/htmlBuilder/TestServlet.java">
+<persistable path="/SGWebsite/src/htmlBuilder/TestServlet.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Site.java" tooltip="SGWebsite/src/htmlBuilder/Site.java">
+<persistable path="/SGWebsite/src/htmlBuilder/Site.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HTMLUtils.java" tooltip="SGWebsite/src/htmlInterfaces/HTMLUtils.java">
+<persistable path="/SGWebsite/src/htmlInterfaces/HTMLUtils.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LoginServlet.java" tooltip="test/src/login/LoginServlet.java">
+<persistable path="/test/src/login/LoginServlet.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Account.java" tooltip="test/src/login/Account.java">
+<persistable path="/test/src/login/Account.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LoginServlet.java" tooltip="SGWebDevelopments/src/login/LoginServlet.java">
 <persistable path="/SGWebDevelopments/src/login/LoginServlet.java"/>
 </file>
@@ -418,12 +255,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ContainerTemplate.java" tooltip="SGJavaDevelopments/src/HTMLBuilder2/ContainerTemplate.java">
 <persistable path="/SGJavaDevelopments/src/HTMLBuilder2/ContainerTemplate.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Test.java" tooltip="SGJavaDevelopments/src/htmlInterfaces/Test.java">
-<persistable path="/SGJavaDevelopments/src/htmlInterfaces/Test.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TableInput.java" tooltip="SGJavaDevelopments/src/htmlInterfaces/TableInput.java">
-<persistable path="/SGJavaDevelopments/src/htmlInterfaces/TableInput.java"/>
 </file>
 </mruList>
 </workbench>

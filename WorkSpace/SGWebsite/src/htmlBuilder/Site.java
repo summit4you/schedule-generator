@@ -1,4 +1,4 @@
-package HTMLBuilder;
+package htmlBuilder;
 
 import xml.ElementWithChildren;
 import xml.ElementWithValue;
