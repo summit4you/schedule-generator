@@ -1,0 +1,49 @@
+<HTMLPAGE tag=code>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	
+<head>
+	<title>TestSite</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<script type="text/javascript" src="tabber-minimized.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" ></link> 
+</head>
+	
+<body>
+	<table id="container" border="2" align="center" width="800" style="border-collapse: collapse; min-height:100%" >
+	<tbody>
+	
+		<tr style="height:100px">
+		<td style="text-align: left; vertical-align: top;">
+			Header
+		</td>
+		</tr>
+	
+		<tr style="height:100px">
+		<td style="text-align: center; vertical-align: top;">
+			#pagecontent#
+		</td>
+	    </tr>
+	    
+		<tr style="height:50px">
+		<td style="text-align: left; vertical-align: top;">
+			Footer
+		</td>
+		</tr>	
+	</tbody>
+</body>
+</html>
+	
+</HTMLPAGE tag=code>
+
+<TAB tag=code>
+	<div class="tabbertab" title=#tabtitle#>
+		#tabcontent#
+	</div>
+</TAB tag=code>
+
+<IFRAME tag=code>
+	<iframe src=#src# width=#width# height=#height#>
+  		<p>#IFrame_error#</p>
+	</iframe>
+</IFRAME tag=code>
