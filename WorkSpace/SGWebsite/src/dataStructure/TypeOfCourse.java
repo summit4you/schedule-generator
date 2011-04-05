@@ -1,4 +1,6 @@
-package dataStructure2;
+package dataStructure;
+
+import database.*;
 
 
 /**
@@ -9,12 +11,24 @@ package dataStructure2;
  * @version2.0
  */
 
-public class TypeOfCourse
+public class TypeOfCourse implements Databasable
 {
 private String coursetypes;
 	
 	public TypeOfCourse(String coursetypes)
 	{
 		this.coursetypes = coursetypes;
+	}
+	
+	private ID id;
+	
+	public void setID(ID id)
+	{
+		this.id=id;
+	}
+	
+	public ID getId()
+	{
+		return id;
 	}
 }

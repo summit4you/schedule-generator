@@ -1,5 +1,0 @@
-Latest version: ?
-
-Version notes:
-
-This is an old version without databasable interface
