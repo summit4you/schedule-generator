@@ -1,5 +1,6 @@
 package login;
 
+import dataStructure.*;
 import database.Databasable;
 import database.DatabasableException;
 import database.ID;
@@ -12,7 +13,10 @@ public class Account implements Databasable
 	
 	private String userName;
 	private String password;
-	
+	private String language; 
+	private Student student;
+	private Educator educator;
+	private Admin admin;
 	
 	public Account()
 	{
