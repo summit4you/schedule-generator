@@ -1,8 +1,10 @@
-package dataStructure2;
+package dataStructure;
 
 import java.util.Vector;
 
-public class Room 
+import database.*;
+
+public class Room implements Databasable
 {
 	private String location;
 	private int capacity;
@@ -15,33 +17,56 @@ public class Room
 		presentHardware = new Vector<Hardware>();
 	}
 	
-	public Vector<Hardware> getPresentHardware()
+	public Room()
 	{
-		return presentHardware;
-	}
-
-	public void setPresentHardware(Vector<Hardware> presentHardware)
-	{
-		this.presentHardware = presentHardware;
+		presentHardware = new Vector<Hardware>();
 	}
 	
+	@InDatabase
+	public Vector<Hardware> getPresentHardware()
+	{
+		return  (Vector<Hardware>) presentHardware.clone();
+	}
+
+	@OutDatabase(Hardware.class)
+	public void setPresentHardware(Vector<Hardware> presentHardware)
+	{
+		this.presentHardware = (Vector<Hardware>)  presentHardware.clone();
+	}
+	
+	@InDatabase
 	public int getcapacity()
 	{
 		return capacity;
 	}
 
+	@OutDatabase
 	public void setcapacity(int newcapacity)
 	{
 		capacity = newcapacity;
 	}
 	
+	@InDatabase
 	public String getLocation()
 	{
 		return location;
 	}
 
+	@OutDatabase
 	public void setLocation(String location)
 	{
 		this.location = location;
+	}
+	
+	private ID id;
+	
+	public void setID(ID id)
+	{
+		this.id=id;
+	}
+	
+	public ID getId()
+	{
+		return id;
 	}
 }

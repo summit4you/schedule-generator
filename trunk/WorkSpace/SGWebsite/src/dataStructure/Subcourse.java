@@ -1,13 +1,15 @@
-package dataStructure2;
+package dataStructure;
 
 import java.util.Vector;
+
+import database.*;
 /**
  * 
  * @author matthiascaenepeel
  * @version2.0
  */
 
-public class Subcourse
+public class Subcourse implements Databasable
 {
 
 	private String Name; //Dit wordt vermeld in het rooster.
@@ -15,93 +17,131 @@ public class Subcourse
 	private String properties;
 	private int totalnumberHours; //Het hele aantal uren
 	private int blockHours; //Het minimum aantal uren per blok
-	private Hardware neededHardware;
+	private Vector<Hardware> neededHardware;
 	private Vector<Educator> educators;
 	
-	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours, Hardware neededHardware, Vector<Educator> educators)
+	
+	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware, Vector<Educator> educators)
 	{
 		super();
 		Name = name;
 		this.studentCounter = studentCounter;
 		this.properties = properties;
 		this.totalnumberHours = totalnumberHours;
-		this.blockHours = blockHours;
+		this.blockHours = blockHours; //Je kan best blockHours gewoon op 1 instellen, makkelijker om in te stellen!
 		this.neededHardware = neededHardware;
 		this.educators = educators;
 	}
 	
 	public Subcourse()
 	{
-		
+		neededHardware = new Vector<Hardware>();
+		educators = new Vector<Educator>();
 	}
 
+	@InDatabase
 	public String getName()
 	{
 		return Name;
 	}
 
+	@OutDatabase
 	public void setName(String name)
 	{
 		Name = name;
 	}
 
+	@InDatabase
 	public int getStudentCounter()
 	{
 		return studentCounter;
 	}
 
+	@OutDatabase
 	public void setStudentCounter(int studentCounter)
 	{
 		this.studentCounter = studentCounter;
 	}
+	
+	public void incStudentCounter()
+	{
+		studentCounter = studentCounter+1;
+	}
+	
+	public void decStudentCounter()
+	{
+		studentCounter = studentCounter-1;
+	}
 
+	@InDatabase
 	public String getProperties()
 	{
 		return properties;
 	}
 
+	@OutDatabase
 	public void setProperties(String properties)
 	{
 		this.properties = properties;
 	}
 
+	@InDatabase
 	public int getTotalnumberHours()
 	{
 		return totalnumberHours;
 	}
 
+	@OutDatabase
 	public void setTotalnumberHours(int totalnumberHours)
 	{
 		this.totalnumberHours = totalnumberHours;
 	}
 
+	@InDatabase
 	public int getBlockHours()
 	{
 		return blockHours;
 	}
 
+	@OutDatabase
 	public void setBlockHours(int blockHours)
 	{
 		this.blockHours = blockHours;
 	}
 
-	public Hardware getNeededHardware()
+	@InDatabase
+	public Vector<Hardware> getNeededHardware()
 	{
-		return neededHardware;
+		return (Vector<Hardware>) neededHardware.clone();
 	}
 
-	public void setNeededHardware(Hardware neededHardware)
+	@OutDatabase(Hardware.class)
+	public void setNeededHardware(Vector<Hardware> neededHardware)
 	{
-		this.neededHardware = neededHardware;
+		this.neededHardware = (Vector<Hardware>) neededHardware.clone();
 	}
 
+	@InDatabase
 	public Vector<Educator> getEducators()
 	{
-		return educators;
+		return (Vector<Educator>) educators.clone();
 	}
 
+	@OutDatabase(Educator.class)
 	public void setEducators(Vector<Educator> educators)
 	{
-		this.educators = educators;
+		this.educators =  (Vector<Educator>) educators.clone();
+	}
+	
+	private ID id;
+	
+	public void setID(ID id)
+	{
+		this.id=id;
+	}
+	
+	public ID getId()
+	{
+		return id;
 	}
 }
