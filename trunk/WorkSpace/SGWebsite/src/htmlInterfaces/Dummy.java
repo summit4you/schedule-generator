@@ -6,7 +6,7 @@ import htmlInterfaces.HTMLTablable.*;
 /**
  *<b>This is a class for testing and will be removed later on. </b></br>
  * @author Alexander
- * @version 1.1
+ * @version 1.2
  * @see HTMLTablable
  */
 

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * HTMLtable. The getter of every attribute, that has to be represented in the
  * table, should be marked with the annotation TableInput.
  * @author Alexander
- * @version 1.1
+ * @version 1.2
  * @see TableInput 
  */
 public interface HTMLTablable
