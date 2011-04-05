@@ -21,11 +21,13 @@ public class Hardware implements Databasable
 	
 	private ID id;
 	
+	@Override
 	public void setID(ID id)
 	{
 		this.id=id;
 	}
 	
+	@Override
 	public ID getId()
 	{
 		return id;
