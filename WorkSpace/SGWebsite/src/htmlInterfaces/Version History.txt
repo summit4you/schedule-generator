@@ -1,7 +1,10 @@
-Latest version: V1.1
+Latest version: V1.2
 
 
 Version Notes:
+
+V1.2: Added some methods to HTMLTablablTool and tested them. Now a vector<HTMLTablable>
+      can be transformed into a string representing a HTML table.
 
 V1.1: TableHead annotation has been removed. 
       extracTable() has been added to htmlinterfacetool
