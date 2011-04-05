@@ -1,5 +1,6 @@
 package htmlBuilder;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -42,25 +43,48 @@ public class TestServlet extends HttpServlet {
      */
     public TestServlet() {
         super();
-        mainSite=new Site("C:\\Documents and Settings\\GEBRUIKER\\Mijn documenten\\VUB\\SoftwareEngeneering\\SVN\\WorkSpace\\SGWebsite\\src\\HTMLBuilder\\site.xml");
+        mainSite=new Site("C:\\java\\workspace\\SGWebsite\\src\\htmlBuilder\\site.xml");
+        
         mainSite.addTab ("Home", contentHome);
         mainSite.addTab("News", contentNews);
         mainSite.addTab("Help", contentHelp);
+        
+        mainSite.addTabWithIFrame("IHome", "http://localhost/SGWebsite/TestServlet?ps=contentHome");
+        mainSite.addTabWithIFrame("INews", "http://localhost/SGWebsite/TestServlet?ps=contentNews");
+        mainSite.addTabWithIFrame("IHelp", "http://localhost/SGWebsite/TestServlet?ps=contentHelp");
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
-	    out.print(mainSite.getHtmlCode());    
+	    String psRequest=(String) request.getParameter("ps");
+	    if (psRequest==null)
+	    {
+	    	out.print(mainSite.getHtmlCode());    
+	    }
+	    else if (psRequest.equals("contentHome"))
+	    {
+	    	out.print(contentHome);    
+	    }
+	    else if (psRequest.equals("contentNews"))
+	    {
+	    	out.print(contentNews);    
+	    }
+	    else if (psRequest.equals("contentHelp"))
+	    {
+	    	out.print(contentHelp);    
+	    }
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		// TODO Auto-generated method stub
