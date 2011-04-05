@@ -12,7 +12,7 @@ public class Site
 	
 	private String htmlFrame;
 		private final String defaultFrameWidth="100%";
-		private final String defaultFrameHeight="600";
+		private final String defaultFrameHeight="100%";
 	
 	private String path;
 		private final String defaultPath="/site.xml";

@@ -20,8 +20,10 @@
 		</tr>
 	
 		<tr style="height:100px">
-		<td style="text-align: center; vertical-align: top;">
-			#pagecontent#
+		<td style="text-align: left; vertical-align: top;">
+		<div class="tabber">
+		#pagecontent#
+		</div>
 		</td>
 	    </tr>
 	    
