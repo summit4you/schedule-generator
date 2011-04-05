@@ -1,5 +1,8 @@
 package dataStructure;
 
+import htmlInterfaces.HTMLTablable;
+import htmlInterfaces.HTMLTablable.*;
+
 import java.util.Vector;
 
 import database.*;
@@ -34,6 +37,7 @@ public class Educator implements Databasable
 	
 	
 	@InDatabase
+	@TableInput(order=3,text="#Number_Educator_Table#")
 	public int getemployeeNumber()
 	{
 		return employeeNumber;
@@ -48,18 +52,21 @@ public class Educator implements Databasable
 	private ID id;
 	
 	
+	@Override
 	public void setID(ID id)
 	{
 		this.id=id;
 	}
 	
 	
+	@Override
 	public ID getId()
 	{
 		return id;
 	}
 	
 	@InDatabase
+	@TableInput(order=1,text="#Firstname_Educator_Table#")
 	public String getFirstName() 
 	{
 		return firstName;
@@ -72,6 +79,7 @@ public class Educator implements Databasable
 	}
 
 	@InDatabase
+	@TableInput(order=2,text="#Surname_Educator_Table#")
 	public String getSurName()
 	{
 		return surName;

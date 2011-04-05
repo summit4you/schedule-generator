@@ -1,12 +1,10 @@
 package dataStructure;
 
+import htmlInterfaces.HTMLTablable;
+import htmlInterfaces.HTMLTablable.*;
+
 import java.util.Vector;
 import database.*;
-
-
-
-
-
 
 /**
  * 
@@ -14,7 +12,7 @@ import database.*;
  * @version2.0
  */
 
-public class Building implements Databasable
+public class Building implements Databasable,HTMLTablable
 {
 	private String name;
 	private Vector<Room> rooms;
@@ -33,7 +31,9 @@ public class Building implements Databasable
 		neighbours =new Vector<Building>();
 	}
 	
+	
 	@InDatabase
+	@TableInput(order=1,text="#Name_Building_Table#")
 	public String getName()
 	{
 		return name;
@@ -71,11 +71,13 @@ public class Building implements Databasable
 	
 	private ID id;
 	
+	@Override
 	public void setID(ID id)
 	{
 		this.id=id;
 	}
 	
+	@Override
 	public ID getId()
 	{
 		return id;

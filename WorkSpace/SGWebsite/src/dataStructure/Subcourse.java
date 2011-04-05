@@ -1,5 +1,7 @@
 package dataStructure;
 
+import htmlInterfaces.HTMLTablable;
+import htmlInterfaces.HTMLTablable.*;
 import java.util.Vector;
 
 import database.*;
@@ -135,11 +137,13 @@ public class Subcourse implements Databasable
 	
 	private ID id;
 	
+	@Override
 	public void setID(ID id)
 	{
 		this.id=id;
 	}
 	
+	@Override
 	public ID getId()
 	{
 		return id;

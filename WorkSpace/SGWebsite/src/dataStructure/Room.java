@@ -1,5 +1,8 @@
 package dataStructure;
 
+import htmlInterfaces.HTMLTablable;
+import htmlInterfaces.HTMLTablable.*;
+
 import java.util.Vector;
 
 import database.*;
@@ -35,6 +38,7 @@ public class Room implements Databasable
 	}
 	
 	@InDatabase
+	@TableInput(order=1,text="#Capacity_Room_Table#")
 	public int getcapacity()
 	{
 		return capacity;
@@ -47,6 +51,7 @@ public class Room implements Databasable
 	}
 	
 	@InDatabase
+	@TableInput(order=1,text="#Location_Room_Table#")
 	public String getLocation()
 	{
 		return location;
@@ -60,11 +65,13 @@ public class Room implements Databasable
 	
 	private ID id;
 	
+	@Override
 	public void setID(ID id)
 	{
 		this.id=id;
 	}
 	
+	@Override
 	public ID getId()
 	{
 		return id;
