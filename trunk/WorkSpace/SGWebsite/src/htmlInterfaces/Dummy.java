@@ -6,10 +6,10 @@ import htmlInterfaces.HTMLTablable.*;
 /**
  *<b>This is a class for testing and will be removed later on. </b></br>
  * @author Alexander
- * @version 1.2
+ * @version 1.3
  * @see HTMLTablable
  */
-
+@TableInfo(tableTitle="Table of Dummy")
 public class Dummy implements HTMLTablable
 {
 	private String name;

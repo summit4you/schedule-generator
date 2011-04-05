@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * HTMLtable. The getter of every attribute, that has to be represented in the
  * table, should be marked with the annotation TableInput.
  * @author Alexander
- * @version 1.2
+ * @version 1.3
  * @see TableInput 
  */
 public interface HTMLTablable
@@ -24,9 +24,16 @@ public interface HTMLTablable
 	 * Text: determines how the element is called inside the table. This should be a tag
 	 * that is present in language.xml 
 	 * @author Alexander
-	 * @version 0.1
+	 * @version 1.3
 	 * @see HTMLTablable
 	 */
+	
+	@Retention(RetentionPolicy.RUNTIME)
+	public @interface TableInfo
+	{
+		String tableTitle() default "#TextNotSpecified#";
+	}
+	
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.METHOD)
 	public @interface TableInput 
