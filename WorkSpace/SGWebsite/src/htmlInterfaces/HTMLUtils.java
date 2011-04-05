@@ -7,7 +7,7 @@ import com.hp.gagawa.java.elements.*;
 /**
  * Toolbox used to automatically generate HTML code.
  * @author Adam
- * @version 1.2
+ * @version 1.1
  */
 public class HTMLUtils
 {
@@ -28,6 +28,32 @@ public class HTMLUtils
 			}
 			tabel.appendChild(rij);
 		} 
+		return tabel;
+	}
+	
+	static public Table toDataTable(String tableID, Vector<String> head,Vector<Vector<String>> data)
+	{
+		Tr headrij = new Tr();
+		for (String n : head)
+		{
+			headrij.appendChild(new Th().appendChild(new Text(n)));
+		}
+		Thead thead = new Thead().appendChild(headrij);
+		Table tabel = new Table().appendChild(thead).setId(tableID);
+		
+		Tbody tbody = new Tbody();
+		Integer count = new Integer(0);
+		for (Vector<String> i : data)
+		{
+			count++;
+			Tr rij = new Tr();
+			for (String j : i)
+			{
+				rij.setId(count.toString()).appendChild(new Td().appendChild(new Text(j)));
+			}
+			tbody.appendChild(rij);
+		} 
+		tabel.appendChild(tbody);
 		return tabel;
 	}
 	
