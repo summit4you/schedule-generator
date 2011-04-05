@@ -1,6 +1,7 @@
 package htmlInterfaces;
 
 
+import htmlInterfaces.HTMLTablable.TableInfo;
 import htmlInterfaces.HTMLTablable.TableInput;
 
 import java.lang.annotation.Annotation;
@@ -12,11 +13,20 @@ import java.util.Vector;
  * <b>Class containing static methods to handle HTMLinterfaces </b> </br>
  * This class will be used by interfaces based on annotations.
  * @author Alexander
- * @version 1.2
+ * @version 1.3
  * @see HTMLTablable, HTMLFormable
  */
 public class HTMLInterfaceTool 
 {	
+	/**
+	 *  This method gets TableInfo annotation of the class of an object
+	 */
+	public static TableInfo fetchTableInfo(HTMLTablable obj)
+	{
+		Annotation tableinputs= AnnotationTool.fetchClassAnnotation(obj.getClass(),TableInfo.class);
+		return (TableInfo) tableinputs;
+
+	}
 	
 	/**
 	 * This method collects all the text out of the TableIput annotations and puts them in the
@@ -69,6 +79,7 @@ public class HTMLInterfaceTool
 	 * This method doesn't check if the interface of the given object is well
 	 * implemented. When an error occurs null is returned. </br>
 	 */
+	@Deprecated
 	public static Vector<Vector<String>> fetchTableContent(HTMLTablable obj)
 	{
 		Vector<Annotation> tableinputs= AnnotationTool.fetchMethodAnnotation(obj.getClass(),TableInput.class);
@@ -111,6 +122,7 @@ public class HTMLInterfaceTool
 	 * When an error occurs null is returned. When an empty vector is given as
 	 * an argument null is returned </br>
 	 */
+	@Deprecated
 	public static Vector<Vector<String>> fetchTableContent(Vector<HTMLTablable> vec)
 	{
 		if (vec!=null)
@@ -125,7 +137,7 @@ public class HTMLInterfaceTool
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Easy to use method  that creates a table from an
 	 * HTMLTablable object. This method combines HTMLUtils.toHTMLTable()
@@ -144,5 +156,24 @@ public class HTMLInterfaceTool
 	public static String changeToHTMLTable(Vector<HTMLTablable> vec)
 	{
 		return HTMLUtils.toHTMLTable(HTMLInterfaceTool.fetchTableContent(vec)).write();
+	}
+	
+	/**
+	 * Easy to use method  that creates a table from an
+	 * HTMLTablable Vector. This method combines HTMLUtils.toDataTable()
+	 * and HTMLInterfaceTool.fetchValues() to generate its result.
+	 */
+	public static String changeToDataTable(String tableID,Vector<HTMLTablable> vec)
+	{
+		if (vec!=null)
+		{
+			Vector<Vector<String>> rows= new Vector<Vector<String>>();
+			for (HTMLTablable t:vec)
+			{
+				rows.add(fetchValues(t));
+			}
+			return HTMLUtils.toDataTable(tableID, fetchTexts(vec.get(0)),rows).write(); 
+		}
+		return null;
 	}
 }

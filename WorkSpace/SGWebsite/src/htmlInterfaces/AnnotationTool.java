@@ -9,7 +9,7 @@ import java.util.Vector;
  * <b>Class containing static methods to handle annotations </b> </br>
  * This class will be used by interfaces based on annotations.
  * @author Alexander
- * @version 1.2
+ * @version 1.3
  * @see FetchMethods,FetchMethodAnnotation,FetchClassAnnotation</br>
  * ExecuteMethodsAsSetters, ExecuteMethodsAsGetter,
  */
