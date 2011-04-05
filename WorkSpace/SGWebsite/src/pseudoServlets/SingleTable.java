@@ -20,8 +20,9 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 	private Class<T> tableClass;
 	private String name;
 	
-	public SingleTable(Class<T> tableClass,String name,boolean editable) 
+	public SingleTable(Class<T> tableClass,String name) 
 	{
+		super();
 		this.tableClass=tableClass;
 		this.name=name;
 		templateFile="singleTable.tpl";
@@ -39,8 +40,7 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
 	{
-		String res=template;
-		res=replaceTags(template,"TABLE",HTMLInterfaceTool.changeToHTMLTable(getObjects()));
+		String res=replaceTags(template,"TABLE",HTMLInterfaceTool.changeToHTMLTable(getObjects()));
 		return res;
 	}
 
