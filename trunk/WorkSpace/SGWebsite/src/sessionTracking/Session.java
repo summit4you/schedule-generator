@@ -2,6 +2,8 @@ package sessionTracking;
 
 import java.util.UUID;
 
+import login.Account;
+
 /**
  * <b>Class representing a web session. </b> </br>
  * A session needs to be created by the servlet every time a user logs in 
@@ -28,29 +30,29 @@ public class Session
 	private String sessionID;
 	private long timeOfCreation;
 	private long lifeTime;
-	private User user;
+	private Account account;
 	
 	public Session()
 	{
-		setUser(null);
+		setAccount(null);
 		setTimeOfCreation();
 		setLifeTime(DEFAULT_LIFE_TIME);
 		generateID();
 		addToInnerTable();
 	}
 	
-	public Session(User u)
+	public Session(Account u)
 	{
-		setUser(u);
+		setAccount(u);
 		setTimeOfCreation();
 		setLifeTime(DEFAULT_LIFE_TIME);
 		generateID();
 		addToInnerTable();
 	}
 	
-	public Session(User u,long life)
+	public Session(Account u,long life)
 	{
-		setUser(u);
+		setAccount(u);
 		setTimeOfCreation();
 		setLifeTime(life);
 		generateID();
@@ -93,15 +95,7 @@ public class Session
 		return sessionID;
 	}
 	
-	public void setUser(User user)
-	{
-		this.user = user;
-	}
-
-	public User getUser()
-	{
-		return user;
-	}
+	
 	
 	public void setLifeTime(long lifeTime)
 	{
@@ -180,6 +174,16 @@ public class Session
 	public static SessionCleaner getCleaner()
 	{
 		return cleaner;
+	}
+
+	public void setAccount(Account account)
+	{
+		this.account = account;
+	}
+
+	public Account getAccount()
+	{
+		return account;
 	}
 	
 	

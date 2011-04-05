@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Enumeration;
 
+import login.Account;
+
 
 import org.junit.After;
 import org.junit.Before;
@@ -24,7 +26,7 @@ import org.junit.Test;
  */
 public class SessionTest
 {	
-	User user;
+	Account account;
 	
     Session ses;
 	SessionTable table;
@@ -34,7 +36,7 @@ public class SessionTest
     public void initTest() 
     {
     	
-        user = new User();
+        account = new Account();
 		table = Session.getInnerTable();
 		cleaner = Session.getCleaner();
 		cleaner.stop();
@@ -56,7 +58,7 @@ public class SessionTest
     	System.out.print("	Test1 start...");
 		for (int i=0;i<100;i++)
 		{
-			ses = new Session(user,1000);
+			ses = new Session(account,1000);
 		}
 		cleaner.start();
 		long startTime= System.currentTimeMillis();
@@ -74,7 +76,7 @@ public class SessionTest
 		System.out.print("	Test2 start...");
 		for (int i=0;i<100;i++)
 		{
-			ses = new Session(user,1000);
+			ses = new Session(account,1000);
 		}
 		cleaner.start();
 		startTime= System.currentTimeMillis();
@@ -93,7 +95,7 @@ public class SessionTest
 		System.out.print("	Test3 start...");
 		for (int i=0;i<100;i++)
 		{
-			ses = new Session(user);
+			ses = new Session(account);
 		}
 		cleaner.start();
 		assertTrue(Session.getSession(ses.getSessionID())==ses);
