@@ -59,6 +59,8 @@ public abstract class PseudoServlet
 		Vector<PseudoServlet> pseudos=new Vector<PseudoServlet>(); 
 		//add your pseudoServlets to this vector!
 		pseudos.add(new SingleTable(null,"Accounts",false));
+		pseudos.add(new Search());
+		pseudos.add(new Schedule());
 		
 		for (PseudoServlet i:pseudos)
 		{
@@ -139,9 +141,8 @@ public abstract class PseudoServlet
 	 */
 	public static void initEverything(String baseServletLink,String servletContextPath)
 	{
-		baseLink=baseServletLink.endsWith("/")?baseServletLink:baseServletLink+"/";
+		baseLink=baseServletLink;
 		servletPath=servletContextPath;
-		
 		pseudoServlets=loadPseudoServlets();
 	}
 	

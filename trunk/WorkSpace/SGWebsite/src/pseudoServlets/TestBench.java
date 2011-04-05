@@ -7,11 +7,14 @@ import java.io.PrintWriter;
 import java.util.Vector;
 
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import login.Account;
 
 import com.hp.gagawa.java.elements.Table;
 
@@ -35,12 +38,20 @@ public class TestBench extends HttpServlet {
     public TestBench() 
     {
         super();
-        PseudoServlet.setBaseServletLink("test"); // moet nog veranderd worden in de juiste link
-        sessie = new Session();
-
+        
         
     }
 
+    @Override
+    public void init(ServletConfig config) throws ServletException
+    {
+    	// TODO Auto-generated method stub
+    	super.init(config);
+    	PseudoServlet.initEverything("test", "C:\templates"); // moet nog veranderd worden in de juiste link
+    	Account adam = new Account("adam", "adam");
+    	sessie = new Session(adam);
+    }
+    
     
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -58,6 +69,7 @@ public class TestBench extends HttpServlet {
 	    {
 	    	out.println(PseudoServlet.getPseudoServlet(pseudo).processRequest(PseudoServlet.RequestType.GET, request,sessie));
 	    } 
+	    out.close();
 	}
     
     @Override
@@ -72,6 +84,7 @@ public class TestBench extends HttpServlet {
 	    } else
 	    {
 	    	out.println(PseudoServlet.getPseudoServlet(pseudo).processRequest(PseudoServlet.RequestType.GET, request,sessie));
-	    }     
+	    }
+	    out.close();
 	}
 }
