@@ -11,7 +11,7 @@ import database.*;
  * @author matthiascaenepeel
  * @version2.0
  */
-public class Student implements Databasable
+public class Student implements Databasable,HTMLTablable
 {
 	private int studentNumber;
 	private String firstName;

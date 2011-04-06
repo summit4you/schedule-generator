@@ -12,26 +12,43 @@ import htmlInterfaces.HTMLTablable.*;
  * @version2.0
  */
 
-public class TypeOfCourse implements Databasable
+public class TypeOfCourse implements DatabasableAsString
 {
-private String coursetypes;
+	private String coursetype;
 	
-	public TypeOfCourse(String coursetypes)
+	public TypeOfCourse(String coursetype)
 	{
-		this.coursetypes = coursetypes;
+		this.coursetype = coursetype;
+	}
+
+	@Override
+	public String toValue() 
+	{
+		return coursetype;
+	}
+
+	@Override
+	public void loadFromValue(String value) 
+	{
+		this.coursetype=value;
 	}
 	
-	private ID id;
-	
 	@Override
-	public void setID(ID id)
+	public boolean equals(Object obj) 
 	{
-		this.id=id;
+		if (obj instanceof TypeOfCourse)
+		{
+			if (((TypeOfCourse) obj).coursetype.equals(this.coursetype))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@Override
-	public ID getId()
+	public String toString() 
 	{
-		return id;
+		return coursetype;
 	}
 }

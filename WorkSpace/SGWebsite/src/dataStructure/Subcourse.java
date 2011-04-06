@@ -2,6 +2,7 @@ package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
 import htmlInterfaces.HTMLTablable.*;
+
 import java.util.Vector;
 
 import database.*;
@@ -11,7 +12,7 @@ import database.*;
  * @version2.0
  */
 
-public class Subcourse implements Databasable
+public class Subcourse implements Databasable,HTMLTablable
 {
 
 	private String Name; //Dit wordt vermeld in het rooster.
@@ -42,6 +43,7 @@ public class Subcourse implements Databasable
 	}
 
 	@InDatabase
+	@TableInput(order=1,text="#Name_SubCourse_Table#")
 	public String getName()
 	{
 		return Name;
@@ -88,6 +90,7 @@ public class Subcourse implements Databasable
 	}
 
 	@InDatabase
+	@TableInput(order=2,text="#NumberHours_SubCourse_Table#")
 	public int getTotalnumberHours()
 	{
 		return totalnumberHours;
@@ -100,6 +103,7 @@ public class Subcourse implements Databasable
 	}
 
 	@InDatabase
+	@TableInput(order=3,text="#BlockHours_SubCourse_Table#")
 	public int getBlockHours()
 	{
 		return blockHours;

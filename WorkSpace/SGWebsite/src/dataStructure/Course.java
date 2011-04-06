@@ -1,7 +1,6 @@
 package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
-import htmlInterfaces.HTMLTablable.*;
 
 import java.util.Vector;
 
@@ -12,7 +11,7 @@ import database.*;
  * @version2.0
  */
 
-public class Course implements Databasable
+public class Course implements Databasable,HTMLTablable
 {
 	private String name;
 	private Educator responsible;

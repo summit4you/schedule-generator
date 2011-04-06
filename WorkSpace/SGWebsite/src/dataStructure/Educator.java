@@ -1,7 +1,6 @@
 package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
-import htmlInterfaces.HTMLTablable.*;
 
 import java.util.Vector;
 
@@ -13,7 +12,7 @@ import database.*;
  * @version2.0
  */
 
-public class Educator implements Databasable
+public class Educator implements Databasable,HTMLTablable
 {
 	private String firstName;
 	private String surName;
