@@ -23,7 +23,12 @@ public class Program implements Databasable
 	{
 		level = newlevel;
 		name = newname;
-		this.courses = courses;
+		this.courses = (Vector<Course>) courses.clone();
+	}
+	
+	public Program()
+	{
+		
 	}
 	
 	@InDatabase

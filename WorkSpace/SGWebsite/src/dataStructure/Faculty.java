@@ -17,16 +17,18 @@ public class Faculty implements Databasable
 {
 	private String name;
 	private Vector<Program> programs;
+	private Vector<Educator> educators;
 	
-	
-	public Faculty(String newname)
+	public Faculty(String name, Vector<Program> programs, Vector<Educator> educators)
 	{
-		name = newname;
+		this.name = name;
+		this.programs = (Vector<Program>) programs.clone();
+		this.educators = (Vector<Educator>) educators.clone();
 	}
 	
 	public Faculty()
 	{
-
+		
 	}
 	
 	@InDatabase
@@ -69,5 +71,17 @@ public class Faculty implements Databasable
 	public ID getId()
 	{
 		return id;
+	}
+
+	@OutDatabase(Educator.class)
+	public void setEducators(Vector<Educator> educators)
+	{
+		this.educators = educators;
+	}
+	
+	@InDatabase
+	public Vector<Educator> getEducators()
+	{
+		return educators;
 	}
 }

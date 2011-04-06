@@ -11,7 +11,6 @@ public class Room implements Databasable,HTMLTablable
 	private String location;
 	private int capacity;
 	private Vector<Hardware> presentHardware;
-	private String calendarfile;
 	
 	public Room(String newlocation,int newcapacity)
 	{
@@ -75,15 +74,10 @@ public class Room implements Databasable,HTMLTablable
 	public ID getId()
 	{
 		return id;
-	}
-
-	public void setCalendarfile(String calendarfile)
-	{
-		this.calendarfile = calendarfile;
-	}
-
+	}	
+	
 	public String getCalendarfile()
 	{
-		return calendarfile;
+		return id.toString();
 	}
 }

@@ -33,8 +33,10 @@ public class Subcourse implements Databasable,HTMLTablable
 		this.properties = properties;
 		this.totalnumberHours = totalnumberHours;
 		this.blockHours = blockHours; //Je kan best blockHours gewoon op 1 instellen, makkelijker om in te stellen!
-		this.neededHardware = neededHardware;
-		this.educators = educators;
+		this.neededHardware = (Vector<Hardware>) neededHardware.clone();
+		this.educators = (Vector<Educator>) educators.clone();
+		educators = new Vector<Educator>();
+		neededHardware = new Vector<Hardware>();
 	}
 	
 	public Subcourse()

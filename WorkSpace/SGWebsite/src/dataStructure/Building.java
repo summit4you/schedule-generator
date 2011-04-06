@@ -16,19 +16,19 @@ public class Building implements Databasable,HTMLTablable
 {
 	private String name;
 	private Vector<Room> rooms;
+	@Deprecated
 	private Vector<Building> neighbours;
 	
 	public Building(String newname)
 	{
 		name = newname;
 		rooms = new Vector<Room>();
-		neighbours =new Vector<Building>();
+		//neighbours =new Vector<Building>();
 	}
 	
 	public Building()
 	{
 		rooms = new Vector<Room>();
-		neighbours =new Vector<Building>();
 	}
 	
 	

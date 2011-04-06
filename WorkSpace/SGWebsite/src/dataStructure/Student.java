@@ -26,6 +26,8 @@ public class Student implements Databasable,HTMLTablable
 		this.studentNumber = studentNumber;
 		this.firstName = firstName;
 		this.surName = surName;
+		programs = new Vector<Program>();
+		courses = new Vector<Course>();
 	}
 
 	public Student()
