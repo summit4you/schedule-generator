@@ -4,7 +4,9 @@
 
 </head>
 <body>
-
+<table align="center">
+<tr>
+<td>
 <form action="{MASTERSERVLET}" method="post">
 <table align="center" border="0" style="borde-collapse:collapse">
 <tr>
@@ -29,9 +31,13 @@
 </tr>
 </table>
 </form>
-
+</td>
+<td width="20">
+</td>
+<td>
 <form action="{MASTERSERVLET}" method="post">
 <table align="center" border="0" style="borde-collapse:collapse">
+<tr><td>&nbsp</td></tr>
 <tr>
 <td>#search_room#</td>
 </tr>
@@ -46,6 +52,10 @@
 </table>
 <input type="hidden" name="type" value="room">
 </form>
+</td>
+</tr>
+</table>
+
 
 {CALENDAR}
 

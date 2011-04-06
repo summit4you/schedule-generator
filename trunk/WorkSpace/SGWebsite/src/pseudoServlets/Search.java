@@ -1,5 +1,8 @@
 package pseudoServlets;
 
+import htmlInterfaces.HTMLInterfaceTool;
+import htmlInterfaces.HTMLTablable;
+
 import java.io.File;
 import java.util.Vector;
 
@@ -58,12 +61,13 @@ public class Search extends PseudoServlet
 				// als er maar 1 resultaat is, toon de kalender van de persoon
 				else if (searchresult.size()==1)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(1), session.getAccount().getLanguage());
+					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				else
 				{
-					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat 
+					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat
+					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", HTMLInterfaceTool.changeToDataTable("results", searchresult))); 
 				}
 				
 			}
@@ -80,12 +84,12 @@ public class Search extends PseudoServlet
 				}
 				else if (searchresult.size()==1)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(1), session.getAccount().getLanguage());
+					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				else
 				{
-					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat 
+					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", HTMLInterfaceTool.changeToDataTable("results", searchresult))); 
 				}
 			}
 			else if (classtype.equals("room"))
@@ -101,13 +105,13 @@ public class Search extends PseudoServlet
 				}				
 				else if (searchresult.size()==1)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(1), session.getAccount().getLanguage());
+					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				// als er meerdere resultaten zijn, toon de resultaten in een tabel en laat klikken toe op links
 				else
 				{
-					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat 
+					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", HTMLInterfaceTool.changeToDataTable("results", searchresult))); 
 				}
 			}
 		}
