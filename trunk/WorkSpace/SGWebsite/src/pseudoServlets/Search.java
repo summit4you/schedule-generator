@@ -48,69 +48,68 @@ public class Search extends PseudoServlet
 				// zoek op in de database met studenten
 				Database db = getDB();
 				db.connect();
-				//Search(Student.class,"getName",request.getParameter("username"));
 				database.Search s = new database.Search(Student.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
-				Student searchresult = db.read(s);
-				//Vector<Student> searchresult = db.readAll(s);
+				Vector<Student> searchresult = db.readAll(s);
 				db.disconnect();
-				// als er maar 1 resultaat is, toon de kalender van de persoon
-				if (true)//searchresult.size()==1)
+				if (searchresult==null)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult, session.getAccount().getLanguage());
+					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
+				}
+				// als er maar 1 resultaat is, toon de kalender van de persoon
+				else if (searchresult.size()==1)
+				{
+					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(1), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
-				// als er meerdere resultaten zijn, toon de resultaten in een tabel en laat klikken toe op links
-//				else
-//				{
-//					// toon tabel met de verschillende resultaten en maak een link op elk resultaat 
-//				}
+				else
+				{
+					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat 
+				}
 				
 			}
 			else if (classtype.equals("educator")) 
 			{
-				// zoek op in de database met educators
 				Database db = getDB();
 				db.connect();
-				//Search(Student.class,"getName",request.getParameter("username"));
 				database.Search s = new database.Search(Educator.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
-				Student searchresult = db.read(s);
-				//Vector<Student> searchresult = db.readAll(s);
+				Vector<Educator> searchresult = db.readAll(s);
 				db.disconnect();
-				// als er maar 1 resultaat is, toon de kalender van de persoon
-				if (true)//searchresult.size()==1)
+				if (searchresult==null)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult, session.getAccount().getLanguage());
+					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
+				}
+				else if (searchresult.size()==1)
+				{
+					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(1), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
-				// als er meerdere resultaten zijn, toon de resultaten in een tabel en laat klikken toe op links
-//				else
-//				{
-//					// toon tabel met de verschillende resultaten en maak een link op elk resultaat 
-//				}
+				else
+				{
+					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat 
+				}
 			}
 			else if (classtype.equals("room"))
 			{
-				// zoek op in de database met rooms
 				Database db = getDB();
 				db.connect();
-				//Search(Student.class,"getName",request.getParameter("username"));
-				database.Search s = new database.Search(Educator.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
-				Student searchresult = db.read(s);
-				//Vector<Student> searchresult = db.readAll(s);
+				database.Search s = new database.Search(Room.class,"getLocation",request.getParameter("roomnumber"));
+				Vector<Room> searchresult = db.readAll(s);
 				db.disconnect();
-				// als er maar 1 resultaat is, toon de kalender van de persoon
-				if (true)//searchresult.size()==1)
+				if (searchresult==null)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult, session.getAccount().getLanguage());
+					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
+				}				
+				else if (searchresult.size()==1)
+				{
+					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(1), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				// als er meerdere resultaten zijn, toon de resultaten in een tabel en laat klikken toe op links
-//				else
-//				{
-//					// toon tabel met de verschillende resultaten en maak een link op elk resultaat 
-//				}
+				else
+				{
+					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat 
+				}
 			}
-			response = replaceTags(response, "CALENDAR", classtype); 
 		}
 		return response;
 	}
