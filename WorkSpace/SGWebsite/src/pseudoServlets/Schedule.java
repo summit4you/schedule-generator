@@ -27,6 +27,10 @@ public class Schedule extends PseudoServlet
 		{
 			link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getEducator(), session.getAccount().getLanguage());
 		}
+		else
+		{
+			link = "Admins don't have a schedule";
+		}
 		String response = replaceTags(template, "LINK", link);
 		return response;
 	}

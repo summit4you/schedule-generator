@@ -34,7 +34,7 @@ public class calendarTools
 	
 	/**
 	 * Generates the link for the PHPiCalendar to show the schedule of an educator
-	 * @param educator
+	 * @param educator 
 	 * @param language
 	 * @return
 	 */
@@ -63,7 +63,7 @@ public class calendarTools
 			{
 				for (Subcourse k : j.getSubcourses())
 				{
-					link+=k.getCalenderfile()+",";
+					link+=k.getCalendarfile()+",";
 				}
 			}
 		}
@@ -71,7 +71,7 @@ public class calendarTools
 		{
 			for (Subcourse k : i.getSubcourses())
 			{
-				link+=k.getCalenderfile()+",";
+				link+=k.getCalendarfile()+",";
 			}
 		}
 		return link.substring(0,link.length()-1); 
@@ -84,7 +84,7 @@ public class calendarTools
 		{
 			for (Subcourse k : i.getSubcourses())
 			{
-				link+=k.getCalenderfile()+",";
+				link+=k.getCalendarfile()+",";
 			}
 		}
 		return link.substring(0,link.length()-1); 
