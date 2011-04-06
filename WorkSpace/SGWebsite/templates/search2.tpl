@@ -15,9 +15,13 @@
 	}
 	
 </script> 
-
-
-<Iframe id="calendar" src="{LINK}" scrolling="no" onload="calcHeight();changeBackground();" frameborder="0">
+<table align=center>
+<tr>
+<td width="1024">
+<Iframe id="calendar" src="{LINK}" scrolling="yes" onload="calcHeight();changeBackground();" frameborder="0" >
 Sorry, your browser doesn't support iFrames. </br>
 You need a browser which supports iFrames to view this page. </br> 
 Go for Google Chrome!</Iframe> 
+</td>
+</tr>
+</table>

@@ -13,7 +13,7 @@ public class calendarTools
 	public static String GeneratePHPiCalendarLink(Student student,String language)
 	{
 		// TODO parameters uitlezen uit XML bestand
-		String link = "phpicalendar/week.php?cal=";
+		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
 		link += CollectCalendarFiles(student);
 		link += "&width=1024&lang=";
 		link+=language;
@@ -24,7 +24,7 @@ public class calendarTools
 	public static String GeneratePHPiCalendarLink(Room room,String language)
 	{
 		// TODO parameters uitlezen uit XML bestand
-		String link = "phpicalendar/week.php?cal=";
+		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
 		link += room.getCalendarfile();
 		link += "&width=1024&lang=";
 		link+=language;
@@ -41,7 +41,7 @@ public class calendarTools
 	public static String GeneratePHPiCalendarLink(Educator educator,String language)
 	{
 		// TODO parameters uitlezen uit XML bestand
-		String link = "phpicalendar/week.php?cal=";
+		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
 		link += CollectCalendarFiles(educator);
 		link += "&width=1024&lang=";
 		link+=language;
