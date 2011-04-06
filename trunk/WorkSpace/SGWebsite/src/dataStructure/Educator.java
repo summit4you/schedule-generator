@@ -18,7 +18,7 @@ public class Educator implements Databasable,HTMLTablable
 	private String surName;
 	private int employeeNumber;
 	private Vector<Course> courses;
-	
+	private Vector<Subcourse> subcourses;
 
 	public Educator(String firstName, String surName, int employeeNumber)
 	{
@@ -26,6 +26,9 @@ public class Educator implements Databasable,HTMLTablable
 		this.firstName = firstName;
 		this.surName = surName;
 		this.employeeNumber = employeeNumber;
+		this.courses = new Vector<Course>();
+		this.subcourses = new Vector<Subcourse>();
+
 	}
 
 	public Educator()
@@ -99,6 +102,17 @@ public class Educator implements Databasable,HTMLTablable
 	@OutDatabase(Course.class)
 	public void setCourses(Vector<Course> courses)
 	{
-		this.courses = courses;
+		this.courses = (Vector<Course>) courses.clone();
+	}
+
+	public void setSubcourses(Vector<Subcourse> subcourses)
+	{
+		this.subcourses = (Vector<Subcourse>) subcourses.clone();
+	}
+
+	@InDatabase
+	public Vector<Subcourse> getSubcourses()
+	{
+		return subcourses;
 	}
 }

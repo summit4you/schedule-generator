@@ -22,8 +22,9 @@ public class Course implements Databasable,HTMLTablable
 	{
 		super();
 		this.name = name;
-		this.subcourses = subcourses;
+		this.subcourses = (Vector<Subcourse>) subcourses.clone();
 		this.responsible = responsible;
+		programs = new Vector<Program>();
 	}
 	
 	public Course()
