@@ -65,56 +65,45 @@ public class MatsiesTest1
 		}
 		mets.add(met1);
 		
-		try 
-		{
-			met2 = Subcourse.class.getMethod("getName");
-		} catch (SecurityException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		mets.add(met2);
 		
 		
 //		blocks=MatsiesVectorToolbox.ordenVector(blocks,mets);
-//		
+		
 //		System.out.println("Nu zou het geordend moeten zijn");
 //		Vector<Subcourse> subs2 = Subcourseblocksgenerator.giveSubcourses(blocks);
 //		System.out.println(subs2.toString());
 //		System.out.println(Subcourseblocksgenerator.giveHours(blocks).toString());
 //		System.out.println(blocks.size());
 		
-		Vector<Bounds> mappedBlocksOnSub = new Vector<Bounds> ();
-		mappedBlocksOnSub = MatsiesVectorToolbox.mapper(blocks, mets);
-		System.out.println(mappedBlocksOnSub.toString());
-		for(Bounds bound:mappedBlocksOnSub)
-		{
-			System.out.println("Fingers dimming the light");
-			System.out.println(bound.getLowerBound());
-			System.out.println(bound.getUpperBound());
-			System.out.println(bound.getObject().toString());
-			System.out.println(mappedBlocksOnSub.getClass());
-		}
+		Vector<Bounds> mappedBlocksOnSub = new Vector<Bounds>();
 		
-		Vector<Bounds> mappedSubsOnEdu = new Vector<Bounds> ();
+		mappedBlocksOnSub = MatsiesVectorToolbox.mapper(blocks,mets);
+		
+//		for(Bounds bound:mappedBlocksOnSub)
+//		{
+//			System.out.println("Fingers dimming the light");
+//			System.out.println(bound.getLowerBound());
+//			System.out.println(bound.getUpperBound());
+//			System.out.println(bound.getObject().toString());
+//			System.out.println(mappedBlocksOnSub.getClass());
+//		}
+//		
+		Vector<Bounds> mappedSubsOnEdu = new Vector<Bounds>();
 		Vector<Method> mets2 = new Vector<Method>();
 		Method meta = null;
 		Method metb = null;
 		Method metc = null;
 		
+		
 		try 
 		{
 			meta = Bounds.class.getMethod("getObject");
-		} catch (SecurityException e) 
+		} 
+		catch (SecurityException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (NoSuchMethodException e) 
-		{
+		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -123,38 +112,45 @@ public class MatsiesTest1
 		try 
 		{
 			metb = Subcourse.class.getMethod("getEducators");
-		} catch (SecurityException e) 
+		} 
+		catch (SecurityException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (NoSuchMethodException e) 
-		{
+		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		mets2.add(metb);
 		
+		
 		try 
 		{
 			metc = Vector.class.getMethod("firstElement");
-		} catch (SecurityException e) 
+		} 
+		catch (SecurityException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (NoSuchMethodException e) 
-		{
+		} catch (NoSuchMethodException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		mets2.add(metc);
-		System.out.println(mets2);
+	
+	
+		System.out.println("testTest1 "+mets2.size());
+		System.out.println("testTest2 "+mappedBlocksOnSub.firstElement().getObject().getClass());
+		mappedSubsOnEdu = MatsiesVectorToolbox.mapper(mappedBlocksOnSub,mets2);
+		System.out.println("testTest3 "+ mappedSubsOnEdu.firstElement().getClass()); 
 		
-		mappedSubsOnEdu = MatsiesVectorToolbox.mapper(mappedBlocksOnSub, mets2);
-		
-		
-		
-		
-		
-		
+		for(Bounds bound:mappedSubsOnEdu)
+		{
+			System.out.println("Fingers dimming the light");
+			System.out.println(bound.getLowerBound());
+			System.out.println(bound.getUpperBound());
+			System.out.println(bound.getObject().toString());
+			System.out.println(mappedSubsOnEdu.getClass());
+		}
 	}
 }

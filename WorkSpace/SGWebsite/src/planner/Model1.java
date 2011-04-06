@@ -29,7 +29,6 @@ public class Model1
 	
 	//variables of the problem
 	// maak deze vectoren final bij het vullen
-	private static Vector<Room> availableRooms;
 	private static Vector<Bounds> subcourses;
 	private static Vector<Bounds> educators;
 	private static Vector<Subcourseblock> blocks;
@@ -40,43 +39,66 @@ public class Model1
 	
 	Model m = new CPModel();
 	
-	try
+	Vector<Room> availableRooms = new Vector<Room>();
+	
+	for(int i=0;i<=20;i++)
 	{
-		subcourses = MatsiesVectorToolbox.mapper(blocks,Subcourseblock.class.getMethod("getSubcourse"));
-	} catch (SecurityException e)
+		Room r = new Room("plaats"+i,i*8);
+		availableRooms.add(r);
+	}
+	
+	Vector<Educator> edus = new Vector<Educator>();
+	Vector<Course> courses = new Vector<Course>();
+	
+	
+	for(int i=0;i<=7;i++)
+	{
+		edus.add(new Educator("jos"+i,"dreistoot"+i,i));
+		Vector<Hardware> vec1 = new Vector<Hardware>();
+		Vector<Educator> vec2 = new Vector<Educator>();
+		Vector<Subcourse> vec3 = new Vector<Subcourse>();
+		vec2.add(edus.elementAt(i));
+		Subcourse testsub = new Subcourse("kak"+i,10*i,"prot"+i,5*i,2,vec1,vec2);
+		vec3.add(testsub);
+		courses.add(new Course("course"+i,vec3,edus.elementAt(i)));
+	}
+	
+	Vector<Subcourseblock> blocks = Subcourseblocksgenerator.generateBlocks(courses);
+	
+	Vector<Method> mets1 = new Vector<Method>();
+	Method met1 = null;
+	Method met2 = null;
+	try 
+	{
+		met1 = Subcourseblock.class.getMethod("getSubcourse");
+	} catch (SecurityException e) 
 	{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	} catch (NoSuchMethodException e)
+	} catch (NoSuchMethodException e) 
 	{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	try
+	mets1.add(met1);
+	
+	try 
 	{
-		methods.add(Bounds.class.getMethod("getObject"));
-	} catch (SecurityException e)
-	{
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (NoSuchMethodException e)
+		met2 = Subcourse.class.getMethod("getName");
+	} catch (SecurityException e) 
 	{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
-	try
-	{
-		methods.add(Subcourse.class.getMethod("getEducator"));
-	} catch (SecurityException e)
-	{
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (NoSuchMethodException e)
+	} catch (NoSuchMethodException e) 
 	{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	educators = MatsiesVectorToolbox.mapper(subcourses,methods);
+	mets1.add(met2);
+	
+	Vector<Bounds> subcourses = MatsiesVectorToolbox.mapper(blocks, mets1);
+	
+	
 	
 	IntegerVariable[][][][][] cells = new IntegerVariable[numberofdays][endinghour-startinghour][availableRooms.size()][subcourses.size()][educators.size()];
 
@@ -85,16 +107,16 @@ public class Model1
 	{
 		for(int j=1;j<=numberofdays;j++)
 		{
-			for(int k=1;k<=availableRooms.size();k++)
+			for(int k=0;k<=availableRooms.size()-1;k++)
 			{
-				for(int l=1;l<=blocks.size();l++)
+				for(int l=0;l<=blocks.size()-1;l++)
 				{
 					Subcourseblock b = blocks.elementAt(l);
 					Subcourse sub = b.getSubcourse();
 					int stuNumsub = sub.getStudentCounter();
 					Vector<Hardware> hardwareSub = sub.getNeededHardware();
-					Vector<Educator> edus = sub.getEducators();
-					Educator edu =edus.elementAt(1);
+					Vector<Educator> edus2 = sub.getEducators();
+					Educator edu =edus2.elementAt(1);
 					Room r=availableRooms.elementAt(k);
 					int stuNumroom = r.getcapacity();
 					Vector<Hardware> hardwareRoom = r.getPresentHardware();
