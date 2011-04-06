@@ -14,115 +14,22 @@
 </head>
 <body>
 
+<script>
+	function setIFrameContent(selector,tabframe)
+	{
+		var op=document.getElementById(selector).value;
+		var ifrm=document.getElementById(tabframe).src={LINK}+'&option='+op.value+'&fac='+tabFrame;
+	}
+</script>
+
 <div id="demo">
 	<div id="tabs">
 		<ul>
 			{TABS}
 		</ul>
-{TABLE}
+	{TABCONTENT}
 	</div>
 </div>
-
-<script>
-	function(name)
-	{
-		var nCloneTh = document.createElement( 'th' );
-		var nCloneTd = document.createElement( 'td' );
-		nCloneTd.innerHTML = '<img src="../js/datatables/images/details_open.png">';
-		nCloneTd.className = "center";
-				
-		$('#'+name+' thead tr').each( function () {
-			this.insertBefore( nCloneTh, this.childNodes[0] );
-		} );
-				
-		$('#'+name+' tbody tr').each( function () {
-			this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
-		} );
-				
-		/*
-		 * Initialse DataTables, with no sorting on the 'details' column
-		 */
-		var oTable = $('#'+name).dataTable( {
-			"aoColumnDefs": [
-				{ "bSortable": false, "aTargets": [ 0 ] }
-			],
-			"aaSorting": [[1, 'asc']]
-		});
-				
-		/* Add event listener for opening and closing details
-		 * Note that the indicator for showing which row is open is not controlled by DataTables,
-		 * rather it is done here
-		 */
-		$('#'+name+' tbody td img').live('click', function () {
-			var nTr = this.parentNode.parentNode;
-			if ( this.src.match('details_close') )
-			{
-				/* This row is already open - close it */
-				this.src = "../js/datatables/images/details_open.png";
-				oTable.fnClose( nTr );
-			}
-			else
-			{
-				/* Open this row */
-				this.src = "../js/datatables/images/details_close.png";
-				oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
-			}
-		} );
-	}
-	
-	function fnFormatDetails ( oTable, nTr )
-	{
-		{EXPAND_SCRIPT}
-	}
-
-	$(document).ready(function() {
-		/*
-		 * Insert a 'details' column to the table
-		 */
-		var nCloneTh = document.createElement( 'th' );
-		var nCloneTd = document.createElement( 'td' );
-		nCloneTd.innerHTML = '<img src="../js/datatables/images/details_open.png">';
-		nCloneTd.className = "center";
-				
-		$('#maintable thead tr').each( function () {
-			this.insertBefore( nCloneTh, this.childNodes[0] );
-		} );
-				
-		$('#maintable tbody tr').each( function () {
-			this.insertBefore(  nCloneTd.cloneNode( true ), this.childNodes[0] );
-		} );
-				
-		/*
-		 * Initialse DataTables, with no sorting on the 'details' column
-		 */
-		var oTable = $('#maintable').dataTable( {
-			"aoColumnDefs": [
-				{ "bSortable": false, "aTargets": [ 0 ] }
-			],
-			"aaSorting": [[1, 'asc']]
-		});
-				
-		/* Add event listener for opening and closing details
-		 * Note that the indicator for showing which row is open is not controlled by DataTables,
-		 * rather it is done here
-		 */
-		$('#maintable tbody td img').live('click', function () {
-			var nTr = this.parentNode.parentNode;
-			if ( this.src.match('details_close') )
-			{
-				/* This row is already open - close it */
-				this.src = "../js/datatables/images/details_open.png";
-				oTable.fnClose( nTr );
-			}
-			else
-			{
-				/* Open this row */
-				this.src = "../js/datatables/images/details_close.png";
-				oTable.fnOpen( nTr, fnFormatDetails(oTable, nTr), 'details' );
-			}
-		} );
-	} );
-</script>
 
 </body>
 </html>

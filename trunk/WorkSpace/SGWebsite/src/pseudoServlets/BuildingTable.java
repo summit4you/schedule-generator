@@ -6,6 +6,8 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
+import pseudoServlets.tools.TableTools;
+
 import dataStructure.Building;
 import dataStructure.Hardware;
 import dataStructure.Room;
@@ -14,6 +16,10 @@ import database.Search;
 
 import sessionTracking.Session;
 
+/**
+ * @author Zjef
+ * @version 1.0
+ */
 public class BuildingTable extends PseudoServlet
 {
 	public BuildingTable() 
@@ -22,23 +28,14 @@ public class BuildingTable extends PseudoServlet
 		templateFile="buildingTable.tpl";
 	}
 	
-	private Vector<Building> getBuildings()
-	{
-		Database db=getDB();
-		db.connect();
-		Vector<Building> buildings=db.readAll(new Search(Building.class));
-		db.disconnect();
-		return buildings;
-	}
-	
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
 	{
-		Vector<Building> buildings=getBuildings();
-		String res=replaceTags(template,"TABS",createTabTitles(buildings));
-		res=replaceTags(template,"TABLE",createTable(buildings));
-		res=replaceTags(template,"EXPAND_SCRIPT",createExpandScript(buildings));
-		res=replaceTags(template,"INIT_OPEN",createInitOpen(buildings));
+		Vector<Building> buildings=TableTools.loadObjects(Building.class);
+		String res=replaceTags(template,"TABS",TableTools.createTabHeader(buildings));
+		res=replaceTags(res,"TABLE",createTable(buildings));
+		res=replaceTags(res,"EXPAND_SCRIPT",createExpandScript(buildings));
+		res=replaceTags(res,"INIT_OPEN",createInitOpen(buildings));
 		return res;
 	}
 	
@@ -83,18 +80,6 @@ public class BuildingTable extends PseudoServlet
 		}
 		return res;
 	}
-	
-	private String createTabTitles(Vector<Building> buildings)
-	{
-		String res="";
-		int counter=1;
-		for (Building i:buildings)
-		{
-			res+="<li><a href='#tabs-"+counter+"'>"+i.getName()+"</a></li>";
-			counter++;
-		}
-		return res;
-	}
 
 	private String createTable(Vector<Building> buildings)
 	{
@@ -103,7 +88,7 @@ public class BuildingTable extends PseudoServlet
 		for (Building b:buildings)
 		{
 			res+="<div id='tabs-'"+counter+">";
-			res+=HTMLInterfaceTool.changeToHTMLTable(b.getRooms());
+			res+=HTMLInterfaceTool.changeToDataTable(createBuildingID(counter),b.getRooms());
 			res+="</div>";
 			counter++;
 		}

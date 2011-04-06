@@ -40,7 +40,7 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
 	{
-		String res=replaceTags(template,"TABLE",HTMLInterfaceTool.changeToHTMLTable(getObjects()));
+		String res=replaceTags(template,"TABLE",HTMLInterfaceTool.changeToDataTable("maintable",getObjects()));
 		return res;
 	}
 
