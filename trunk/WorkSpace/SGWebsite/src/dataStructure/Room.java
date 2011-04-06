@@ -1,13 +1,12 @@
 package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
-import htmlInterfaces.HTMLTablable.*;
 
 import java.util.Vector;
 
 import database.*;
 
-public class Room implements Databasable
+public class Room implements Databasable,HTMLTablable
 {
 	private String location;
 	private int capacity;
@@ -38,7 +37,7 @@ public class Room implements Databasable
 	}
 	
 	@InDatabase
-	@TableInput(order=1,text="#Capacity_Room_Table#")
+	@TableInput(order=2,text="#Capacity_Room_Table#")
 	public int getcapacity()
 	{
 		return capacity;

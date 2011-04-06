@@ -10,7 +10,7 @@ import database.*;
  * @author matthiascaenepeel
  * @version2.0
  */
-public class Hardware implements Databasable
+public class Hardware implements DatabasableAsString
 {
 	private String materiaaltype;
 	
@@ -19,17 +19,34 @@ public class Hardware implements Databasable
 		this.materiaaltype = materiaaltype;
 	}
 	
-	private ID id;
-	
 	@Override
-	public void setID(ID id)
+	public boolean equals(Object obj) 
 	{
-		this.id=id;
+		if (obj instanceof Hardware)
+		{
+			if (((Hardware) obj).materiaaltype.equals(this.materiaaltype))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	@Override
-	public ID getId()
+	public String toString() 
 	{
-		return id;
+		return materiaaltype;
+	}
+
+	@Override
+	public String toValue() 
+	{
+		return materiaaltype;
+	}
+
+	@Override
+	public void loadFromValue(String value) 
+	{
+		this.materiaaltype=value;
 	}
 }
