@@ -1,5 +1,6 @@
 package login;
 
+import htmlInterfaces.HTMLTablable;
 import dataStructure.*;
 import database.Databasable;
 import database.DatabasableException;
@@ -7,13 +8,14 @@ import database.ID;
 import database.InDatabase;
 import database.OutDatabase;
 
-public class Account implements Databasable
+public class Account implements Databasable,HTMLTablable
 {
 	private ID id;
 	
 	private String userName;
 	private String password;
 	private String language; 
+	// TODO vind hier is een mooiere manier voor
 	private Student student;
 	private Educator educator;
 	private Admin admin;
@@ -30,12 +32,23 @@ public class Account implements Databasable
 		password=pass;
 	}
 	
+	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin)
+	{
+		this.userName = name;
+		this.password = pass;
+		this.language = language;
+		this.student = student;
+		this.educator = educator;
+		this.admin = admin;
+	}
+	
 	@OutDatabase
 	public void setUserName(String userName)
 	{
 		this.userName = userName;
 	}
 	
+	@TableInput(order=1,text="#UserName_Account#")
 	@InDatabase
 	public String getUserName()
 	{
@@ -64,6 +77,54 @@ public class Account implements Databasable
 	public void setID(ID id)
 	{
 		this.id=id;
+	}
+
+	public void setLanguage(String language)
+	{
+		this.language = language;
+	}
+	
+	@InDatabase
+	public String getLanguage()
+	{
+		return language;
+	}
+
+	
+	public void setStudent(Student student)
+	{
+		this.student = student;
+	}
+	
+	@TableInput(order=2,text="#Student_Account#")
+	@InDatabase
+	public Student getStudent()
+	{
+		return student;
+	}
+
+	public void setEducator(Educator educator)
+	{
+		this.educator = educator;
+	}
+	
+	@TableInput(order=3,text="#Educator_Account#")
+	@InDatabase
+	public Educator getEducator()
+	{
+		return educator;
+	}
+	
+	public void setAdmin(Admin admin)
+	{
+		this.admin = admin;
+	}
+	
+	@TableInput(order=4,text="#Admin_Account#")
+	@InDatabase
+	public Admin getAdmin()
+	{
+		return admin;
 	}
 
 }
