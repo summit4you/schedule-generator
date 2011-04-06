@@ -13,7 +13,7 @@ import java.util.Vector;
  * <b>Class containing static methods to handle HTMLinterfaces </b> </br>
  * This class will be used by interfaces based on annotations.
  * @author Alexander
- * @version 1.3
+ * @version 1.3.1
  * @see HTMLTablable, HTMLFormable
  */
 public class HTMLInterfaceTool 
@@ -123,7 +123,7 @@ public class HTMLInterfaceTool
 	 * an argument null is returned </br>
 	 */
 	@Deprecated
-	public static Vector<Vector<String>> fetchTableContent(Vector<HTMLTablable> vec)
+	public static Vector<Vector<String>> fetchTableContent(Vector<? extends HTMLTablable> vec)
 	{
 		if (vec!=null)
 		{
@@ -153,7 +153,7 @@ public class HTMLInterfaceTool
 	 * HTMLTablable Vector. This method combines HTMLUtils.toHTMLTable()
 	 * and HTMLInterfaceTool.fetchTableContent() to generate its result.
 	 */
-	public static String changeToHTMLTable(Vector<HTMLTablable> vec)
+	public static String changeToHTMLTable(Vector<? extends HTMLTablable> vec)
 	{
 		return HTMLUtils.toHTMLTable(HTMLInterfaceTool.fetchTableContent(vec)).write();
 	}
@@ -163,7 +163,7 @@ public class HTMLInterfaceTool
 	 * HTMLTablable Vector. This method combines HTMLUtils.toDataTable()
 	 * and HTMLInterfaceTool.fetchValues() to generate its result.
 	 */
-	public static String changeToDataTable(String tableID,Vector<HTMLTablable> vec)
+	public static String changeToDataTable(String tableID,Vector<? extends HTMLTablable> vec)
 	{
 		if (vec!=null)
 		{

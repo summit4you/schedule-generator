@@ -1,10 +1,11 @@
-Latest version: V1.2
+Latest version: V1.3.1
 
 
 Version Notes:
+V1.3.1: correct the input parameters of the methods in htmlInterfaceTool
+
 V1.3: Added tableInfo Annotation for future expansions of the HTMLTablable interface (not in use yet)
-      
-      Test and TsetServlet are up to date.
+      Test and TestServlet are up to date.
       
 V1.2: Added some methods to HTMLTablablTool and tested them. Now a vector<HTMLTablable>
       can be transformed into a string representing a HTML table.
