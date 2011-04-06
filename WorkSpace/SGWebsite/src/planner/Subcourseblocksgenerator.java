@@ -1,6 +1,6 @@
 package planner;
 
-import java.util.Iterator;
+
 import java.util.Vector;
 
 
@@ -9,51 +9,55 @@ import dataStructure.Course;
 /**
  * 
  * @author matthiascaenepeel
- * @version2.0
+ * @version1.1
  */
 
 public class Subcourseblocksgenerator
 {
-	private Course course;
-	
-	public Subcourseblocksgenerator(Course course)
-	{
-		super();
-		this.course = course;
-	}
-
-	public Course getCourse()
-	{
-		return course;
-	}
-
-	public void setCourse(Course course)
-	{
-		this.course = course;
-	}
-	
-	static public Vector<Subcourseblock> generateBlocks(Course course)
+	static public Vector<Subcourseblock> generateBlocks(Vector<Course> courses)
 	{	
 		Vector<Subcourseblock> blocks = new Vector<Subcourseblock>();
-		Iterator<Subcourse> i =course.getSubcourses().iterator();
-		while(i.hasNext())
+		
+		for(Course course:courses)
 		{
-			Subcourse sub=i.next();
-			int tot = sub.getTotalnumberHours();
-			int block = sub.getBlockHours();
-			while(tot > block)
+			Vector<Subcourse> subs = course.getSubcourses();
+			for(Subcourse sub:subs)
 			{
-				blocks.add(new Subcourseblock(sub,block));
-				tot = tot-block;
-			}
-			if(tot>0)
-			{
-				blocks.add(new Subcourseblock(sub,tot));
+				int tot = sub.getTotalnumberHours();
+				int block = sub.getBlockHours();
+				while(tot > block)
+				{
+					blocks.add(new Subcourseblock(sub,block));
+					tot = tot-block;
+				}
+				if(tot>0)
+				{
+					blocks.add(new Subcourseblock(sub,tot));
+				}
 			}
 		}
-		return blocks;
+			return blocks;
 	}
 	
+	static public Vector<Integer> giveHours(Vector<Subcourseblock> blocks)
+	{
+		Vector<Integer> hours = new Vector<Integer>();
+		for(Subcourseblock block:blocks)
+		{
+			hours.add(block.getHours());
+		}
+		return hours;
+	}
 	
+	static public Vector<Subcourse> giveSubcourses(Vector<Subcourseblock> blocks)
+	{
+		Vector<Subcourse> subcourses = new Vector<Subcourse>();
+		for(Subcourseblock block:blocks)
+		{
+			subcourses.add(block.getSubcourse());
+		}
+		return subcourses;
+	}
+
 	
 }
