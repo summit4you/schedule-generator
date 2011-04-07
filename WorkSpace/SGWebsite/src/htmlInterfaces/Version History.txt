@@ -1,7 +1,9 @@
-Latest version: V1.3.1
+Latest version: V1.3.2
 
 
 Version Notes:
+V1.3.2: Added a method to make an "empty" table with head and one row
+
 V1.3.1: correct the input parameters of the methods in htmlInterfaceTool
 
 V1.3: Added tableInfo Annotation for future expansions of the HTMLTablable interface (not in use yet)

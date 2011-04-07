@@ -23,7 +23,13 @@ public class HTMLInterfaceTool
 	 */
 	public static TableInfo fetchTableInfo(HTMLTablable obj)
 	{
-		Annotation tableinputs= AnnotationTool.fetchClassAnnotation(obj.getClass(),TableInfo.class);
+		return fetchTableInfo(obj.getClass());
+
+	}
+	
+	public static TableInfo fetchTableInfo(Class<? extends HTMLTablable> cl)
+	{
+		Annotation tableinputs= AnnotationTool.fetchClassAnnotation(cl,TableInfo.class);
 		return (TableInfo) tableinputs;
 
 	}
@@ -32,9 +38,9 @@ public class HTMLInterfaceTool
 	 * This method collects all the text out of the TableIput annotations and puts them in the
 	 * right order.
 	 */
-	public static Vector<String> fetchTexts(HTMLTablable obj)
+	public static Vector<String> fetchTexts(Class<? extends HTMLTablable> cl)
 	{
-		Vector<Annotation> tableinputs= AnnotationTool.fetchMethodAnnotation(obj.getClass(),TableInput.class);
+		Vector<Annotation> tableinputs= AnnotationTool.fetchMethodAnnotation(cl,TableInput.class);
 		Vector<String> res= new Vector<String>();
 		res.setSize((tableinputs.size()));
 		for (Annotation i: tableinputs)
@@ -42,6 +48,11 @@ public class HTMLInterfaceTool
 			res.set(TableInput.class.cast(i).order()-1,TableInput.class.cast(i).text());
 		}
 		return res;
+	}
+	
+	public static Vector<String> fetchTexts(HTMLTablable obj)
+	{
+		return fetchTexts(obj.getClass());
 	}
 	
 	/**
@@ -175,5 +186,16 @@ public class HTMLInterfaceTool
 			return HTMLUtils.toDataTable(tableID, fetchTexts(vec.get(0)),rows).write(); 
 		}
 		return null;
+	}
+	
+	/**
+	 * Voor Zjef
+	 */
+	public static String makeEmptyTable(String tableID,Class<? extends HTMLTablable> cl)
+	{
+		Vector<String> row= new Vector<String>();
+		Vector<Vector<String>> rows= new Vector<Vector<String>>();
+		rows.add(row);
+		return HTMLUtils.toDataTable(tableID, fetchTexts(cl),rows).write(); 
 	}
 }
