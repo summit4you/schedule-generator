@@ -20,6 +20,11 @@ public class TypeOfCourse implements DatabasableAsString
 	{
 		this.coursetype = coursetype;
 	}
+	
+	public TypeOfCourse() 
+	{
+		
+	}
 
 	@Override
 	public String toValue() 

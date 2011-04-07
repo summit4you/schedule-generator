@@ -84,4 +84,10 @@ public class Faculty implements Databasable
 	{
 		return educators;
 	}
+	
+	@Override
+	public String toString() 
+	{
+		return getName();
+	}
 }

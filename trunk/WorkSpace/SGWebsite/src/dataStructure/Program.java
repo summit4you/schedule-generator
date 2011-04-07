@@ -13,7 +13,7 @@ import database.*;
  * @version2.0
  */
 
-public class Program implements Databasable
+public class Program implements Databasable,HTMLTablable
 {
 	private String name;
 	private int level;
@@ -83,4 +83,9 @@ public class Program implements Databasable
 		return id;
 	}
 	
+	@Override
+	public String toString() 
+	{
+		return getName();
+	}
 }

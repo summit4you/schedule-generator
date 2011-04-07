@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 
+import login.Account;
+
 import database.Database;
 import other.FileIO;
 import sessionTracking.Session;
@@ -58,9 +60,13 @@ public abstract class PseudoServlet
 	{
 		Vector<PseudoServlet> pseudos=new Vector<PseudoServlet>(); 
 		//add your pseudoServlets to this vector!
-		pseudos.add(new SingleTable(null,"Accounts",false));
+		pseudos.add(new SingleTable<Account>(Account.class,"Accounts"));
 		pseudos.add(new Search());
 		pseudos.add(new Schedule());
+		pseudos.add(new EducatorTable());
+		pseudos.add(new BuildingTable());
+		pseudos.add(new CourseTable());
+		pseudos.add(new StudentTable());
 		
 		for (PseudoServlet i:pseudos)
 		{
@@ -87,7 +93,7 @@ public abstract class PseudoServlet
 	 * @return a new database connection<br>
 	 * The database is not connected yet
 	 */
-	protected static Database getDB()
+	public static Database getDB()
 	{
 		//TODO replace database values with a read from an xml file
 		Database db=new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");

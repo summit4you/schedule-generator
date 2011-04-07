@@ -1,79 +1,45 @@
 package pseudoServlets;
 
-import htmlInterfaces.HTMLInterfaceTool;
-
+import htmlInterfaces.HTMLTablable;
 import java.util.Vector;
-
-import javax.servlet.http.HttpServletRequest;
-
-import pseudoServlets.tools.TableTools;
-
 import dataStructure.Building;
 import dataStructure.Hardware;
 import dataStructure.Room;
-import database.Database;
-import database.Search;
-
-import sessionTracking.Session;
 
 /**
  * @author Zjef
  * @version 1.0
  */
-public class BuildingTable extends PseudoServlet
+public class BuildingTable extends TabAndDrop<Building>
 {
 	public BuildingTable() 
 	{
-		super();
-		templateFile="buildingTable.tpl";
-	}
+		super(Building.class,Room.class);
+	}	
 	
 	@Override
-	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
-	{
-		Vector<Building> buildings=TableTools.loadObjects(Building.class);
-		String res=replaceTags(template,"TABS",TableTools.createTabHeader(buildings));
-		res=replaceTags(res,"TABLE",createTable(buildings));
-		res=replaceTags(res,"EXPAND_SCRIPT",createExpandScript(buildings));
-		res=replaceTags(res,"INIT_OPEN",createInitOpen(buildings));
-		return res;
-	}
-	
-	private String createBuildingID(int index)
-	{
-		return "b"+index;
-	}
-	
-	private String createInitOpen(Vector<Building> buildings)
-	{
-		String res="";
-		int counter=1;
-		for (Building b:buildings)
-		{
-			res+="initTables("+createBuildingID(counter)+");";
-			counter++;
-		}
-		return res;
-	}
-	
-	private String createExpandScript(Vector<Building> buildings)
+	protected String createExpandScript(Vector<Building> buildings)
 	{
 		String res="";
 		int buildingCounter=1;
 		for (Building b:buildings)
 		{
-			res+="if (oTable.id=='"+buildingCounter+"'){";
+			res+="if (oTable.id=='"+createTabObjectID(buildingCounter)+"'){";
 			int roomCounter=1;
 			for (Room r:b.getRooms())
 			{
 				res+="if (nTr.id=='"+roomCounter+"'){";
-				res+="available hardware <select size=5>";
-				for (Hardware h:r.getPresentHardware())
+				res+=" return 'available hardware <select size=5>";
+				if (r.getPresentHardware()!=null)
 				{
-					res+="<option>"+h.toString()+"</option>";
+					for (Hardware h:r.getPresentHardware())
+					{
+						res+="<option>"+h.toString()+"</option>";
+					}
 				}
-				res+="</select>";
+				res+="</select>';";
 				res+="}";
+				roomCounter++;
 			}
 			res+="}";
 			buildingCounter++;
@@ -81,23 +47,21 @@ public class BuildingTable extends PseudoServlet
 		return res;
 	}
 
-	private String createTable(Vector<Building> buildings)
+	@Override
+	protected Vector<? extends HTMLTablable> getTableObjects(Building tabObject) 
 	{
-		String res="";
-		int counter=1;
-		for (Building b:buildings)
-		{
-			res+="<div id='tabs-'"+counter+">";
-			res+=HTMLInterfaceTool.changeToDataTable(createBuildingID(counter),b.getRooms());
-			res+="</div>";
-			counter++;
-		}
-		return res;
+		return tabObject.getRooms();
 	}
-	
+
 	@Override
 	protected String getTabName() 
 	{
 		return "Buildings";
+	}
+
+	@Override
+	protected String createOnOpen() 
+	{
+		return "";
 	}
 }

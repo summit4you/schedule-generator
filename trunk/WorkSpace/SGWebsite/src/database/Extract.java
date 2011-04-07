@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * Extracts the {@link Databasable} information of objects and classes, for reading and writing to the database.
  * @author Zjef
- * @version 2.0
+ * @version 2.2
  */
 public class Extract
 {
@@ -114,11 +114,14 @@ public class Extract
 					Databasable ob=cl.newInstance();
 					readObject(cl, ob, result, database);
 					objects.add(ob);
-					for (Databasable i:database.getLoadList())
+					while (database.getLoadList().size()>0)
 					{
-						ResultSet result2=database.query(new Search(i.getClass(),i.getId()).getText());
-						result2.first();
-						readObject(i.getClass(),i,result2,database);
+						for (Databasable i:database.getLoadList())
+						{
+							ResultSet result2=database.query(new Search(i.getClass(),i.getId()).getText());
+							result2.first();
+							readObject(i.getClass(),i,result2,database);
+						}
 					}
 				}
 			}

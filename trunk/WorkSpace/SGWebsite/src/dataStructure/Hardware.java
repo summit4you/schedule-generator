@@ -19,6 +19,11 @@ public class Hardware implements DatabasableAsString
 		this.materiaaltype = materiaaltype;
 	}
 	
+	public Hardware() 
+	{
+		
+	}
+	
 	@Override
 	public boolean equals(Object obj) 
 	{
