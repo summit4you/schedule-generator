@@ -7,7 +7,7 @@ import htmlBuilder.Site;
 public class GuestType extends UserType
 {
 	
-	GuestType()
+	public GuestType()
 	{
 		super();
 		pseudos.add("Search");

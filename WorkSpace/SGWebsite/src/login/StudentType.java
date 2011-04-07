@@ -10,7 +10,7 @@ import htmlBuilder.Site;
 public class StudentType extends UserType
 {
 
-	StudentType()
+	public StudentType()
 	{
 		super();
 		pseudos.add("Search");

@@ -2,6 +2,8 @@ package language;
 
 import java.util.Hashtable;
 import java.util.Vector;
+
+import login.Account;
 import other.FileIO;
 /**
  * <b> Class that resolves language tags </b> </br>
@@ -16,7 +18,7 @@ import other.FileIO;
 
 public class Dictionary
 {
-	public static enum Language {ENGLISH};
+	public static enum Language {english,dutch};
 	final public static String languageFileExtension=".l";
 	
 	private String root;
@@ -95,6 +97,22 @@ public class Dictionary
 		for(String t:tags)
 		{
 			text=replaceLanguageTag(text,t);
+		}
+		return text;
+	}
+	
+	public String translatePage(String text)
+	{
+		int hekje1 = 0;
+		int hekje2 = 1;
+		while ((text.indexOf('#', hekje2+1)!=-1)&&(text.indexOf('#', hekje1+1)!=-1))
+		{
+			hekje1=text.indexOf('#', hekje2+1);
+			hekje2=text.indexOf('#', hekje1+1);
+			System.out.println("H1: "+hekje1+ "H2:"+hekje2);
+			// alles tussen hekje1 en hekje2 is een language tag
+			String tag = text.substring(hekje1+1,hekje2);
+			text = text.replaceFirst("#"+tag+"#",table.get("#"+tag+"#"));
 		}
 		return text;
 	}

@@ -6,7 +6,7 @@ import htmlBuilder.Site;
 
 public class AdminType extends UserType
 {
-	AdminType()
+	public AdminType()
 	{
 		super();
 		pseudos.add("Search");
