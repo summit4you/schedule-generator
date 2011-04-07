@@ -81,7 +81,7 @@ public class Course implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=3,text="#Program_Course_Table#")
+	//@TableInput(order=3,text="#Program_Course_Table#")
 	public Vector<Program> getPrograms()
 	{
 		return (Vector<Program>) programs.clone();

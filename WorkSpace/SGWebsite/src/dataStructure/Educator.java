@@ -105,6 +105,7 @@ public class Educator implements Databasable,HTMLTablable
 		this.courses = (Vector<Course>) courses.clone();
 	}
 
+	@OutDatabase(Subcourse.class)
 	public void setSubcourses(Vector<Subcourse> subcourses)
 	{
 		this.subcourses = (Vector<Subcourse>) subcourses.clone();
@@ -114,5 +115,11 @@ public class Educator implements Databasable,HTMLTablable
 	public Vector<Subcourse> getSubcourses()
 	{
 		return subcourses;
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return getFirstName()+" "+getSurName()+"("+getemployeeNumber()+")";
 	}
 }

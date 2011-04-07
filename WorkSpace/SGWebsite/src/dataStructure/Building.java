@@ -83,5 +83,9 @@ public class Building implements Databasable,HTMLTablable
 		return id;
 	}
 	
-	
+	@Override
+	public String toString() 
+	{
+		return getName();
+	}
 }

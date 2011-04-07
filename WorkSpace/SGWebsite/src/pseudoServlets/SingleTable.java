@@ -1,5 +1,6 @@
 package pseudoServlets;
 
+import java.io.File;
 import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,8 +41,15 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
 	{
-		String res=replaceTags(template,"TABLE",HTMLInterfaceTool.changeToDataTable("maintable",getObjects()));
-		return res;
+		Vector<T> objects=getObjects();
+		if (objects.size()==0)
+		{
+			return replaceTags(template,"TABLE",HTMLInterfaceTool.makeEmptyTable("maintable",tableClass));
+		}
+		else
+		{
+			return replaceTags(template,"TABLE",HTMLInterfaceTool.changeToDataTable("maintable",getObjects()));
+		}
 	}
 
 	@Override
