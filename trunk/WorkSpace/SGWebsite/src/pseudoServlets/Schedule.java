@@ -18,20 +18,22 @@ public class Schedule extends PseudoServlet
 	public String processRequest(RequestType type, HttpServletRequest request,
 			Session session)
 	{
-		String link = new String();
+		String response = new String();
 		if (session.getAccount().getStudent()!=null)
 		{
-			link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getStudent(), session.getAccount().getLanguage());
+			String link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getStudent(), session.getAccount().getLanguage());
+			response = replaceTags(template, "LINK", link);
 		}
 		else if (session.getAccount().getEducator()!=null) 
 		{
-			link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getEducator(), session.getAccount().getLanguage());
+			String link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getEducator(), session.getAccount().getLanguage());
+			response = replaceTags(template, "LINK", link);
 		}
 		else
 		{
-			link = "Admins don't have a schedule";
+			response = "You don't have a schedule";
 		}
-		String response = replaceTags(template, "LINK", link);
+		
 		return response;
 	}
 
