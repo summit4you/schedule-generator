@@ -33,7 +33,7 @@ public class Site
 	private String loginForm;
 	
 	private String path;
-		private final String defaultPath="/site.xml";
+		private static final String defaultPath="/site.xml";
 	
 	private String htmlcode;
 	
@@ -62,9 +62,7 @@ public class Site
 	
 	public Site()
 	{
-		setPath(defaultPath);
-		loadTemplate();
-		init();
+		this(defaultPath);
 	}
 	public Site(String path)
 	{

@@ -35,7 +35,7 @@ public class UserType implements DatabasableAsString
 	public static XMLDocument loadTypeDoc()
 	{
 		XMLDocument doc=new XMLDocument(defaultLocation);
-		doc.load();
+		if (doc.load()){System.out.println(">>UserType: Loading Successful");}
 		return doc;
 	}
 
@@ -71,6 +71,17 @@ public class UserType implements DatabasableAsString
 		}
 		return site;
 	}
+	
+	@SuppressWarnings("deprecation")
+	public Site buildSite(String path,Session ses)
+	{
+		Site site = new Site(path);
+		for(String p:pseudos)
+		{
+			site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
+		}
+		return site;
+	}
 
 	@Override
 	public String toValue()
@@ -81,6 +92,7 @@ public class UserType implements DatabasableAsString
 	@Override
 	public void loadFromValue(String value)
 	{
+		
 		pseudos = new Vector<String>();
 		XMLElement el = typeDoc.getElement("UserTypes."+value);
 		if (el!=null)
@@ -91,14 +103,13 @@ public class UserType implements DatabasableAsString
 				{
 					pseudos.add(ElementWithValue.class.cast(child).getValue());
 				}
-				value=el.getName();
+				this.value=el.getName();
 			}
 			catch(Exception e)
 			{
 				e.printStackTrace();
 			}
-		}
-				
+		}		
 		
 	}
 	

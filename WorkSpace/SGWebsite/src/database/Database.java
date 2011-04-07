@@ -106,6 +106,7 @@ public class Database implements Serializable
 			if (i.getId()==null)
 			{
 				create(i);
+				write(i);
 			}
 		}
 		update(ins.getText());
