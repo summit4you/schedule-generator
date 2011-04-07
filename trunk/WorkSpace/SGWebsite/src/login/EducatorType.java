@@ -6,7 +6,7 @@ import htmlBuilder.Site;
 
 public class EducatorType extends UserType
 {
-	EducatorType()
+	public EducatorType()
 	{
 		super();
 		pseudos.add("Search");
