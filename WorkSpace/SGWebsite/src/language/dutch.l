@@ -32,3 +32,14 @@
 ##Submit_Guest##=Login als gast;
 ##Available_Hardware_BuildingTab##=Beschikbaar materiaal;
 ##UserType_Account##=Gebruikerstype;
+##Login##=Login;
+##Search##=Zoek;
+##Schedule##=Rooster;
+##Accounts##=Accounts;
+##Buildings##=Gebouwen;
+##Educators##=Onderwijzers;
+##Students##=Studenten;
+##UserName_Account##=Accounts;
+##Student_Account##=Studenten;
+##Educator_Account##=Onderwijzers;
+##Admin_Account##=Admin;

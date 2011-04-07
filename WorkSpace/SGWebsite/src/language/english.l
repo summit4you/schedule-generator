@@ -32,3 +32,14 @@
 ##Submit_Guest##=Login as guest;
 ##Available_Hardware_BuildingTab##=Available Hardware;
 ##UserType_Account##=User Type;
+##Login##=Login;
+##Search##=Search;
+##Schedule##=Schedule;
+##Accounts##=Accounts;
+##Buildings##=Buildings;
+##Educators##=Educators;
+##Students##=Students;
+##UserName_Account##=Account;
+##Student_Account##=Student;
+##Educator_Account##=Educator;
+##Admin_Account##=Admin;
