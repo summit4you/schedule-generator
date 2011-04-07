@@ -18,6 +18,7 @@ public class FillDatabase
 		cleanall();
 		write();
 		read();
+		System.out.println("Done");
 	}
 	
 	public static void write()
@@ -186,7 +187,6 @@ public class FillDatabase
 		db.write(IR);
 		db.write(WE);
 		db.disconnect();
-		
 		
 	}
 	

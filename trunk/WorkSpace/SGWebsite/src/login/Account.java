@@ -81,7 +81,8 @@ public class Account implements Databasable,HTMLTablable
 	{
 		this.id=id;
 	}
-
+	
+	@OutDatabase
 	public void setLanguage(String language)
 	{
 		this.language = language;
@@ -93,7 +94,7 @@ public class Account implements Databasable,HTMLTablable
 		return language;
 	}
 
-	
+	@OutDatabase
 	public void setStudent(Student student)
 	{
 		this.student = student;
@@ -105,7 +106,8 @@ public class Account implements Databasable,HTMLTablable
 	{
 		return student;
 	}
-
+	
+	@OutDatabase
 	public void setEducator(Educator educator)
 	{
 		this.educator = educator;
@@ -118,6 +120,7 @@ public class Account implements Databasable,HTMLTablable
 		return educator;
 	}
 	
+	@OutDatabase
 	public void setAdmin(Admin admin)
 	{
 		this.admin = admin;
@@ -129,12 +132,15 @@ public class Account implements Databasable,HTMLTablable
 	{
 		return admin;
 	}
-
+	
+	@OutDatabase
 	public void setType(UserType type)
 	{
 		this.type = type;
 	}
-
+	
+	@TableInput(order=5,text="##UserType_Account##")
+	@InDatabase
 	public UserType getType()
 	{
 		return type;

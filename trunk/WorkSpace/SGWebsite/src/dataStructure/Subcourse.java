@@ -22,7 +22,6 @@ public class Subcourse implements Databasable,HTMLTablable
 	private int blockHours; //Het minimum aantal uren per blok
 	private Vector<Hardware> neededHardware;
 	private Vector<Educator> educators;
-	private String calendarfile;
 	
 	
 	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware, Vector<Educator> educators)
@@ -156,13 +155,8 @@ public class Subcourse implements Databasable,HTMLTablable
 		return id;
 	}
 
-	public void setCalendarfile(String calendarfile)
-	{
-		this.calendarfile = calendarfile;
-	}
-
 	public String getCalendarfile()
 	{
-		return calendarfile;
+		return id.toString();
 	}
 }
