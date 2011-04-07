@@ -17,7 +17,7 @@ public class Test
 		tags.add("##hond##");
 		tags.add("##huis##");
 		tags.add("##hemd##");
-		System.out.println(dic.replaceLanguageTags("The ##hond## ate the ##hemd## in the ##huis## ", tags));
+		System.out.println(dic.translatePage("The ##hond## ate the ##hemd## in the ##huis## "));
 	}
 
 }
