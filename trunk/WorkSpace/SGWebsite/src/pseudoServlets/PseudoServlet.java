@@ -1,5 +1,7 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
+
 import java.io.File;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
@@ -31,10 +33,6 @@ public abstract class PseudoServlet
 	protected static String servletPath;
 	final protected static String templateFolder="SGtemplates/";
 	final protected static String otherFileFolder="SGotherFiles/";
-	/**
-	 * Vector with all the language tags to be replaced
-	 */
-	protected Vector<String> langTags;
 	
 	/**
 	 * Name of the template file
@@ -49,7 +47,6 @@ public abstract class PseudoServlet
 	
 	public PseudoServlet()
 	{
-		langTags=new Vector<String>();
 	}
 	
 	//**********Adding of all PseudoServlets********************************************************
@@ -60,7 +57,7 @@ public abstract class PseudoServlet
 	{
 		Vector<PseudoServlet> pseudos=new Vector<PseudoServlet>(); 
 		//add your pseudoServlets to this vector!
-		pseudos.add(new SingleTable<Account>(Account.class,"Accounts"));
+		pseudos.add(new SingleTable<Account>(Account.class,Site.TabName.Accounts));
 		pseudos.add(new Search());
 		pseudos.add(new Schedule());
 		pseudos.add(new EducatorTable());
@@ -129,15 +126,6 @@ public abstract class PseudoServlet
 		return this.getClass().getSimpleName();
 	}
 
-	/**
-	 * @return vector containing all tags to be replaced by the translator<br>
-	 * The tags already contain the tags ##
-	 */
-	public Vector<String> getLanguageTags()
-	{
-		return (Vector<String>)langTags.clone();
-	}
-
 	//*******public static methods*******************************************************************
 	/**
 	 * Inits all PseudoServlets and static variables.<br>
@@ -201,5 +189,5 @@ public abstract class PseudoServlet
 	/**
 	 * @return name to display in the tab
 	 */
-	abstract protected String getTabName();
+	abstract public String getTabName();
 }

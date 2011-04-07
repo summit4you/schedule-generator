@@ -1,5 +1,6 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
 import htmlInterfaces.HTMLInterfaceTool;
 import java.util.Vector;
 import dataStructure.Course;
@@ -28,6 +29,7 @@ public class CourseTable extends TabAndList<Course>
 		{
 			res+="if (nTr.id=='"+courseCounter+"'){";
 			res+="return '";
+			res+="<b>##Subcourses##</b>";
 			if (c.getSubcourses()!=null && c.getSubcourses().size()>0)
 			{
 				res+=HTMLInterfaceTool.changeToDataTable("expandTable",c.getSubcourses());
@@ -43,9 +45,9 @@ public class CourseTable extends TabAndList<Course>
 	}
 
 	@Override
-	protected String getTabName() 
+	public String getTabName() 
 	{
-		return "Courses";
+		return Site.TabName.Courses.toLanguageTag();
 	}
 
 	@Override

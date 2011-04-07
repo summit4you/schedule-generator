@@ -1,11 +1,9 @@
 package pseudoServlets;
 
-import java.io.File;
 import java.util.Vector;
-
 import javax.servlet.http.HttpServletRequest;
-
 import sessionTracking.Session;
+import htmlBuilder.Site.TabName;
 import htmlInterfaces.HTMLInterfaceTool;
 import htmlInterfaces.HTMLTablable;
 import database.Databasable;
@@ -19,9 +17,9 @@ import database.Search;
 public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoServlet
 {
 	private Class<T> tableClass;
-	private String name;
+	private TabName name;
 	
-	public SingleTable(Class<T> tableClass,String name) 
+	public SingleTable(Class<T> tableClass,TabName name) 
 	{
 		super();
 		this.tableClass=tableClass;
@@ -53,14 +51,14 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 	}
 
 	@Override
-	protected String getTabName() 
+	public String getTabName() 
 	{
-		return name;
+		return name.toLanguageTag();
 	}
 	
 	@Override
 	public String getIdentifier() 
 	{
-		return name;
+		return name.toString();
 	}
 }
