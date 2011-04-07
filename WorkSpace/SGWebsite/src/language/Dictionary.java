@@ -1,5 +1,6 @@
 package language;
 
+
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -104,16 +105,16 @@ public class Dictionary
 	
 	public String translatePage(String text)
 	{
-		int hekje1 = 0;
-		int hekje2 = 1;
-		while ((text.lastIndexOf("##", hekje2+1)!=-1)&&(text.lastIndexOf("##", hekje1+1)!=-1))
+		System.out.println("hallo");
+		String[] arr = text.split("##");
+		for (int i = 1; i < arr.length; i+=2)
 		{
-			hekje1=text.lastIndexOf("##", hekje2+1);
-			hekje2=text.lastIndexOf("##", hekje1+1);
-			System.out.println("H1: "+hekje1+ "H2:"+hekje2);
-			// alles tussen hekje1 en hekje2 is een language tag
-			String tag = text.substring(hekje1+1,hekje2);
-			text = text.replaceFirst("##"+tag+"##",table.get("##"+tag+"##"));
+			arr[i] = table.get("##"+arr[i]+"##");
+		}
+		text = "";
+		for (String i : arr)
+		{
+			text+=i;
 		}
 		return text;
 	}
