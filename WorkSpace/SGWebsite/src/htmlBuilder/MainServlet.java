@@ -112,7 +112,7 @@ public class MainServlet extends HttpServlet {
 				else
 				{
 					Session ses=new Session(acc);
-					out.println(ses.getAccount().getType().buildMainSite(baseLink, ses.getSessionID()));
+					out.println(ses.getAccount().getType().buildSite(ses));
 				}
 			}
 			else

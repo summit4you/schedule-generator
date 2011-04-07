@@ -1,5 +1,6 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
 import htmlInterfaces.HTMLInterfaceTool;
 import htmlInterfaces.HTMLTablable;
 
@@ -119,10 +120,10 @@ public class Search extends PseudoServlet
 	}
 
 	@Override
-	protected String getTabName()
+	public String getTabName()
 	{
 		// TODO Auto-generated method stub
-		return null;
+		return Site.TabName.Search.toLanguageTag();
 	}
 
 }

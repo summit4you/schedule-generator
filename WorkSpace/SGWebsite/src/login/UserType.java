@@ -22,10 +22,14 @@ public class UserType implements DatabasableAsString
 	protected Vector<String> pseudos;
 	protected String value;
 	
-	UserType()
+	public UserType()
 	{
 		pseudos = new Vector<String>();
 		value = new String();
+	}
+	public UserType(String value)
+	{
+		this.loadFromValue(value);
 	}
 	
 	public static XMLDocument loadTypeDoc()
@@ -78,7 +82,7 @@ public class UserType implements DatabasableAsString
 	public void loadFromValue(String value)
 	{
 		pseudos = new Vector<String>();
-		XMLElement el = typeDoc.getElement(value);
+		XMLElement el = typeDoc.getElement("UserTypes."+value);
 		if (el!=null)
 		{
 			try

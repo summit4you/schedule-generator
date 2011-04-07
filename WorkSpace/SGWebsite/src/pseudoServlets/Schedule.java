@@ -1,5 +1,7 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
+
 import javax.servlet.http.HttpServletRequest;
 
 import dataStructure.*;
@@ -38,9 +40,9 @@ public class Schedule extends PseudoServlet
 	}
 
 	@Override
-	protected String getTabName()
+	public String getTabName()
 	{
-		return null;
+		return Site.TabName.Schedule.toLanguageTag();
 	}
 
 }

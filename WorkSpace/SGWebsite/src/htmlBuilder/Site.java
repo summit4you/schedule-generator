@@ -9,11 +9,11 @@ public class Site
 {
 	public enum TabName
 	{
-		Login,Search,Schedule;
+		Login,Search,Schedule,Accounts,Buildings,Educators,Students,Courses;
 		
 		public String toLanguageTag()
 		{
-			return "#"+toString()+"#";
+			return "##"+toString()+"##";
 		}
 	}
 	
