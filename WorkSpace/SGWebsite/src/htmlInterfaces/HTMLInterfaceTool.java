@@ -188,9 +188,31 @@ public class HTMLInterfaceTool
 		return null;
 	}
 	
+	public static String changeToDataTable(String tableID,String tableClass,Vector<? extends HTMLTablable> vec)
+	{
+		if (vec!=null)
+		{
+			Vector<Vector<String>> rows= new Vector<Vector<String>>();
+			for (HTMLTablable t:vec)
+			{
+				rows.add(fetchValues(t));
+			}
+			return HTMLUtils.toDataTableWithClass(tableID,tableClass, fetchTexts(vec.get(0)),rows).write(); 
+		}
+		return null;
+	}
+	
 	/**
 	 * Voor Zjef
 	 */
+	public static String makeEmptyTable(String tableID,String tableClass,Class<? extends HTMLTablable> cl)
+	{
+		Vector<String> row= new Vector<String>();
+		Vector<Vector<String>> rows= new Vector<Vector<String>>();
+		rows.add(row);
+		return HTMLUtils.toDataTableWithClass(tableID,tableClass, fetchTexts(cl),rows).write(); 
+	}
+	
 	public static String makeEmptyTable(String tableID,Class<? extends HTMLTablable> cl)
 	{
 		Vector<String> row= new Vector<String>();

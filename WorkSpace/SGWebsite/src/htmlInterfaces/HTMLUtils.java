@@ -57,11 +57,42 @@ public class HTMLUtils
 		return tabel;
 	}
 	
+	
+	static public Table toDataTableWithClass(String tableID,String tableClass, Vector<String> head,Vector<Vector<String>> data)
+	{
+		Tr headrij = new Tr();
+		for (String n : head)
+		{
+			headrij.appendChild(new Th().appendChild(new Text(n)));
+		}
+		Thead thead = new Thead().appendChild(headrij);
+		Table tabel = new Table().appendChild(thead).setId(tableID).setCSSClass(tableClass);
+		
+		Tbody tbody = new Tbody();
+		Integer count = new Integer(0);
+		for (Vector<String> i : data)
+		{
+			count++;
+			Tr rij = new Tr();
+			for (String j : i)
+			{
+				rij.setId(count.toString()).appendChild(new Td().appendChild(new Text(j)));
+			}
+			tbody.appendChild(rij);
+		} 
+		tabel.appendChild(tbody);
+		return tabel;
+	}
+	
+	
+	
+	
 	/**
 	 * Makes a standard  form  identified by a string and servlet. 
 	 * Id is needed to resolve the form action link 
 	 * @author Adam
 	 */
+	@Deprecated
 	static public Form makeStandardForm(String select, String servletname, String ID)
 	{
 		if (select.toLowerCase().equals("login"))
