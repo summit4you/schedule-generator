@@ -1,18 +1,36 @@
 package htmlBuilder;
 
+import pseudoServlets.PseudoServlet;
 import xml.ElementWithChildren;
 import xml.ElementWithValue;
 import xml.XMLDocument;
 
 public class Site 
 {
+	public enum TabName
+	{
+		Login,Search,Schedule;
+		
+		public String toLanguageTag()
+		{
+			return "#"+toString()+"#";
+		}
+	}
+	
+	private final String tabTitle="{tabtitle}";
+	private final String tabContent="{tabcontent}";
+	private final String pageContent="{pagecontent}";
+	private final String frameSrc="{framesrc}";
+	private final String actionLogin="{actionlogin}";
+	private final String messageLogin="{messagelogin}";
+	
 	private String htmlPage;
 	
 	private String htmlTab;
 	
 	private String htmlFrame;
-		private final String defaultFrameWidth="100%";
-		private final String defaultFrameHeight="100%";
+	
+	private String loginForm;
 	
 	private String path;
 		private final String defaultPath="/site.xml";
@@ -32,6 +50,7 @@ public class Site
 			htmlPage=ElementWithValue.class.cast(template.getElement("HTMLPAGE")).getValue();
 			htmlTab=ElementWithValue.class.cast(template.getElement("TAB")).getValue();
 			htmlFrame=ElementWithValue.class.cast(template.getElement("IFRAME")).getValue();
+			loginForm=ElementWithValue.class.cast(template.getElement("LOGIN")).getValue();
 			return true;
 		}
 		else
@@ -53,7 +72,7 @@ public class Site
 		loadTemplate();
 		init();
 	}
-
+		
 	public void setPath(String path) {
 		this.path = path;
 	}
@@ -63,7 +82,7 @@ public class Site
 	
 	public String getHtmlCode() 
 	{
-		return htmlcode.replace("#pagecontent#","");
+		return htmlcode.replace(pageContent,"");
 	}
 
 	public void clear()
@@ -79,40 +98,51 @@ public class Site
 	private String createTab(String tabtitle,String tabcontent)
 	{
 		String tab = htmlTab;
-		tab=tab.replace("#tabtitle#", tabtitle);
-		tab=tab.replace("#tabcontent#",tabcontent);
+		tab=tab.replace(tabTitle, tabtitle);
+		tab=tab.replace(tabContent,tabcontent);
 		return tab;
 	}
 	
-	private  String createIFrame(String src, String width, String height)
-	{
-		String frame = htmlFrame;
-		frame=frame.replace("#src#",src);
-		frame=frame.replace("#width#",width);
-		frame=frame.replace("#height#",height);
-		return frame;
-	}	
 	private  String createIFrame(String src)
 	{
-		return  createIFrame(src, defaultFrameWidth, defaultFrameHeight);
-	}	
+		return htmlFrame.replace(frameSrc,src);
+	}
+	
 	private  String createTabWithIFrame(String tabtitle,String src)
 	{
 		return createTab(tabtitle,createIFrame(src));
 	}
 	
+	public String createLoginForm(String action,String message)
+	{
+		String form = loginForm.replace(actionLogin, action);
+		form = loginForm.replace(actionLoginGuest, action+"?ps=Guest");
+		return form.replace(messageLogin, message);
+	}
+	
 	private  void addContent(String content)
 	{
-		htmlcode=htmlcode.replace("#pagecontent#", content+"#pagecontent#");
+		htmlcode=htmlcode.replace(pageContent, content+pageContent);
 	}
-
+	
+	@Deprecated
 	public void addTabWithIFrame(String tabname,String src)
 	{
 		addContent(createTabWithIFrame(tabname,src));
 	}	
+	@Deprecated
 	public void addTab(String tabname,String content)
 	{
 		addContent(createTab(tabname,content));
+	}
+	
+	public void addTabWithIFrame(TabName tabname,String src)
+	{
+		addContent(createTabWithIFrame(tabname.toLanguageTag(),src));
+	}	
+	public void addTab(TabName tabname,String content)
+	{
+		addContent(createTab(tabname.toLanguageTag(),content));
 	}
 
 	

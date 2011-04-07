@@ -20,6 +20,8 @@ public class Account implements Databasable,HTMLTablable
 	private Educator educator;
 	private Admin admin;
 	
+	private UserType type;
+	
 	public Account()
 	{
 		userName=null;
@@ -32,7 +34,7 @@ public class Account implements Databasable,HTMLTablable
 		password=pass;
 	}
 	
-	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin)
+	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin,UserType type)
 	{
 		this.userName = name;
 		this.password = pass;
@@ -40,6 +42,7 @@ public class Account implements Databasable,HTMLTablable
 		this.student = student;
 		this.educator = educator;
 		this.admin = admin;
+		this.type=type;
 	}
 	
 	@OutDatabase
@@ -125,6 +128,16 @@ public class Account implements Databasable,HTMLTablable
 	public Admin getAdmin()
 	{
 		return admin;
+	}
+
+	public void setType(UserType type)
+	{
+		this.type = type;
+	}
+
+	public UserType getType()
+	{
+		return type;
 	}
 
 }
