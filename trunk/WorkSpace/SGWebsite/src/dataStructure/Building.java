@@ -33,7 +33,7 @@ public class Building implements Databasable,HTMLTablable
 	
 	
 	@InDatabase
-	@TableInput(order=1,text="#Name_Building_Table#")
+	@TableInput(order=1,text="##Name_Building_Table##")
 	public String getName()
 	{
 		return name;

@@ -46,7 +46,7 @@ public class Subcourse implements Databasable,HTMLTablable
 	}
 
 	@InDatabase
-	@TableInput(order=1,text="#Name_SubCourse_Table#")
+	@TableInput(order=1,text="##Name_SubCourse_Table##")
 	public String getName()
 	{
 		return Name;
@@ -93,7 +93,7 @@ public class Subcourse implements Databasable,HTMLTablable
 	}
 
 	@InDatabase
-	@TableInput(order=2,text="#NumberHours_SubCourse_Table#")
+	@TableInput(order=2,text="##NumberHours_SubCourse_Table##")
 	public int getTotalnumberHours()
 	{
 		return totalnumberHours;
@@ -106,7 +106,7 @@ public class Subcourse implements Databasable,HTMLTablable
 	}
 
 	@InDatabase
-	@TableInput(order=3,text="#BlockHours_SubCourse_Table#")
+	@TableInput(order=3,text="##BlockHours_SubCourse_Table##")
 	public int getBlockHours()
 	{
 		return blockHours;

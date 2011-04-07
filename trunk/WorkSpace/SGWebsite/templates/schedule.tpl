@@ -9,7 +9,7 @@
 <tr style="heigt:100%">
 <td id="box" width="1024" style="heigt:100%">
 <Iframe id="calendar" src="{LINK}" scrolling="yes"  frameborder="0" style="height:100%;width:100%">
-#noiFrame#</Iframe> 
+##noiFrames##</Iframe> 
 </td>
 </tr>
 </table>

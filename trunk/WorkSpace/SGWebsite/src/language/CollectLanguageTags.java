@@ -44,7 +44,7 @@ public class CollectLanguageTags
 		String out = new String();
 		for (String i : languagereferences)
 		{
-			out += "#"+i+"#=;\n";
+			out += "##"+i+"##=;\n";
 		}
 		System.out.println(out);
 	}
@@ -55,10 +55,10 @@ public class CollectLanguageTags
 		// zoek naar de eerste language tag in de code
 		int hekje1 = 1;
 		int hekje2 = 1;
-		while ((content.indexOf('#', hekje2+1)!=-1)&&(content.indexOf('#', hekje1+1)!=-1))
+		while ((content.indexOf("##", hekje2+1)!=-1)&&(content.indexOf("##", hekje1+1)!=-1))
 		{
-			hekje1=content.indexOf('#', hekje2+1);
-			hekje2=content.indexOf('#', hekje1+1);
+			hekje1=content.lastIndexOf("##", hekje2+1);
+			hekje2=content.lastIndexOf("##", hekje1+1);
 			System.out.println("H1: "+hekje1+ "H2:"+hekje2);
 			// alles tussen hekje1 en hekje2 is een language tag. controleer of die nog niet eerder gevonden is
 			String tag = content.substring(hekje1+1,hekje2);

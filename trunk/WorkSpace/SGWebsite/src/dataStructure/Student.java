@@ -36,7 +36,7 @@ public class Student implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=1,text="#Firstname_Student_Table#")
+	@TableInput(order=1,text="##Firstname_Student_Table##")
 	public String getFirstName()
 	{
 		return firstName;
@@ -48,7 +48,7 @@ public class Student implements Databasable,HTMLTablable
 	}
 
 	@InDatabase
-	@TableInput(order=2,text="#Surname_Student_Table#")
+	@TableInput(order=2,text="##Surname_Student_Table##")
 	public String getSurName() {
 		return surName;
 	}
@@ -87,7 +87,7 @@ public class Student implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=3,text="#Number_Student_Table#")
+	@TableInput(order=3,text="##Number_Student_Table##")
 	public int getstudentNumber()
 	{
 		return studentNumber;
