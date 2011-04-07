@@ -1,5 +1,6 @@
 package htmlBuilder;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Vector;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import language.Dictionary;
 import login.Account;
 import database.Database;
 import database.Search;
@@ -25,11 +27,14 @@ public class MainServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     
+	;
+    
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
 	private static final String baseLink="http://localhost/SGWebsite/MainServlet";
 	private static final String siteTemplatePath="C:\\java\\workspace\\SGWebsite\\src\\htmlBuilder\\site.xml";
-    
+    private static final String languagePath="C:\\SVN\\WorkSpace\\SGWebsite\\src\\language";
+	
 	private String noMessage="";
 	private String errorMessage="#WrongID_Login#";
 	
@@ -37,9 +42,9 @@ public class MainServlet extends HttpServlet {
     {
         super();
         PseudoServlet.initEverything(baseLink,"C:\templates");
+        Dictionary.initDictionaries(languagePath);
     }
-
-    
+	
     private Site makeLoginSite(String m)
     {
     	Site site=new Site(siteTemplatePath);
@@ -61,7 +66,7 @@ public class MainServlet extends HttpServlet {
 		if (id==null || ses==null) 
 		{
 			//TODO uit iframe gaan
-			out.println(makeLoginSite(noMessage).getHtmlCode());
+			out.println(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(noMessage).getHtmlCode()));
 		}
 		else
 		{
@@ -73,11 +78,11 @@ public class MainServlet extends HttpServlet {
 		    {
 		    	if (ses.getAccount().getType().isAuthorized(ps))
 		    	{
-		    		out.println(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses));
+		    		out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses)));
 		    	}
 		    	else
 		    	{
-		    		out.println("#Access_Denied#");
+		    		out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage("#Access_Denied#"));
 		    	}
 		    	
 		    } 
@@ -107,17 +112,17 @@ public class MainServlet extends HttpServlet {
 				
 				if (acc==null)
 				{
-					out.println(makeLoginSite(errorMessage).getHtmlCode());
+					out.println(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(errorMessage).getHtmlCode()));
 				}
 				else
 				{
 					Session ses=new Session(acc);
-					out.println(ses.getAccount().getType().buildSite(siteTemplatePath,ses).getHtmlCode());
+					out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(ses.getAccount().getType().buildSite(siteTemplatePath,ses).getHtmlCode()));
 				}
 			}
 			else
 			{
-				out.write(makeLoginSite(noMessage).getHtmlCode());
+				out.write(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(noMessage).getHtmlCode()));
 			}
 		}
 		else
@@ -135,7 +140,7 @@ public class MainServlet extends HttpServlet {
 			    } 
 			    else
 			    {
-			    	out.println(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses));
+			    	out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses)));
 			    } 
 			}
 		} 

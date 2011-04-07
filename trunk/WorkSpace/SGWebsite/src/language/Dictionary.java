@@ -1,6 +1,7 @@
 package language;
 
 
+import java.io.File;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -20,17 +21,46 @@ import other.FileIO;
 public class Dictionary
 {
 	public static enum Language {english,dutch};
+	
 	final public static String languageFileExtension=".l";
+	
+	private static Vector<Dictionary> dictionaries;
 	
 	private String root;
 	private Language language;
 	
 	private Hashtable<String, String> table;
-		
+	
+	public static void initDictionaries(String languagePath)
+	{
+		dictionaries = new Vector<Dictionary>();
+		for (File f:new File(languagePath).listFiles())
+		{
+			if (f.isFile() && f.getName().contains(".l"))
+			{
+				dictionaries.add(new Dictionary(f.getName().replace(".l", ""),languagePath));
+			}
+		}
+	}
+	
+	public static Dictionary getDictionary(String language)
+	{
+		System.out.println(">>Dictionary.getDictionary:"+language);
+		System.out.println(">>Dictionary.getDictionary:"+dictionaries);
+		for(Dictionary d: dictionaries)
+		{
+			if (d.getLanguage().toString().equals(language))
+			{
+				return d;
+			}
+		}
+		return null;
+	}
+	
 	private void initTable()
 	{
 		table=new Hashtable<String, String>();
-		String filePath=new String(root+language.toString()+languageFileExtension);
+		String filePath=new String(root+"/"+language.toString()+languageFileExtension);
 		String content = FileIO.readFile(filePath);
 		
 		int index1;
@@ -45,12 +75,31 @@ public class Dictionary
 			
 		}
 	}
+	
+	public static Language toLanguage(String string)
+	{
+		for (Language l: Language.values())
+		{
+			if (l.toString().equals(string))
+			{
+				return l;
+			}
+		}
+		return Language.english;
+	}
  	
 	public Dictionary(Language language,String root)
 	{
 		setRoot(root);
 		setLanguage(language);
-		
+		initTable();
+	}
+	
+	public Dictionary(String language,String root)
+	{
+		setRoot(root);
+		setLanguage(toLanguage(language));
+		initTable();
 	}
 
 	public void setRoot(String root)
