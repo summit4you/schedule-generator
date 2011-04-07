@@ -116,7 +116,6 @@ public class Site
 	public String createLoginForm(String action,String message)
 	{
 		String form = loginForm.replace(actionLogin, action);
-		form = loginForm.replace(actionLoginGuest, action+"?ps=Guest");
 		return form.replace(messageLogin, message);
 	}
 	
