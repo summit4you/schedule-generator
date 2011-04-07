@@ -45,7 +45,7 @@ public class Faculty implements Databasable
 	
 	
 	@InDatabase
-	@TableInput(order=1,text="#Name_Faculty_Table#")
+	@TableInput(order=1,text="##Name_Faculty_Table##")
 	public String getName()
 	{
 		return name;

@@ -8,8 +8,8 @@ import other.FileIO;
 /**
  * <b> Class that resolves language tags </b> </br>
  * A dictionary can be used to replace language tags that are present in the language file.
- * A language tag is of the following form '#tag#' and should be unique. An entry in a
- * language file should be as followed '#tag#=replacement;'. Every language will have its 
+ * A language tag is of the following form '##tag##' and should be unique. An entry in a
+ * language file should be as followed '##tag##=replacement;'. Every language will have its 
  * own file with tags. Now only English is supported. 
  *  
  * @author Alexander
@@ -40,7 +40,8 @@ public class Dictionary
 			String line = content.substring(0,index1);
 			content=content.substring(index1+1);
 			index2 = line.indexOf("=");
-			table.put(line.substring(line.indexOf("#"), index2),line.substring(index2+1,index1));
+			table.put(line.substring(line.indexOf("##"), index2),line.substring(index2+1,index1));
+			
 		}
 	}
  	
@@ -105,14 +106,14 @@ public class Dictionary
 	{
 		int hekje1 = 0;
 		int hekje2 = 1;
-		while ((text.indexOf('#', hekje2+1)!=-1)&&(text.indexOf('#', hekje1+1)!=-1))
+		while ((text.lastIndexOf("##", hekje2+1)!=-1)&&(text.lastIndexOf("##", hekje1+1)!=-1))
 		{
-			hekje1=text.indexOf('#', hekje2+1);
-			hekje2=text.indexOf('#', hekje1+1);
+			hekje1=text.lastIndexOf("##", hekje2+1);
+			hekje2=text.lastIndexOf("##", hekje1+1);
 			System.out.println("H1: "+hekje1+ "H2:"+hekje2);
 			// alles tussen hekje1 en hekje2 is een language tag
 			String tag = text.substring(hekje1+1,hekje2);
-			text = text.replaceFirst("#"+tag+"#",table.get("#"+tag+"#"));
+			text = text.replaceFirst("##"+tag+"##",table.get("##"+tag+"##"));
 		}
 		return text;
 	}

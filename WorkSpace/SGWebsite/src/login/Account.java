@@ -51,7 +51,7 @@ public class Account implements Databasable,HTMLTablable
 		this.userName = userName;
 	}
 	
-	@TableInput(order=1,text="#UserName_Account#")
+	@TableInput(order=1,text="##UserName_Account##")
 	@InDatabase
 	public String getUserName()
 	{
@@ -99,7 +99,7 @@ public class Account implements Databasable,HTMLTablable
 		this.student = student;
 	}
 	
-	@TableInput(order=2,text="#Student_Account#")
+	@TableInput(order=2,text="##Student_Account##")
 	@InDatabase
 	public Student getStudent()
 	{
@@ -111,7 +111,7 @@ public class Account implements Databasable,HTMLTablable
 		this.educator = educator;
 	}
 	
-	@TableInput(order=3,text="#Educator_Account#")
+	@TableInput(order=3,text="##Educator_Account##")
 	@InDatabase
 	public Educator getEducator()
 	{
@@ -123,7 +123,7 @@ public class Account implements Databasable,HTMLTablable
 		this.admin = admin;
 	}
 	
-	@TableInput(order=4,text="#Admin_Account#")
+	@TableInput(order=4,text="##Admin_Account##")
 	@InDatabase
 	public Admin getAdmin()
 	{

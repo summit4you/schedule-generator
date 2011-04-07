@@ -39,7 +39,7 @@ public class Educator implements Databasable,HTMLTablable
 	
 	
 	@InDatabase
-	@TableInput(order=3,text="#Number_Educator_Table#")
+	@TableInput(order=3,text="##Number_Educator_Table##")
 	public int getemployeeNumber()
 	{
 		return employeeNumber;
@@ -68,7 +68,7 @@ public class Educator implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=1,text="#Firstname_Educator_Table#")
+	@TableInput(order=1,text="##Firstname_Educator_Table##")
 	public String getFirstName() 
 	{
 		return firstName;
@@ -81,7 +81,7 @@ public class Educator implements Databasable,HTMLTablable
 	}
 
 	@InDatabase
-	@TableInput(order=2,text="#Surname_Educator_Table#")
+	@TableInput(order=2,text="##Surname_Educator_Table##")
 	public String getSurName()
 	{
 		return surName;

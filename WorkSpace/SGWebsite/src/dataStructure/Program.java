@@ -32,7 +32,7 @@ public class Program implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=1,text="#Name_Program_Table#")
+	@TableInput(order=1,text="##Name_Program_Table##")
 	public String getName() 
 	{
 		return name;
@@ -57,7 +57,7 @@ public class Program implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=2,text="#Level_Program_Table#")
+	@TableInput(order=2,text="##Level_Program_Table##")
 	public int getlevel()
 	{
 		return level;

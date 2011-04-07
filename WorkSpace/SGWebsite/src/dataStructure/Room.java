@@ -37,7 +37,7 @@ public class Room implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=2,text="#Capacity_Room_Table#")
+	@TableInput(order=2,text="##Capacity_Room_Table##")
 	public int getcapacity()
 	{
 		return capacity;
@@ -50,7 +50,7 @@ public class Room implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=1,text="#Location_Room_Table#")
+	@TableInput(order=1,text="##Location_Room_Table##")
 	public String getLocation()
 	{
 		return location;

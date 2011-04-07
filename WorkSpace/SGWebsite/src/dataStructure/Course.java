@@ -33,7 +33,7 @@ public class Course implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=1,text="#Name_Course_Table#")
+	@TableInput(order=1,text="##Name_Course_Table##")
 	public String getName()
 	{
 		return name;
@@ -58,7 +58,7 @@ public class Course implements Databasable,HTMLTablable
 	}
 	
 	@InDatabase
-	@TableInput(order=2,text="#Responsible_Course_Table#")
+	@TableInput(order=2,text="##Responsible_Course_Table##")
 	public Educator getResponsible()
 	{
 		return responsible;
