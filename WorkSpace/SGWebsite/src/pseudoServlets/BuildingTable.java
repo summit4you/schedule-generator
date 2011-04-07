@@ -1,5 +1,6 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
 import htmlInterfaces.HTMLTablable;
 import java.util.Vector;
 import dataStructure.Building;
@@ -29,7 +30,7 @@ public class BuildingTable extends TabAndDrop<Building>
 			for (Room r:b.getRooms())
 			{
 				res+="if (nTr.id=='"+roomCounter+"'){";
-				res+=" return 'available hardware <select size=5>";
+				res+=" return '<b>##Available_Hardware_BuildingTab##</b> <select size=5>";
 				if (r.getPresentHardware()!=null)
 				{
 					for (Hardware h:r.getPresentHardware())
@@ -54,9 +55,9 @@ public class BuildingTable extends TabAndDrop<Building>
 	}
 
 	@Override
-	protected String getTabName() 
+	public String getTabName() 
 	{
-		return "Buildings";
+		return Site.TabName.Buildings.toLanguageTag();
 	}
 
 	@Override

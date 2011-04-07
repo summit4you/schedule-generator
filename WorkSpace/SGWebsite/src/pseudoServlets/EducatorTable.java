@@ -1,5 +1,6 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
 import htmlInterfaces.HTMLInterfaceTool;
 import htmlInterfaces.HTMLTablable;
 import java.util.Vector;
@@ -34,6 +35,7 @@ public class EducatorTable extends TabAndDrop<Faculty>
 			{
 				res+="if (nTr.id=='"+eduCounter+"'){";
 				res+="return '";
+				res+="<b>##Subcourses##</b>";
 				if (e.getSubcourses()!=null&&e.getSubcourses().size()>0)
 				{
 					res+=HTMLInterfaceTool.changeToDataTable("dropTable1",e.getSubcourses());
@@ -42,6 +44,7 @@ public class EducatorTable extends TabAndDrop<Faculty>
 				{
 					res+=HTMLInterfaceTool.makeEmptyTable("dropTable1", Subcourse.class);
 				}
+				res+="<b>##Courses##</b>";
 				if (e.getCourses()!=null&&e.getCourses().size()>0)
 				{
 					res+=HTMLInterfaceTool.changeToDataTable("dropTable2",e.getCourses());
@@ -66,9 +69,9 @@ public class EducatorTable extends TabAndDrop<Faculty>
 	}
 
 	@Override
-	protected String getTabName() 
+	public String getTabName() 
 	{	
-		return "Educators";
+		return Site.TabName.Educators.toLanguageTag();
 	}
 
 	@Override

@@ -28,6 +28,7 @@ public class StudentTable extends TabAndList<Student>
 		{
 			res+="if (nTr.id=='"+counter+"'){";
 			res+="return '";
+			res+="<b>##Programs##</b>";
 			if (i.getPrograms()!=null && i.getPrograms().size()>0)
 			{
 				res+=HTMLInterfaceTool.changeToDataTable("expandTable",i.getPrograms());
@@ -36,6 +37,7 @@ public class StudentTable extends TabAndList<Student>
 			{
 				res+=HTMLInterfaceTool.makeEmptyTable("expandTable",Program.class);
 			}
+			res+="<b>##Courses##</b>";
 			if (i.getCourses()!=null && i.getCourses().size()>0)
 			{
 				res+=HTMLInterfaceTool.changeToDataTable("expandTable2",i.getCourses());
@@ -76,7 +78,7 @@ public class StudentTable extends TabAndList<Student>
 	}
 
 	@Override
-	protected String getTabName()
+	public String getTabName()
 	{
 		return "Students";
 	}
