@@ -105,7 +105,6 @@ public class Dictionary
 	
 	public String translatePage(String text)
 	{
-		System.out.println("hallo");
 		String[] arr = text.split("##");
 		for (int i = 1; i < arr.length; i+=2)
 		{
