@@ -98,6 +98,7 @@ public class MainServlet extends HttpServlet {
 		{
 			if (ps.equals(loginIdentifier))
 			{
+				// guest zit ook in de  database
 				Database db = new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
 				db.connect();
 				Search s = new Search(Account.class,"getUserName;getPassword",request.getParameter("username"),request.getParameter("password"));
