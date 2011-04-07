@@ -153,18 +153,18 @@ public class FillDatabase
 		
 		Admin ad = new Admin();
 		//Account ac1 = new Account(name, pass, language, student, educator, admin, type)
-		Account ac1 = new Account("adam", "tolkien", "dutch", adam , null, null,new StudentType());
-		Account ac2 = new Account("zjef", "sertyuiop", "english", zjef, null, null,new StudentType());
-		Account ac3 = new Account("alex", "admin", "dutch", alex, null, null,new StudentType());
-		Account ac4 = new Account("koningcanis", "kak", "english", matsi, null, null,new StudentType());
-		Account ac5 = new Account("yves","EMrules","flenglish",null,rolain,null,new EducatorType());
-		Account ac6 = new Account("rik", "nummer9", "dutch", null, pintelon, null,new EducatorType());
-		Account ac7 = new Account("ragnhild","acasias", "dutch", null, ragnhild, null,new EducatorType());
-		Account ac8 = new Account("gerd", "eSYSID", "dutch", null, gerd, null,new EducatorType());
-		Account ac9 = new Account("leo", "aalstrules", "dutch", null, leo, null,new EducatorType());
-		Account ac10 = new Account("hugo", "fotonicasucks", "dutch", null, hugo, null,new EducatorType());
-		Account ac0 = new Account("admin", "admin", "english",null, null, ad,new AdminType());
-		Account ac11 = new Account("guest","guest","english",null,null,null,new GuestType());
+		Account ac1 = new Account("adam", "tolkien", "dutch", adam , null, null,new UserType("Student"));
+		Account ac2 = new Account("zjef", "sertyuiop", "english", zjef, null, null,new UserType("Student"));
+		Account ac3 = new Account("alex", "admin", "dutch", alex, null, null,new UserType("Student"));
+		Account ac4 = new Account("koningcanis", "kak", "english", matsi, null, null,new UserType("Student"));
+		Account ac5 = new Account("yves","EMrules","flenglish",null,rolain,null,new UserType("Educator"));
+		Account ac6 = new Account("rik", "nummer9", "dutch", null, pintelon, null,new UserType("Educator"));
+		Account ac7 = new Account("ragnhild","acasias", "dutch", null, ragnhild, null,new UserType("Educator"));
+		Account ac8 = new Account("gerd", "eSYSID", "dutch", null, gerd, null,new UserType("Educator"));
+		Account ac9 = new Account("leo", "aalstrules", "dutch", null, leo, null,new UserType("Educator"));
+		Account ac10 = new Account("hugo", "fotonicasucks", "dutch", null, hugo, null,new UserType("Educator"));
+		Account ac0 = new Account("admin", "admin", "english",null, null, ad,new UserType("Admin"));
+		Account ac11 = new Account("guest","guest","english",null,null,null,new UserType("Guest"));
 		
 		Database db=new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
 		db.connect();
@@ -178,6 +178,7 @@ public class FillDatabase
 		db.write(ac8);
 		db.write(ac9);
 		db.write(ac10);
+		db.write(ac11);
 		db.write(ac0);
 		db.write(k);
 		db.write(l);

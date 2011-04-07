@@ -1,5 +1,6 @@
 package pseudoServlets;
 
+import htmlBuilder.Site;
 import htmlInterfaces.HTMLInterfaceTool;
 import java.util.Vector;
 
@@ -80,7 +81,7 @@ public class StudentTable extends TabAndList<Student>
 	@Override
 	public String getTabName()
 	{
-		return "Students";
+		return Site.TabName.Students.toLanguageTag();
 	}
 
 }
