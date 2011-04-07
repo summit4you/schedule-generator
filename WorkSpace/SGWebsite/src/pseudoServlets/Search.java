@@ -54,7 +54,7 @@ public class Search extends PseudoServlet
 				database.Search s = new database.Search(Student.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
 				Vector<Student> searchresult = db.readAll(s);
 				db.disconnect();
-				if (searchresult==null)
+				if ((searchresult==null)||(searchresult.isEmpty()))
 				{
 					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
 				}
@@ -78,7 +78,7 @@ public class Search extends PseudoServlet
 				database.Search s = new database.Search(Educator.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
 				Vector<Educator> searchresult = db.readAll(s);
 				db.disconnect();
-				if (searchresult==null)
+				if ((searchresult==null)||(searchresult.isEmpty()))
 				{
 					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
 				}
@@ -99,7 +99,7 @@ public class Search extends PseudoServlet
 				database.Search s = new database.Search(Room.class,"getLocation",request.getParameter("roomnumber"));
 				Vector<Room> searchresult = db.readAll(s);
 				db.disconnect();
-				if (searchresult==null)
+				if ((searchresult==null)||(searchresult.isEmpty()))
 				{
 					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
 				}				
