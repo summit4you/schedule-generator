@@ -5,6 +5,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.Vector;
+
+import dataStructure.Room;
 import dataStructure.Subcourse;
 
 
@@ -111,9 +113,7 @@ public class MatsiesVectorToolbox
 		{
 			try
 			{
-				System.out.println("Toolboxtest1 "+ obj.getClass());
 				obj = m.invoke(obj);
-				System.out.println("Toolboxtest2 "+ obj.getClass());
 			} 
 			catch (Exception e)
 			{
@@ -284,10 +284,10 @@ public class MatsiesVectorToolbox
 	
 	public static int giveIndex(Vector<Bounds> vec,int i)
 	{
-		int k=1;
+		
 		int j=1;
 		
-		while(k<=vec.size())
+		for(int k=0;k<=vec.size()-1;k++)
 		{
 			Bounds bound = vec.elementAt(k);
 			int u = bound.getUpperBound();
@@ -299,10 +299,23 @@ public class MatsiesVectorToolbox
 				k=vec.size();
 			}
 		
-			k++;
 			
 		}
 		return j;
+	}
+	
+	public static int giveRoomIndex(int cap,Vector<Room> rooms)
+	{
+		int index=0;
+		
+		for(Room r:rooms)
+		{
+			if(cap>r.getcapacity())
+			{
+				index=rooms.indexOf(r)-1;
+			}
+		}
+		return index;
 	}
 }
 
