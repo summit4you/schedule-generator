@@ -1,3 +1,0 @@
-This folder will not be updated to the latest version anymore!!
-
-The latest source code can now be found in Workspace/SGWebsite/src/database
