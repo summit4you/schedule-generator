@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+<html>
+<head>
+<title>Vergadering 30-03-2011</title>
+</head>
+<body>
+<h1>30-03-2010: Algemene vergadering raad van bestuur</h1>
+
+<p>
+<b>Aanwezig</b>: </br>
+Alexander De Cock </br>
+Zjef Van de Poel </br>
+Adam Cooman </br>
+Matthias Caenepeel (Moet schoenen gaan kopen)</br>
+</br>
+
+<b>Locatie:</b>Keuken Alexander en Matthias 
+</p>
+
+<h2>Punten op de agenda:</h2>
+<ul>
+<li>Bespreken van de dealines en de vorige taken</li>
+<li>Opstellen nieuwe deadlines en taken voor de afwerking iteratie 1</li>
+<li>Bespreken welke servlets we gingen aanmaken</li>
+</ul>
+
+<h2>Resultaten:</h2>
+<ul>
+<li>Besproken</li>
+<li>Nieuwe deadlines om het einde van iteratie 1 te halen</li>
+</ul>
+
+<h2> Minutes 9:00 tot 12:00 en van 16:00 tot 17:00</h2>
+<h3>Bespreken van de vorige taken</h3>
+<p>
+<b>MATTHIAS:</b> Om met CHOCO te werken moeten de constraints voorgesteld door integers. Bespreking van de manier waarop dat gedaan werd. Alles kan gelezen worden in het geupdate SDD </br>
+De volledige deadline werd niet gehaald omdat het probleem onderschat werd en omdat er iets te laat aan begonnen was. </br>
+<b>ADAM:</b> SPMP werd volledig aangepast en is nu up-to-date.  </br>
+<b>ALEXANDER:</b> SRS nog niet helemaal af, De stukken van Zjef en Matthias waren nog niet afgewerkt en dus nog niet toegevoegd. </br>
+Er werd gewerkt aan de gemeenschappelijke workspace, maar er zijn nog een paar problemen met de splitsing JAVAcode/servlets op de gemeenschappelijke tomcat </br>
+Aan de HTMLbuilder werd ook gewerkt en hij is bijna klaar, er moest samengezeten worden tussen Adam en Alexander om het af te werken. </br>
+<b>ZJEF:</b> Zjef zijn internet was weg en hij kon dus geen demo's geven </br>
+Hij heeft een manier gevonden om alle resourses (javascripts, css bestanden, xml files,...) in tomcat te plaatsen. </br>
+Er werd vooruitgang geboekt bij het aanpassen van de kalender
+</p>
+<h3>Wat gaan we volgende keer doen stuk van de vergadering </h3>
+<p>
+Het einde van de eerste iteratie valt volgende week vrijdag 8 april. Er werd beslist om de deadlines tegen woensdag 6 april te plaatsen zodat tegen de 8ste alles in elkaar kan geschoven worden en een werkende versie kan gepresenteerd worden.</br>
+<b>Deadlines tegen 6 april</b>
+<b>MATTHIAS:</b> Algoritme afwerken zodat de constraints kunnen weergegeven worden en dat de gegevens uit de bestaande datastructuur kunnen verwerkt worden om een rooster op te stellen voor 1 week. </br>
+<b>ALEXANDER ADAM en ZJEF:</b> HTMLBuilder implementeren om de verschillende functies uit de vorige minutes toevoegen. (zie hieronder voor de verdeling) </br>
+Tabs uitbreiden met iFrames (ALEXANDER) </br>
+Session tracking omzetten naar cookies om de builder te vereenvoudigen (ALEXANDER) </br>
+Structuur uitbouwen om beveiliging te controleren en de privileges van de gebruikers uit te lezen en weer te geven wat ze mogen zien (ALEXANDER) </br>
+Pseudoservlets schrijven voor elk tabblad (ADAM en ZJEF, zie hieronder)</br>
+Vertaler aan HTMLBuilder toevoegen (ALEXANDER) </br>
+Uiteindelijke servlets laten runnen op Wilma. </br>
+
+<h3>Lijst met functies die geimplementeerd wordt voor iteratie 1</h3>
+
+<b>Login tab</b> ADAM </br>
+login form </br>
+login as guest </br></br>
+<b>Search tab:</b> ADAM </br>
+Naam kiezen van student of prof (philfunctie) of schuiver met faculteiten en dan schuiver met programma's => Rooster bekijken </br> </br>
+<b>Mijn cursussen</b> ZJEF </br>
+Programma wordt weergegeven en de cursussen die daarin zitten worden getoond en Lijst van cursussen die hij als keuzevakken heeft (met de mogelijkheid om ze te verbergen) </br>
+<b>Lessenrooster tab:</b> ADAM </br>
+toont persoonlijk lessenrooster </br></br>
+<b>Building management tab</b> ZJEF </br>
+Lijst van buildings met daarin een lijst van lokalen </br>
+<b>Courses management tab</b> ZJEF </br>
+toont lijst van programs en courses die erin zitten en dan de subcourses </br>
+<b>Kalender editor tab</b> ZJEF </br>
+toont kalender en kan kiezen welke vakken er in getoond kunnen worden </br>
+kan vakken van programmas weergeven en aparte vakken toevoegen aan de lijst die weergegeven wordt </br></br>
+<b>Accounts management tab</b> (voor de admins) ZJEF </br>
+Lijst van accounts weergeven, bij elke account: delete of edit </br>
+</p>
+
+<h3>Lijst met servlets die aangemaakt worden en hun taak </h3>
+<p>
+<b>Beveiligingsservlet:</b> Servlet die alle GET en POST ontvangt, de machtigingen controleert en dan doorverwijst naar de gepaste pseudoservlet</br>
+<b>Pseudoservlet:</b> Voor elk tabblad een klasse die het kan weergeven. deze wordt opgeroepen door de beveiligingsservlet in een iFrame (zie bold namen in de lijst hierboven)</br>
+
+</p>
+</body>
+</html>
+
+
