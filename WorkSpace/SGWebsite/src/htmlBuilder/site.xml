@@ -7,10 +7,16 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 		<script type="text/javascript" src="tabber-minimized.js"></script>
 		<link rel="stylesheet" href="style.css" type="text/css" ></link> 
+	<style type="text/css"> 
+	iframe { 
+		overflow-x: hidden; 
+		overflow-y: scroll; 
+	} 
+	</style> 
 </head>
 	
 <body>
-	<table id="container" border="2" align="center" width="800" style="border-collapse: collapse; min-height:100%" >
+	<table id="container" border="0" align="center" width="800" style="border-collapse: collapse; min-height:100%" >
 	<tbody>
 	
 		<tr style="height:100px">
@@ -39,13 +45,13 @@
 </HTMLPAGE tag=code>
 
 <TAB tag=code>
-	<div class="tabbertab" title={tabtitle}>
+	<div class="tabbertab" title="{tabtitle}">
 		{tabcontent}
 	</div>
 </TAB tag=code>
 
 <IFRAME tag=code>
-	<iframe src={framesrc} width=100% height=100%>
+	<iframe src="{framesrc}" style="width:100%; height:100%" frameborder="0">
   		<p>##IFrame_error##</p>
 	</iframe>
 </IFRAME tag=code>
