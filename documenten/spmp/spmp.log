@@ -1,10 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  29 MAR 2011 13:31
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  1 MAY 2011 14:36
 entering extended mode
-**C:/Users/Adam/Documents/VUB/1*MA-IR/Software*engineering/SVN/documenten/spmp/
-spmp.tex
-
-("C:/Users/Adam/Documents/VUB/1 MA-IR/Software engineering/SVN/documenten/spmp/
-spmp.tex"
+**C:/SVN/documenten/spmp/spmp.tex
+(C:/SVN/documenten/spmp/spmp.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman, ngerman, german-x-2009-06-19, ngerman-x-2009-06-19, french, loaded.
@@ -426,8 +423,7 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
 )
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
-spmp.aux")
+(C:\SVN\documenten\spmp\spmp.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
@@ -444,7 +440,8 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
 LaTeX Font Info:    ... okay on input line 23.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 23.
- ("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\ts1cmr.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.8\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 23.
@@ -479,191 +476,47 @@ LaTeX Info: Redefining \ref on input line 23.
 LaTeX Info: Redefining \pageref on input line 23.
 LaTeX Info: Redefining \nameref on input line 23.
 
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
-spmp.out")
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
-spmp.out")
+(C:\SVN\documenten\spmp\spmp.out) (C:\SVN\documenten\spmp\spmp.out)
 \@outlinefile=\write3
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  [1
 
 {C:/ProgramData/MiKTeX/2.8/pdftex/config/pdftex.map}] [2]
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
-spmp.toc" [3])
+(C:\SVN\documenten\spmp\spmp.toc [3])
 \tf@toc=\write4
  [4]
-Underfull \hbox (badness 10000) in paragraph at lines 86--87
+Underfull \hbox (badness 10000) in paragraph at lines 83--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--101
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
 
  []
 
 
-Overfull \hbox (16.5841pt too wide) in paragraph at lines 137--140
+Overfull \hbox (16.5841pt too wide) in paragraph at lines 134--137
 \OT1/cmr/m/n/10 naar is te vin-den op onze web-site(http://student.vub.ac.be/ a
 cooman/SE/SE.html).
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--140
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+[5] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 239--240
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--147
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 161--162
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 171--172
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 172--173
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 182--183
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 186--187
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 187--188
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--190
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--210
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 210--211
-
- []
-
-[7]
 Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
@@ -673,564 +526,517 @@ Underfull \hbox (badness 10000) in paragraph at lines 243--244
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--245
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
-
- []
-
 [8]
-Overfull \hbox (6.8616pt too wide) in paragraph at lines 259--261
+Overfull \hbox (6.8616pt too wide) in paragraph at lines 256--258
 []\OT1/cmr/m/n/10 Tijdens meet-ings waarop alle leden aan-wezig zijn, wor-den p
 er-so-nen toegewezen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--292
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--296
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 296--298
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 298--300
 
- []
+! LaTeX Error: Something's wrong--perhaps a missing \item.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 300--302
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--304
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--306
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 306--308
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--314
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 316--317
-
- []
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.313 	\begin{itemize}
+                      
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 328--329
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
  []
 
 
-Overfull \hbox (37.00003pt too wide) in paragraph at lines 340--345
+Overfull \hbox (37.00003pt too wide) in paragraph at lines 346--351
 [][] 
  []
 
 
-Overfull \hbox (37.00003pt too wide) in paragraph at lines 355--360
+Overfull \hbox (37.00003pt too wide) in paragraph at lines 361--366
 [][] 
  []
 
 [11]
-Overfull \hbox (37.00003pt too wide) in paragraph at lines 375--385
+Overfull \hbox (37.00003pt too wide) in paragraph at lines 381--391
 [][] 
  []
 
 
-Overfull \hbox (37.00003pt too wide) in paragraph at lines 394--399
-[][] 
- []
-
-
-Overfull \hbox (37.00003pt too wide) in paragraph at lines 409--414
+Overfull \hbox (37.00003pt too wide) in paragraph at lines 403--411
 [][] 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 448--449
-
+Overfull \hbox (37.00003pt too wide) in paragraph at lines 421--426
+[][] 
  []
 
 [13]
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 451--462
+Underfull \hbox (badness 10000) in paragraph at lines 460--461
+
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 463--474
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
-
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 467--477
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 479--480
-
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 482--491
- [] 
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 496--512
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 514--515
+Underfull \hbox (badness 10000) in paragraph at lines 476--477
 
  []
 
 [14]
-Underfull \hbox (badness 2035) in paragraph at lines 524--525
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 479--489
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 491--492
+
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 494--503
+ [] 
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 506--522
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 524--525
+
+ []
+
+
+Underfull \hbox (badness 2035) in paragraph at lines 534--535
 []\OT1/cmr/m/n/10 ZJEF: Database in-ter-face afgew-erkt, pre-sen-tatie over
  []
 
 
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 518--532
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 534--535
-
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 537--542
- [] 
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 545--561
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 563--564
-
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 566--576
- [] 
- []
-
-
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 579--588
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 528--542
  [] 
  []
 
 [15]
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 591--596
+Underfull \hbox (badness 10000) in paragraph at lines 544--545
+
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 547--552
  [] 
  []
 
 
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 599--604
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 555--571
  [] 
  []
 
 
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 607--612
+Underfull \hbox (badness 10000) in paragraph at lines 573--574
+
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 576--586
  [] 
  []
 
 
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 615--620
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 589--597
+ [] 
+ []
+
+[16]
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 600--608
  [] 
  []
 
 
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 623--629
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 611--620
  [] 
  []
 
 
-Overfull \hbox (6.82574pt too wide) in paragraph at lines 632--637
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 623--643
  [] 
  []
 
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 646--651
+ [] 
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 654--660
+ [] 
+ []
+
+
+Overfull \hbox (6.82574pt too wide) in paragraph at lines 663--668
+ [] 
+ []
+
+[17]
 Missing character: There is no ï in font cmr10!
 Missing character: There is no ï in font cmr10!
-[16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 674--676
+ [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 705--707
 
  []
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 760--761
 
  []
 
 Missing character: There is no ë in font cmr10!
 Missing character: There is no ’ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--732
+Underfull \hbox (badness 10000) in paragraph at lines 762--763
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+Underfull \hbox (badness 10000) in paragraph at lines 764--765
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--736
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 747--747
+Underfull \hbox (badness 10000) in paragraph at lines 778--778
 []\OT1/cmr/m/n/10 VisualParadigma for
  []
 
 
-Overfull \hbox (18.20667pt too wide) in paragraph at lines 741--750
+Overfull \hbox (18.20667pt too wide) in paragraph at lines 772--781
  [] 
  []
 
-[19]
-Underfull \hbox (badness 5563) in paragraph at lines 760--761
+[21]
+Underfull \hbox (badness 5563) in paragraph at lines 791--792
 []\OT1/cmr/m/n/10 Visuele in-ter-face voor de MySQL
  []
 
 
-Overfull \hbox (18.20667pt too wide) in paragraph at lines 754--763
+Overfull \hbox (18.20667pt too wide) in paragraph at lines 785--794
  [] 
  []
 
 
-Overfull \hbox (11.40799pt too wide) in paragraph at lines 765--766
+Overfull \hbox (11.40799pt too wide) in paragraph at lines 796--797
 []\OT1/cmr/m/n/10 Het project zal wor-den uit-gevo-erd in de pro-gram-meer-taal
  Java. Als werkomgev-
  []
 
 
-Overfull \hbox (80.83412pt too wide) in paragraph at lines 765--766
+Overfull \hbox (80.83412pt too wide) in paragraph at lines 796--797
 \OT1/cmr/m/n/10 Voor meer in-for-matie wordt doorver-wezen naar http://www.java
 .com/ en http://www.eclipse.org/.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 769--769
+Underfull \hbox (badness 10000) in paragraph at lines 800--800
 []\OT1/cmr/m/n/10 Java EE De-vel-op-ment
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 771--772
+Underfull \hbox (badness 1577) in paragraph at lines 802--803
 []\OT1/cmr/m/n/10 Laat Eclipse toe om met de ge-in-
  []
 
 
-Underfull \hbox (badness 1009) in paragraph at lines 771--772
+Underfull \hbox (badness 1009) in paragraph at lines 802--803
 \OT1/cmr/m/n/10 stalleerde Tom-cat server te com-mu-
  []
 
 
-Overfull \hbox (18.20667pt too wide) in paragraph at lines 767--782
+Overfull \hbox (18.20667pt too wide) in paragraph at lines 798--813
  [] 
  []
 
 
-Overfull \hbox (18.20667pt too wide) in paragraph at lines 788--797
+Overfull \hbox (18.20667pt too wide) in paragraph at lines 819--828
  [] 
  []
 
 
-Overfull \hbox (48.63057pt too wide) in paragraph at lines 802--814
+Overfull \hbox (48.63057pt too wide) in paragraph at lines 833--845
  [] 
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 816--817
-
- []
-
-[21]
-Underfull \hbox (badness 10000) in paragraph at lines 839--840
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 841--842
-
  []
 
 [22]
-Underfull \hbox (badness 10000) in paragraph at lines 869--876
+Underfull \hbox (badness 10000) in paragraph at lines 847--848
 
  []
 
 [23]
-Overfull \hbox (1.22287pt too wide) in paragraph at lines 880--882
+Underfull \hbox (badness 10000) in paragraph at lines 870--871
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 871--872
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 872--873
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 901--908
+
+ []
+
+[25]
+Overfull \hbox (1.22287pt too wide) in paragraph at lines 912--914
 \OT1/cmr/m/n/10 An ad-min-is-tra-tor, or a pro-gram ad-min-is-tra-tor en-ters d
 ata about
  []
 
-[24]
-Underfull \hbox (badness 10000) in paragraph at lines 911--914
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 943--946
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 915--916
+Underfull \hbox (badness 10000) in paragraph at lines 947--948
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 917--923
+Underfull \hbox (badness 10000) in paragraph at lines 949--955
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 924--926
+Underfull \hbox (badness 10000) in paragraph at lines 956--958
 
  []
 
-[25] [26]
-Overfull \hbox (2.19496pt too wide) in paragraph at lines 955--960
+[27] [28]
+Overfull \hbox (2.19496pt too wide) in paragraph at lines 987--992
 \OT1/cmr/m/n/10 de bestaande struc-tuur be-vat wel richt-waar-den en ver-schil-
 lende ge-bruik-er-sklassen
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 955--960
+Underfull \hbox (badness 10000) in paragraph at lines 987--992
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--967
-
- []
-
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 970--973
-
- []
-
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1003
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1009--1010
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1015--1020
+Underfull \hbox (badness 10000) in paragraph at lines 993--999
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1042--1045
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1046--1047
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1005
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1063--1064
+Underfull \hbox (badness 10000) in paragraph at lines 1032--1035
 
  []
 
 
-Overfull \hbox (0.11172pt too wide) in paragraph at lines 1070--1071
+Underfull \hbox (badness 10000) in paragraph at lines 1041--1042
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1047--1052
+
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 1074--1077
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1078--1079
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 1095--1096
+
+ []
+
+
+Overfull \hbox (0.11172pt too wide) in paragraph at lines 1102--1103
 []\OT1/cmr/m/n/10 Van al deze noodza-ke-li-jke func-tion-aliteiten wer-den de v
 ol-gende vooropgesteld
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1081--1084
+Underfull \hbox (badness 10000) in paragraph at lines 1113--1116
 
  []
 
 
-Overfull \hbox (4.74124pt too wide) in paragraph at lines 1086--1087
+Overfull \hbox (4.74124pt too wide) in paragraph at lines 1118--1119
 []\OT1/cmr/m/n/10 ALEX: Tom-cat op de server in-stalleren en testen. Ac-count k
 lasse definieren.
  []
 
-[31] [32]
-Overfull \hbox (4.74124pt too wide) in paragraph at lines 1117--1118
+[33] [34]
+Overfull \hbox (4.74124pt too wide) in paragraph at lines 1149--1150
 []\OT1/cmr/m/n/10 ALEX: Tom-cat op de server in-stalleren en testen. Ac-count k
 lasse definieren.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1119--1122
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1154
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1125--1128
+Underfull \hbox (badness 10000) in paragraph at lines 1157--1160
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1135--1138
+Underfull \hbox (badness 10000) in paragraph at lines 1167--1170
 
  []
 
 
-Overfull \hbox (1.27737pt too wide) in paragraph at lines 1142--1150
+Overfull \hbox (1.27737pt too wide) in paragraph at lines 1174--1182
 \OT1/cmr/m/n/10 bevat: naam, stu-dent-counter, hour-sWPO, hourHOC need-ed-hard-
 ware (per WPO
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1142--1150
+Underfull \hbox (badness 10000) in paragraph at lines 1174--1182
 
  []
 
-[33] [34] [35]
-Overfull \hbox (4.61177pt too wide) in paragraph at lines 1184--1185
+[35] [36] [37]
+Overfull \hbox (4.61177pt too wide) in paragraph at lines 1216--1217
 []\OT1/cmr/m/n/10 Bespreken van de doorgevo-erde ve-ran-derin-gen: Database, Al
 -go-ritme, kalen-
  []
 
 
-Overfull \hbox (3.58394pt too wide) in paragraph at lines 1206--1207
+Overfull \hbox (3.58394pt too wide) in paragraph at lines 1238--1239
 []\OT1/cmr/m/n/10 Degelijke tijd/locatie/subcourse struc-tuur op-stellen en daa
 r-naast een meth-
  []
 
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 1216--1218
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 1248--1250
 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1219--1224
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1251--1256
  [] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1225--1230
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1257--1262
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1231--1240
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1263--1272
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1241--1245
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1273--1277
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1246--1251
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1278--1283
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1252--1259
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1284--1291
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1260--1267
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1292--1299
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1268--1273
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1300--1305
  [][] 
  []
 
-[37]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1274--1279
- [][] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1280--1286
+[39]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1306--1311
  [][] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1287--1291
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1312--1318
  [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1296.
-[38]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1296.
 
-("C:\Users\Adam\Documents\VUB\1 MA-IR\Software engineering\SVN\documenten\spmp\
-spmp.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1296.
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1319--1323
+ [][] 
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 1348--1349
+
+ []
+
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 1399--1401
+
+ []
+
+[42] [43] [44]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1461.
+ [45]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1461.
+ (C:\SVN\documenten\spmp\spmp.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1461.
 Package rerunfilecheck Info: File `spmp.out' has not changed.
-(rerunfilecheck)             Checksum: A7985126F8C1A1D7C775763A24CBC557;3080.
+(rerunfilecheck)             Checksum: 3CAF5A992B6A55EB7A0C2BC04717B677;3160.
  ) 
 Here is how much of TeX's memory you used:
- 7901 strings out of 495285
- 119423 string characters out of 3179830
- 217942 words of memory out of 3000000
- 10871 multiletter control sequences out of 15000+200000
+ 7918 strings out of 495285
+ 118898 string characters out of 3179830
+ 218942 words of memory out of 3000000
+ 10872 multiletter control sequences out of 15000+200000
  9704 words of font info for 35 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,9n,38p,984b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,9n,38p,930b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.8/fonts/enc/dvips/cm-super/cm-super-ts1.enc}
 <C:/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
 :/Program Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/
@@ -1242,9 +1048,9 @@ iles (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files
 6)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/M
 iKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiK
 TeX 2.8/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on spmp.pdf (38 pages, 239522 bytes).
+Output written on spmp.pdf (45 pages, 255161 bytes).
 PDF statistics:
- 465 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
- 329 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 124 named destinations out of 1000 (max. 500000)
+ 337 words of extra memory for PDF output out of 10000 (max. 10000000)
 
