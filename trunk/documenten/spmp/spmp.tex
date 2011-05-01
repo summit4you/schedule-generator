@@ -11,7 +11,7 @@
 \graphicspath{{fotosklein/}}
 \title{Software project management plan voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{28 maart 2011 Versie 2.0} 
+\date{28 maart 2011 Versie 3.0} 
 \makeatletter
 \renewcommand\paragraph{
    \@startsection{paragraph}{4}{0mm}
@@ -42,15 +42,12 @@
 \item[.] 25/2/2011 versie 1.1: Opmerkingen opdrachtgever in achting genomen en verbeteringen doorgevoerd
 \item[.] 03/3/2011 versie 1.2: Deadlines toegevoegd om iteratie 1 te verwezenlijken 
 \item[.] 03/3/2011 versie 2.0: Volledige revisie van het document doorgevoerd en grondige aanpassingen gedaan zodat het weer volledig up-to-date is met de huidige stand van het project
+\item[.] 30/4/2011 versie 3.0: Volledige revisie van het document doorgevoerd. Doelstellingen en planning voor iteratie 2 toegevoegd
 \end{itemize}
 
 \section*{To do}
 \begin{itemize}
-	\item[.] Lijst met javascripts uitbreiden
-	\item[.] Subtaken en deadlines voor iteratie 2 verwoorden
-	\item[.] Process Improvement plan uitdenken en toevoegen
 	\item[.] Configuration management plan grondiger schrijven en uitdenken.
-	\item[.] Plan voor controle van de eisen
 \end{itemize}
 
 %\section*{Preface}
@@ -136,14 +133,14 @@ Datum	& To Do & delivery media  \\
 
 Om de code toegankelijk te maken voor elk groepslid en de opdrachtgever, wordt gebruik gemaakt van een online repository in combinatie met subversion om de version control in orde te houden. De repository bevindt zich op een server van google code(http://code.google.com/p/schedule-generator/). De link ernaar is te vinden op onze website(http://student.vub.ac.be/~acooman/SE/SE.html).
 De verslagen zoals het SPMP, SDD en SRC, zullen in pdf beschikbaar gesteld worden op onze website.
-De exacte inhoud van de SCRUM meetings werd opgegeven door de opdrachtgever. De volgende dingen worden erin getoond en besproken: \\[-5mm]
+De exacte inhoud van de SCRUM meetings werd opgegeven door de opdrachtgever. De volgende dingen worden erin getoond en besproken: 
 \begin{itemize}
- \item[-] Een demonstratie van de toegevoegde functionaliteiten sinds de vorige iteratie .\\[-5mm]
- \item[-] Een analyse van de obstakels en de beslissingen die genomen zijn om ze op te lossen\\[-5mm]
- \item[-] Een bespreking van de functionaliteiten die toegevoegd zullen worden in de volgende iteratie\\[-5mm]
- \item[-] Een bespreking van de obstakels en risico`s die tegengekomen kunnen worden in de volgende iteratie \\[-5mm]
- \item[-] Een bespreking van de statistieken zoals werkuren per persoon \\[-5mm]
- \item[-] Een bespreking van mogelijke vertragingen en oplossingen om die vertragingen zo klein mogelijk te houden en te voorkomen in de toekomst.\\[-5mm]
+ \item[-] Een demonstratie van de toegevoegde functionaliteiten sinds de vorige iteratie .
+ \item[-] Een analyse van de obstakels en de beslissingen die genomen zijn om ze op te lossen
+ \item[-] Een bespreking van de functionaliteiten die toegevoegd zullen worden in de volgende iteratie
+ \item[-] Een bespreking van de obstakels en risico`s die tegengekomen kunnen worden in de volgende iteratie
+ \item[-] Een bespreking van de statistieken zoals werkuren per persoon 
+ \item[-] Een bespreking van mogelijke vertragingen en oplossingen om die vertragingen zo klein mogelijk te houden en te voorkomen in de toekomst.
 \end{itemize}
 
 
@@ -158,60 +155,61 @@ Het project wordt in 5 fasen onderverdeeld: Initialisatie, Design, Iteratie 1, I
 
 \textbf{Initialisatie fase:}
 \begin{itemize}
-\item[-] \textit{Doel:} Verkennen van de opdracht en de nodige kennis vergaren om de opdracht tot een goed einde te brengen. \\[-5mm]
-\item[-] \textit{Subtaken:}\\[-5mm]
+\item[-] \textit{Doel:} Verkennen van de opdracht en de nodige kennis vergaren om de opdracht tot een goed einde te brengen. 
+\item[-] \textit{Subtaken:}
 \begin{itemize}
-	\item[] Opzoeken van informatie en software tools\\[-5mm]
-	\item[] Opstellen SPMP\\[-5mm]
+	\item[] Opzoeken van informatie en software tools
+	\item[] Opstellen SPMP
 \end{itemize}
 \end{itemize}
 
 \textbf{Design fase:}
 \begin{itemize}
-\item[-] \textit{Doel:} Ontwerpen van structuur van het programma \\[-5mm]
-\item[-] \textit{Subtaken:}\\[-5mm]
+\item[-] \textit{Doel:} Ontwerpen van structuur van het programma
+\item[-] \textit{Subtaken:}
 \begin{itemize}
-	\item[] UML design\\[-5mm]
-	\item[]Opstellen SRD en SDD\\[-5mm]
+	\item[] UML design
+	\item[]Opstellen SRD en SDD
 \end{itemize}
 
 \end{itemize}
 
 \textbf{Iteratie I}
 \begin{itemize}
-\item[-] \textit{Doel:} Kunnen inloggen op de site en de data die in de database opgeslaan is op de juiste plaatsen kunnen weergeven, lessenroosters kunnen genereren die aan fixed constraints voldoen\\[-5mm]
-\item[-] \textit{Subtaken:} \\[-5mm]
+\item[-] \textit{Doel:} Kunnen inloggen op de site en de data die in de database opgeslaan is op de juiste plaatsen kunnen weergeven, lessenroosters kunnen genereren die aan fixed constraints voldoen
+\item[-] \textit{Subtaken:} 
 \begin{itemize}
-	\item[] Klassenstructuur bouwen om nodige eigenschappen weer te geven \\[-5mm]
-	\item[] Algoritme maken dat simpel lessenrooster genereert \\[-5mm]
-	\item[] Elementen in de database kunnen opslaan en lezen. \\[-5mm]
-	\item[] Website maken \\[-5mm]
-	\item[] Servlets schrijven die requests van gebruikers verwerken \\[-5mm]
-	\item[] Servlets draaien op de server \\[-5mm]
-	\item[] Kalender maken om lessenrooster weer te geven \\[-5mm]
+	\item[] Klassenstructuur bouwen om nodige eigenschappen weer te geven 
+	\item[] Algoritme maken dat simpel lessenrooster genereert 
+	\item[] Elementen in de database kunnen opslaan en lezen. 
+	\item[] Website maken 
+	\item[] Servlets schrijven die requests van gebruikers verwerken 
+	\item[] Servlets draaien op de server 
+	\item[] Kalender maken om lessenrooster weer te geven 
 \end{itemize}
 \end{itemize}
 
 \textbf{Iteratie II}
 \begin{itemize}
-\item[-] \textit{Doel:} Einddoelstellingen halen\\[-5mm]
-\item[-] \textit{Subtaken:}\\[-5mm]
+\item[-] \textit{Doel:} Einddoelstellingen halen
+\item[-] \textit{Subtaken:}
 \begin{itemize}
-	\item[] Te bepalen \\[-5mm]
+	\item[] Algoritme uitwerken 
+	\item[] Aanpassen en ingeven van gegevens aan de site toevoegen 
+	\item[] Lay-out van de website verbeteren
+	\item[] (Optioneel: Inlezen van excelbestanden om Database te vullen)
 \end{itemize}
 \end{itemize}
 
 \textbf{Terminatie fase:}
 \begin{itemize}
-\item[-] \textit{Doel:} Eindproduct afleveren en voortellen \\[-5mm]
-\item[-] \textit{Subtaken:}\\[-5mm]
+\item[-] \textit{Doel:} Eindproduct afleveren en voortellen 
+\item[-] \textit{Subtaken:}
 \begin{itemize}
-	\item[] Presentatie maken \\[-5mm]
-	\item[] Documentatie afwerken \\[-5mm]
+	\item[] Presentatie maken 
+	\item[] Documentatie afwerken
 \end{itemize}
 \end{itemize}
-
-
 
 De deadlines die een onderdeel zijn van de iteratie zullen steeds twee weken op voorhand gepland worden.
 
@@ -222,7 +220,6 @@ De deadlines die een onderdeel zijn van de iteratie zullen steeds twee weken op 
 % SPMP.
 
 Om het document up-to-date te houden met het project zal er een volledige revisie plaatsvinden na elke SCRUM meeting en op het einde van elke iteratie. Zo'n revisie houdt in dat het document door een teamlid volledig wordt doorgenomen en dat waar nodig stukken aangepast worden of toegevoegd worden.
-
 
 \newpage
 
@@ -288,32 +285,41 @@ Deze verdeling zal gerbuikt worden om de verschillende taken aan teamleden toe t
 
 \textbf{\large Iteratie I}
 \begin{itemize}
-\item[-] \textit{Doel:} Kunnen inloggen op de site en de data die in de database opgeslaan is op de juiste plaatsen kunnen weergeven, lessenroosters kunnen genereren die aan fixed constraints voldoen\\[-5mm]
-\item[-] \textit{Subtaken:} \\[-5mm]
+\item[-] \textit{Doel:} Kunnen inloggen op de site en de data die in de database opgeslaan is op de juiste plaatsen kunnen weergeven, lessenroosters kunnen genereren die aan fixed constraints voldoen
+\item[-] \textit{Subtaken:} \\
 \begin{itemize}
 	\item[] \textbf{Klassenstructuur bouwen om nodige eigenschappen weer te geven} \\
-	Omdat de klassenstructuur in eerste instantie gebruikt wordt door het algoritme om het lessenrooster op te stellen zal Matthias deze taak uitvoeren. \\[-5mm]
+	Omdat de klassenstructuur in eerste instantie gebruikt wordt door het algoritme om het lessenrooster op te stellen zal Matthias deze taak uitvoeren. 
 	\item[] \textbf{Algoritme maken dat simpel lessenrooster genereert} \\
-	De algoritme specialist Matthias voert deze taak uit. \\[-5mm]
+	De algoritme specialist Matthias voert deze taak uit. 
 	\item[] \textbf{Elementen in de database kunnen opslaan en lezen.} \\
-	Duidelijk een taak voor de database specialist Zjef. \\[-5mm]
+	Duidelijk een taak voor de database specialist Zjef. 
 	\item[] \textbf{Website maken} \\
-	De webmaster Adam zal deze taak op zich nemen \\[-5mm]
+	De webmaster Adam zal deze taak op zich nemen 
 	\item[] \textbf{Servlets schrijven die requests van gebruikers verwerken} \\
-	Deze subtaak vereist een combinatie van server kennis en website kennis. Daarom zal hier aan gewerkt worden door Adam en Alexander. \\[-5mm]
+	Deze subtaak vereist een combinatie van server kennis en website kennis. Daarom zal hier aan gewerkt worden door Adam en Alexander. 
 	\item[] \textbf{Servlets draaien op de server} \\
-	Deze taak vereist kennis van de server en wordt daarom aan Alexander gegeven \\[-5mm]
+	Deze taak vereist kennis van de server en wordt daarom aan Alexander gegeven 
 	\item[] \textbf{Kalender maken om lessenrooster weer te geven} \\
-	Deze taak vereist zowel kennis van de database als van de servlets. daarom zal ze door Zjef, Adam en Alexander uitgevoerd worden. \\[-5mm]
+	Deze taak vereist zowel kennis van de database als van de servlets. daarom zal ze door Zjef, Adam en Alexander uitgevoerd worden. 
 \end{itemize}
 \end{itemize}
 
 \textbf{\large Iteratie II}
 \begin{itemize}
-\item[-] \textit{Doel:} Einddoelstellingen halen\\[-5mm]
-\item[-] \textit{Subtaken:}\\[-5mm]
+\item[-] \textit{Doel:} Einddoelstellingen halen
+\item[-] \textit{Subtaken:}
 \begin{itemize}
-	\item[] Te bepalen \\[-5mm]
+	\begin{itemize}
+	\item[] \textbf{Algoritme uitwerken}\\
+	Zoals in de vorige iteratie zal matthias hieraan verder werken. Omdat het een grote werklast is wordt er een persoon extra op gezet.
+	\item[] \textbf{Aanpassen en ingeven van gegevens aan de site toevoegen}\\ 
+	Deze taken vereisen een kennis over zowel database, servlets en webiste. Daarom zullen Adam, Zjef en Alexander hier samen aan werken.
+	\item[] \textbf{Lay-out van de website verbeteren}\\
+	Een taak voor de webmaster Adam.
+	\item[] \textbf{(Optioneel: Inlezen van excelbestanden om Database te vullen)}\\
+	Een optionele taak, maar als ze uitgevoerd wordt zal het door de database specialist zjef zijn.
+\end{itemize}
 \end{itemize}
 \end{itemize}
 
@@ -350,7 +356,7 @@ Allereerst heeft men een overzicht gemaakt van de taken die moeten volbracht wor
 \item[-] \textit{Subtaken:}
 \begin{itemize}
 	\item[] UML design
-	\item[]Opstellen SRD en SDD
+	\item[] Opstellen SRD en SDD
 \end{itemize}
 \item[] \begin{tabular}{|p{\textwidth}|}
 \hline
@@ -389,11 +395,17 @@ De mogelijkheid om de \textit{servlets op de server} te kunnen draaien zijn niet
 \item[-] \textit{Doel:} Einddoelstellingen halen
 \item[-] \textit{Subtaken:}
 \begin{itemize}
-	\item[] Te bepalen 
+	\item[] Algoritme uitwerken 
+	\item[] Aanpassen en ingeven van gegevens aan de site toevoegen 
+	\item[] Lay-out van de website verbeteren
+	\item[] (Optioneel: Inlezen van excelbestanden om Database te vullen)
 \end{itemize}
 \item[] \begin{tabular}{|p{\textwidth}|}
 \hline
-\textbf{tijdsschatting:} \\
+\textbf{tijdsschatting:} Omdat voor de terminatie fase een week genomen wordt zijn er 5 weken beschikbaar voor iteratie twee. \\
+Het afwerken van het Algoritme kan opnieuw redelijk los van de rest gedaan worden. De integratie ervan in de rest van het project: het uitlezen van de constraints die ingegeven zijn door de gebruikers, kan toegevoegd worden op eender welk moment omdat de database interface tijdens iteratie 1 afgewerkt is. Door de achterstand die opgelopen is bij het ontwikkelen van het algoritme zal hier meer mankracht op gezet worden en zal de volledige ontwikkelingstijd van iteratie 2 hieraan gewerkt worden. \\
+Het toevoegen van de verschillende mogelijkheid om de gegevens aan te passen aan de website kan ook afzonderlijk van elkaar ontwikkeld worden. De structuur met pseudoservlets laat toe dat ze een voor een verder ontwikkeld kunnen worden. De snelheid van ontwikkelen hangt grotendeels af van de kennis van de javascripts die gebruikt worden om de data weer te geven. de aanpassingsfunctionaliteiten zitten daarin verwerkt. Voor de kalender zelf aan te passen wordt geen gebruik gemaakt van die javascripts. Daardoor zal in die functionaliteit meer tijd gestoken moeten worden. \\
+De lay-out van de website zelf bevat geen functionaliteiten en kan dus ook volledig los van de rest aangepast worden. Een mooi uitzicht wordt niet als prioritair beschouwd door het team (voorkeur gaat naar werkende functionaliteiten), daardoor zal er niet te veel tijd in deze taak gestoken worden. Ongeveer een week van de tijd van de webmaster.\\
 \hline
 \end{tabular} 
 \end{itemize}
@@ -408,7 +420,7 @@ De mogelijkheid om de \textit{servlets op de server} te kunnen draaien zijn niet
 \end{itemize}
 \item[] \begin{tabular}{|p{\textwidth}|}
 \hline
-\textbf{tijdsschatting:} \\
+\textbf{tijdsschatting:} Het grootste deel van de terminatie fase zal in het maken van de documentatie gestoken worden. Ervaring uit de SCRUM presentaties leerde ons dat het maken van presentaties zeer vlot gaat en er zou voor het maken van de eindpresentatie maximaal twee dagen gewerkt zou moeten worden. De inhoud van de documentatie kan ook hetbruikt worden voor de eindpresentatie, dus moet die eerst af zijn voor aan de eindpresentatie begonnen wordt.\\
 \hline
 \end{tabular}
 \end{itemize}
@@ -489,8 +501,6 @@ Week 3	& 28/2 &	\textbf{Hoofdtaak:} programmeren \\
 \hline
 \end{tabular}
 \end{center}
-
-
 
 \begin{center}
 \begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
@@ -578,11 +588,10 @@ Week 8	& 4/4 &	\textbf{Hoofdtaak:} 1ste iteratie afwerken  \\
 \begin{center}
 \begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
 \hline
-Week 9	 & 11/4 &	\textbf{Hoofdtaak:} paasvakantie: programmeren \\
+Week 9	 & 11/4 &	\textbf{Hoofdtaak:} paasvakantie\\
 \hline
 \hline
- & & \textbf{Deadlines tegen 1 april} \\
- & & Te bepalen \\
+ & & Tijdens de paasvakantie werd gekozen om niet aan het software engineering project verder te werken, maar aan andere projecten die de teamleden hebben \\
 \hline
 \end{tabular}
 \end{center}
@@ -590,7 +599,10 @@ Week 9	 & 11/4 &	\textbf{Hoofdtaak:} paasvakantie: programmeren \\
 \begin{center}
 \begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
 \hline
-Week 10 & 18/4 &	\textbf{Hoofdtaak:} paasvakantie: programmeren \\
+Week 10 & 18/4 &	\textbf{Hoofdtaak:} paasvakantie\\
+\hline
+\hline
+ & & Tijdens de paasvakantie werd gekozen om niet aan het software engineering project verder te werken, maar aan andere projecten die de teamleden hebben \\
 \hline
 \end{tabular}
 \end{center}
@@ -600,6 +612,10 @@ Week 10 & 18/4 &	\textbf{Hoofdtaak:} paasvakantie: programmeren \\
 \hline
 Week 11 & 25/4 &	\textbf{Hoofdtaak:} SCRUM op 27/4 \\
 \hline
+\hline
+ & & \textbf{Deadlines tegen 27 april} \\
+ & & ADAM en ZJEF: Presentatie voorbereiden voor de SCRUM \\
+\hline 
 \end{tabular}
 \end{center}
 
@@ -608,6 +624,21 @@ Week 11 & 25/4 &	\textbf{Hoofdtaak:} SCRUM op 27/4 \\
 \hline
 Week 12 & 2/5  &	\textbf{Hoofdtaak:} programmeren\\
 \hline
+\hline
+ & & \textbf{Deadlines tegen 4 mei} \\
+ & & \textbf{Revisie van de documenten} \\
+ & & ADAM: SPMP herbekijken \\
+ & & ALEXANDER: SRS herbekijken \\
+ & & ZJF: SDD herbekijken \\
+ & & MATTHIAS: SDD aanvullen met info over het algoritme \\
+ & & \textbf{Nieuwe functionaliteiten} \\
+ & & ZJEF: Werken aan kalender-editor \\
+ & & ADAM: Zoekresultaten oplijsten uit de database in de search tab en ervoor zorgen dan de naam niet exact ingegeven moet worden. \\
+ & & ALEXANDER: Log-out knop maken \\
+ & & ALEXANDER: Pseudoservlet maken die lijst van vakken voor professoren en studenten maakt \\
+ & & MATTHIAS: Zorgen dat de proffen niet dubbbelgeboekt zijn binnen de weekstructuur \\
+ & & MATTHIAS: Zorgen dat de structuur die uit choco komt in een iCalendar gestoken wordt \\
+\hline 
 \end{tabular}
 \end{center}
 
@@ -646,9 +677,9 @@ Week 15 &	23/5 &	\textbf{Hoofdtaak:} Presentatie geven op 25/5 \\
 
 % MATTHIAS
 
-\subsubsection{Plan voor controle van de eisen}
+%\subsubsection{Plan voor controle van de eisen}
 
-TODO
+%TODO
 
 \subsubsection{Plannigscontroleplan}
 
@@ -859,6 +890,7 @@ De tekstdocumenten zoals het SPMP, SDD en SRS zullen worden opgesteld met Latex 
 %\newpage
 %\section{Annexes}
 
+\newpage
 \newpage
 
 \section{Bijlagen}
@@ -1290,7 +1322,140 @@ Start het uitrekenen van lessenrooster \\
 \end{tabular}
 \end{center}
 
-%\newpage
-%\section*{Index}
+\newpage
+\subsubsection{Vergadering van 30-3-2011}
+Punten op de agenda:
+\begin{itemize}
+	\item[-] Bespreken van de dealines en de vorige taken
+	\item[-] Opstellen nieuwe deadlines en taken voor de afwerking iteratie 1
+	\item[-] Bespreken welke servlets we gingen aanmaken 
+\end{itemize}
+
+
+Resultaten:
+\begin{itemize}
+	\item[-] Vorige deadlines besproken
+	\item[-] Nieuwe deadlines om het einde van iteratie 1 te halen
+\end{itemize}
+
+\paragraph{Minutes 9:00 tot 12:00 en van 16:00 tot 17:00}
+
+\subparagraph{Bespreken van de vorige taken:}
+
+\begin{itemize}
+	\item[MATTHIAS]: Om met CHOCO te werken moeten de constraints voorgesteld door integers. Bespreking van de manier waarop dat gedaan werd. Alles kan gelezen worden in het geupdate SDD \\
+De volledige deadline werd niet gehaald omdat het probleem onderschat werd en omdat er iets te laat aan begonnen was. 
+  \item[ADAM]: SPMP werd volledig aangepast en is nu up-to-date. \\
+  \item[ALEXANDER]: SRS nog niet helemaal af, De stukken van Zjef en Matthias waren nog niet afgewerkt en dus nog niet toegevoegd. \\
+Er werd gewerkt aan de gemeenschappelijke workspace, maar er zijn nog een paar problemen met de splitsing JAVAcode/servlets op de gemeenschappelijke tomcat \\
+Aan de HTMLbuilder werd ook gewerkt en hij is bijna klaar, er moest samengezeten worden tussen Adam en Alexander om het af te werken. 
+  \item[ZJEF]: Zjef zijn internet was weg en hij kon dus geen demo's geven 
+Hij heeft een manier gevonden om alle resourses (javascripts, css bestanden, xml files,...) in tomcat te plaatsen. \\
+Er werd vooruitgang geboekt bij het aanpassen van de kalender
+\end{itemize}
+
+\subparagraph{Volgende Deadlines}
+
+Het einde van de eerste iteratie valt volgende week vrijdag 8 april. Er werd beslist om de deadlines tegen woensdag 6 april te plaatsen zodat tegen de 8ste alles in elkaar kan geschoven worden en een werkende versie kan gepresenteerd worden.
+
+\textbf{Deadlines tegen 6 april:}
+\begin{itemize}
+	\item[MATTHIAS]: Algoritme afwerken zodat de constraints kunnen weergegeven worden en dat de gegevens uit de bestaande datastructuur kunnen verwerkt worden om een rooster op te stellen voor 1 week. 
+  \item[ALEXANDER ADAM en ZJEF]: HTMLBuilder implementeren om de verschillende functies uit de vorige minutes toevoegen. (zie hieronder voor de verdeling) \\
+Tabs uitbreiden met iFrames (ALEXANDER) \\
+Session tracking omzetten naar cookies om de builder te vereenvoudigen (ALEXANDER) \\
+Structuur uitbouwen om beveiliging te controleren en de privileges van de gebruikers uit te lezen en weer te geven wat ze mogen zien (ALEXANDER)
+Pseudoservlets schrijven voor elk tabblad (ADAM en ZJEF, zie hieronder) \\
+Vertaler aan HTMLBuilder toevoegen (ALEXANDER) \\
+Uiteindelijke servlets laten runnen op Wilma.  
+\end{itemize} 
+
+\subparagraph{Lijst met functies die geimplementeerd wordt voor iteratie 1}
+
+\begin{itemize}
+	\item[-] Login tab \textbf{ADAM} \\
+login form \\
+login as guest
+
+  \item[-] Search tab: \textbf{ADAM} \\
+Naam kiezen van student of prof of schuiver met faculteiten en dan schuiver met programma's => Rooster bekijken 
+
+  \item[-] Mijn cursussen \textbf{ZJEF} \\
+Programma wordt weergegeven en de cursussen die daarin zitten worden getoond en Lijst van cursussen die hij als keuzevakken heeft (met de mogelijkheid om ze te verbergen) 
+
+  \item[-] Lessenrooster tab: \textbf{ADAM} \\
+toont persoonlijk lessenrooster
+
+  \item[-] Building management tab \textbf{ZJEF} \\
+Lijst van buildings met daarin een lijst van lokalen
+
+  \item[-] Courses management tab \textbf{ZJEF} \\
+toont lijst van programs en courses die erin zitten en dan de subcourses 
+
+  \item[-] Kalender editor tab \textbf{ZJEF } \\
+toont kalender en kan kiezen welke vakken er in getoond kunnen worden \\
+kan vakken van programmas weergeven en aparte vakken toevoegen aan de lijst die weergegeven wordt 
+
+  \item[-] Accounts management tab (voor de admins) \textbf{ZJEF} \\
+Lijst van accounts weergeven, bij elke account: delete of edit \\
+
+\end{itemize}
+
+\subparagraph{Lijst met servlets die aangemaakt worden en hun taak}
+
+\textbf{Beveiligingsservlet:} Servlet die alle GET en POST ontvangt, de machtigingen controleert en dan doorverwijst naar de gepaste pseudoservlet
+
+\textbf{Pseudoservlet:} Voor elk tabblad een klasse die het kan weergeven. deze wordt opgeroepen door de beveiligingsservlet in een iFrame (zie bold namen in de lijst hierboven)
+
+\newpage
+\subsubsection{Vergadering van 25-4-2011}
+
+Punten op de agenda:
+\begin{itemize}
+	\item[-] Voorbereiden presentatie
+	\item[-] Opstarten 2de iteratie
+	\item[-] Opnieuw formatteren van Matthias computer 
+\end{itemize}
+
+Resultaten:
+\begin{itemize}
+	\item[-] Inhoud presentatie vastgelegd, Adam en Zjef maken slides en bereiden de presentatie voor
+	\item[-] Deadlines voor 4 mei vastgelegd 
+\end{itemize}
+
+\paragraph{Minutes 20:30 tot 22:00}
+
+\subparagraph{Voorbereiden van de presentatie}
+
+Adam en Zjef moeten nu de presentatie geven. De resultaten van de eerste iteratie zullen getoond worden alsook het plan voor de tweede iteratie.
+Zjef begint de presentatie met het overlopen van alle resultaten die geboekt zijn voor de werking van de website tijdens iteratie 1
+Daarna legt Adam het Algoritme voor het opstellen van de lessenrooster uit en de problemen die we daar tegen gekomen zijn. 
+Daarna verteld hij de doelstellingen voor iteratie 2 
+
+\subparagraph{Plan voor iteratie 2}
+
+de deadlines voor 4 mei werden besproken: Zoals in het SPMP geschreven staat moeten de documenten een nieuwe revisie krijgen (de Revisie van het SRS was nog niet doorvoerd sinds de vorige SCRUM, daar is het dus zeer dringend)
+ 
+\textbf{Revisie documenten. Tegen 4 mei}
+
+\begin{itemize}
+	\item[ALEXANDER]  SRS 
+	\item[ADAM] SPMP 
+	\item[ZJEF] SDD
+	\item[MATTHIAS] Stuk over het algoritme schrijven voor het SDD  
+\end{itemize}
+
+\textbf{Functionaliteiten toevoegen, Tegen 4 mei}
+
+\begin{itemize}
+	\item[ZJEF] Werken aan kalender-editor
+	\item[ADAM] Zoekresultaten oplijsten uit de database in de search tab en ervoor zorgen dan de naam niet exact ingegeven moet worden.
+	\item[ALEXANDER] Log-out knop maken
+	\item[ALEXANDER] Pseudoservlet maken die lijst van vakken voor professoren en studenten maakt
+	\item[MATTHIAS] Zorgen dat de proffen niet dubbbelgeboekt zijn binnen de weekstructuur
+	\item[MATTHIAS] Zorgen dat de structuur die uit choco komt in een iCalendar gestoken wordt 
+\end{itemize}
+
+Daarop werd de computer van Matthias geformatteerd omdat hij besmet was met een virus.
 
  \end{document}
