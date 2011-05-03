@@ -74,7 +74,7 @@ public class HTMLInterfaceTool
 			   res.set(TableInput.class.cast(i).order()-1,methods.get(index).invoke(obj).toString());
 			 } catch (Exception e) 
 			 {
-				e.printStackTrace();
+				//e.printStackTrace();
 				return null;
 			 }
 			 index=index+1;
