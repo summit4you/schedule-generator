@@ -10,15 +10,16 @@ import xml.ElementWithChildren;
 import xml.ElementWithValue;
 import xml.XMLDocument;
 import xml.XMLElement;
+import other.Globals; 
 
-import htmlBuilder.MainServlet;
 import htmlBuilder.Site;
 
 public class UserType implements DatabasableAsString
-{
+{	
+	static private final String fileName="UserTypes.xml";
 	
-	static protected XMLDocument typeDoc=loadTypeDoc();
-	static private final String defaultLocation="UserTypes.xml";
+	static protected XMLDocument typeDoc;
+	
 	protected Vector<String> pseudos;
 	protected String value;
 	
@@ -32,13 +33,18 @@ public class UserType implements DatabasableAsString
 		this.loadFromValue(value);
 	}
 	
+	public static void initUserTypes()
+	{
+		typeDoc=loadTypeDoc();
+	}
+	
 	public static XMLDocument loadTypeDoc()
 	{
-		XMLDocument doc=new XMLDocument(defaultLocation);
-		if (doc.load()){System.out.println(">>UserType: Loading Successful");}
+		XMLDocument doc=new XMLDocument(Globals.configPath+"/"+fileName);
+		doc.load();
 		return doc;
 	}
-
+	
 	public Vector<String> getPseudos()
 	{
 		return pseudos;
@@ -65,17 +71,6 @@ public class UserType implements DatabasableAsString
 	public Site buildSite(Session ses)
 	{
 		Site site = new Site();
-		for(String p:pseudos)
-		{
-			site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
-		}
-		return site;
-	}
-	
-	@SuppressWarnings("deprecation")
-	public Site buildSite(String path,Session ses)
-	{
-		Site site = new Site(path);
 		for(String p:pseudos)
 		{
 			site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
@@ -112,6 +107,4 @@ public class UserType implements DatabasableAsString
 		}		
 		
 	}
-	
-
 }

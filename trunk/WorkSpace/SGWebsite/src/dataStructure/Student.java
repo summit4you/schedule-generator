@@ -88,13 +88,13 @@ public class Student implements Databasable,HTMLTablable
 	
 	@InDatabase
 	@TableInput(order=3,text="##Number_Student_Table##")
-	public int getstudentNumber()
+	public int getStudentNumber()
 	{
 		return studentNumber;
 	}
 	
 	@OutDatabase
-	public void setstudentNumber(int newstudentNumber)
+	public void setStudentNumber(int newstudentNumber)
 	{
 		studentNumber = newstudentNumber;
 	}

@@ -10,30 +10,19 @@ import login.Account;
 
 import database.Database;
 import other.FileIO;
+import other.Globals;
 import sessionTracking.Session;
 
 /**
  * @author Zjef
- * @version 1.1
+ * @version 1.2
  */
 public abstract class PseudoServlet
 {	
 	public static enum RequestType {GET,POST};
 	final public static String pseudoServletParamTag="ps";
 	
-	private static Vector<PseudoServlet> pseudoServlets;
-	
-	/**
-	 * URL of the base Servlet, without the pseudoServlet identifier tag and session id
-	 */
-	protected static String baseLink;
-	/**
-	 * file location of the servlet on the server
-	 */
-	protected static String servletPath;
-	final protected static String templateFolder="SGtemplates/";
-	final protected static String otherFileFolder="SGotherFiles/";
-	
+	private static Vector<PseudoServlet> pseudoServlets;	
 	/**
 	 * Name of the template file
 	 */
@@ -84,8 +73,7 @@ public abstract class PseudoServlet
 	
 	protected static String loadTemplate(String templateFile)
 	{
-		//template=(templateFile==null?"":FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+templateFile).getAbsolutePath()));
-		return (templateFile==null?"":FileIO.readFile(templateFolder+templateFile));
+		return (templateFile==null?"":FileIO.readFile(Globals.templatePath+"/"+templateFile));
 	}
 	//*******protected static methods************************************************************************	
 	/**
@@ -95,7 +83,7 @@ public abstract class PseudoServlet
 	public static Database getDB()
 	{
 		//TODO replace database values with a read from an xml file
-		Database db=new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
+		Database db=new Database(Globals.databaseAdress,Globals.databaseName,Globals.databasePassword);
 		return db;
 	}
 	
@@ -117,7 +105,7 @@ public abstract class PseudoServlet
 	public String createLink(Session session)
 	{
 		//TODO replace "id" with a final static String
-		return baseLink+"?"+pseudoServletParamTag+"="+getIdentifier()+"&"+"id="+session.getSessionID();
+		return "?"+pseudoServletParamTag+"="+getIdentifier()+"&"+"id="+session.getSessionID();
 	}
 	
 	/**
@@ -135,10 +123,8 @@ public abstract class PseudoServlet
 	 * @param baseServletLink - url to the securityServlet
 	 * @param servletContextPath - the contextpath of the securityServlet (to retrieve the absolute filepaths of the files on the server)
 	 */
-	public static void initEverything(String baseServletLink,String servletContextPath)
+	public static void initEverything()
 	{
-		baseLink=baseServletLink;
-		servletPath=servletContextPath;
 		pseudoServlets=loadPseudoServlets();
 	}
 	

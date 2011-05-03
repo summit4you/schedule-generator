@@ -5,6 +5,9 @@ import java.io.File;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
+
+import other.Globals;
 import login.Account;
 import other.FileIO;
 /**
@@ -24,29 +27,26 @@ public class Dictionary
 	
 	final public static String languageFileExtension=".l";
 	
-	private static Vector<Dictionary> dictionaries;
+	private static Vector<Dictionary> dictionaries;	
 	
-	private String root;
 	private Language language;
 	
 	private Hashtable<String, String> table;
 	
-	public static void initDictionaries(String languagePath)
+	public static void initDictionaries()
 	{
 		dictionaries = new Vector<Dictionary>();
-		for (File f:new File(languagePath).listFiles())
+		for (File f:new File(Globals.languagePath).listFiles())
 		{
 			if (f.isFile() && f.getName().contains(".l"))
 			{
-				dictionaries.add(new Dictionary(f.getName().replace(".l", ""),languagePath));
+				dictionaries.add(new Dictionary(f.getName().replace(".l", "")));
 			}
 		}
 	}
 	
 	public static Dictionary getDictionary(String language)
 	{
-		System.out.println(">>Dictionary.getDictionary:"+language);
-		System.out.println(">>Dictionary.getDictionary:"+dictionaries);
 		for(Dictionary d: dictionaries)
 		{
 			if (d.getLanguage().toString().equals(language))
@@ -60,7 +60,7 @@ public class Dictionary
 	private void initTable()
 	{
 		table=new Hashtable<String, String>();
-		String filePath=new String(root+"/"+language.toString()+languageFileExtension);
+		String filePath=new String(Globals.languagePath+"/"+language.toString()+languageFileExtension);
 		String content = FileIO.readFile(filePath);
 		
 		int index1;
@@ -88,28 +88,16 @@ public class Dictionary
 		return Language.english;
 	}
  	
-	public Dictionary(Language language,String root)
+	public Dictionary(Language language)
 	{
-		setRoot(root);
 		setLanguage(language);
 		initTable();
 	}
 	
-	public Dictionary(String language,String root)
+	public Dictionary(String language)
 	{
-		setRoot(root);
 		setLanguage(toLanguage(language));
 		initTable();
-	}
-
-	public void setRoot(String root)
-	{
-		this.root = root;
-	}
-
-	public String getRoot()
-	{
-		return root;
 	}
 
 	public void setLanguage(Language language)

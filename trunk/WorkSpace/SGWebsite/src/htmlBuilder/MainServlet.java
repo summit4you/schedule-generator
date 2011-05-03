@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import language.Dictionary;
 import login.Account;
+import login.UserType;
 import database.Database;
 import database.Search;
 
@@ -29,30 +30,32 @@ public class MainServlet extends HttpServlet {
     
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
-	private static String baseLink="http://wilma.vub.ac.be:8080/ZVdP/MainServlet";
-	private static final String siteTemplatePath="site.xml";//"C:\\java\\workspace\\SGWebsite\\src\\htmlBuilder\\site.xml";
-    private static final String languagePath="Language";//"C:\\java\\workspace\\SGWebsite\\src\\language";
+	
+	private static String siteTemplatePath="C:/SGFiles/SGtemplates/site.xml";
+    private static String languagePath="C:/SGFiles/SGlanguage/";
+	private static String userTypePath="C:/SGFiles/SGconfig/"; 
+	private static String pseudoServletPath= "C:/SGFiles/SGtemplates/";
 	
 	private String noMessage="";
-	private String errorMessage="#WrongID_Login#";
+	private String errorMessage="##WrongID_Login##";
 	
 	public MainServlet() 
     {
         super();
-        Dictionary.initDictionaries(languagePath);
     }
 
 	@Override
 	public void init() throws ServletException
 	{
 		super.init();
-//		baseLink=this.getServletContext().getContextPath()+"/MainServlet";
-		PseudoServlet.initEverything(baseLink,"C:\templates");
+		UserType.initUserTypes();
+		Dictionary.initDictionaries();
+		PseudoServlet.initEverything();
 	}
     private Site makeLoginSite(String m)
     {
-    	Site site=new Site(siteTemplatePath);
-    	site.addTab(Site.TabName.Login, site.createLoginForm(baseLink+"?ps="+loginIdentifier, m));
+    	Site site=new Site();
+    	site.addTab(Site.TabName.Login, site.createLoginForm("?ps="+loginIdentifier, m));
 		return site;
     }
         
@@ -76,7 +79,7 @@ public class MainServlet extends HttpServlet {
 		{
 		    if (ps==null)
 		    {
-		    	out.println("#Pseudo_Servlet_Not_Found#");
+		    	out.println("##Pseudo_Servlet_Not_Found##");
 		    } 
 		    else
 		    {
@@ -86,7 +89,7 @@ public class MainServlet extends HttpServlet {
 		    	}
 		    	else
 		    	{
-		    		out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage("#Access_Denied#"));
+		    		out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage("##Access_Denied##"));
 		    	}
 		    	
 		    } 
@@ -121,7 +124,7 @@ public class MainServlet extends HttpServlet {
 				else
 				{
 					Session ses=new Session(acc);
-					out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(ses.getAccount().getType().buildSite(siteTemplatePath,ses).getHtmlCode()));
+					out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(ses.getAccount().getType().buildSite(ses).getHtmlCode()));
 				}
 			}
 			else

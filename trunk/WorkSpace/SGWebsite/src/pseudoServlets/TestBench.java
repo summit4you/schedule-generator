@@ -47,7 +47,7 @@ public class TestBench extends HttpServlet {
     {
     	// TODO Auto-generated method stub
     	super.init(config);
-    	PseudoServlet.initEverything("test", "C:\templates"); // moet nog veranderd worden in de juiste link
+    	PseudoServlet.initEverything(); // moet nog veranderd worden in de juiste link
     	Account adam = new Account("adam", "adam");
     	sessie = new Session(adam);
     }
