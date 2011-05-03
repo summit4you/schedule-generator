@@ -33,7 +33,8 @@ public class Search extends PseudoServlet
 	{
 		super.init();
 		String templateFile2="search2.tpl";
-		template2=(templateFile2==null?"":FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+templateFile2).getAbsolutePath()));
+//		template2=(templateFile2==null?"":FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+templateFile2).getAbsolutePath()));
+		template2=templateFile2==null?"":FileIO.readFile(templateFolder+templateFile2);
 	}
 	
 	@Override
@@ -57,7 +58,7 @@ public class Search extends PseudoServlet
 				db.disconnect();
 				if ((searchresult==null)||(searchresult.isEmpty()))
 				{
-					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
+					response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
 				}
 				// als er maar 1 resultaat is, toon de kalender van de persoon
 				else if (searchresult.size()==1)
@@ -81,7 +82,7 @@ public class Search extends PseudoServlet
 				db.disconnect();
 				if ((searchresult==null)||(searchresult.isEmpty()))
 				{
-					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
+					response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
 				}
 				else if (searchresult.size()==1)
 				{
@@ -102,7 +103,7 @@ public class Search extends PseudoServlet
 				db.disconnect();
 				if ((searchresult==null)||(searchresult.isEmpty()))
 				{
-					response = replaceTags(response, "CALENDAR", "#search_nothingfound#"); 
+					response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
 				}				
 				else if (searchresult.size()==1)
 				{

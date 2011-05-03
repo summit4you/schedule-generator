@@ -30,9 +30,15 @@ public abstract class PseudoServlet
 	/**
 	 * file location of the servlet on the server
 	 */
-	protected static String servletPath;
+	protected static String servletPath="C:/";
 	final protected static String templateFolder="SGtemplates/";
 	final protected static String otherFileFolder="SGotherFiles/";
+	/**
+	 * Database Information
+	 */
+	protected static String dbUrl  = "wilma.vub.ac.be/se5_1011";
+	protected static String dbName = "se5_1011";
+	protected static String dbPassword = "nieveGroep";
 	
 	/**
 	 * Name of the template file
@@ -79,11 +85,18 @@ public abstract class PseudoServlet
 	protected void init()
 	{
 		loadTemplate();
+		
 	}
 	
 	private void loadTemplate()
 	{
-		template=(templateFile==null?"":FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+templateFile).getAbsolutePath()));
+		template=templateFile==null?"":FileIO.readFile(servletPath+templateFolder+templateFile);
+	}
+	
+	protected String loadOtherFile(String filename)
+	{
+		return  otherFileFolder==null?"":FileIO.readFile(servletPath+otherFileFolder+filename);
+		
 	}
 	//*******protected static methods************************************************************************	
 	/**
@@ -92,9 +105,15 @@ public abstract class PseudoServlet
 	 */
 	public static Database getDB()
 	{
-		//TODO replace database values with a read from an xml file
-		Database db=new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
+		Database db=new Database(dbUrl,dbName,dbPassword);
 		return db;
+	}
+	
+	public static void setDB(String Url,String Name,String Password)
+	{
+		dbUrl=Url;
+		dbName=Name;
+		dbPassword=Password;
 	}
 	
 	/**

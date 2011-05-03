@@ -27,7 +27,8 @@ abstract public class TabAndList<T extends HTMLTablable> extends PseudoServlet
 	{
 		super();
 		templateFile="courseTable.tpl";
-		frameTemplate=FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+frameTemplateFile).getAbsolutePath());
+		System.out.println(">>>TabAndList.TabAndMList: "+servletPath+templateFolder+frameTemplateFile);
+		frameTemplate=FileIO.readFile(servletPath+templateFolder+frameTemplateFile);
 	}
 	
 	@Override

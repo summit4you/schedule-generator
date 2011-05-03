@@ -12,7 +12,7 @@ import other.FileIO;
  * A dictionary can be used to replace language tags that are present in the language file.
  * A language tag is of the following form '##tag##' and should be unique. An entry in a
  * language file should be as followed '##tag##=replacement;'. Every language will have its 
- * own file with tags. Now only English is supported. 
+ * own file with tags. Now only English and  is supported. 
  *  
  * @author Alexander
  * @version 1.0
@@ -45,8 +45,6 @@ public class Dictionary
 	
 	public static Dictionary getDictionary(String language)
 	{
-		System.out.println(">>Dictionary.getDictionary:"+language);
-		System.out.println(">>Dictionary.getDictionary:"+dictionaries);
 		for(Dictionary d: dictionaries)
 		{
 			if (d.getLanguage().toString().equals(language))
