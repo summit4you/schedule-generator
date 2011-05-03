@@ -40,13 +40,13 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
 	{
 		Vector<T> objects=getObjects();
+		System.out.println(">>>SingleTable.processRequest: "+objects);
 		if (objects.size()==0)
 		{
 			return replaceTags(template,"TABLE",HTMLInterfaceTool.makeEmptyTable("maintable",tableClass));
 		}
 		else
 		{
-			System.out.println(">>SingleTable.processRequest:"+getObjects());
 			return replaceTags(template,"TABLE",HTMLInterfaceTool.changeToDataTable("maintable",getObjects()));
 		}
 	}

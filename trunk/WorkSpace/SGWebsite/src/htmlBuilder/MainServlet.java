@@ -1,9 +1,9 @@
 package htmlBuilder;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Vector;
+
+import other.Globals;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,14 +30,10 @@ public class MainServlet extends HttpServlet {
     
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
-	
-	private static String siteTemplatePath="C:/SGFiles/SGtemplates/site.xml";
-    private static String languagePath="C:/SGFiles/SGlanguage/";
-	private static String userTypePath="C:/SGFiles/SGconfig/"; 
-	private static String pseudoServletPath= "C:/SGFiles/SGtemplates/";
-	
+		
 	private String noMessage="";
 	private String errorMessage="##WrongID_Login##";
+	private String sessionExpieredMesssage="##Session_Expiered##";
 	
 	public MainServlet() 
     {
@@ -70,6 +66,8 @@ public class MainServlet extends HttpServlet {
 		
 		Session ses = Session.getSession(id);
 		
+		try
+		{
 		if (id==null || ses==null) 
 		{
 			//TODO uit iframe gaan
@@ -94,6 +92,12 @@ public class MainServlet extends HttpServlet {
 		    	
 		    } 
 		}
+		}
+		catch(Exception e)
+		{
+			out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage("##Error_Occured##"));
+			
+		}
 		
 	}
 
@@ -111,7 +115,7 @@ public class MainServlet extends HttpServlet {
 			if (ps.equals(loginIdentifier))
 			{
 				// guest zit ook in de  database
-				Database db = new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
+				Database db = new Database(Globals.databaseAdress,Globals.databaseName,Globals.databasePassword);
 				db.connect();
 				Search s = new Search(Account.class,"getUserName;getPassword",request.getParameter("username"),request.getParameter("password"));
 				Account acc = db.read(s);
@@ -137,7 +141,7 @@ public class MainServlet extends HttpServlet {
 			Session ses = Session.getSession(id);
 			if (ses==null)
 			{
-				//TODO uit iframe gaan
+				out.write(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(sessionExpieredMesssage).getHtmlCode()));
 			}
 			else
 			{

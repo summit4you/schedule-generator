@@ -145,7 +145,15 @@ public class Dictionary
 		String[] arr = text.split("##");
 		for (int i = 1; i < arr.length; i+=2)
 		{
-			arr[i] = table.get("##"+arr[i]+"##");
+			String res= table.get("##"+arr[i]+"##");
+			if (res==null)
+			{
+				arr[i] = "##"+arr[i]+"##";
+			}
+			else
+			{
+				arr[i] = res;
+			}
 		}
 		text = "";
 		for (String i : arr)
