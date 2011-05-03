@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import other.FileIO;
-import pseudoServlets.tools.TableTools;
+import pseudoServlets.tools.PSTools;
 import sessionTracking.Session;
 import dataStructure.Faculty;
 
@@ -27,8 +27,7 @@ abstract public class TabAndList<T extends HTMLTablable> extends PseudoServlet
 	{
 		super();
 		templateFile="courseTable.tpl";
-		System.out.println(">>>TabAndList.TabAndMList: "+servletPath+templateFolder+frameTemplateFile);
-		frameTemplate=FileIO.readFile(servletPath+templateFolder+frameTemplateFile);
+		frameTemplate=FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+frameTemplateFile).getAbsolutePath());
 	}
 	
 	@Override
@@ -65,8 +64,8 @@ abstract public class TabAndList<T extends HTMLTablable> extends PseudoServlet
 	
 	private String generateMainPage(Session session)
 	{
-		Vector<Faculty> faculties=TableTools.loadObjects(Faculty.class);
-		String res=replaceTags(template,"TABS",TableTools.createTabHeader(faculties));
+		Vector<Faculty> faculties=PSTools.loadObjects(Faculty.class);
+		String res=replaceTags(template,"TABS",PSTools.createTabHeader(faculties));
 		res=replaceTags(res,"LINK",createLink(session));
 		res=replaceTags(res,"TABCONTENT",createFacultyTabContent(faculties));
 		res=replaceTags(res,"SIZE",createSizeScript(faculties));

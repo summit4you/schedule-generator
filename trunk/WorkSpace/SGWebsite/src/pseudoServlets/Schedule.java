@@ -23,12 +23,12 @@ public class Schedule extends PseudoServlet
 		String response = new String();
 		if (session.getAccount().getStudent()!=null)
 		{
-			String link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getStudent(), session.getAccount().getLanguage());
+			String link = CalendarTools.GeneratePHPiCalendarLink(session.getAccount().getStudent(), session.getAccount().getLanguage());
 			response = replaceTags(template, "LINK", link);
 		}
 		else if (session.getAccount().getEducator()!=null) 
 		{
-			String link = calendarTools.GeneratePHPiCalendarLink(session.getAccount().getEducator(), session.getAccount().getLanguage());
+			String link = CalendarTools.GeneratePHPiCalendarLink(session.getAccount().getEducator(), session.getAccount().getLanguage());
 			response = replaceTags(template, "LINK", link);
 		}
 		else

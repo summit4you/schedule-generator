@@ -95,7 +95,7 @@ public class Database implements Serializable
 	 */
 	synchronized public void write(Databasable databasable)
 	{
-		if (databasable.getId()==null)
+		if (databasable.getID()==null)
 		{
 			create(databasable);
 		}
@@ -103,7 +103,7 @@ public class Database implements Serializable
 		Insertion ins=Extract.getUpdate(databasable);
 		for (Databasable i:ins.getReferences())
 		{
-			if (i.getId()==null)
+			if (i.getID()==null)
 			{
 				create(i);
 				write(i);
@@ -148,7 +148,7 @@ public class Database implements Serializable
 	 */
 	public void delete(Databasable databasable)
 	{
-		delete(databasable.getClass(),databasable.getId());
+		delete(databasable.getClass(),databasable.getID());
 	}
 	
 	/**
@@ -240,14 +240,14 @@ public class Database implements Serializable
 		}
 		for (Databasable i:cache)
 		{
-			if ((i.getClass()==cl)&&(i.getId().equals(id)))
+			if ((i.getClass()==cl)&&(i.getID().equals(id)))
 			{
 				return i;
 			}
 		}
 		for (Databasable i:toLoad)
 		{
-			if ((i.getClass()==cl)&&(i.getId().equals(id)))
+			if ((i.getClass()==cl)&&(i.getID().equals(id)))
 			{
 				return i;
 			}

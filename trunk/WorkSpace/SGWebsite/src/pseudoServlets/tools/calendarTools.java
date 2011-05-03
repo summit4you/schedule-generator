@@ -1,9 +1,50 @@
 package pseudoServlets.tools;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Vector;
+
+import other.Globals;
+
 import dataStructure.*;
 
-public class calendarTools
+public class CalendarTools
 {
+	public static String generateEditablePHPiCalendarLink(String language,String popupLink)
+	{
+		String calFolder=Globals.calendarFolder;
+		try
+		{
+			popupLink=URLEncoder.encode(popupLink,"UTF-8");
+			calFolder=URLEncoder.encode(calFolder,"UTF-8");
+		} catch (UnsupportedEncodingException e)
+		{
+		}
+		return "http://wilma.vub.ac.be/~se5_1011/phpicalendarEditable/week.php?width=1024&lang="+language+"&start=0800&end=1800&days=5&popupLink="+popupLink+"&calPath="+calFolder+"&cal=";
+	}
+	
+	public static String generateEditablePHPiCalendarLink(Vector<Program>programs,String language,String popupLink)
+	{
+		String link=generateEditablePHPiCalendarLink(language,popupLink);
+		boolean added=false;
+		for (Program i : programs)
+		{
+			for (Course j : i.getCourses())
+			{
+				for (Subcourse k : j.getSubcourses())
+				{
+					link+=k.getCalendarfile()+",";
+					added=true;
+				}
+			}
+		}
+		if (!added)
+		{
+			return link;
+		}
+		return link.substring(0,link.length()-1);
+	}
+	
 	/**
 	 * Generates the link for the PHPiCalendar to show the schedule of a student
 	 * @param student

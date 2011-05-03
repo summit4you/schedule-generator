@@ -118,7 +118,7 @@ public class Extract
 					{
 						for (Databasable i:database.getLoadList())
 						{
-							ResultSet result2=database.query(new Search(i.getClass(),i.getId()).getText());
+							ResultSet result2=database.query(new Search(i.getClass(),i.getID()).getText());
 							result2.first();
 							readObject(i.getClass(),i,result2,database);
 						}
@@ -159,7 +159,7 @@ public class Extract
 	protected static Update getUpdate(Databasable databasable)
 	{
 		Update update=new Update(getInsertion(databasable));
-		update.addConstraint("ID",databasable.getId().toString());
+		update.addConstraint("ID",databasable.getID().toString());
 		return update;
 	}
 	
@@ -236,7 +236,7 @@ public class Extract
 		}
 		if (obj instanceof Databasable)
 		{
-			return ((Databasable) obj).getId().toString();
+			return ((Databasable) obj).getID().toString();
 		}
 		else if (obj instanceof Vector)
 		{

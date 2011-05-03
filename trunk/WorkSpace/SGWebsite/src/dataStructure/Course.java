@@ -104,7 +104,7 @@ public class Course implements Databasable,HTMLTablable
 	
 	
 	@Override
-	public ID getId()
+	public ID getID()
 	{
 		return id;
 	}

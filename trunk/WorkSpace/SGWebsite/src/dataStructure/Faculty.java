@@ -68,7 +68,7 @@ public class Faculty implements Databasable
 	
 	
 	@Override
-	public ID getId()
+	public ID getID()
 	{
 		return id;
 	}

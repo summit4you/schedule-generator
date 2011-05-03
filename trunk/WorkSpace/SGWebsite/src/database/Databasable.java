@@ -37,7 +37,7 @@ public interface Databasable extends DatabasableObject
 	 * Required method for implementing {@link Databasable}.<br>
 	 * @return unique ID of the object in the database
 	 */
-	public ID getId();
+	public ID getID();
 
 	/**
 	 * Required method for implementing {@link Databasable}.<br>

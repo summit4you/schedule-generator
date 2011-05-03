@@ -66,7 +66,7 @@ public class StudentTable extends TabAndList<Student>
 		Database db=getDB();
 		db.connect();
 		Program p=db.read(new database.Search(Program.class,"getName",program));
-		Vector<Student> students=db.readAll(new database.Search(Student.class,"getPrograms",p.getId()));
+		Vector<Student> students=db.readAll(new database.Search(Student.class,"getPrograms",p.getID()));
 		for (Student s:(Vector<Student>)students.clone())
 		{
 			if (!s.getPrograms().contains(p))
