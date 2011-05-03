@@ -9,6 +9,8 @@ import java.util.Vector;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.sun.xml.internal.bind.v2.TODO;
+
 import other.FileIO;
 import pseudoServlets.tools.CalendarTools;
 
@@ -21,22 +23,22 @@ import dataStructure.*;
 public class Search extends PseudoServlet
 {
 
-	private String template2;
-	
+	private String calendarTemplate;
+	private String scriptTemplate;
+
 	public Search()
 	{
 		templateFile="search.tpl";
 	}
-	
+
 	@Override
 	protected void init()
 	{
-		super.init();
-		String templateFile2="search2.tpl";
-//		template2=(templateFile2==null?"":FileIO.readFile(new File(new File(servletPath).getParentFile(),templateFolder+templateFile2).getAbsolutePath()));
-		template2=templateFile2==null?"":FileIO.readFile(templateFolder+templateFile2);
+		super.init();		
+		calendarTemplate=loadTemplate("search2.tpl");
+		scriptTemplate=loadTemplate("search3.tpl");
 	}
-	
+
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request, Session session)
 	{
@@ -50,48 +52,124 @@ public class Search extends PseudoServlet
 		{
 			if (classtype.equals("student"))
 			{
-				// zoek op in de database met studenten
-				Database db = getDB();
-				db.connect();
-				database.Search s = new database.Search(Student.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
-				Vector<Student> searchresult = db.readAll(s);
-				db.disconnect();
-				if ((searchresult==null)||(searchresult.isEmpty()))
+				String result = request.getParameter("searchresult");
+				if (result==null)
 				{
-					response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
+					// zoek op in de database met studenten
+					Database db = getDB();
+					db.connect();
+					Vector<Student> searchresult =new Vector<Student>();
+					if (request.getParameter("firstname")==null)
+					{
+						if (request.getParameter("lastname")==null)
+						{
+							searchresult = null;
+						}
+						else
+						{
+							database.Search s = new database.Search(Student.class,"getSurName","%"+request.getParameter("lastname").toUpperCase()+"%").setWildCardSearch(true);
+							searchresult = db.readAll(s);
+						}
+					}
+					else 
+					{
+						if (request.getParameter("lastname")==null)
+						{
+							database.Search s = new database.Search(Student.class,"getFirstName","%"+request.getParameter("firstname").toUpperCase()+"%").setWildCardSearch(true);
+							searchresult = db.readAll(s);
+						}
+						else
+						{
+							database.Search s = new database.Search(Student.class,"getFirstName;getSurName","%"+request.getParameter("firstname").toUpperCase()+"%","%"+request.getParameter("lastname").toUpperCase()+"%").setWildCardSearch(true);
+							searchresult = db.readAll(s);
+						}
+					}
+					db.disconnect();
+					if ((searchresult==null)||(searchresult.isEmpty()))
+					{
+						response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
+					}
+					// als er maar 1 resultaat is, toon de kalender van de persoon
+					else if (searchresult.size()==1)
+					{
+						String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
+						response = replaceTags(response, "CALENDAR", replaceTags(calendarTemplate, "LINK", link)); 
+					}
+					else
+					{	
+						response = replaceTags(response, "CALENDAR", replaceTags(scriptTemplate, "LINK", createLink(session)+"&type=student")); 
+						response = replaceTags(response, "SEARCHRESULTS", HTMLInterfaceTool.changeToDataTable("results", searchresult));
+					}
 				}
-				// als er maar 1 resultaat is, toon de kalender van de persoon
-				else if (searchresult.size()==1)
+				else // Er is geklikt op een rechtstreekse student waarvan het antwoord nu getoond moet worden
 				{
-					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
-					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
+					// zoek op in de database met studenten
+					Database db = getDB();
+					db.connect();
+					database.Search s = new database.Search(Student.class,"getStudentNumber",result);
+					String link = CalendarTools.GeneratePHPiCalendarLink(db.<Student>read(s) , session.getAccount().getLanguage());
+					response = replaceTags(response, "CALENDAR", replaceTags(calendarTemplate, "LINK", link));
 				}
-				else
-				{
-					// TODO toon tabel met de verschillende resultaten en maak een link op elk resultaat
-					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", HTMLInterfaceTool.changeToDataTable("results", searchresult))); 
-				}
-				
 			}
 			else if (classtype.equals("educator")) 
 			{
-				Database db = getDB();
-				db.connect();
-				database.Search s = new database.Search(Educator.class,"getFirstName;getSurName",request.getParameter("firstname"),request.getParameter("lastname"));
-				Vector<Educator> searchresult = db.readAll(s);
-				db.disconnect();
-				if ((searchresult==null)||(searchresult.isEmpty()))
+				String result = request.getParameter("searchresult");
+
+				if (result==null)
 				{
-					response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
+					Database db = getDB();
+					db.connect();
+					Vector<Educator> searchresult =new Vector<Educator>();
+					if (request.getParameter("firstname")==null)
+					{
+						if (request.getParameter("lastname")==null)
+						{
+							searchresult = null;
+						}
+						else
+						{
+							database.Search s = new database.Search(Educator.class,"getSurName","%"+request.getParameter("lastname").toUpperCase()+"%").setWildCardSearch(true);
+							searchresult = db.readAll(s);
+						}
+					}
+					else 
+					{
+						if (request.getParameter("lastname")==null)
+						{
+							database.Search s = new database.Search(Educator.class,"getFirstName","%"+request.getParameter("firstname").toUpperCase()+"%").setWildCardSearch(true);
+							searchresult = db.readAll(s);
+						}
+						else
+						{	
+							response = replaceTags(response, "CALENDAR", replaceTags(scriptTemplate, "LINK", createLink(session)+"&type=student")); 
+							response = replaceTags(response, "SEARCHRESULTS", HTMLInterfaceTool.changeToDataTable("results", searchresult));
+						}
+					}
+					db.disconnect();
+					if ((searchresult==null)||(searchresult.isEmpty()))
+					{
+						response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
+					}
+					else if (searchresult.size()==1)
+					{
+						String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
+						response = replaceTags(response, "CALENDAR", replaceTags(calendarTemplate, "LINK", link)); 
+					}
+					else
+					{
+						response = replaceTags(response, "CALENDAR", replaceTags(scriptTemplate, "LINK", createLink(session)+"&type=educator")); 
+						response = replaceTags(response, "SEARCHRESULTS", HTMLInterfaceTool.changeToDataTable("results", searchresult));
+					}
 				}
-				else if (searchresult.size()==1)
+				else // Er is geklikt op een rechtstreekse student waarvan het antwoord nu getoond moet worden
 				{
-					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
-					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
-				}
-				else
-				{
-					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", HTMLInterfaceTool.changeToDataTable("results", searchresult))); 
+					// zoek op in de database met studenten
+					Database db = getDB();
+					db.connect();
+					database.Search s = new database.Search(Educator.class,"getEmployeeNumber",result);
+					String link = CalendarTools.GeneratePHPiCalendarLink(db.<Educator>read(s) , session.getAccount().getLanguage());
+					response = replaceTags(response, "CALENDAR", replaceTags(calendarTemplate, "LINK", link));
+					db.disconnect();
 				}
 			}
 			else if (classtype.equals("room"))
@@ -99,21 +177,16 @@ public class Search extends PseudoServlet
 				Database db = getDB();
 				db.connect();
 				database.Search s = new database.Search(Room.class,"getLocation",request.getParameter("roomnumber"));
-				Vector<Room> searchresult = db.readAll(s);
+				Room searchresult = db.read(s);
 				db.disconnect();
-				if ((searchresult==null)||(searchresult.isEmpty()))
+				if (searchresult==null)
 				{
 					response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
 				}				
-				else if (searchresult.size()==1)
-				{
-					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
-					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
-				}
-				// als er meerdere resultaten zijn, toon de resultaten in een tabel en laat klikken toe op links
 				else
 				{
-					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", HTMLInterfaceTool.changeToDataTable("results", searchresult))); 
+					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult, session.getAccount().getLanguage());
+					response = replaceTags(response, "CALENDAR", replaceTags(calendarTemplate, "LINK", link)); 
 				}
 			}
 		}
