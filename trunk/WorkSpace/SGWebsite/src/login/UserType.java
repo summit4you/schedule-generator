@@ -18,7 +18,8 @@ public class UserType implements DatabasableAsString
 {
 	
 	static protected XMLDocument typeDoc=loadTypeDoc();
-	static private final String defaultLocation="C:\\SVN\\WorkSpace\\SGWebsite\\src\\login\\UserTypes.xml";
+	static private String typePath="C:/java/workspace/SGWebsite/src/login/UserTypes.xml";//"UserTypes.xml";
+	
 	protected Vector<String> pseudos;
 	protected String value;
 	
@@ -32,10 +33,10 @@ public class UserType implements DatabasableAsString
 		this.loadFromValue(value);
 	}
 	
-	public static XMLDocument loadTypeDoc()
-	{
-		XMLDocument doc=new XMLDocument(defaultLocation);
-		if (doc.load()){System.out.println(">>UserType: Loading Successful");}
+	private static XMLDocument loadTypeDoc()
+	{	
+		XMLDocument doc=new XMLDocument(typePath);
+		doc.load();
 		return doc;
 	}
 
@@ -65,6 +66,7 @@ public class UserType implements DatabasableAsString
 	public Site buildSite(Session ses)
 	{
 		Site site = new Site();
+		System.out.println(">>>UserType.buildSite: " +pseudos);
 		for(String p:pseudos)
 		{
 			site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
@@ -76,6 +78,7 @@ public class UserType implements DatabasableAsString
 	public Site buildSite(String path,Session ses)
 	{
 		Site site = new Site(path);
+		System.out.println(">>>UserType.buildSite: " +pseudos);
 		for(String p:pseudos)
 		{
 			site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
@@ -111,6 +114,14 @@ public class UserType implements DatabasableAsString
 			}
 		}		
 		
+	}
+	public static void setTypePath(String typePath)
+	{
+		UserType.typePath = typePath;
+	}
+	public static String getTypePath()
+	{
+		return typePath;
 	}
 	
 

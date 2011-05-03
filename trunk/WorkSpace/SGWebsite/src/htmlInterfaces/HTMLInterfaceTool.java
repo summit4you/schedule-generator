@@ -18,6 +18,7 @@ import java.util.Vector;
  */
 public class HTMLInterfaceTool 
 {	
+		
 	/**
 	 *  This method gets TableInfo annotation of the class of an object
 	 */
@@ -178,12 +179,12 @@ public class HTMLInterfaceTool
 	{
 		if (vec!=null)
 		{
-			Vector<Vector<String>> rows= new Vector<Vector<String>>();
-			for (HTMLTablable t:vec)
-			{
-				rows.add(fetchValues(t));
-			}
-			return HTMLUtils.toDataTable(tableID, fetchTexts(vec.get(0)),rows).write(); 
+				Vector<Vector<String>> rows= new Vector<Vector<String>>();
+				for (HTMLTablable t:vec)
+				{
+					rows.add(fetchValues(t));
+				}
+				return HTMLUtils.toDataTable(tableID, fetchTexts(vec.get(0)),rows).write(); 
 		}
 		return null;
 	}

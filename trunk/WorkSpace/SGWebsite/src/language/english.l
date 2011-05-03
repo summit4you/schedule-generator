@@ -43,3 +43,5 @@
 ##Student_Account##=Student;
 ##Educator_Account##=Educator;
 ##Admin_Account##=Admin;
+##Submit_Login##=Login;
+##search_nothingfound##=No data could be found;

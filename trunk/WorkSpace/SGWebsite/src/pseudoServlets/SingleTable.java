@@ -46,6 +46,7 @@ public class SingleTable<T extends Databasable & HTMLTablable> extends PseudoSer
 		}
 		else
 		{
+			System.out.println(">>SingleTable.processRequest:"+getObjects());
 			return replaceTags(template,"TABLE",HTMLInterfaceTool.changeToDataTable("maintable",getObjects()));
 		}
 	}

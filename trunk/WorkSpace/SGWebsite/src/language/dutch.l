@@ -43,3 +43,5 @@
 ##Student_Account##=Studenten;
 ##Educator_Account##=Onderwijzers;
 ##Admin_Account##=Admin;
+##Submit_Login##=Aanmelden;
+##search_nothingfound##=Geen gegevens gevonden;
