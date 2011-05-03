@@ -11,6 +11,22 @@
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
 \date{03 april 2011 Versie 2.0} 
 
+\makeatletter
+\renewcommand\paragraph{
+   \@startsection{paragraph}{4}{0mm}
+      {-\baselineskip}
+      {.5\baselineskip}
+      {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\makeatletter
+\renewcommand\subparagraph{
+   \@startsection{subparagraph}{5}{0mm}
+      {-\baselineskip}
+      {.5\baselineskip}
+      {\normalfont\normalsize\bfseries}}
+\makeatother
+
 \begin{document}
 
 \maketitle
@@ -106,14 +122,15 @@ Het bevat ook een schedule generator die in staat is een lessenrooster te genere
 De gebruikers zijn studenten die in staat om zijn om de verschillende lessenroosters te bekijken en docenten die in staat zijn het rooster op te vragen, maar evenwel aanpassingen te maken aan de informatie van de vakken waarvoor zij verantwoordelijk zijn.
 Daarnaast zijn er ook verschillende klassen beheerders die verantwoordelijk zijn voor groepen vakken, groepen studenten, gebouwen en het lessenrooster zelf. Deze beheerders moeten de nodige aanpassingen ook op de website kunnen doorvoeren.
 
-\subsection{Beperkingen}
-
-De grootste constraints werden door de opdrachtgever vastgelegd. De eigenlijke opdracht staat in het SPMP, maar de constraints die erin stonden waren de volgende:
+\subsection{Ontwerpbeperkingen}
+De opdracht gever heeft de beperkingen voor de ontwikkeling van het project in grote lijnen vastgelegd aan de hand van een opdrachtbeschrijving die terug kan worden gevonden in het SPMP.
+Hieronder volgt de lijst van de beperkingen die in rekening worden gebracht:
 \begin{itemize}
-	\item[-] Alle code moet open source zijn.\\
-	\item[-] Er moet geprogrammeerd worden in een object-georienteerde programmeertaal. Er werd gekozen voor JAVA, omdat het team daar het meest ervaring mee heeft.\\
-	\item[-] Alle input van gebruikers moet via de website gebeuren. \\
-	\item[-] De website en het programma draaien op de server Wilma aan de VUB. \\
+	\item[-] Alle geproduceerde en gebruikte code moet open source zijn, evenals de software tools die worden aangewend voor dit project
+	\item[-] Het eindproduct moet draaien op een linux server, meer bepaald Wilma (http://wilma.vub.ac.be/)
+	\item[-] Het project moet ontwikkeld worden in een object georiënteerde programmeer taal. Het team heeft er voor gekozen JAVA te gebruiken omdat het daarmee het meeste ervaring heeft.
+	\item[-] De gebruikerinteractie gebeurt via een gebruiksvriendelijke grafische web interface.
+	\item[-] De configuratie van het eindproduct moet op een eenvoudige wijze kunnen worden uitgevoerd door de gebruiker.
 \end{itemize}
 
 % \subsection{Assumptions and dependencies}
@@ -168,312 +185,417 @@ De reeds besproken gebruikertypes zullen standaard aanwezig zijn bij het afgelev
 
 \begin{itemize}
 \item[A.1] Aanmelden \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{onbekende gebruiker} \\
 Omschrijving: Doorsturen van gebruikersnaam en wachtwoord om toegang te krijgen tot de account gebonden gegevens en functionaliteiten \\[-3mm]
 
-\item[A.3] Aanmelden als gast \\
+\item[A.2] Aanmelden als gast \\
+Status: \textit{Voltooid} \\
 Categorie: \textsl{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textsl{onbekende gebruiker} \\
-Omschrijving: De website betreden zonder een account. Zie gast voor meer details. \\[-3mm]
+Omschrijving: De website betreden zonder een account. Zie gast voor meer details. 
 
 \item[A.3] Afmelden \\
-\textit{Categorie: }noodzakelijke invoerfunctionaliteit \\
-\textit{Gebruikertype:} iedereen behalve onbekende gebruiker \\
-Omschrijving: De site verlaten \\[-3mm]
+Status: \textit{In ontwikkeling} \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: De site verlaten 
 \end{itemize}
 
 \subsubsection{Opvragen van gegevens}
 \begin{itemize}
 \item[B.1] Opvragen van faculteit \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
-Omschrijving: Laat toe na te gaan welke programmaï¿½s zijn gebonden aan welke faculteit \\[-3mm]
+Omschrijving: Laat toe na te gaan welke programmaï¿½s zijn gebonden aan welke faculteit 
 
 \item[B.2] Opvragen van programma \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
-Omschrijving: Laat toe na te gaan welke vakken behoren tot welk programma \\[-3mm]
+Omschrijving: Laat toe na te gaan welke vakken behoren tot welk programma 
 
 \item[B.3] Opvragen van vak \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
 Omschrijving: Geeft toegang tot vak gebonden gegevens \\[-3mm]
 
 \item[B.4] Opvragen van student \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
-Omschrijving: Laat toe de gevolgde programmaï¿½s en vakken van een student na te gaan \\[-3mm]
+Omschrijving: Laat toe de gevolgde programmaï¿½s en vakken van een student na te gaan 
 
 \item[B.5] Opvragen van docent  \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{docent} \\
-Omschrijving: Laat toe na te gaan voor welke vakken een docent verantwoordelijk is \\[-3mm]
+Omschrijving: Laat toe na te gaan voor welke vakken een docent verantwoordelijk is 
 
 \item[B.6] Opvragen van lessenrooster op programma niveau \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
-Omschrijving: Geeft een rooster weer met alle vakken van een programma\\[-3mm]
+Omschrijving: Geeft een rooster weer met alle vakken van een programma
 
 \item[B.7] Opvragen van lessenrooster op vak niveau \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
 Omschrijving: Geeft weer wanneer een vak is gepland \\[-3mm]
 
 \item[B.8] Opvragen van lessenrooster op student niveau \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{student} \\
-Omschrijving: Geeft het persoonlijk rooster van een student weer \\[-3mm]
+Omschrijving: Geeft het persoonlijk rooster van een student weer 
 
 \item[B.9] Opvragen van lessenrooster op docent niveau \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{docent} \\
-Omschrijving: Geeft het persoonlijk rooster van een docent weer \\[-3mm]
+Omschrijving: Geeft het persoonlijk rooster van een docent weer 
+
+\item[B.10] Opvragen van Account per type \\
+Status: \textit{in ontwikkeling} \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving: Weergeven van een lijst van alle Accounts.
+
+\item[B.11] Opvragen van de Gebruikertypes \\
+Status: \textit{in ontwikkeling} \\
+Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Account beheerder} \\
+Omschrijving:Lijst van alle bestaande gebruikertypes
+
+\item[B.12] Opvragen van Gebouwen en Lokalen \\
+Status: \textit{Voltooid} \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: Weergeven van alle gebouwen en hun lokalen
+
+\item[B.13] Opvragen van Faciliteiten \\
+Status: \textit{in ontwikkeling} \\
+Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Faciliteit beheerder} \\
+Omschrijving: Weergeven van alle bestaande faciliteiten 
+
+\item[B.14] Opvragen van Software Configuratie \\
+Status: \textit{niet in ontwikkeling} \\
+Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Software beheerder} \\
+Omschrijving: Weergeven van alle configureerbare gegevens zoals padden van bestanden en waarden van software variabellen 
+
+\item[B.15] Opvragen van Beperkingen per type \\
+Status: \textit{in ontwikkeling} \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Software Beheerder} \\
+Omschrijving: Weergeven van alle ingevoerde Beperkingen 
+
+\item[B.16] Opvragen van Logboek \\
+Status: \textit{niet in ontwikkeling} \\
+Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{Software Beheerder} \\
+Omschrijving: Weergeven van de logboek gebeurtenissen
+
+\item[B.17] Opvragen van persoonlijke accounts gegevens \\
+Status: \textit{In ontwikkeling} \\
+Categorie: \textit{noodzakelijke uitvoerfunctionaliteit} \\
+Gebruikertype: \textit{iedereen behalve onbekende gebruiker} \\
+Omschrijving: weergeven van gegevens gebonden aan een account. Deze zijn gebruiker type afhankelijk
+
 \end{itemize}
 
 \subsubsection{Beheren van vakken}
 
 \begin{itemize}
 \item[C.1] Vakken aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder }\\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[C.2] Vakken verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[C.3] Vakken wijzigen als docent \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Docent} \\
-Omschrijving: Laat toe de vakomschrijving te wijzigen \\[-3mm]
+Omschrijving: Laat toe de vakomschrijving te wijzigen 
 
 \item[C.4] Vakken wijzigen als beheerder \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder }\\
-Omschrijving: Laat toe de naam, docent en omschrijving van een vak te wijzigen  \\[-3mm]
+Omschrijving: Laat toe de naam, docent en omschrijving van een vak te wijzigen  
 
 \item[C.5] Vakken koppelen aan een student \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Student beheerder} \\
-Omschrijving: Zie student beheerder \\[-3mm]
+Omschrijving: Zie student beheerder 
 
 \item[C.6] Vakken koppelen aan een docent \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Docent beheerder} \\
-Omschrijving: Zie docent en docent beheerder \\[-3mm]
+Omschrijving: Zie docent en docent beheerder 
 
-\item[C.7] Vakken onderverdelen in programmaï¿½s \\
+\item[C.7] Vakken onderverdelen in programmas \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[C.8] Vakken inladen uit bestand \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: Via een nader te bepalen bestand type vakken inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+Omschrijving: Via een nader te bepalen bestand type vakken inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. 
 \end{itemize}
 
 \subsubsection{Beheren van programmas}
 
 \begin{itemize}
-\item[D.1] Programmaï¿½s aanmaken \\
+\item[D.1] Programmas aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: Programmaï¿½s worden gebruikt om vakken te bundelen \\[-3mm]
+Omschrijving: Programmaï¿½s worden gebruikt om vakken te bundelen 
 
-\item[D.2] Programmaï¿½s inladen uit bestand \\
+\item[D.2] Programmas inladen uit bestand \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: Via en nader te bepalen bestand type  programmaï¿½s inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+Omschrijving: Via en nader te bepalen bestand type  programmas inladen in de database om gegevens uit ander database makkelijk te kunnen importeren.
 
-\item[D.3] Programmaï¿½s verwijderen \\
-Categorie: \textit{noodzakelijke invoerfunctionalitei}t \\
+\item[D.3] Programmas verwijderen \\
+Status: \textit{In ontwikkeling} \\
+Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder }\\
 Omschrijving: \\[-3mm]
 
-\item[D.4] Programmaï¿½s wijzigen \\
+\item[D.4] Programmas wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
 Omschrijving: \\[-3mm]
 
-\item[D.5] Programmaï¿½s koppelen aan een student \\
+\item[D.5] Programmas koppelen aan een student \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke/mogelijk  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder, student} \\
-Omschrijving: Zie Programma beheerder \\[-3mm]
+Omschrijving: Zie Programma beheerder 
 
-\item[D.6] Programmaï¿½s onderverdelen per faculteit \\
+\item[D.6] Programmas onderverdelen per faculteit \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving:
 \end{itemize}
 
 \subsubsection{Beheren van faculteiten}
 
 \begin{itemize}
 \item[E.1] Faculteiten aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit }\\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: Faculteiten worden gebruikt om programmaï¿½s in te bundelen \\[-3mm]
+Omschrijving: Faculteiten worden gebruikt om programmas in te bundelen 
 
 \item[E.2] Faculteiten inladen uit bestand  \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder} \\
-Omschrijving: Via een nader te bepalen bestand type faculteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+Omschrijving: Via een nader te bepalen bestand type faculteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. 
 
 \item[E.3] Faculteiten verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder }\\
-Omschrijving: Gebruiker kan kiezen of programmaï¿½s en vakken van een faculteit mee worden verwijderd \\[-3mm]
+Omschrijving: Gebruiker kan kiezen of programmas en vakken van een faculteit mee worden verwijderd 
 
 \item[E.4] Faculteiten wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Programma beheerder }\\
-Omschrijving: Bepalen welke programmaï¿½s tot welke faculteit behoren \\[-3mm]
+Omschrijving: Bepalen welke programmas tot welke faculteit behoren 
 \end{itemize}
 
 \subsubsection{Beheren van faciliteiten}
 
 \begin{itemize}
 \item[F.1] Faciliteiten aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Faciliteiten omvatten lesbenodigdheden zoals projector,computer, etc. \\[-3mm]
+Omschrijving: Faciliteiten omvatten lesbenodigdheden zoals projector,computer, etc. 
 
 \item[F.3] Faciliteiten inladen uit bestand \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. 
 
 \item[F.4] Faciliteiten verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder}  \\
-Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
+Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd 
 
 \item[F.5] Faciliteiten wijzigen  \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten  beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 \end{itemize}
 
 \subsubsection{Beheren van gebouwen en lokalen}
 
 \begin{itemize}
 \item[L.1] Gebouw aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Een gebouw is een verzameling van leslokalen\\[-3mm]
+Omschrijving: Een gebouw is een verzameling van leslokalen
 
 \item[L.2] Lokaal aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Een een lokaal moet steeds aan een gebouw worden toegekend.\\[-3mm]
+Omschrijving: Een een lokaal moet steeds aan een gebouw worden toegekend.
 
 \item[L.3] Faciliteiten toekennen aan een lokaal \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Verschillende faciliteiten kunnen aan een lokaal worden toegekend. Dit is belangerijk om na te gaan of een lokaal voldoet aan de beperkingen opgelegd voor een vak\\[-3mm]
+Omschrijving: Verschillende faciliteiten kunnen aan een lokaal worden toegekend. Dit is belangerijk om na te gaan of een lokaal voldoet aan de beperkingen opgelegd voor een vak
 
 \item[L.4] Gebouwen inladen uit bestand \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder} \\
-Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+Omschrijving: Via een nader te bepalen bestand type faciliteiten inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. 
 
 \item[L.5] Lokaal wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder}  \\
-Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
+Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd 
 
 \item[L.6] Gebouw wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten  beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[L.7] Lokaal verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten beheerder}  \\
-Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd \\[-3mm]
+Omschrijving: Als een faciliteit wordt verwijderd moeten alle afhankelijke beperkingen ook verwijderd 
 
 \item[L.8] Gebouw verwijderen  \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Faciliteiten  beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 \end{itemize}
 
 \subsubsection{Beheren van accounts}
 
 \begin{itemize}
 \item[G.1] Gebruikers aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[G.2] Gebruikers inladen uit bestand \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: Via een nader te bepalen bestand type gebruikers inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. \\[-3mm]
+Omschrijving: Via een nader te bepalen bestand type gebruikers inladen in de database om gegevens uit ander database makkelijk te kunnen importeren. 
 
 \item[G.3] Gebruikers verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: Alle gegevens van de gebruiker worden uit de database verwijderd \\[-3mm]
+Omschrijving: Alle gegevens van de gebruiker worden uit de database verwijderd 
 
 \item[G.4] Gebruikers wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving:
 
 \item[G.5] Gebruikers blokkeren \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder}\\
-Omschrijving: Een geblokkeerde gebruiker krijgt geen toegang tot het systeem tijdens het aanmelden \\[-3mm]
+Omschrijving: Een geblokkeerde gebruiker krijgt geen toegang tot het systeem tijdens het aanmelden 
 
 \item[G.6] Gebruikertypes aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: Laat toe functionaliteit te bundelen in gebruikertypes op maat.\\[-3mm]
+Omschrijving: Laat toe functionaliteit te bundelen in gebruikertypes op maat.
 
 \item[G.7] Gebruikertypes verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: Sommige gebruikertypes zijn beschermd tegen verwijdering om verdere werking van de software te garanderen. \\[-3mm]
+Omschrijving: Sommige gebruikertypes zijn beschermd tegen verwijdering om verdere werking van de software te garanderen. 
 
 \item[G.8] Gebruikertypes wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Account beheerder} \\
-Omschrijving: Sommige gebruikertypes zijn beschermd tegen aanpassingen om verdere werking van de software te garanderen. \\[-3mm]
+Omschrijving: Sommige gebruikertypes zijn beschermd tegen aanpassingen om verdere werking van de software te garanderen.
 \end{itemize}
 
 \subsubsection{Beheren van beperkingen}
 
 \begin{itemize} 
 \item[H.1] Tijdsbeperking aanmaken  \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{noodzakelijke  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: Een tijdsbeperking legt op waneer een vak kan worden geplant. Een docent die bijvoorbeeld een bepaalde dag in de week niet beschikbaar is, moeten dit kunnen meegeven. Algmene beperkingen, bijvoorbeeld: op welke dagen van de week er les kan worden gegeven, worden door de  rooster beheerder ingevoerd.\\[-3mm]
+Omschrijving: Een tijdsbeperking legt op waneer een vak kan worden geplant. Een docent die bijvoorbeeld een bepaalde dag in de week niet beschikbaar is, moeten dit kunnen meegeven. Algmene beperkingen, bijvoorbeeld: op welke dagen van de week er les kan worden gegeven, worden door de  rooster beheerder ingevoerd.
 
 \item[H.2] Tijdsbeperking verwijderen \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn tijdsbeperkingen te verwijderen. \\[-3mm]
+Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn tijdsbeperkingen te verwijderen. 
 
 \item[H.3] Tijdsbeperking wijzigen \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn om tijdsbeperkingen te wijzigen.\\[-3mm]
+Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn om tijdsbeperkingen te wijzigen.
 
 \item[H.4] Faciliteitbeperking aanmaken \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
 Omschrijving: Een faciliteitbeperking legt op welke faciliteiten er nodig zijn voor een vak. Op basis hier van kan worden nagegaan welke lokalen er in aanmekringen koen voor het vak. 
 
 \item[H.5] Faciliteitbeperking verwijderen \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te verwijderen. \\[-3mm]
+Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te verwijderen. 
 
 \item[H.6] Faciliteitbeperking wijzigen \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
 Omschrijving:Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te wijzigen. \\[-3mm]
@@ -483,76 +605,89 @@ Omschrijving:Aangezien de omstandigheden die aanleiding geven tot een beperking 
 
 \begin{itemize}
 \item[I.1] Configureren van roosterplanner \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder, Rooster beheerder} \\
-Omschrijving: Laat toe de technische parameters van de roosterplanner aan te passen \\[-3mm]
+Omschrijving: Laat toe de technische parameters van de roosterplanner aan te passen
 
 \item[I.2] Starten van roosterplanner \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Data noodzakelijk voor de planning mag na het starten niet meer worden aangepast. Het starten van de roosterplanner bevriest dus sommige gegevens tot zijn planningstaak is gestopt. \\[-3mm]
+Omschrijving: Data noodzakelijk voor de planning mag na het starten niet meer worden aangepast. Het starten van de roosterplanner bevriest dus sommige gegevens tot zijn planningstaak is gestopt.
 
 \item[I.3] Stoppen van roosterplanner \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Het handmatig stoppen van de roosterplanner. De planner kan alter weer worden gestart om zijn taak verder te zetten. \\[-3mm]
+Omschrijving: Het handmatig stoppen van de roosterplanner. De planner kan alter weer worden gestart om zijn taak verder te zetten. 
 
 \item[I.4] Status van de roosterplanner opvragen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Het handmatig opvragen van de status van de roosterplanner. \\[-3mm]
+Omschrijving: Het handmatig opvragen van de status van de roosterplanner. 
 
 \item[I.5] Melden van conflicten in het rooster \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Als de rooster planner geen rooster kan vinden dat voldoet meldt hij dit als een conflict \\[-3mm]
+Omschrijving: Als de rooster planner geen rooster kan vinden dat voldoet meldt hij dit als een conflict 
 \end{itemize}
 
 \subsubsection{Beheren van lessenroosters}
 \begin{itemize}
 \item[J.1] Lessenroosters bereken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
 Gebruikertype: \textit{Roosterbeheerder} \\
-Omschrijving: De rooster planner berekend automatisch roosters die voldoen aan de opgegeven beperkingen. \\[-3mm]
+Omschrijving: De rooster planner berekend automatisch roosters die voldoen aan de opgegeven beperkingen. 
 
 \item[J.2] Lessenroosters aanmaken \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[J.3] Lessenroosters verwijderen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder }\\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[J.4] Lessenroosters wijzigen \\
+Status: \textit{In ontwikkeling} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
-Omschrijving: Lessen roosters kunnen handmatig worden aangespast \\[-3mm]
+Omschrijving: Lessen roosters kunnen handmatig worden aangespast 
 \end{itemize}
 
 \subsubsection{Beheren van logboek }
 
 \begin{itemize}
 \item[K.1] Logboek aanmaken \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra  invoerfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder} \\
-Omschrijving: Als een logboek is aangemaakt zullen belangrijke gebeurtenissen in het systeem worden bijgehouden \\[-3mm]
+Omschrijving: Als een logboek is aangemaakt zullen belangrijke gebeurtenissen in het systeem worden bijgehouden 
 
 \item[K.2] Logboek bekijken \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra uitvoerfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[K.3] Gebeurtenissen registreren \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra  verwerkingsfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \item[K.4] Gebeurtenissen ongedaan maken \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra invoerfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder} \\
-Omschrijving: \\[-3mm]
+Omschrijving: 
 
 \end{itemize}
 
@@ -560,14 +695,16 @@ Omschrijving: \\[-3mm]
 
 \begin{itemize}
 \item[X.1] Aanmaken van de software databasestructuur via SQL \\
+Status: \textit{Voltooid} \\
 Categorie: \textit{noodzakelijke verwerkingsfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder} \\
-Omschrijving: De software brengt zelf een datastructuur aan die nodig is voor het opslaan van de gegevens  \\[-3mm]
+Omschrijving: De software brengt zelf een datastructuur aan die nodig is voor het opslaan van de gegevens  
 
-\item[X.2] Aanpassen van de ï¿½look en feelï¿½ van de website \\
+\item[X.2] Aanpassen van de look en feel van de website \\
+Status: \textit{Niet in ontwikkeling} \\
 Categorie: \textit{extra invoerfunctionaliteit} \\
 Gebruikertype: \textit{Software beheerder} \\
-Omschrijving: Dit wordt mogelijk gemaakt door et toegankelijk maken van de opmaak bestanden. \\[-3mm]
+Omschrijving: Dit wordt mogelijk gemaakt door et toegankelijk maken van de opmaak bestanden.
 \end{itemize}
 
 %ZJEF
@@ -612,19 +749,121 @@ De opgelegde beperkingen, met betrekking op het design, zijn de volgende:
 %Bij elk commando van de gebruiker wordt de code in de lijst opgezocht, de rechten van de bijhorende gebruiker gecontroleerd en al dan niet kan het commando uitgevoerd worden.\\[5mm]
 %Logboek van aanpassingen door Managers wordt bijgehouden.\\
 
-\textbf{Gebruikerristricties}
+\paragraph{Gebruikerristricties}
 
-Verschillende gebruikers krijgen verschillende rechten toegewezen. Deze bepalen tot welke informatie en tools hij toegang krijgt. Deze rechten zijn gekoppeld aan de account van deze gebruiker. Na het inloggen zullen enkel de informatie en tools waarvoor de gebruiker gemachtigd is, getoond worden. Om verdere beveiliging te verzekeren, wordt ook de communicatie met de server beveiligd. Bij het inloggen krijgt de webinterface van de gebruiker een access code toegestuurd, op dat moment gegenereerd door de server. Deze houdt bij welke rechten bij deze code horen. De webinterface stuurt de verkregen code mee door met elke instructie naar de server, waarop deze kan controleren of de gebruiker gemachtigd is om de desbetreffende instructie uit te voeren.\\
+Verschillende gebruikers krijgen verschillende rechten toegewezen. Deze bepalen
+tot welke informatie en tools hij toegang krijgt. Deze rechten zijn gekoppeld
+aan de account van deze gebruiker. Na het inloggen zullen enkel de informatie
+en tools waarvoor de gebruiker gemachtigd is, getoond worden. Om verdere
+beveiliging te verzekeren, wordt ook de communicatie met de server beveiligd.
+Bij het inloggen krijgt de webinterface van de gebruiker een access code toegestuurd,
+op dat moment gegenereerd door de server. Deze houdt bij welke rechten bij
+deze code horen. De webinterface stuurt de verkregen code mee door met elke instructie naar de server, waarop deze kan controleren of de gebruiker gemachtigd
+is om de desbetreffende instructie uit te voeren.
+\begin{itemize}
+	\item[] \textbf{M.1 Gebruiksrechten vastleggen per gebruikertype} \\
+		Status: \textit{Voltooid} \\
+		Categorie: \textit{noodzakelijke invoerfunctionaliteit} \\
+		Gebruikertype: \textit{Account beheerder} \\
+		Omschrijving: In een file zal onder de vorm van een xml formaat worden bijgehouden worden wat de rechten zijn van elk gebruikerstype . Eventueel kan deze file via een webinterface op een gebruiksvriendelijk wijze worden aan gepast.
+	
+	\item[] \textbf{M.2 Gebruikersessie volgen} \\
+		Status: \textit{Voltooid} \\
+		Categorie: \textit{noodzakelijke verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{n.v.t.} \\
+		Omschrijving: Eenmaal een gebruiker zich heeft aangemeld via een gebruikersnaam en wachtwoord zal hem een sessie nummer worden toegekend. Dit nummer laat toe de gebruiker te volgen tijdens zijn bezoek op de site en na te gaan over welke rechten de gebruiker beschikt. Om de sessie van de gebruiker tijdens het verkennen van de site bij te houden zal gebruik worden gemaakt van url-rewriting. Voor meer informatie over de implementatie van deze techniek wordt verwezen naar het SDD.
 
-\textbf{Data integriteit}
+	\item[] \textbf{M.3 Gebruikersessie beëindigen na time out} \\
+		Status: \textit{Voltooid} \\
+		Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{n.v.t.} \\
+		Omschrijving: Na het verstrijken van vijf minuten van inactiviteit zal het sessienummer van de gebruiker niet langer geldig zijn en wordt de sessie van de gebruiker gestopt. De gebruiker zal zich opnieuw moeten aanmelden om een nieuwe sessie te starten.
+		
+	\item[] \textbf{M.4 Gebruiksrechten controleren} \\
+		Status: \textit{Voltooid} \\
+		Categorie: \textit{noodzakelijke verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{n.v.t.} \\
+		Omschrijving: Als een gebruiker een bepaalde functionaliteit aan de server opvraagt zal hierbij steeds zijn sessie nummer worden  meegedeeld, wat mogelijk maakt na te gaan of de gebruiker hier toe gemachtigd is. 
 
-Enerzijds zal er de mogelijkheid geleverd worden, aan de daarvoor gemachtigde gebruiker(s), om op de server een back-up van de databases (zoals accounts, leslokalen, vakken,...) te maken en desnoods een rollback uit te voeren.
-Anderzijds zal er op de server een logboek bijgehouden worden met de aanpassingen aan de databases, die door verschillende gebruikers gemaakt kunnen worden.\\
+	\item[] \textbf{M.5 Webpagina op maat van rechten} \\
+		Status: \textit{Voltooid } \\
+		Categorie: \textit{noodzakelijke verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{n.v.t.} \\
+		Omschrijving: De gebruiker zal op de website enkel de mogelijkheden voorgeschoteld krijgen die in overeenkomst zijn met zijn rechten.
+		
+\end{itemize}
+		
 
-\textbf{Account beveiliging}
+\paragraph{Data integriteit}
 
-Account paswoorden zullen, met een nog nader te bepalen, ge\"{e}ncrypteerd verstuurd en opgeslagen
-worden.
+Enerzijds zal er de mogelijkheid geleverd worden, aan de daarvoor gemachtigde gebruiker(s), om op de server een back-up van de databases (zoals accounts,
+leslokalen, vakken,...) te maken en desnoods een rollback uit te voeren. Anderzijds zal er op de server een logboek bijgehouden worden met de aanpassingen
+aan de databases, die door verschillende gebruikers gemaakt kunnen worden. 
+
+\subparagraph{Beheren van logboek}
+
+\begin{itemize}
+	\item[K.1] \textbf{Logboek aanmaken} \\
+		Status: \textit{niet in ontwikkeling} \\
+		Categorie: \textit{extra invoerfunctionaliteit} \\
+		Gebruikertype: \textit{Software beheerder} \\
+		Omschrijving: Als een logboek is aangemaakt zullen belangrijke gebeurtenissen in het systeem worden bijgehouden
+
+	\item[K.2] \textbf{Logboek bekijken} \\
+		Status: \textit{niet in ontwikkeling} \\
+		Categorie: \textit{extra uitvoerfunctionaliteit} \\
+		Gebruikertype: \textit{Software beheerder} \\
+		Omschrijving:
+
+	\item[K.3] \textbf{Gebeurtenissen registreren} \\
+		Status: \textit{niet in ontwikkeling} \\
+		Categorie: \textit{extra verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{Software beheerder} \\
+		Omschrijving:
+
+	\item[K.4] \textbf{Gebeurtenissen ongedaan maken} \\
+		Status: \textit{niet in ontwikkeling} \\
+		Categorie: \textit{extra invoerfunctionaliteit} \\
+		Gebruikertype: \textit{Software beheerder} \\
+		Omschrijving: 
+		
+\end{itemize}
+
+		
+\subparagraph{Beheren van database}
+\begin{itemize}
+	\item[N.1] \textbf{Back-up maken van database} \\
+		Status: \textit{niet in ontwikkeling} \\
+		Categorie: \textit{extra verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{Software beheerder} \\
+		Omschrijving: 
+
+	\item[N.2] \textbf{Database configureren} \\
+		Status: \textit{in ontwikkeling} \\
+		Categorie: \textit{noodzakelijke/extra invoerfunctionaliteit} \\
+		Gebruikertype: \textit{Software beheerder} \\
+		Omschrijving: In een file met xml formaat zullen de database gegevens worden opgeslagen op de server. Eventueel kunnen deze gegevens ook via een webinterface worden ingevoerd. 
+\end{itemize}
+
+
+\paragraph{Account beveiliging}
+
+Account paswoorden zouden kunnen geëncrypteerd verstuurd en opgeslagen worden om de veiligheid van de accounts te verhogen. In hoever dit noodzakelijk is, is nog maar de vraag, aangezien het merendeel van de accountgegevens publiek toegankelijk zijn voor gastgebruikers. 
+
+\begin{itemize}
+	\item[L.1] \textbf{Encrypteren van account gegevens tijdens communicatie} \\
+		Status: \textit{in ontwikkeling} \\
+		Categorie: \textit{extra verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{n.v.t.} \\
+		Omschrijving: 
+		
+	\item[L.2] \textbf{Encrypteren van account gegevens in de database} \\
+		Status: \textit{niet in ontwikkeling} \\
+		Categorie: \textit{extra verwerkingsfunctionaliteit} \\
+		Gebruikertype: \textit{n.v.t.} \\
+		Omschrijving: 
+\end{itemize}
+
 
 % \subsubsection{Maintainability}
 % This should specify attributes of software that relate to the ease of maintenance of the software itself. There may be some requirement for certain modularity, interfaces, complexity, etc. Requirements should not be placed here just because they are thought to be good design practices.

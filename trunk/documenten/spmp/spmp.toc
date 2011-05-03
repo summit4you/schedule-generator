@@ -64,7 +64,7 @@
 \contentsline {subparagraph}{Bespreken van de vorige taken:}{41}{section*.25}
 \contentsline {subparagraph}{Volgende Deadlines}{41}{section*.26}
 \contentsline {subparagraph}{Lijst met functies die geimplementeerd wordt voor iteratie 1}{42}{section*.27}
-\contentsline {subparagraph}{Lijst met servlets die aangemaakt worden en hun taak}{42}{section*.28}
+\contentsline {subparagraph}{Lijst met servlets die aangemaakt worden en hun taak}{43}{section*.28}
 \contentsline {subsubsection}{\numberline {7.2.8}Vergadering van 25-4-2011}{44}{subsubsection.7.2.8}
 \contentsline {paragraph}{Minutes 20:30 tot 22:00}{44}{section*.29}
 \contentsline {subparagraph}{Voorbereiden van de presentatie}{44}{section*.30}
