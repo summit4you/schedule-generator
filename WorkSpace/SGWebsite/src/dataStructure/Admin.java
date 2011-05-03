@@ -13,7 +13,7 @@ public class Admin implements Databasable
 	}
 	
 	@Override
-	public ID getId()
+	public ID getID()
 	{
 		// TODO Auto-generated method stub
 		return id;

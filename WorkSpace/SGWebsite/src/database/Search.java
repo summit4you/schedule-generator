@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * Search criterion for a database search with the methods {@link Database#read(Search)} and {@link Database#readAll(Search)}
  * @author Zjef
- * @version 1.0
+ * @version 1.1
  */
 public class Search implements Serializable,Syntaxable
 {
@@ -17,6 +17,40 @@ public class Search implements Serializable,Syntaxable
 	private Vector<Method> getters;
 	private Vector<Object> results;
 	private ID id;
+	private boolean like=false;
+	private boolean and=true;
+	
+	/**
+	 * Enables or disables searches with wildcards, eg: "zoekterm%","%zoekterm","%zoekterm%"
+	 */
+	public Search setWildCardSearch(boolean enable)
+	{
+		this.like=enable;
+		return this;
+	}
+	
+	/**
+	 * Sets the search to 'and' or 'or' when specifying multiple criteria
+	 */
+	public Search setAndOr(boolean and)
+	{
+		this.and=and;
+		return this;
+	}
+	
+	/**
+	 * copyMethodString("getName",3) returns "getName;getName;getName"<br>
+	 * This can be used when searching for multiple objects in one search, in combination with {@link #setAndOr(boolean)}<br>
+	 */
+	public static String copyMethodString(String method,int times)
+	{
+		String res=method;
+		for (int i=0;i<times-1;i++)
+		{
+			res+=";"+method;
+		}
+		return res;
+	}
 	
 	/**
 	 * This constructor creates a Search object with which you can load all instances from a database (using the {@link Database#readAll()})
@@ -41,6 +75,11 @@ public class Search implements Serializable,Syntaxable
 		this.id=id;
 		this.getters=null;
 		this.results=null;
+	}
+	
+	public Search(Class<? extends Databasable> cl,String id)
+	{
+		this(cl,new ID(id));
 	}
 	
 	/**
@@ -112,7 +151,7 @@ public class Search implements Serializable,Syntaxable
 	
 	private void addObject(Object object)
 	{
-		results.add(object instanceof Databasable?((Databasable) object).getId():object);
+		results.add(object instanceof Databasable?((Databasable) object).getID():object);
 	}
 	
 	protected Class<? extends Databasable> getCl()
@@ -161,9 +200,9 @@ public class Search implements Serializable,Syntaxable
 			text+=" WHERE ";
 			for (int i=0;i<getters.size();i++)
 			{
-				text+=Extract.methodToString(getters.get(i))+"="+Extract.valueToString(results.get(i))+" AND ";
+				text+=Extract.methodToString(getters.get(i))+(like?" LIKE ":"=")+Extract.valueToString(results.get(i))+(and?" AND ":" OR ");
 			}
-			return text.substring(0,text.length()-5);
+			return text.substring(0,text.length()-(and?5:4));
 		}
 	}
 }

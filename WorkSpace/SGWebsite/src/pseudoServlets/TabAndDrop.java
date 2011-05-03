@@ -4,7 +4,7 @@ import htmlInterfaces.HTMLInterfaceTool;
 import htmlInterfaces.HTMLTablable;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
-import pseudoServlets.tools.TableTools;
+import pseudoServlets.tools.PSTools;
 import sessionTracking.Session;
 import database.Databasable;
 
@@ -27,8 +27,8 @@ abstract public class TabAndDrop<T extends Databasable> extends PseudoServlet
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request,Session session) 
 	{
-		Vector<T> tabObjects=TableTools.loadObjects(cl);
-		String res=replaceTags(template,"TABS",TableTools.createTabHeader(tabObjects));
+		Vector<T> tabObjects=PSTools.loadObjects(cl);
+		String res=replaceTags(template,"TABS",PSTools.createTabHeader(tabObjects));
 		res=replaceTags(res,"ON_OPEN",createOnOpen());
 		res=replaceTags(res,"TABLE",createTable(tabObjects));
 		res=replaceTags(res,"EXPAND_SCRIPT",createExpandScript(tabObjects));

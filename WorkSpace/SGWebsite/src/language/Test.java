@@ -2,8 +2,6 @@ package language;
 
 import java.util.Vector;
 
-import choco.cp.solver.constraints.integer.bool.sat.Vec;
-
 public class Test
 {
 	public static void main(String[] args)

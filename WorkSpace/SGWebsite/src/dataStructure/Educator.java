@@ -62,7 +62,7 @@ public class Educator implements Databasable,HTMLTablable
 	
 	
 	@Override
-	public ID getId()
+	public ID getID()
 	{
 		return id;
 	}

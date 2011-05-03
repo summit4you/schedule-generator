@@ -10,7 +10,7 @@ import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 
 import other.FileIO;
-import pseudoServlets.tools.calendarTools;
+import pseudoServlets.tools.CalendarTools;
 
 import sessionTracking.Session;
 import database.*;
@@ -63,7 +63,7 @@ public class Search extends PseudoServlet
 				// als er maar 1 resultaat is, toon de kalender van de persoon
 				else if (searchresult.size()==1)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
+					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				else
@@ -86,7 +86,7 @@ public class Search extends PseudoServlet
 				}
 				else if (searchresult.size()==1)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
+					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				else
@@ -107,7 +107,7 @@ public class Search extends PseudoServlet
 				}				
 				else if (searchresult.size()==1)
 				{
-					String link = calendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
+					String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
 					response = replaceTags(response, "CALENDAR", replaceTags(template2, "LINK", link)); 
 				}
 				// als er meerdere resultaten zijn, toon de resultaten in een tabel en laat klikken toe op links

@@ -71,7 +71,7 @@ public class Room implements Databasable,HTMLTablable
 	}
 	
 	@Override
-	public ID getId()
+	public ID getID()
 	{
 		return id;
 	}	
@@ -79,5 +79,11 @@ public class Room implements Databasable,HTMLTablable
 	public String getCalendarfile()
 	{
 		return id.toString();
+	}
+	
+	@Override
+	public String toString()
+	{
+		return getLocation();
 	}
 }

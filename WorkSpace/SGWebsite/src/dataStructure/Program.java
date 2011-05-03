@@ -78,7 +78,7 @@ public class Program implements Databasable,HTMLTablable
 	}
 	
 	@Override
-	public ID getId()
+	public ID getID()
 	{
 		return id;
 	}

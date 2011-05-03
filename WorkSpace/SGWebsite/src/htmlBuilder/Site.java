@@ -1,28 +1,15 @@
 package htmlBuilder;
 
+import pseudoServlets.PseudoServlet;
+import xml.ElementWithChildren;
 import xml.ElementWithValue;
 import xml.XMLDocument;
 
-/**
- * <b>Class representing the skeleton for a web site based on tabs 
- * and Iframes.</b> </br> </br> 
- * This class allows to generate the html code of a site containing
- * tabs and Iframes. The content of the site has to be generated
- * by other objects. The html code still contains language tags that 
- * have to be replaced by a Dictionary. This class relies on a external
- * template called site.xml. This template contains {tags} that will be 
- * replaced by this class. Removal of these tags can lead to a malfunction.
- * This class defines allowed tab names through the enum TabName.
- * 
- * @version 1.0
- * @author Alexander
- *
- */
 public class Site 
 {
 	public enum TabName
 	{
-		Login,Search,Schedule,Accounts,MyAccount,MyCourses,Buildings,Educators,Students,Courses;
+		Login,Search,Schedule,Accounts,Buildings,Educators,Students,Courses,EditCalendar;
 		
 		public String toLanguageTag()
 		{
