@@ -2,18 +2,18 @@
 <head>
 		
 	<style type="text/css" title="currentStyle">
-		@import "../js/datatables/css/demo_page.css";
-		@import "../js/datatables/css/demo_table.css";
-		@import "../js/datatables/css/jquery-ui-1.8.4.custom.css";
+		@import "js/datatables/css/demo_page.css";
+		@import "js/datatables/css/demo_table.css";
+		@import "js/datatables/css/jquery-ui-1.8.4.custom.css";
 			.ui-tabs .ui-tabs-panel { padding: 10px }
 	</style>
-	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/datatables/jquery-ui-tabs.js"></script>
+	<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="js/datatables/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="js/datatables/jquery-ui-tabs.js"></script>
 
 </head>
-<body id="dt_example"">
-<div id="container">
+<body>
+
 <div id="demo">
 	<div id="tabs">
 		<ul>
@@ -21,7 +21,6 @@
 		</ul>
 {TABLE}
 	</div>
-</div>
 </div>
 
 <script>

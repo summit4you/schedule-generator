@@ -40,13 +40,13 @@ public class Educator implements Databasable,HTMLTablable
 	
 	@InDatabase
 	@TableInput(order=3,text="##Number_Educator_Table##")
-	public int getemployeeNumber()
+	public int getEmployeeNumber()
 	{
 		return employeeNumber;
 	}
 	
 	@OutDatabase
-	public void setemployeeNumber(int newemployeeNumber)
+	public void setEmployeeNumber(int newemployeeNumber)
 	{
 		employeeNumber = newemployeeNumber;
 	}
@@ -120,6 +120,6 @@ public class Educator implements Databasable,HTMLTablable
 	@Override
 	public String toString() 
 	{
-		return getFirstName()+" "+getSurName()+"("+getemployeeNumber()+")";
+		return getFirstName()+" "+getSurName()+"("+getEmployeeNumber()+")";
 	}
 }

@@ -4,9 +4,12 @@ import pseudoServlets.PseudoServlet;
 import xml.ElementWithChildren;
 import xml.ElementWithValue;
 import xml.XMLDocument;
+import other.Globals;
 
 public class Site 
 {
+	private final String fileName="site.xml";
+	
 	public enum TabName
 	{
 		Login,Search,Schedule,Accounts,Buildings,Educators,Students,Courses,EditCalendar;
@@ -32,9 +35,6 @@ public class Site
 	
 	private String loginForm;
 	
-	private String path;
-		private static final String defaultPath="/site.xml";
-	
 	private String htmlcode;
 	
 	private void init()
@@ -44,7 +44,7 @@ public class Site
 	
 	private boolean loadTemplate()
 	{
-		XMLDocument template = new XMLDocument(path);
+		XMLDocument template = new XMLDocument(Globals.templatePath+fileName);
 		if (template.load())
 		{
 			htmlPage=ElementWithValue.class.cast(template.getElement("HTMLPAGE")).getValue();
@@ -55,27 +55,14 @@ public class Site
 		}
 		else
 		{
-			System.err.println("Site: LoadTemplate(): Template "+path+" could not be read");
 			return false;
 		}
 	}
 	
 	public Site()
 	{
-		this(defaultPath);
-	}
-	public Site(String path)
-	{
-		setPath(path);
 		loadTemplate();
 		init();
-	}
-		
-	public void setPath(String path) {
-		this.path = path;
-	}
-	public String getPath() {
-		return path;
 	}
 	
 	public String getHtmlCode() 
