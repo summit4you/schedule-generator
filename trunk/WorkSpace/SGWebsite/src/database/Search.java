@@ -4,14 +4,10 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Vector;
 
-import login.Account;
-
-import pseudoServlets.PseudoServlet;
-
 /**
  * Search criterion for a database search with the methods {@link Database#read(Search)} and {@link Database#readAll(Search)}
  * @author Zjef
- * @version 1.22
+ * @version 1.3
  */
 public class Search implements Serializable,Syntaxable
 {	
@@ -66,6 +62,16 @@ public class Search implements Serializable,Syntaxable
 			res+=";"+method;
 		}
 		return res;
+	}
+	
+	/**
+	 * Loads the object(s) where the specified ID is located in the specified getter (which returns a vector)<br>
+	 * This way you can search for example an educator that has a certain subcourse
+	 */
+	public Search(String id,Class<? extends Databasable> cl,String vectorMethod)
+	{
+		this(cl,vectorMethod,"%;"+id+";%");
+		setWildCardSearch(true);
 	}
 	
 	/**

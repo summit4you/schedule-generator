@@ -8,7 +8,7 @@ import java.util.Vector;
 /**
  * Extracts the {@link Databasable} information of objects and classes, for reading and writing to the database.
  * @author Zjef
- * @version 2.4
+ * @version 2.6
  */
 public class Extract
 {
@@ -64,7 +64,10 @@ public class Extract
 						
 						for (String s:elements)
 						{
-							vec.add(strToObject(s,c,database));
+							if (!s.equals(""))
+							{
+								vec.add(strToObject(s,c,database));
+							}
 						}
 						i.invoke(ob,vec);
 					}
@@ -253,11 +256,15 @@ public class Extract
 				return "";
 			}
 			String res="";
+			if (((Vector) obj).size()>0)
+			{
+				res=";";
+			}
 			for (Object i:(Vector<?>)obj)
 			{
 				res+=objectToStr(i)+";";
 			}
-			return res.substring(0,res.length()-1);
+			return res;
 		}
 		else if (obj instanceof Boolean)
 		{
