@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Vector;
 
+import login.Account;
+
+import pseudoServlets.PseudoServlet;
+
 /**
  * Search criterion for a database search with the methods {@link Database#read(Search)} and {@link Database#readAll(Search)}
  * @author Zjef
- * @version 1.21
+ * @version 1.22
  */
 public class Search implements Serializable,Syntaxable
 {	
@@ -212,7 +216,7 @@ public class Search implements Serializable,Syntaxable
 			text+=" WHERE ";
 			for (int i=0;i<getters.size();i++)
 			{
-				text+=(caseSensitive?"BINARY ":"")+Extract.methodToString(getters.get(i))+(like?" LIKE ":"=")+Extract.valueToString(results.get(i)).toUpperCase()+(and?" AND ":" OR ");
+				text+=(caseSensitive?"BINARY ":"")+Extract.methodToString(getters.get(i))+(like?" LIKE ":"=")+Extract.valueToString(results.get(i))+(and?" AND ":" OR ");
 			}
 			return text.substring(0,text.length()-(and?5:4));
 		}
