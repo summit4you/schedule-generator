@@ -7,10 +7,10 @@ import java.util.Vector;
 /**
  * Search criterion for a database search with the methods {@link Database#read(Search)} and {@link Database#readAll(Search)}
  * @author Zjef
- * @version 1.2
+ * @version 1.21
  */
 public class Search implements Serializable,Syntaxable
-{
+{	
 	final public static String classSeparator=";";
 	
 	private Class<?extends Databasable> cl;
@@ -21,6 +21,9 @@ public class Search implements Serializable,Syntaxable
 	private boolean and=true;
 	private boolean caseSensitive=true;
 	
+	/**
+	 * Default value=true
+	 */
 	public Search setCaseSensitive(boolean caseSensitive)
 	{
 		this.caseSensitive=caseSensitive;
@@ -28,7 +31,8 @@ public class Search implements Serializable,Syntaxable
 	}
 	
 	/**
-	 * Enables or disables searches with wildcards, eg: "zoekterm%","%zoekterm","%zoekterm%"
+	 * Enables or disables searches with wildcards, eg: "zoekterm%","%zoekterm","%zoekterm%"<br>
+	 * Default value=false
 	 */
 	public Search setWildCardSearch(boolean enable)
 	{
@@ -38,6 +42,7 @@ public class Search implements Serializable,Syntaxable
 	
 	/**
 	 * Sets the search to 'and' or 'or' when specifying multiple criteria
+	 * default value=true (AND)
 	 */
 	public Search setAndOr(boolean and)
 	{
@@ -207,7 +212,7 @@ public class Search implements Serializable,Syntaxable
 			text+=" WHERE ";
 			for (int i=0;i<getters.size();i++)
 			{
-				text+=(caseSensitive?"":"toupper(")+Extract.methodToString(getters.get(i))+(caseSensitive?"":")")+(like?" LIKE ":"=")+Extract.valueToString(results.get(i))+(and?" AND ":" OR ");
+				text+=(caseSensitive?"BINARY ":"")+Extract.methodToString(getters.get(i))+(like?" LIKE ":"=")+Extract.valueToString(results.get(i)).toUpperCase()+(and?" AND ":" OR ");
 			}
 			return text.substring(0,text.length()-(and?5:4));
 		}

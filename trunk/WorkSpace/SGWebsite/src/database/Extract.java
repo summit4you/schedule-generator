@@ -2,12 +2,13 @@ package database;
 
 import java.lang.reflect.Method;
 import java.sql.ResultSet;
+import java.util.List;
 import java.util.Vector;
 
 /**
  * Extracts the {@link Databasable} information of objects and classes, for reading and writing to the database.
  * @author Zjef
- * @version 2.2
+ * @version 2.4
  */
 public class Extract
 {
@@ -97,7 +98,7 @@ public class Extract
 		}
 	}
 	
-	protected static Vector<?> readResult(ResultSet result,Class<? extends Databasable> cl,Database database)
+	protected static Vector<?> readResult(ResultSet result,Class<? extends Databasable> cl,Database database,List<Class<? extends Databasable>> classes)
 	{
 		Vector objects=new Vector();
 		try
@@ -118,9 +119,16 @@ public class Extract
 					{
 						for (Databasable i:database.getLoadList())
 						{
-							ResultSet result2=database.query(new Search(i.getClass(),i.getID()).getText());
-							result2.first();
-							readObject(i.getClass(),i,result2,database);
+							if (classes==null || classes.contains(i.getClass()))
+							{
+								ResultSet result2=database.query(new Search(i.getClass(),i.getID()).getText());
+								result2.first();
+								readObject(i.getClass(),i,result2,database);
+							}
+							else
+							{
+								database.removeFromLoadList(i);
+							}
 						}
 					}
 				}
@@ -254,6 +262,10 @@ public class Extract
 		else if (obj instanceof Boolean)
 		{
 			return (Boolean)obj==true?"1":"0";
+		}
+		else if (obj==null)
+		{
+			return "";
 		}
 		else
 		{

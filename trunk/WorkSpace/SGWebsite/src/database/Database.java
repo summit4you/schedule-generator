@@ -6,7 +6,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
+
+import edu.emory.mathcs.backport.java.util.Arrays;
 
 /**
  * Represents a MySQLDatabase<br>
@@ -14,7 +18,7 @@ import java.util.Vector;
  * Read the requirements at {@link Databasable} to enable classes to read and write their objects to a database.
  * 
  * @author Zjef
- * @version 1.011
+ * @version 1.1
  */
 public class Database implements Serializable
 {
@@ -270,13 +274,32 @@ public class Database implements Serializable
 	{
 		return (Vector<Databasable>) toLoad.clone();
 	}
-
+	
+	protected void removeFromLoadList(Object object)
+	{
+		toLoad.remove(object);
+	}
+	
 	/**
-	 * Searches and returns one in the database that meets the specifications of the {@link Search}
-	 * @param search - criterion
-	 * @return object that matches the search criterion; <code>null</code> if no such object exists.
+	 * Reads the object specified in the search, but none of it's child objects
 	 */
-	synchronized public <T extends Databasable> T read(Search search)
+	synchronized public <T extends Databasable> T readSingle(Search search)
+	{
+		return read(search,new Class<?>[]{});
+	}
+	
+	/**
+	 * Reads the objects specified in the search, but none of it's child objects
+	 */
+	synchronized public <T extends Databasable> Vector<T> readAllSingle(Search search)
+	{
+		return readAll(search,new Class<?>[]{});
+	}
+	
+	/**
+	 * Limits the read objects to the classes that are specified
+	 */
+	synchronized public <T extends Databasable> T read(Search search,Class<?>...toLoad)
 	{
 		Databasable d=getFromCache(search.getCl(),search.getID());
 		if (d!=null)
@@ -284,8 +307,28 @@ public class Database implements Serializable
 			return (T) d;
 		}
 		ResultSet res=query(search.getText()+" LIMIT 1");
-		Vector<T> objects=(Vector<T>) Extract.readResult(res,search.getCl(),this);
+		
+		Vector<T> objects=(Vector<T>) Extract.readResult(res,search.getCl(),this,toLoad==null?null:Arrays.asList(toLoad));
 		return objects.size()>0?objects.get(0):null;
+	}
+	
+	/**
+	 * Limits the read objects to the classes that are specified
+	 */
+	synchronized public <T extends Databasable> Vector<T> readAll(Search search,Class<?>...toLoad)
+	{
+		ResultSet res=query(search.getText());
+		return (Vector<T>) Extract.readResult(res,search.getCl(),this,toLoad==null?null:Arrays.asList(toLoad));
+	}
+	
+	/**
+	 * Searches and returns one in the database that meets the specifications of the {@link Search}
+	 * @param search - criterion
+	 * @return object that matches the search criterion; <code>null</code> if no such object exists.
+	 */
+	synchronized public <T extends Databasable> T read(Search search)
+	{
+		return this.<T>read(search,(Class<? extends Databasable>[])null);
 	}
 	
 	/**
@@ -295,8 +338,7 @@ public class Database implements Serializable
 	 */
 	synchronized public <T extends Databasable> Vector<T> readAll(Search search)
 	{
-		ResultSet res=query(search.getText());
-		return (Vector<T>) Extract.readResult(res,search.getCl(),this);
+		return readAll(search,null);
 	}
 
 	/**

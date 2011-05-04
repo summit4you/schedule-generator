@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Different types for fields in a table
  * @author Zjef
- * @version 2.1
+ * @version 2.2
  */
 enum FieldType implements Syntaxable
 {
@@ -20,7 +20,7 @@ enum FieldType implements Syntaxable
 	{
 		switch (this)
 		{	
-			case VARCHAR: return "VARCHAR(255) BINARY";
+			case VARCHAR: return "VARCHAR(255)";
 			default:return this.toString();
 		}
 	}
