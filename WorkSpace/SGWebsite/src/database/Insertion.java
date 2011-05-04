@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Syntax for inserting an element in an existing table
  * @author Zjef
- * @version 2.0
+ * @version 2.1
  */
 class Insertion implements Syntaxable
 {
@@ -49,6 +49,10 @@ class Insertion implements Syntaxable
 
 	protected void extractDatabasables(Object value)
 	{
+		if (value==null)
+		{
+			return;
+		}
 		if (value instanceof Databasable)
 		{
 			references.add((Databasable)value);
