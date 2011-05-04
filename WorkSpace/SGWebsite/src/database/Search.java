@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * Search criterion for a database search with the methods {@link Database#read(Search)} and {@link Database#readAll(Search)}
  * @author Zjef
- * @version 1.1
+ * @version 1.2
  */
 public class Search implements Serializable,Syntaxable
 {
@@ -19,6 +19,13 @@ public class Search implements Serializable,Syntaxable
 	private ID id;
 	private boolean like=false;
 	private boolean and=true;
+	private boolean caseSensitive=true;
+	
+	public Search setCaseSensitive(boolean caseSensitive)
+	{
+		this.caseSensitive=caseSensitive;
+		return this;
+	}
 	
 	/**
 	 * Enables or disables searches with wildcards, eg: "zoekterm%","%zoekterm","%zoekterm%"
@@ -200,7 +207,7 @@ public class Search implements Serializable,Syntaxable
 			text+=" WHERE ";
 			for (int i=0;i<getters.size();i++)
 			{
-				text+=Extract.methodToString(getters.get(i))+(like?" LIKE ":"=")+Extract.valueToString(results.get(i))+(and?" AND ":" OR ");
+				text+=(caseSensitive?"":"toupper(")+Extract.methodToString(getters.get(i))+(caseSensitive?"":")")+(like?" LIKE ":"=")+Extract.valueToString(results.get(i))+(and?" AND ":" OR ");
 			}
 			return text.substring(0,text.length()-(and?5:4));
 		}
