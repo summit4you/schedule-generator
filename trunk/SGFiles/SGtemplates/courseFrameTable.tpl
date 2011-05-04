@@ -4,11 +4,11 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		
 		<style type="text/css" title="currentStyle">
-		@import "js/datatables/css/demo_page.css";
-		@import "js/datatables/css/demo_table.css";
+		@import "../js/datatables/css/demo_page.css";
+		@import "../js/datatables/css/demo_table.css";
 		</style>
-		<script type="text/javascript" language="javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" language="javascript" src="js/datatables/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			/* Formating function for row details */
 			function fnFormatDetails ( oTable, nTr )
