@@ -644,8 +644,7 @@ Week 12 & 2/5  &	\textbf{Hoofdtaak:} programmeren\\
  & & ADAM: Zoekresultaten oplijsten uit de database in de search tab en ervoor zorgen dan de naam niet exact ingegeven moet worden. \\
  & & ALEXANDER: Log-out knop maken \\
  & & ALEXANDER: Pseudoservlet maken die lijst van vakken voor professoren en studenten maakt \\
- & & MATTHIAS: Zorgen dat de proffen niet dubbbelgeboekt zijn binnen de weekstructuur \\
- & & MATTHIAS: Zorgen dat de structuur die uit choco komt in een iCalendar gestoken wordt \\
+ & & MATTHIAS: Nieuw algoritme uitwerken en mogelijke problemen bedenken \\
 \hline 
 \end{tabular}
 \end{center}
@@ -875,9 +874,9 @@ Wekelijks zal de groep samenkomen om de ontwikkelingen van het project te bespre
 
 Tijdens het project zullen onderstaande documenten zeker worden afgeleverd.
 \begin{itemize}
-\item[-] Software Project Management Plans (SPMP)\\[-5mm]
-\item[-] Software Design Descriptions (SDD)\\[-5mm]
-\item[-] Software Requirements Specifications (SRS)\\[-5mm]
+\item[-] Software Project Management Plans (SPMP)
+\item[-] Software Design Descriptions (SDD)
+\item[-] Software Requirements Specifications (SRS)
 \end{itemize}
 
 Voor het opstellen van deze documenten wordt steeds gebruik gemaakt van de IEEE standaards vermeld in de referenties van dit document.
@@ -1465,5 +1464,91 @@ de deadlines voor 4 mei werden besproken: Zoals in het SPMP geschreven staat moe
 \end{itemize}
 
 Daarop werd de computer van Matthias geformatteerd omdat hij besmet was met een virus.
+
+\newpage
+\subsubsection{Vergadering van 02-05-2010}
+
+Punten op de agenda:
+\begin{itemize}
+	\item[-] Bespreken Algoritme
+	\item[-] Opmerkingen SRS
+	\item[-] Nieuwe methode voor aanpassen van gegevens bespreken 
+\end{itemize}
+
+Resultaten:
+\begin{itemize}
+	\item[-] Implementatie van eigen Backtrack algoritme uitgedacht, Matthias werkt het uit
+	\item[-] Aanpassingen voor SRS bepaald
+	\item[-] Nieuwe methode voor aanpassen van gegevens vastgelegd
+\end{itemize}
+
+\paragraph{Minutes 15:30 tot 19:00}
+
+\subparagraph{Bespreken Algoritme}
+
+Zjef ontdekte nieuwe functies in CHOCO waarmee het volgens hem mogelijk is om het algoritme te implementeren. Problemen volgens hem zijn dat het algoritme niet de intelligentie bevat die nodig is om een mooi lessenrooster te bekomen. Volgens hem is het wel niet zo veel werk om het algoritme te schrijven en de resultaten kunnen dus snel getest worden.
+
+Adam bedacht een backtracking algoritme zonder CHOCO dat er als volgt uitziet:
+
+\begin{tabular}{|p{\textwidth}|}
+\hline
+SubcourseBlock aanpassen zodat elk Block zijn eigen lengte heeft, geen standaardbloklengte, maar het moet wel een geheel aantal uren lang zijn (mss halve uren)
+Dit vermindert het aantal blokken dat moet geplaatst worden.
+Per SubcourseBlock een matrix bijhouden met zijn mogelijke uren en lokalen, zoals nu al in het algoritme zit (met getallen of objecten, don't care)
+Een voorkeurslokaal instellen voor elk subcourseBlock
+(mss en lokalen onderverdelen per gebouw en dan een voorkeurslokaal voor elk gebouw instellen + voorkeursgebouw. op die manier kan de afstand geminimaliseerd worden)
+Uit de martix alle onmogelijke waarden uitsmijten volgens de constraints die opgelegd worden
+\begin{itemize}
+	\item[-] Het lokaal moet groot genoeg zijn voor de geschatte groep studenten
+	\item[-] De hardware moet beschikbaar zijn in het lokaal
+\end{itemize}
+(deze twee moeten in de lus niet meer gecontroleerd worden)
+
+\textbf{LOOP}
+\begin{itemize}
+	\item[] Uit de martix alle onmogelijke waarden uitsmijten volgens de constraints die opgelegd worden:
+	\item[] 
+	\begin{itemize}
+		\item[-] De ingenomen plaats moet overal verwijderd worden 
+  	\item[-] Bij de andere vakken van dezelfde educator moet het ingenomen uur verwijderd worden 
+  	\item[-] Bij de andere vakken van de programma's die het vak krijgen moet het ingenomen uur verwijderd worden  
+	\end{itemize}
+  \item[] Vind het subcourse met de minste mogelijkheden \\
+  \item[]Als die nul mogelijkheden bevat, ga een stap omhoog en plaats het subcourseblok ergens anders. \\
+  De verwijderde mogelijkheden van de vorige subcourses moeten dan weer toegevoegd worden. \\
+  Dit kan door in de tijd-ruimtestructuur het nummer van de stap waar de mogelijkheid weggesmeten is op te slaan. \\
+  \item[]Plaats die subcourse zo dicht mogelijk bij zijn favoriet lokaal, (zo dicht mogelijk bij zijn favoriet uur)
+\end{itemize} 
+\textbf{END} \\
+
+\hline
+\end{tabular}
+
+\begin{itemize}
+	\item[-] Er kan een probleem optreden bij het backtracken door de sorteerstap. De vakken worden niet altijd in dezelfde volgorde toegekend. worden dan alle mogelijke oplossingen uitgeprobeerd, of is het niet meer gegarandeerd dat een oplossing gevonden wordt als ze bestaat.
+	\item[-] Neemt veel geheugen in om de volledige mogelijkheden-matrix op te slaan per subcourseblock.
+Een back-of-the-envelope berekening van het geheugen dat nodig is om alles op te slaan leverde een waarde van 760MB op. (40 uur, 1000 rooms, 10000 subcourses) - Er is nog geen mogelijkheid voorzien om alle lessen 
+\end{itemize}
+
+Alexander en Matthias bedachten een gelijkaardige methode waarbij de matrix met mogelijkheden bij elke stap gegenereerd wordt. Hiervoor wordt de tijd-ruimte matrix een keer bijgehouden, per professor zijn beschikbare uren opgeslaan en per programma studenten de beschikbare uren opgeslaan. Er was veel discussie over welke methode het efficiëntst was.
+
+Na een goddelijke ingeving van Alexander werd een gelijkaardige structuur van die van Adam ontdekt die geheugen-efficienter is. Door de tijd-ruimte matrix centraal op te slaan om de bezette lokalen op te slaan. De matrices voor een vak worden gemaakt wanneer het vak toebedeeld gaat worden en enkel de resterende mogelijkheden worden in elke knoop opgeslaan. Op die manier wordt minder geheugen opgeslaan naar het einde van het algoritme toe. In de professoren en programma's worden de bezette uren opgeslaan om daar geen dubbelboeking toe te laten. Matthias zal dit allemaal zeer goed beschrijven in een tekst voor het SDD. Tegen 4 mei
+
+\subparagraph{Opmerkingen SRS}
+
+Puntje over kwaliteitsgarantie en performance is nog niet beschreven in de SRS. Alexander stelde voor om bij kwaliteitsgarantie de JUnit tests te vermelden. Er moest beslist worden wat nu nog getest zou worden. We kwamen uit op de volgende functionaliteiten
+\begin{itemize}
+	\item[-] Database
+	\item[-] Session Tracking
+	\item[-] Algoritme
+	\item[-] XML
+	\item[-] Kalender Editor
+\end{itemize}
+Er werden geen performantie-eisen gevonden die binnen de tijdsbeperking van ons programma zouden kunnen gecontroleerd worden. daarom werd beslist om dit stuk uit het SRS weg te laten.
+
+\subparagraph{Nieuwe methode voor aanpassen van gegevens bespreken}
+
+Het aanpassen van de gegevens zal vanaf nu verlopen door het uploaden van tekstbestanden die in excell gegenereerd kunnen worden en dan op de server geparsed zullen worden om de nodige aanpassingen te doen. Er moet dan een mogelijkheid zijn om de files te uploaden (zowel overschrijvend als sommerend) en te downloaden.
+Later zal dan de mogelijkheid toegevoegd worden om enkele aanpassingen te doen.
 
  \end{document}
