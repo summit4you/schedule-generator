@@ -75,7 +75,7 @@ public class MainServlet extends HttpServlet {
 		}
 		else
 		{
-		    if (ps==null)
+		    if (ps==null) // add a check if pseudoservelt exists
 		    {
 		    	out.println("##Pseudo_Servlet_Not_Found##");
 		    } 

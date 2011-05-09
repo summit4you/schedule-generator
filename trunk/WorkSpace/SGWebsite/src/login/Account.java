@@ -16,9 +16,11 @@ public class Account implements Databasable,HTMLTablable
 	private String password;
 	private String language; 
 	// TODO vind hier is een mooiere manier voor
-	private Student student;
-	private Educator educator;
-	private Admin admin;
+//	private Student student;
+//	private Educator educator;
+//	private Admin admin;
+	
+	private Databasable data;
 	
 	private UserType type;
 	
@@ -34,16 +36,31 @@ public class Account implements Databasable,HTMLTablable
 		password=pass;
 	}
 	
-	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin,UserType type)
+//	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin,UserType type)
+//	{
+//		this.userName = name;
+//		this.password = pass;
+//		this.language = language;
+//		this.student = student;
+//		this.educator = educator;
+//		this.admin = admin;
+//		this.type=type;
+//	}
+	
+	public Account(String name,String pass,String language,Databasable data,UserType type)
 	{
 		this.userName = name;
 		this.password = pass;
 		this.language = language;
-		this.student = student;
-		this.educator = educator;
-		this.admin = admin;
+		this.data=data;
 		this.type=type;
 	}
+	
+	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin,UserType type)
+	{
+		
+	}
+	
 	
 	@OutDatabase
 	public void setUserName(String userName)
@@ -94,45 +111,45 @@ public class Account implements Databasable,HTMLTablable
 		return language;
 	}
 
-	@OutDatabase
-	public void setStudent(Student student)
-	{
-		this.student = student;
-	}
-	
-	@TableInput(order=2,text="##Student_Account##")
-	@InDatabase
-	public Student getStudent()
-	{
-		return student;
-	}
-	
-	@OutDatabase
-	public void setEducator(Educator educator)
-	{
-		this.educator = educator;
-	}
-	
-	@TableInput(order=3,text="##Educator_Account##")
-	@InDatabase
-	public Educator getEducator()
-	{
-		return educator;
-	}
-	
-	@OutDatabase
-	public void setAdmin(Admin admin)
-	{
-		this.admin = admin;
-	}
-	
-	@TableInput(order=4,text="##Admin_Account##")
-	@InDatabase
-	public Admin getAdmin()
-	{
-		return admin;
-	}
-	
+//	@OutDatabase
+//	public void setStudent(Student student)
+//	{
+//		this.student = student;
+//	}
+//	
+//	@TableInput(order=2,text="##Student_Account##")
+//	@InDatabase
+//	public Student getStudent()
+//	{
+//		return student;
+//	}
+//	
+//	@OutDatabase
+//	public void setEducator(Educator educator)
+//	{
+//		this.educator = educator;
+//	}
+//	
+//	@TableInput(order=3,text="##Educator_Account##")
+//	@InDatabase
+//	public Educator getEducator()
+//	{
+//		return educator;
+//	}
+//	
+//	@OutDatabase
+//	public void setAdmin(Admin admin)
+//	{
+//		this.admin = admin;
+//	}
+//	
+//	@TableInput(order=4,text="##Admin_Account##")
+//	@InDatabase
+//	public Admin getAdmin()
+//	{
+//		return admin;
+//	}
+//	
 	@OutDatabase
 	public void setType(UserType type)
 	{
@@ -144,6 +161,18 @@ public class Account implements Databasable,HTMLTablable
 	public UserType getType()
 	{
 		return type;
+	}
+	
+	@OutDatabase
+	public void setData(Databasable data)
+	{
+		this.data = data;
+	}
+	
+	@InDatabase
+	public Databasable getData()
+	{
+		return data;
 	}
 
 }
