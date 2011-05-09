@@ -1,14 +1,18 @@
 package calendar;
 
+import java.net.SocketException;
 import java.text.ParseException;
 import java.util.Calendar;
 import dataStructure.Building;
 import dataStructure.Room;
 import net.fortuna.ical4j.model.Date;
+import net.fortuna.ical4j.model.DateTime;
 import net.fortuna.ical4j.model.Property;
 import net.fortuna.ical4j.model.PropertyFactoryImpl;
 import net.fortuna.ical4j.model.component.VEvent;
+import net.fortuna.ical4j.model.property.DtEnd;
 import net.fortuna.ical4j.model.property.DtStart;
+import net.fortuna.ical4j.util.UidGenerator;
 
 /**
  * VEvent for subcourses.
@@ -27,6 +31,18 @@ public class SubCourseEvent
 		this.event=new VEvent(Transformation.calendarToDate(start),Transformation.calendarToDate(end),descr);
 		setLocation(building, room);
 		setEducator(educator);
+	}
+	
+	public SubCourseEvent()
+	{
+		event=new VEvent();
+		try
+		{
+			event.getProperties().add(new UidGenerator("1").generateUid());
+		} catch (SocketException e)
+		{
+			e.printStackTrace();
+		}
 	}
 	
 	protected SubCourseEvent(VEvent event)
@@ -95,7 +111,26 @@ public class SubCourseEvent
 	
 	public void setTime(String date,String start,String end,String dateFormat)
 	{
-		event.getStartDate().getDate().setTime(Transformation.strToDate(date, dateFormat, start).getTime());
-		event.getEndDate().getDate().setTime(Transformation.strToDate(date,dateFormat,end).getTime());
+		if (event.getStartDate()==null)
+		{
+			event.getProperties().add(new DtStart(new DateTime(Transformation.strToDate(date,dateFormat,start).getTime())));
+		}
+		else
+		{
+			event.getStartDate().getDate().setTime(Transformation.strToDate(date, dateFormat,start).getTime());
+		}
+		if (event.getEndDate()==null)
+		{
+			event.getProperties().add(new DtEnd(new DateTime(Transformation.strToDate(date,dateFormat,end).getTime())));
+		}
+		else
+		{
+			event.getEndDate().getDate().setTime(Transformation.strToDate(date, dateFormat,end).getTime());
+		}
+	}
+	
+	public void setSummary(String summary)
+	{
+		setProperty(Property.SUMMARY,summary);
 	}
 }
