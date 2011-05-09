@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
+
+import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
+
 import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.filter.Filter;
@@ -62,7 +65,7 @@ public class IcsCalendar
 	
 	public void addSubCourseEvent(SubCourseEvent event)
 	{
-		cal.getComponents().add(event);
+		cal.getComponents().add(event.getEvent());
 	}
 	
 	/**
@@ -108,6 +111,11 @@ public class IcsCalendar
 		return new Vector<VEvent>(new Filter(new HasPropertyRule(new Location(location))).filter(cal.getComponents(Component.VEVENT)));
 	}
 
+	public void removeEvent(VEvent event)
+	{
+		cal.getComponents().remove(event);
+	}
+	
 	public String getFilename()
 	{
 		return filename;
@@ -151,8 +159,9 @@ public class IcsCalendar
 		}
 	}
 	
-	public static void main(String[] ae)
+	@Override
+	public String toString()
 	{
-		System.out.println(new Uid("20110315T220026Z-1@fe80:0:0:0:3d3d:3820:d39b:1187!!").equals(new Uid("20110315T220026Z-1@fe80:0:0:0:3d3d:3820:d39b:1187%13")));
+		return cal.toString();
 	}
 }
