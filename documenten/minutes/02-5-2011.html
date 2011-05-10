@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
+<html>
+<head>
+<title>Vergadering 02-05-2011</title>
+</head>
+<body>
+<h1>02-05-2010: Algemene vergadering raad van bestuur</h1>
+
+<p>
+<b>Aanwezig</b>: </br>
+Alexander De Cock </br>
+Zjef Van de Poel </br>
+Adam Cooman (brak zijn persoonlijk record koppen met een ballon)</br>
+Matthias Caenepeel</br>
+</br>
+
+<b>Locatie:</b>Keuken Alexander en Matthias 
+</p>
+
+<h2>Punten op de agenda:</h2>
+<ul>
+<li>Bespreken Algoritme</li>
+<li>Opmerkingen SRS</li>
+<li>Nieuwe methode voor aanpassen van gegevens bespreken</li>
+</ul>
+
+<h2>Resultaten:</h2>
+<ul>
+<li>Implementatie van eigen Backtrack algoritme uitgedacht, Matthias werkt het uit</li>
+<li>Aanpassingen voor SRS bepaald</li>
+<li>Nieuwe methode voor aanpassen van gegevens vastgelegd</li>
+</ul>
+
+<h2> Minutes 15:30 tot 19:00</h2>
+<h3>Bespreken Algoritme</h3>
+<p>
+Zjef ontdekte nieuwe functies in CHOCO waarmee het volgens hem mogelijk is om het algoritme te implementeren.
+Problemen volgens hem zijn dat het algoritme niet de intelligentie bevat die nodig is om een mooi lessenrooster te bekomen. Volgens hem is het wel niet zo veel werk om het algoritme te schrijven en de resultaten kunnen dus snel getest worden.</br></br>
+
+Adam bedacht een backtracking algoritme zonder CHOCO dat er als volgt uitziet:
+
+<table border=1 style="border-collapse:collapse">
+<tr>
+<td>
+SubcourseBlock aanpassen zodat elk Block zijn eigen lengte heeft, geen standaardbloklengte, maar het moet wel een geheel aantal uren lang zijn (mss halve uren)</br>
+Dit vermindert het aantal blokken dat moet geplaatst worden.</br></br>
+
+Per SubcourseBlock een matrix bijhouden met zijn mogelijke uren en lokalen, zoals nu al in het algoritme zit (met getallen of objecten, don't care)</br></br>
+
+Een voorkeurslokaal instellen voor elk subcourseBlock</br>
+(mss en lokalen onderverdelen per gebouw en dan een voorkeurslokaal voor elk gebouw instellen +  voorkeursgebouw. op die manier kan de afstand geminimaliseerd worden)</br></br>
+Uit de martix alle onmogelijke waarden uitsmijten volgens de constraints die opgelegd worden</br>
+&nbsp;&nbsp;&nbsp;&nbsp;- Het lokaal moet groot genoeg zijn voor de geschatte groep studenten</br>
+&nbsp;&nbsp;&nbsp;&nbsp;- De hardware moet beschikbaar zijn in het lokaal</br>
+(deze twee moeten in de lus niet meer gecontroleerd worden)</br></br>
+<b>LOOP</b></br></br>
+&nbsp;&nbsp;Uit de martix alle onmogelijke waarden uitsmijten volgens de constraints die opgelegd worden:</br>
+&nbsp;&nbsp;- De ingenomen plaats moet overal verwijderd worden </br>
+&nbsp;&nbsp;- Bij de andere vakken van dezelfde educator moet het ingenomen uur verwijderd worden </br>
+&nbsp;&nbsp;- Bij de andere vakken van de programma's die het vak krijgen moet het ingenomen uur verwijderd worden </br></br>
+&nbsp;&nbsp;Vind het subcourse met de minste mogelijkheden </br></br>
+&nbsp;&nbsp;Als die nul mogelijkheden bevat, ga een stap omhoog en plaats het subcourseblok ergens anders. </br>
+&nbsp;&nbsp;De verwijderde mogelijkheden van de vorige subcourses moeten dan weer toegevoegd worden. </br>
+&nbsp;&nbsp;Dit kan door in de tijd-ruimtestructuur het nummer van de stap waar de mogelijkheid weggesmeten is op te slaan.</br></br>
+&nbsp;&nbsp;Plaats die subcourse zo dicht mogelijk bij zijn favoriet lokaal, (zo dicht mogelijk bij zijn favoriet uur)</br></br>
+<b>END</b></br></br>
+- Er kan een probleem optreden bij het backtracken door de sorteerstap. De vakken worden niet altijd in dezelfde volgorde toegekend. worden dan alle mogelijke oplossingen uitgeprobeerd, of is het niet meer gegarandeerd dat een oplossing gevonden wordt als ze bestaat.</br>
+- Neemt veel geheugen in om de volledige mogelijkheden-matrix op te slaan per subcourseblock.</br>
+Een back-of-the-envelope berekening van het geheugen dat nodig is om alles op te slaan leverde een waarde van 760MB op. (40 uur, 1000 rooms, 10000 subcourses)
+- Er is nog geen mogelijkheid voorzien om alle lessen 
+</td>
+</tr>
+</table>
+</br>
+
+Alexander en Matthias bedachten een gelijkaardige methode waarbij de matrix met mogelijkheden bij elke stap gegenereerd wordt. Hiervoor wordt de tijd-ruimte matrix een keer bijgehouden, per professor zijn beschikbare uren opgeslaan en per programma studenten de beschikbare uren opgeslaan.</br>
+er was veel discussie over welke methode het efficiëntst was.</br></br>
+
+Na een goddelijke ingeving van Alexander werd een gelijkaardige structuur van die van Adam ontdekt die geheugen-efficienter is. Door de tijd-ruimte matrix centraal op te slaan om de bezette lokalen op te slaan.</br>
+De matrices voor een vak worden gemaakt wanneer het vak toebedeeld gaat worden en enkel de resterende mogelijkheden worden in elke knoop opgeslaan. Op die manier wordt minder geheugen opgeslaan naar het einde van het algoritme toe.</br>
+In de professoren en programma's worden de bezette uren opgeslaan om daar geen dubbelboeking toe te laten.</br>
+Matthias zal dit allemaal zeer goed beschrijven in een tekst voor het SDD. <b>Tegen 4 mei</b></br>
+
+</p>
+
+<h3>Opmerkingen SRS</h3>
+<p>
+Puntje over kwaliteitsgarantie en performance is nog niet beschreven in de SRS. Alexander stelde voor om bij kwaliteitsgarantie de JUnit tests te vermelden. Er moest beslist worden wat nu nog getest zou worden. We kwamen uit op de volgende functionaliteiten</br>
+<ul>
+<li>Database</li>
+<li>Session Tracking</li>
+<li>Algoritme</li>
+<li>XML</li>
+<li>Kalender Editor</li>
+</ul>
+Er werden geen performantie-eisen gevonden die binnen de tijdsbeperking van ons programma zouden kunnen gecontroleerd worden. daarom werd beslist om dit stuk uit het SRS weg te laten.
+</p>
+
+<h3>Nieuwe methode voor aanpassen van gegevens bespreken</h3>
+<p>
+Het aanpassen van de gegevens zal vanaf nu verlopen door het uploaden van tekstbestanden die in excell gegenereerd kunnen worden en dan op de server geparsed zullen worden om de nodige aanpassingen te doen. Er moet dan een mogelijkheid zijn om de files te uploaden (zowel overschrijvend als sommerend) en te downloaden.</br>
+Later zal dan de mogelijkheid toegevoegd worden om enkele aanpassingen te doen.</br>
+</p>
+</body>
+</html>
+
+
