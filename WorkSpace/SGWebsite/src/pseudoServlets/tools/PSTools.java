@@ -1,5 +1,6 @@
 package pseudoServlets.tools;
 
+import java.util.Dictionary;
 import java.util.Vector;
 import pseudoServlets.PseudoServlet;
 import database.Databasable;
@@ -30,6 +31,16 @@ public class PSTools
 		for (Databasable i:options)
 		{
 			res+="<option value='"+i.getID().getValue()+"'>"+i.toString()+"</option>";
+		}
+		return res;
+	}
+	
+	public static String createLanguageOptions()
+	{
+		String res="";
+		for (language.Dictionary.Language i : language.Dictionary.Language.values())
+		{
+			res+="<option>"+i.toString()+"</option>";
 		}
 		return res;
 	}
