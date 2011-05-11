@@ -17,10 +17,17 @@ import htmlBuilder.Site;
 public class UserType implements DatabasableAsString
 {	
 	static private final String fileName="UserTypes.xml";
+	static private final String ps="ps";
+	static private final String da="da";
+	
+	static private final String[] psValues = {"Accounts","BuildingTable","CourseTable","EducatorTable","Search","Schedule","StudentTable"};
+	static private final String[] daValues = {};
 	
 	static protected XMLDocument typeDoc;
 	
 	protected Vector<String> pseudos;
+	protected Vector<String> dataAccess;
+	
 	protected String value;
 	
 	public UserType()
@@ -45,6 +52,30 @@ public class UserType implements DatabasableAsString
 		return doc;
 	}
 	
+	public static boolean isValidPs(String ps)
+	{
+		for(String p:psValues)
+		{
+			if (p.equals(ps))
+			{ 
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean isValidDa(String da)
+	{
+		for(String d:daValues)
+		{
+			if (d.equals(da))
+			{ 
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public Vector<String> getPseudos()
 	{
 		return pseudos;
@@ -56,12 +87,15 @@ public class UserType implements DatabasableAsString
 	}
 		
 	public boolean isAuthorized(String ps)
-	{
-		for(String p:pseudos)
+	{	
+		if (ps!=null)
 		{
-			if (p.equals(ps))
-			{ 
-				return true;
+			for(String p:pseudos)
+			{
+				if (p.equals(ps))
+				{ 
+					return true;
+				}
 			}
 		}
 		return false;
@@ -89,20 +123,29 @@ public class UserType implements DatabasableAsString
 	{
 		
 		pseudos = new Vector<String>();
+		dataAccess = new Vector<String>();
+		
 		XMLElement el = typeDoc.getElement("UserTypes."+value);
 		if (el!=null)
 		{
 			try
-			{
+			{	
 				for(XMLElement child:ElementWithChildren.class.cast(el).getElements())
 				{
-					pseudos.add(ElementWithValue.class.cast(child).getValue());
+					if (child.getName()==ps && isValidPs(ElementWithValue.class.cast(child).getValue()))
+					{
+						pseudos.add(ElementWithValue.class.cast(child).getValue());
+					}
+					else if (child.getName()==da && isValidDa(ElementWithValue.class.cast(child).getValue()))
+					{
+						dataAccess.add(ElementWithValue.class.cast(child).getValue());
+					}
 				}
 				this.value=el.getName();
 			}
 			catch(Exception e)
 			{
-				e.printStackTrace();
+				System.out.println(">>> UserType.loadFromValue: Unexpected element in file");
 			}
 		}		
 		
