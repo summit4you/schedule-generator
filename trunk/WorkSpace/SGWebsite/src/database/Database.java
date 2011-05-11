@@ -7,10 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-
-import edu.emory.mathcs.backport.java.util.Arrays;
 
 /**
  * Represents a MySQLDatabase<br>
@@ -285,7 +284,7 @@ public class Database implements Serializable
 	 */
 	synchronized public <T extends Databasable> T readSingle(Search search)
 	{
-		return read(search,new Class<?>[]{});
+		return (T) read(search,new Class[]{});
 	}
 	
 	/**
@@ -293,13 +292,13 @@ public class Database implements Serializable
 	 */
 	synchronized public <T extends Databasable> Vector<T> readAllSingle(Search search)
 	{
-		return readAll(search,new Class<?>[]{});
+		return readAll(search,new Class[]{});
 	}
 	
 	/**
 	 * Limits the read objects to the classes that are specified
 	 */
-	synchronized public <T extends Databasable> T read(Search search,Class<?>...toLoad)
+	synchronized public <T extends Databasable> T read(Search search,Class<? extends Databasable>...toLoad)
 	{
 		Databasable d=getFromCache(search.getCl(),search.getID());
 		if (d!=null)
@@ -315,7 +314,7 @@ public class Database implements Serializable
 	/**
 	 * Limits the read objects to the classes that are specified
 	 */
-	synchronized public <T extends Databasable> Vector<T> readAll(Search search,Class<?>...toLoad)
+	synchronized public <T extends Databasable> Vector<T> readAll(Search search,Class<? extends Databasable>...toLoad)
 	{
 		ResultSet res=query(search.getText());
 		return (Vector<T>) Extract.readResult(res,search.getCl(),this,toLoad==null?null:Arrays.asList(toLoad));
