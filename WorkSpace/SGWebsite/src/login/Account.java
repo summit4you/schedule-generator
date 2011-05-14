@@ -15,10 +15,6 @@ public class Account implements Databasable,HTMLTablable
 	private String userName;
 	private String password;
 	private String language; 
-	// TODO vind hier is een mooiere manier voor
-//	private Student student;
-//	private Educator educator;
-//	private Admin admin;
 	
 	private Databasable data;
 	

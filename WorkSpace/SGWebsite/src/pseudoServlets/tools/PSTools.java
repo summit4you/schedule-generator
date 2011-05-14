@@ -2,6 +2,8 @@ package pseudoServlets.tools;
 
 import java.util.Dictionary;
 import java.util.Vector;
+
+import language.LanguageResolver;
 import pseudoServlets.PseudoServlet;
 import database.Databasable;
 import database.Database;
@@ -38,7 +40,7 @@ public class PSTools
 	public static String createLanguageOptions()
 	{
 		String res="";
-		for (language.Dictionary.Language i : language.Dictionary.Language.values())
+		for (String i : LanguageResolver.supportedLanguages())
 		{
 			res+="<option>"+i.toString()+"</option>";
 		}

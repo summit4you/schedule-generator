@@ -1,165 +1,122 @@
 package language;
 
+import java.io.IOException;
 
-import java.io.File;
+import java.text.ParseException;
 import java.util.Hashtable;
-import java.util.Vector;
 
-import javax.xml.bind.annotation.XmlElementDecl.GLOBAL;
-
-import other.Globals;
-import login.Account;
 import other.FileIO;
-/**
- * <b> Class that resolves language tags </b> </br>
- * A dictionary can be used to replace language tags that are present in the language file.
- * A language tag is of the following form '##tag##' and should be unique. An entry in a
- * language file should be as followed '##tag##=replacement;'. Every language will have its 
- * own file with tags. Now only English is supported. 
- *  
- * @author Alexander
- * @version 1.0
- */
 
+/**
+ * <b>HashTable containing LanguageTags as keys and Strings as values </b> </br>
+ * A dictionary is used by a LanguageResolver to translate language tags to a chosen
+ * language. Normally Dictionaries are constructed from a a language file. These
+ * files have a .l extension. Entries of a language file have to be from the following
+ * form ##languageTag##=value; . The language of the dictionary will be the same as
+ * the filename (without the extension).
+ * 
+ *  
+ * 
+ * @author Alexander
+ * @version 2.0
+ * @see {@link LanguageResolver}, {@link LanguageTag}
+ */
 public class Dictionary
-{
-	public static enum Language {english,dutch};
+{	
+	private static final String excMessage=">>>Dictionary: Following language file could not be parsed: ";
 	
-	final public static String languageFileExtension=".l";
+	private String language;
 	
-	private static Vector<Dictionary> dictionaries;	
+	private Hashtable<String, String> content;
 	
-	private Language language;
-	
-	private Hashtable<String, String> table;
-	
-	public static void initDictionaries()
+	Dictionary()
 	{
-		dictionaries = new Vector<Dictionary>();
-		for (File f:new File(Globals.languagePath).listFiles())
-		{
-			if (f.isFile() && f.getName().contains(".l"))
-			{
-				dictionaries.add(new Dictionary(f.getName().replace(".l", "")));
-			}
-		}
+		setLanguage("Undefined");
+		this.setContent(new Hashtable<String, String>());
 	}
 	
-	public static Dictionary getDictionary(String language)
+	Dictionary(String language,String filePath) throws ParseException,IOException
 	{
-		for(Dictionary d: dictionaries)
-		{
-			if (d.getLanguage().toString().equals(language))
-			{
-				return d;
-			}
-		}
-		return null;
+		this.setLanguage(language);
+		this.setContent(loadContentFromFile(filePath));
 	}
 	
-	private void initTable()
+	/**
+	* Used to construct the content of a dictionary out of a language file. If the 
+	* language file can not be read a IOException is thrown. If an entry of the
+	* file can not be parsed the entry is skipped and the stack trace is printed.
+	* Other entries are still read.
+	*/
+	static private Hashtable<String, String> loadContentFromFile(String filePath) throws IOException
 	{
-		table=new Hashtable<String, String>();
-		String filePath=new String(Globals.languagePath+"/"+language.toString()+languageFileExtension);
-		String content = FileIO.readFile(filePath);
+		int index1=-1;
+		int index2=-1;
 		
-		int index1;
-		int index2;
-		
-		while ((index1=content.indexOf(";"))!=-1)
+		Hashtable<String, String> content=new Hashtable<String, String>();
+		try
 		{
-			String line = content.substring(0,index1);
-			content=content.substring(index1+1);
-			index2 = line.indexOf("=");
-			table.put(line.substring(line.indexOf("##"), index2),line.substring(index2+1,index1));
+			String file = FileIO.readFileWithException(filePath);
+				while ((index1=file.indexOf(";"))!=-1)
+				{
+					try
+					{
+						String line = file.substring(0,index1);
+						file=file.substring(index1+1);
+						index2 = line.indexOf("=");
+						content.put((line.substring(line.indexOf("##"), index2)),line.substring(index2+1,index1));
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+				return content;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new IOException();
 			
 		}
 	}
 	
-	public static Language toLanguage(String string)
+
+	/**
+	 * Used to get the value corresponding to a given LanguageTag. If the LanguagTag
+	 * is not present in the dictionary, the tag it self is returned. This makes
+	 * that unresolved LanguageTags stay present in the text.
+	 */
+	public String lookUp(LanguageTag key)
 	{
-		for (Language l: Language.values())
+		if (content.get(key.toString())==null)
 		{
-			if (l.toString().equals(string))
-			{
-				return l;
-			}
+			return key.toString();
 		}
-		return Language.english;
-	}
- 	
-	public Dictionary(Language language)
-	{
-		setLanguage(language);
-		initTable();
-	}
-	
-	public Dictionary(String language)
-	{
-		setLanguage(toLanguage(language));
-		initTable();
+		else
+		{
+			return content.get(key.toString());
+		}
 	}
 
-	public void setLanguage(Language language)
+	public void setLanguage(String language)
 	{
 		this.language = language;
-		initTable();
 	}
 
-	public Language getLanguage()
+	public String getLanguage()
 	{
 		return language;
 	}
-	
-	public String lookUp(String key)
+
+	public void setContent(Hashtable<String, String> content)
 	{
-		return table.get(key);
+		this.content = content;
+	}
+
+	public Hashtable<String, String> getContent()
+	{
+		return content;
 	}
 	
-	public boolean checkTag(String key)
-	{
-		return table.containsKey(key);
-	}
 	
-	public boolean checkValue(String value)
-	{
-		return table.containsValue(value);
-	}
-	
-	public String replaceLanguageTag(String text,String tag)
-	{
-		return text.replaceAll(tag, table.get(tag));
-	}
-	
-	public String replaceLanguageTags(String text,Vector<String> tags)
-	{
-		for(String t:tags)
-		{
-			text=replaceLanguageTag(text,t);
-		}
-		return text;
-	}
-	
-	public String translatePage(String text)
-	{
-		String[] arr = text.split("##");
-		for (int i = 1; i < arr.length; i+=2)
-		{
-			String res= table.get("##"+arr[i]+"##");
-			if (res==null)
-			{
-				arr[i] = "##"+arr[i]+"##";
-			}
-			else
-			{
-				arr[i] = res;
-			}
-		}
-		text = "";
-		for (String i : arr)
-		{
-			text+=i;
-		}
-		return text;
-	}
 }
