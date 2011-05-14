@@ -38,4 +38,15 @@ public class FileIO
 	    }
 	    return new String(buffer);
 	}
+	
+	public static String readFileWithException(String filePath) throws Exception
+	{
+	    byte[] buffer = new byte[(int) new File(filePath).length()];
+	    BufferedInputStream f = null;
+
+	    f = new BufferedInputStream(new FileInputStream(filePath));
+	    f.read(buffer);
+	    f.close(); 
+	    return new String(buffer);
+	}
 }

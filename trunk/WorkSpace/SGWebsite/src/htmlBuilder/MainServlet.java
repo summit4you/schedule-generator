@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import language.Dictionary;
+import language.LanguageResolver;
 import login.Account;
 import login.UserType;
 import database.Database;
@@ -30,11 +30,11 @@ public class MainServlet extends HttpServlet {
     
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
-		
+	
 	private String noMessage="";
 	private String errorMessage="##WrongID_Login##";
 	private String sessionExpieredMesssage="##Session_Expiered##";
-	
+		
 	public MainServlet() 
     {
         super();
@@ -45,8 +45,8 @@ public class MainServlet extends HttpServlet {
 	{
 		super.init();
 		UserType.initUserTypes();
-		Dictionary.initDictionaries();
 		PseudoServlet.initEverything();
+		LanguageResolver.LoadDictionaries();
 	}
     private Site makeLoginSite(String m)
     {
@@ -71,7 +71,7 @@ public class MainServlet extends HttpServlet {
 		if (id==null || ses==null) 
 		{
 			//TODO uit iframe gaan
-			out.println(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(noMessage).getHtmlCode()));
+			out.println(LanguageResolver.translate(makeLoginSite(noMessage).getHtmlCode(), Globals.defaultLanguage ));
 		}
 		else
 		{
@@ -83,11 +83,11 @@ public class MainServlet extends HttpServlet {
 		    {
 		    	if (ses.getAccount().getType().isAuthorized(ps))
 		    	{
-		    		out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses)));
+		    		out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses),ses.getAccount().getLanguage()));
 		    	}
 		    	else
 		    	{
-		    		out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage("##Access_Denied##"));
+		    		out.println(LanguageResolver.translate("##Access_Denied##",ses.getAccount().getLanguage()));
 		    	}
 		    	
 		    } 
@@ -95,8 +95,7 @@ public class MainServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
-			out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage("##Error_Occured##"));
-			
+			out.println(LanguageResolver.translate("##Error_Occured##",ses.getAccount().getLanguage()));
 		}
 		
 	}
@@ -123,17 +122,17 @@ public class MainServlet extends HttpServlet {
 				
 				if (acc==null)
 				{
-					out.println(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(errorMessage).getHtmlCode()));
+					out.println(LanguageResolver.translate(makeLoginSite(errorMessage).getHtmlCode(),Globals.defaultLanguage ));
 				}
 				else
 				{
 					Session ses=new Session(acc);
-					out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(ses.getAccount().getType().buildSite(ses).getHtmlCode()));
+					out.println(LanguageResolver.translate(ses.getAccount().getType().buildSite(ses).getHtmlCode(),ses.getAccount().getLanguage()));
 				}
 			}
 			else
 			{
-				out.write(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(noMessage).getHtmlCode()));
+				out.println(LanguageResolver.translate(makeLoginSite(noMessage).getHtmlCode(),Globals.defaultLanguage ));
 			}
 		}
 		else
@@ -141,7 +140,7 @@ public class MainServlet extends HttpServlet {
 			Session ses = Session.getSession(id);
 			if (ses==null)
 			{
-				out.write(Dictionary.getDictionary(Dictionary.Language.english.toString()).translatePage(makeLoginSite(sessionExpieredMesssage).getHtmlCode()));
+				out.println(LanguageResolver.translate(makeLoginSite(sessionExpieredMesssage).getHtmlCode(),Globals.defaultLanguage ));
 			}
 			else
 			{
@@ -151,7 +150,7 @@ public class MainServlet extends HttpServlet {
 			    } 
 			    else
 			    {
-			    	out.println(Dictionary.getDictionary(ses.getAccount().getLanguage()).translatePage(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses)));
+			    	out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses),ses.getAccount().getLanguage()));
 			    } 
 			}
 		} 

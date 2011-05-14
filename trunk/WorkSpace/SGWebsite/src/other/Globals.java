@@ -11,4 +11,6 @@ public class Globals
 	public static String databaseAdress="wilma.vub.ac.be/se5_1011";
 	public static String databaseName="se5_1011";
 	public static String databasePassword="nieveGroep";
+	
+	public static String defaultLanguage ="english";
 }
