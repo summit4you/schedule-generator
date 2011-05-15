@@ -1,5 +1,8 @@
 package dataStructure;
 
+import java.io.Serializable;
+import java.util.Vector;
+
 import database.*;
 
 
@@ -10,8 +13,12 @@ import database.*;
  * @author matthiascaenepeel
  * @version2.0
  */
-public class Hardware implements DatabasableAsString
+public class Hardware implements DatabasableAsString,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
+	public static Vector<Hardware> allHardware=loadHardwares();
+	
 	private String materiaaltype;
 	
 	public Hardware(String materiaaltype)
@@ -22,6 +29,19 @@ public class Hardware implements DatabasableAsString
 	public Hardware() 
 	{
 		
+	}
+	
+	private static Vector<Hardware> loadHardwares()
+	{
+		//TODO read from file
+		Vector<Hardware> hardware=new Vector<Hardware>();
+		hardware.add(new Hardware("bord"));
+		hardware.add(new Hardware("Spectrum Analyzer"));
+		hardware.add(new Hardware("wulpse vrouwen"));
+		hardware.add(new Hardware("groot bord"));
+		hardware.add(new Hardware("groter bord"));
+		hardware.add(new Hardware("grootste bord ter wereld"));
+		return hardware;
 	}
 	
 	@Override
