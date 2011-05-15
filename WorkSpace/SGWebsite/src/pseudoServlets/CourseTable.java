@@ -47,7 +47,7 @@ public class CourseTable extends TabAndList<Course>
 	@Override
 	public String getTabName() 
 	{
-		return Site.TabName.Courses.toLanguageTag();
+		return PseudoServlet.TabName.Courses.toLanguageTag();
 	}
 
 	@Override

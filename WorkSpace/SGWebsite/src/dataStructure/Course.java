@@ -18,6 +18,12 @@ public class Course implements Databasable,HTMLTablable
 	private Vector<Subcourse> subcourses;
 	private Vector<Program> programs;
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
+	
 	public Course(String name, Vector<Subcourse> subcourses,Educator responsible)
 	{
 		super();

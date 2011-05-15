@@ -31,6 +31,12 @@ public class Faculty implements Databasable
 		
 	}
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
+	
 	@InDatabase
 	public Vector<Program> getPrograms()
 	{

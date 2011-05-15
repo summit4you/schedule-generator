@@ -4,9 +4,12 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Vector;
 
+import com.hp.gagawa.java.elements.Input;
+
 import other.Globals;
 
 import dataStructure.*;
+import database.Databasable;
 
 public class CalendarTools
 {
@@ -51,27 +54,62 @@ public class CalendarTools
 	 * @param language
 	 * @return
 	 */
-	public static String GeneratePHPiCalendarLink(Student student,String language)
+//	public static String GeneratePHPiCalendarLink(Student student,String language)
+//	{
+//		// TODO parameters uitlezen uit XML bestand
+//		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
+//		link += CollectCalendarFiles(student);
+//		link += "&width=1024&lang=";
+//		link+=language;
+//		link+="&start=0800&end=1800&days=5";
+//		return link;
+//	}
+	
+	public static String GeneratePHPiCalendarLink(Databasable input,String language)
 	{
-		// TODO parameters uitlezen uit XML bestand
-		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
-		link += CollectCalendarFiles(student);
-		link += "&width=1024&lang=";
-		link+=language;
-		link+="&start=0800&end=1800&days=5";
-		return link;
+		if (input instanceof Student)
+		{
+			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
+			link += CollectCalendarFiles((Student.class.cast(input)));
+			link += "&width=1024&lang=";
+			link+=language;
+			link+="&start=0800&end=1800&days=5";
+			return link;
+		}
+		else if (input instanceof Educator) 
+		{
+			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
+			link += CollectCalendarFiles((Educator) input);
+			link += "&width=1024&lang=";
+			link+=language;
+			link+="&start=0800&end=1800&days=5";
+			return link;
+		}
+		else if (input instanceof Room) 
+		{
+			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
+			link += ((Room) input).getCalendarfile();
+			link += "&width=1024&lang=";
+			link+=language;
+			link+="&start=0800&end=1800&days=5";
+			return link;
+		}
+		else //ERROR!!
+		{
+			return null;
+		}
 	}
 	
-	public static String GeneratePHPiCalendarLink(Room room,String language)
-	{
-		// TODO parameters uitlezen uit XML bestand
-		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
-		link += room.getCalendarfile();
-		link += "&width=1024&lang=";
-		link+=language;
-		link+="&start=0800&end=1800&days=5";
-		return link;
-	}
+//	public static String GeneratePHPiCalendarLink(Room room,String language)
+//	{
+//		// TODO parameters uitlezen uit XML bestand
+//		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
+//		link += room.getCalendarfile();
+//		link += "&width=1024&lang=";
+//		link+=language;
+//		link+="&start=0800&end=1800&days=5";
+//		return link;
+//	}
 	
 	/**
 	 * Generates the link for the PHPiCalendar to show the schedule of an educator
@@ -79,16 +117,16 @@ public class CalendarTools
 	 * @param language
 	 * @return
 	 */
-	public static String GeneratePHPiCalendarLink(Educator educator,String language)
-	{
-		// TODO parameters uitlezen uit XML bestand
-		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
-		link += CollectCalendarFiles(educator);
-		link += "&width=1024&lang=";
-		link+=language;
-		link+="&start=0800&end=1800&days=5";
-		return link;
-	}
+//	public static String GeneratePHPiCalendarLink(Educator educator,String language)
+//	{
+//		// TODO parameters uitlezen uit XML bestand
+//		String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
+//		link += CollectCalendarFiles(educator);
+//		link += "&width=1024&lang=";
+//		link+=language;
+//		link+="&start=0800&end=1800&days=5";
+//		return link;
+//	}
 	
 	/**
 	 * Creates a string containing the calendar files, separated by comma's

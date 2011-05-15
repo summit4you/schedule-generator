@@ -43,6 +43,12 @@ public class Subcourse implements Databasable,HTMLTablable
 		neededHardware = new Vector<Hardware>();
 		educators = new Vector<Educator>();
 	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
 
 	@InDatabase
 	@TableInput(order=1,text="##Name_SubCourse_Table##")

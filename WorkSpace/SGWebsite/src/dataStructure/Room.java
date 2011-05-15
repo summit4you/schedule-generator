@@ -29,6 +29,12 @@ public class Room implements Databasable,HTMLTablable
 	{
 		return  (Vector<Hardware>) presentHardware.clone();
 	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
 
 	@OutDatabase(Hardware.class)
 	public void setPresentHardware(Vector<Hardware> presentHardware)

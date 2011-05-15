@@ -17,7 +17,7 @@ public class Hardware implements DatabasableAsString,Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
-	public static Vector<Hardware> allHardware=loadHardwares();
+	private static Vector<Hardware> allHardware=loadHardwares();
 	
 	private String materiaaltype;
 	
@@ -73,5 +73,15 @@ public class Hardware implements DatabasableAsString,Serializable
 	public void loadFromValue(String value) 
 	{
 		this.materiaaltype=value;
+	}
+
+	public static void setAllHardware(Vector<Hardware> allHardware)
+	{
+		Hardware.allHardware = allHardware;
+	}
+
+	public static Vector<Hardware> getAllHardware()
+	{
+		return allHardware;
 	}
 }

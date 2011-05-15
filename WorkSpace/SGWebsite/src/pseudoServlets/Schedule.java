@@ -5,6 +5,7 @@ import htmlBuilder.Site;
 import javax.servlet.http.HttpServletRequest;
 
 import dataStructure.*;
+import database.Databasable;
 import pseudoServlets.tools.*;
 import sessionTracking.Session;
 
@@ -21,28 +22,23 @@ public class Schedule extends PseudoServlet
 			Session session)
 	{
 		String response = new String();
-		if (session.getAccount().getStudent()!=null)
+		Databasable data = session.getAccount().getData();
+		if ((data instanceof dataStructure.Student)||(data instanceof dataStructure.Educator))
 		{
-			String link = CalendarTools.GeneratePHPiCalendarLink(session.getAccount().getStudent(), session.getAccount().getLanguage());
-			response = replaceTags(template, "LINK", link);
-		}
-		else if (session.getAccount().getEducator()!=null) 
-		{
-			String link = CalendarTools.GeneratePHPiCalendarLink(session.getAccount().getEducator(), session.getAccount().getLanguage());
+			String link = CalendarTools.GeneratePHPiCalendarLink(data, session.getAccount().getLanguage());
 			response = replaceTags(template, "LINK", link);
 		}
 		else
 		{
 			response = "You don't have a schedule";
 		}
-		
 		return response;
 	}
 
 	@Override
 	public String getTabName()
 	{
-		return Site.TabName.Schedule.toLanguageTag();
+		return PseudoServlet.TabName.Schedule.toLanguageTag();
 	}
 
 }

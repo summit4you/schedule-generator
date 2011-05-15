@@ -99,6 +99,12 @@ public class Student implements Databasable,HTMLTablable
 		studentNumber = newstudentNumber;
 	}
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
+	
 	@InDatabase
 	public Vector<Course> getCourses()
 	{
@@ -114,6 +120,7 @@ public class Student implements Databasable,HTMLTablable
 	public void addCourse(Course course)
 	{
 		courses.add(course);
+		//TODO zorg ervoor dat de subcourse ook weet dat ge ingeschreven zijt
 	}
 	
 	public void removeCourse(Course course)

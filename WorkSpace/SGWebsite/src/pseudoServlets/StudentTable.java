@@ -81,7 +81,7 @@ public class StudentTable extends TabAndList<Student>
 	@Override
 	public String getTabName()
 	{
-		return Site.TabName.Students.toLanguageTag();
+		return PseudoServlet.TabName.Students.toLanguageTag();
 	}
 
 }

@@ -30,6 +30,12 @@ public class Educator implements Databasable,HTMLTablable
 		this.subcourses = new Vector<Subcourse>();
 
 	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
 
 	public Educator()
 	{

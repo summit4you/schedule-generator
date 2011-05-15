@@ -3,7 +3,7 @@ package pseudoServlets;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import sessionTracking.Session;
-import htmlBuilder.Site.TabName;
+import htmlBuilder.Site;
 import htmlInterfaces.HTMLInterfaceTool;
 import htmlInterfaces.HTMLTablable;
 import database.Databasable;
