@@ -57,7 +57,7 @@ public class BuildingTable extends TabAndDrop<Building>
 	@Override
 	public String getTabName() 
 	{
-		return Site.TabName.Buildings.toLanguageTag();
+		return PseudoServlet.TabName.Buildings.toLanguageTag();
 	}
 
 	@Override

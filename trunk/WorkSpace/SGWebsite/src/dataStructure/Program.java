@@ -31,6 +31,12 @@ public class Program implements Databasable,HTMLTablable
 		
 	}
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
+	
 	@InDatabase
 	@TableInput(order=1,text="##Name_Program_Table##")
 	public String getName() 

@@ -10,22 +10,14 @@ public class Site
 {
 	private final String fileName="site.xml";
 	
-	public enum TabName
-	{
-		Login,Search,Schedule,Accounts,Buildings,Educators,Students,Courses,EditCalendar;
-		
-		public String toLanguageTag()
-		{
-			return "##"+toString()+"##";
-		}
-	}
-	
-	private final String tabTitle="{tabtitle}";
-	private final String tabContent="{tabcontent}";
-	private final String pageContent="{pagecontent}";
-	private final String frameSrc="{framesrc}";
-	private final String actionLogin="{actionlogin}";
-	private final String messageLogin="{messagelogin}";
+	private static final String tabTitle="{tabtitle}";
+	private static final String tabContent="{tabcontent}";
+	private static final String pageContent="{pagecontent}";
+	private static final String frameSrc="{framesrc}";
+	private static final String actionLogin="{actionlogin}";
+	private static final String messageLogin="{messagelogin}";
+	private static final String logout="{logout}";
+	private static final String logoutaction="{logoutaction}";
 	
 	private String htmlPage;
 	
@@ -34,6 +26,8 @@ public class Site
 	private String htmlFrame;
 	
 	private String loginForm;
+	
+	private String logoutForm;
 	
 	private String htmlcode;
 	
@@ -51,6 +45,7 @@ public class Site
 			htmlTab=ElementWithValue.class.cast(template.getElement("TAB")).getValue();
 			htmlFrame=ElementWithValue.class.cast(template.getElement("IFRAME")).getValue();
 			loginForm=ElementWithValue.class.cast(template.getElement("LOGIN")).getValue();
+			logoutForm=ElementWithValue.class.cast(template.getElement("LOGOUT")).getValue();
 			return true;
 		}
 		else
@@ -104,6 +99,22 @@ public class Site
 		return form.replace(messageLogin, message);
 	}
 	
+	public String noLogoutForm()
+	{
+		return htmlPage.replace(logout, "&nbsp;");
+	}
+	
+	public String createLogoutForm(String action)
+	{
+		return logoutForm.replace(logoutaction,action);
+		
+	}
+	
+	public String addLogoutForm(String action)
+	{
+		return htmlPage.replace(logout,createLogoutForm(action));
+	}
+	
 	private  void addContent(String content)
 	{
 		htmlcode=htmlcode.replace(pageContent, content+pageContent);
@@ -120,11 +131,11 @@ public class Site
 		addContent(createTab(tabname,content));
 	}
 	
-	public void addTabWithIFrame(TabName tabname,String src)
+	public void addTabWithIFrame(PseudoServlet.TabName tabname,String src)
 	{
 		addContent(createTabWithIFrame(tabname.toLanguageTag(),src));
 	}	
-	public void addTab(TabName tabname,String content)
+	public void addTab(PseudoServlet.TabName tabname,String content)
 	{
 		addContent(createTab(tabname.toLanguageTag(),content));
 	}

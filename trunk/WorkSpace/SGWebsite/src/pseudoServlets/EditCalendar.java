@@ -181,6 +181,6 @@ public class EditCalendar extends PseudoServlet
 	@Override
 	public String getTabName()
 	{
-		return Site.TabName.EditCalendar.toLanguageTag();
+		return PseudoServlet.TabName.EditCalendar.toLanguageTag();
 	}
 }

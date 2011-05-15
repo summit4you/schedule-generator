@@ -30,11 +30,12 @@ public class MainServlet extends HttpServlet {
     
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
-	
+	public static final String logoutIdentifier="logout";
+		
 	private String noMessage="";
 	private String errorMessage="##WrongID_Login##";
 	private String sessionExpieredMesssage="##Session_Expiered##";
-		
+	
 	public MainServlet() 
     {
         super();
@@ -45,13 +46,15 @@ public class MainServlet extends HttpServlet {
 	{
 		super.init();
 		UserType.initUserTypes();
+		
 		PseudoServlet.initEverything();
 		LanguageResolver.LoadDictionaries();
 	}
     private Site makeLoginSite(String m)
     {
     	Site site=new Site();
-    	site.addTab(Site.TabName.Login, site.createLoginForm("?ps="+loginIdentifier, m));
+    	site.addTab(PseudoServlet.TabName.Login, site.createLoginForm("?ps="+loginIdentifier, m));
+    	site.noLogoutForm();
 		return site;
     }
         
@@ -78,7 +81,12 @@ public class MainServlet extends HttpServlet {
 		    if (ps==null) // add a check if pseudoservelt exists
 		    {
 		    	out.println("##Pseudo_Servlet_Not_Found##");
-		    } 
+		    }
+		    else if (ps.equals("logout")) 
+		    {
+				ses.end();
+				out.println(LanguageResolver.translate(makeLoginSite(noMessage).getHtmlCode(), ses.getAccount().getLanguage()));
+			}
 		    else
 		    {
 		    	if (ses.getAccount().getType().isAuthorized(ps))
@@ -96,6 +104,7 @@ public class MainServlet extends HttpServlet {
 		catch(Exception e)
 		{
 			out.println(LanguageResolver.translate("##Error_Occured##",ses.getAccount().getLanguage()));
+			
 		}
 		
 	}
@@ -155,5 +164,4 @@ public class MainServlet extends HttpServlet {
 			}
 		} 
 	}
-
 }

@@ -20,6 +20,16 @@ import sessionTracking.Session;
 public abstract class PseudoServlet
 {	
 	public static enum RequestType {GET,POST};
+	public enum TabName
+	{
+		Login,Search,Schedule,Accounts,Buildings,Educators,Students,Courses,EditCalendar, MyCoursesStudent, MyAccount, MyCoursesEducator, ConstraintsEducator;
+		
+		public String toLanguageTag()
+		{
+			return "##"+toString()+"##";
+		}
+	}
+
 	final public static String pseudoServletParamTag="ps";
 	
 	private static Vector<PseudoServlet> pseudoServlets;	
@@ -46,7 +56,7 @@ public abstract class PseudoServlet
 	{
 		Vector<PseudoServlet> pseudos=new Vector<PseudoServlet>(); 
 		//add your pseudoServlets to this vector!
-		pseudos.add(new SingleTable<Account>(Account.class,Site.TabName.Accounts));
+		pseudos.add(new SingleTable<Account>(Account.class,PseudoServlet.TabName.Accounts));
 		pseudos.add(new Search());
 		pseudos.add(new Schedule());
 		pseudos.add(new EducatorTable());

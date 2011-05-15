@@ -31,6 +31,11 @@ public class Building implements Databasable,HTMLTablable
 		rooms = new Vector<Room>();
 	}
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
 	
 	@InDatabase
 	@TableInput(order=1,text="##Name_Building_Table##")

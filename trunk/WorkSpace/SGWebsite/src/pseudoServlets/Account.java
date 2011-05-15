@@ -17,10 +17,10 @@ import htmlBuilder.Site;
  * @author Adam
  *
  */
-public class PSAccount extends PseudoServlet
+public class Account extends PseudoServlet
 	{
 		
-		public PSAccount()
+		public Account()
 		{
 			templateFile="account.tpl";
 		}
@@ -95,7 +95,7 @@ public class PSAccount extends PseudoServlet
 		@Override
 		public String getTabName()
 		{
-			return null; //Site.TabName.MyAccount.toLanguageTag();
+			return PseudoServlet.TabName.MyAccount.toLanguageTag();
 		}
 
 }
