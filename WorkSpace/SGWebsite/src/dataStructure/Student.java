@@ -3,6 +3,7 @@ package dataStructure;
 import htmlInterfaces.HTMLTablable;
 import htmlInterfaces.HTMLTablable.*;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import database.*;
@@ -11,8 +12,10 @@ import database.*;
  * @author matthiascaenepeel
  * @version2.0
  */
-public class Student implements Databasable,HTMLTablable
+public class Student implements Databasable,HTMLTablable,DatabasableWithOwnID,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private int studentNumber;
 	private String firstName;
 	private String surName;
@@ -88,21 +91,15 @@ public class Student implements Databasable,HTMLTablable
 	
 	@InDatabase
 	@TableInput(order=3,text="##Number_Student_Table##")
-	public int getStudentNumber()
+	public int getstudentNumber()
 	{
 		return studentNumber;
 	}
 	
 	@OutDatabase
-	public void setStudentNumber(int newstudentNumber)
+	public void setstudentNumber(int newstudentNumber)
 	{
 		studentNumber = newstudentNumber;
-	}
-	
-	@Override
-	public boolean equals(Object obj)
-	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 	
 	@InDatabase
@@ -120,7 +117,6 @@ public class Student implements Databasable,HTMLTablable
 	public void addCourse(Course course)
 	{
 		courses.add(course);
-		//TODO zorg ervoor dat de subcourse ook weet dat ge ingeschreven zijt
 	}
 	
 	public void removeCourse(Course course)
@@ -141,5 +137,16 @@ public class Student implements Databasable,HTMLTablable
 	{
 		return id;
 	}
-}
 
+	@Override
+	public int getOwnID()
+	{
+		return studentNumber;
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
+}
