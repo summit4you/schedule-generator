@@ -1,24 +1,36 @@
 <UserTypes>
-<Guest>
-<ps>Search</ps>
-</Guest>
+	<Guest>
+		<ps>Search</ps>
+	</Guest>
 
-<Student>
-<ps>Search</ps>
-<ps>Schedule</ps>
-</Student>
+	<Student>
+		<ps>Search</ps>
+		<ps>Schedule</ps>
+		<ps>Account</ps>
+	</Student>
 
-<Educator>
-<ps>Search</ps>
-<ps>Schedule</ps>
-</Educator>
+	<Educator>
+		<ps>Search</ps>
+		<ps>Schedule</ps>
+		<ps>Account</ps>
+	</Educator>
 
-<Admin>
-<ps>Search</ps>
-<ps>Schedule</ps>
-<ps>Accounts</ps>
-<ps>BuildingTable</ps>
-<ps>StudentTable</ps>
-<ps>CourseTable</ps>
-</Admin>
+	<Admin>
+		<MainAdmin>
+			<ps>Search</ps>
+			<ps>Schedule</ps>
+			<ps>Account</ps>
+			<ps>AccountTable</ps>
+			<ps>EditableAccountTable</ps>
+			<ps>BuildingTable</ps>
+			<ps>EditableBuildingTable</ps>
+			<ps>StudentTable</ps>
+			<ps>CourseTable</ps>
+		</MainAdmin>
+
+		<lesserAdmin>
+			<ps>Search</ps>
+			<ps>BuildingTable</ps>
+		</lesserAdmin>
+	</Admin>
 </UserTypes>
