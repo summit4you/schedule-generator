@@ -3,6 +3,7 @@ package dataStructure;
 import htmlInterfaces.HTMLTablable;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Vector;
 
 import database.*;
@@ -21,7 +22,7 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	private String surName;
 	private int employeeNumber;
 	private Vector<Course> courses;
-	private Vector<Subcourse> subcourses;
+	private Vector<Date> unavailableDates;
 
 	public Educator(String firstName, String surName, int employeeNumber)
 	{
@@ -30,8 +31,6 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 		this.surName = surName;
 		this.employeeNumber = employeeNumber;
 		this.courses = new Vector<Course>();
-		this.subcourses = new Vector<Subcourse>();
-
 	}
 
 	public Educator()
@@ -108,18 +107,6 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 		this.courses = (Vector<Course>) courses.clone();
 	}
 
-	@OutDatabase(Subcourse.class)
-	public void setSubcourses(Vector<Subcourse> subcourses)
-	{
-		this.subcourses = (Vector<Subcourse>) subcourses.clone();
-	}
-
-	@InDatabase
-	public Vector<Subcourse> getSubcourses()
-	{
-		return subcourses;
-	}
-	
 	@Override
 	public String toString() 
 	{
@@ -136,5 +123,27 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	public boolean equals(Object obj)
 	{
 		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+	}
+
+	@OutDatabase(Date.class)
+	public void setUnavailableDates(Vector<Date> unavailableDates) 
+	{
+		this.unavailableDates = (Vector<Date>) unavailableDates.clone();
+	}
+
+	@InDatabase
+	public Vector<Date> getUnavailableDates() 
+	{
+		return (Vector<Date>) unavailableDates.clone();
+	}
+	
+	public void addUnavailableDate(Date date)
+	{
+		unavailableDates.add(date);
+	}
+	
+	public void removeUnavailableDate(Date date)
+	{
+		unavailableDates.remove(date);
 	}
 }
