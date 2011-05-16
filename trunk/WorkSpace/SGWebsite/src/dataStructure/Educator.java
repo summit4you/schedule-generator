@@ -2,6 +2,7 @@ package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import database.*;
@@ -12,8 +13,10 @@ import database.*;
  * @version2.0
  */
 
-public class Educator implements Databasable,HTMLTablable
+public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String firstName;
 	private String surName;
 	private int employeeNumber;
@@ -30,12 +33,6 @@ public class Educator implements Databasable,HTMLTablable
 		this.subcourses = new Vector<Subcourse>();
 
 	}
-	
-	@Override
-	public boolean equals(Object obj)
-	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
-	}
 
 	public Educator()
 	{
@@ -46,13 +43,13 @@ public class Educator implements Databasable,HTMLTablable
 	
 	@InDatabase
 	@TableInput(order=3,text="##Number_Educator_Table##")
-	public int getEmployeeNumber()
+	public int getemployeeNumber()
 	{
 		return employeeNumber;
 	}
 	
 	@OutDatabase
-	public void setEmployeeNumber(int newemployeeNumber)
+	public void setemployeeNumber(int newemployeeNumber)
 	{
 		employeeNumber = newemployeeNumber;
 	}
@@ -126,6 +123,18 @@ public class Educator implements Databasable,HTMLTablable
 	@Override
 	public String toString() 
 	{
-		return getFirstName()+" "+getSurName()+"("+getEmployeeNumber()+")";
+		return getFirstName()+" "+getSurName();
+	}
+
+	@Override
+	public int getOwnID()
+	{
+		return employeeNumber;
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 }
