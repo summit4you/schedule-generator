@@ -10,19 +10,19 @@ import other.Globals;
  * <b>Static tool to resolve language tags used by the MainServlet</b> </br>
  * LanguageResolver translates text to a given language. This means he replaces
  * all language tags in the text by their corresponding value. For this purpose 
- * the languageResolver uses a set of dictionaries. These dictionaries have to
- * be created with LoadDictionaries.
+ * the languageResolver uses a set of dictionaries. These dictionaries are loaded
+ * upon class construction.
  *  
  * 
- * @author Alexander
- * @version 1.0
+ * @author Alexander 16/5 16:34
+ * @version 1.1
  * @see {@link Dictionary}, {@link LanguageTag}
  */
 public class LanguageResolver
 {	
 	static private Dictionary defaultDictionary=new Dictionary();
 	
-	static private  Vector<Dictionary> dictionaries;
+	static private  Vector<Dictionary> dictionaries=LoadDictionaries();
 	
 	static final public String languageFileExtension=".l";
 		
@@ -32,9 +32,9 @@ public class LanguageResolver
 	 * printed. Other files still get processed. The returned vector always contains one 
 	 * dictionary. Empty dictionaries can be present.
 	 */
-	public static void LoadDictionaries()
+	private static Vector<Dictionary> LoadDictionaries()
 	{
-		dictionaries = new Vector<Dictionary>();
+		Vector<Dictionary> dic = new Vector<Dictionary>();
 		try
 		{
 			for (File f:new File(Globals.languagePath).listFiles())
@@ -43,7 +43,7 @@ public class LanguageResolver
 				{
 					try
 					{
-						dictionaries.add(new Dictionary(f.getName().substring(0,f.getName().indexOf(".")),f.getAbsolutePath()));
+						dic.add(new Dictionary(f.getName().substring(0,f.getName().indexOf(".")),f.getAbsolutePath()));
 					} 
 					catch (Exception e)
 					{
@@ -56,10 +56,19 @@ public class LanguageResolver
 		{
 			e.printStackTrace();
 		}
-		if (dictionaries.isEmpty())
+		if (dic.isEmpty())
 		{
-			dictionaries.add(defaultDictionary);
+			dic.add(defaultDictionary);
 		}
+		return dic;
+	}
+	
+	/**
+	 * Method used to reload the dictionaries if language files are changed.
+	 */
+	public static void ReloadDictionaries()
+	{
+		dictionaries=LoadDictionaries();
 	}
 	
 	public static Dictionary getDictionary(String language)
@@ -134,7 +143,12 @@ public class LanguageResolver
 	{
 		return defaultDictionary;
 	}
-
+	
+	/**
+	 *  Sets the default dictionary which is used if a language isn't supported
+	 *  If null is given as a parameter nothing will happened the previous default
+	 *  is kept
+	 */
 	public static void setDefaultDictionary(Dictionary dic)
 	{
 		if (defaultDictionary!=null)
