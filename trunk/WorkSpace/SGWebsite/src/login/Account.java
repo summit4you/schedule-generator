@@ -1,17 +1,22 @@
 package login;
 
+import java.io.Serializable;
+
 import htmlInterfaces.HTMLTablable;
-import dataStructure.*;
 import database.Databasable;
-import database.DatabasableException;
+import database.Database;
 import database.ID;
 import database.InDatabase;
 import database.OutDatabase;
+import database.Search;
 
-public class Account implements Databasable,HTMLTablable
+public class Account implements Databasable,HTMLTablable,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private ID id;
 	
+	private int accountNumber;
 	private String userName;
 	private String password;
 	private String language; 
@@ -26,37 +31,13 @@ public class Account implements Databasable,HTMLTablable
 		password=null;
 	}
 	
-	public Account(String name,String pass)
-	{
-		userName=name;
-		password=pass;
-	}
-	
-//	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin,UserType type)
-//	{
-//		this.userName = name;
-//		this.password = pass;
-//		this.language = language;
-//		this.student = student;
-//		this.educator = educator;
-//		this.admin = admin;
-//		this.type=type;
-//	}
-	
-	public Account(String name,String pass,String language,Databasable data,UserType type)
+	public Account(String name,String pass,String language,UserType type)
 	{
 		this.userName = name;
 		this.password = pass;
 		this.language = language;
-		this.data=data;
 		this.type=type;
-	}
-	
-	public Account(String name,String pass,String language, Student student, Educator educator,Admin admin,UserType type)
-	{
-		
-	}
-	
+	}	
 	
 	@OutDatabase
 	public void setUserName(String userName)
@@ -107,45 +88,6 @@ public class Account implements Databasable,HTMLTablable
 		return language;
 	}
 
-//	@OutDatabase
-//	public void setStudent(Student student)
-//	{
-//		this.student = student;
-//	}
-//	
-//	@TableInput(order=2,text="##Student_Account##")
-//	@InDatabase
-//	public Student getStudent()
-//	{
-//		return student;
-//	}
-//	
-//	@OutDatabase
-//	public void setEducator(Educator educator)
-//	{
-//		this.educator = educator;
-//	}
-//	
-//	@TableInput(order=3,text="##Educator_Account##")
-//	@InDatabase
-//	public Educator getEducator()
-//	{
-//		return educator;
-//	}
-//	
-//	@OutDatabase
-//	public void setAdmin(Admin admin)
-//	{
-//		this.admin = admin;
-//	}
-//	
-//	@TableInput(order=4,text="##Admin_Account##")
-//	@InDatabase
-//	public Admin getAdmin()
-//	{
-//		return admin;
-//	}
-//	
 	@OutDatabase
 	public void setType(UserType type)
 	{
@@ -159,16 +101,40 @@ public class Account implements Databasable,HTMLTablable
 		return type;
 	}
 	
-	@OutDatabase
-	public void setData(Databasable data)
-	{
-		this.data = data;
-	}
-	
-	@InDatabase
 	public Databasable getData()
 	{
+		if (data==null)
+		{
+			loadData();
+		}
 		return data;
 	}
 
+	@OutDatabase
+	public void setAccountNumber(int accountNumber)
+	{
+		this.accountNumber = accountNumber;
+	}
+	
+	private void loadData()
+	{
+		if (type!=null)
+		{
+			Class c=type.getTypeClass();
+			if (c!=null && accountNumber!=0)
+			{
+				Database db=Database.getDB();
+				db.connect();
+				data=db.read(new Search(c,Integer.toString(accountNumber)));
+				db.disconnect();
+			}
+		}
+	}
+
+	@InDatabase
+	@TableInput(order=6,text="##UserName_Account##")
+	public int getAccountNumber()
+	{
+		return accountNumber;
+	}
 }

@@ -1,9 +1,11 @@
 package login;
 
+import java.io.Serializable;
 import java.util.Vector;
-
+import dataStructure.Educator;
+import dataStructure.Student;
+import database.Databasable;
 import database.DatabasableAsString;
-
 import pseudoServlets.PseudoServlet;
 import sessionTracking.Session;
 import xml.ElementWithChildren;
@@ -11,23 +13,25 @@ import xml.ElementWithValue;
 import xml.XMLDocument;
 import xml.XMLElement;
 import other.Globals; 
-
 import htmlBuilder.Site;
 
-public class UserType implements DatabasableAsString
+public class UserType implements DatabasableAsString,Serializable
 {	
-	static private final String fileName="UserTypes.xml";
-	static private final String ps="ps";
-	static private final String da="da";
+	private static final long serialVersionUID = 1L;
 	
-	static private final String[] psValues = {"Accounts","BuildingTable","CourseTable","EducatorTable","Search","Schedule","StudentTable"};
-	static private final String[] daValues = {};
+	static private final String fileName="UserTypes.xml";
+	
+	final public static String separator=";";
+	final public static String mainLabel="UserTypes";
+	final public static String studentType="Student";
+	final public static String educatorType="Educator";
+	final public static String adminType="Admin";
+	final public static String guestType="Guest";
 	
 	static protected XMLDocument typeDoc;
+	final private static Vector<String> userTypes=loadUserTypes();
 	
 	protected Vector<String> pseudos;
-	protected Vector<String> dataAccess;
-	
 	protected String value;
 	
 	public UserType()
@@ -35,45 +39,54 @@ public class UserType implements DatabasableAsString
 		pseudos = new Vector<String>();
 		value = new String();
 	}
+	
 	public UserType(String value)
 	{
-		this.loadFromValue(value);
+		pseudos=new Vector<String>();
+		this.value=value;
 	}
 	
-	public static void initUserTypes()
+	public Class<? extends Databasable> getTypeClass()
 	{
-		typeDoc=loadTypeDoc();
-	}
-	
-	public static XMLDocument loadTypeDoc()
-	{
-		XMLDocument doc=new XMLDocument(Globals.configPath+"/"+fileName);
-		doc.load();
-		return doc;
-	}
-	
-	public static boolean isValidPs(String ps)
-	{
-		for(String p:psValues)
+		if (this.value.equals(studentType))
 		{
-			if (p.equals(ps))
-			{ 
-				return true;
-			}
+			return Student.class;
 		}
-		return false;
+		else if(this.value.equals(educatorType))
+		{
+			return Educator.class;
+		}
+		return null;
 	}
 	
-	public static boolean isValidDa(String da)
+	private static Vector<String> loadUserTypes()
 	{
-		for(String d:daValues)
+		Vector<String> res=new Vector<String>();
+		res.add(studentType);
+		res.add(educatorType);
+		res.add(guestType);
+		if (typeDoc==null)
 		{
-			if (d.equals(da))
-			{ 
-				return true;
-			}
+			loadTypeDoc();
 		}
-		return false;
+		
+		ElementWithChildren admin=(ElementWithChildren) typeDoc.getElement(mainLabel+"."+adminType);
+		for (XMLElement i:admin.getElements())
+		{
+			res.add(adminType+"."+i.getName());
+		}
+		return res;
+	}
+	
+	public static Vector<String> getUserTypes()
+	{
+		return userTypes;
+	}
+	
+	private static void loadTypeDoc()
+	{
+		typeDoc=new XMLDocument(fileName);
+		typeDoc.load();
 	}
 	
 	public Vector<String> getPseudos()
@@ -88,21 +101,11 @@ public class UserType implements DatabasableAsString
 		
 	public boolean isAuthorized(String ps)
 	{	
-		if (ps!=null)
-		{
-			for(String p:pseudos)
-			{
-				if (p.equals(ps))
-				{ 
-					return true;
-				}
-			}
-		}
-		return false;
+		return pseudos.contains(ps);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Site buildSite(Session ses)
+	public Site buildSite(String dummy,Session ses)
 	{
 		Site site = new Site();
 		for(String p:pseudos)
@@ -121,10 +124,8 @@ public class UserType implements DatabasableAsString
 	@Override
 	public void loadFromValue(String value)
 	{
-		
 		pseudos = new Vector<String>();
-		dataAccess = new Vector<String>();
-		
+	
 		XMLElement el = typeDoc.getElement("UserTypes."+value);
 		if (el!=null)
 		{
@@ -132,22 +133,15 @@ public class UserType implements DatabasableAsString
 			{	
 				for(XMLElement child:ElementWithChildren.class.cast(el).getElements())
 				{
-					if (child.getName()==ps && isValidPs(ElementWithValue.class.cast(child).getValue()))
-					{
-						pseudos.add(ElementWithValue.class.cast(child).getValue());
-					}
-					else if (child.getName()==da && isValidDa(ElementWithValue.class.cast(child).getValue()))
-					{
-						dataAccess.add(ElementWithValue.class.cast(child).getValue());
-					}
+					pseudos.add(ElementWithValue.class.cast(child).getValue());
 				}
-				this.value=el.getName();
 			}
 			catch(Exception e)
 			{
-				System.out.println(">>> UserType.loadFromValue: Unexpected element in file");
+				pseudos.removeAllElements();
+				e.printStackTrace();
 			}
+			this.value=value;
 		}		
-		
 	}
 }
