@@ -94,4 +94,15 @@ public class Program implements Databasable,HTMLTablable
 	{
 		return getName();
 	}
+	
+	public void addCourse(Course course)
+	{
+		courses.add(course);
+	}
+	
+	public void removeCourse(Course course)
+	{
+		courses.remove(course);
+	}
+	
 }

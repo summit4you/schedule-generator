@@ -21,10 +21,11 @@ public class Subcourse implements Databasable,HTMLTablable
 	private int totalnumberHours; //Het hele aantal uren
 	private int blockHours; //Het minimum aantal uren per blok
 	private Vector<Hardware> neededHardware;
-	private Vector<Educator> educators;
+	private Course course;
+	private int beginweek;
+	private int hoursPerWeek;
 	
-	
-	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware, Vector<Educator> educators)
+	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware)
 	{
 		super();
 		Name = name;
@@ -33,15 +34,12 @@ public class Subcourse implements Databasable,HTMLTablable
 		this.totalnumberHours = totalnumberHours;
 		this.blockHours = blockHours; //Je kan best blockHours gewoon op 1 instellen, makkelijker om in te stellen!
 		this.neededHardware = (Vector<Hardware>) neededHardware.clone();
-		this.educators = (Vector<Educator>) educators.clone();
-		educators = new Vector<Educator>();
 		neededHardware = new Vector<Hardware>();
 	}
 	
 	public Subcourse()
 	{
 		neededHardware = new Vector<Hardware>();
-		educators = new Vector<Educator>();
 	}
 	
 	@Override
@@ -134,18 +132,6 @@ public class Subcourse implements Databasable,HTMLTablable
 	{
 		this.neededHardware = (Vector<Hardware>) neededHardware.clone();
 	}
-
-	@InDatabase
-	public Vector<Educator> getEducators()
-	{
-		return (Vector<Educator>) educators.clone();
-	}
-
-	@OutDatabase(Educator.class)
-	public void setEducators(Vector<Educator> educators)
-	{
-		this.educators =  (Vector<Educator>) educators.clone();
-	}
 	
 	private ID id;
 	
@@ -164,5 +150,39 @@ public class Subcourse implements Databasable,HTMLTablable
 	public String getCalendarfile()
 	{
 		return id.toString();
+	}
+
+	public void setCourse(Course course) 
+	{
+		this.course = course;
+	}
+
+	public Course getCourse() 
+	{
+		return course;
+	}
+	
+	@InDatabase
+	public int getBeginweek() 
+	{
+		return beginweek;
+	}
+
+	@OutDatabase
+	public void setBeginweek(int beginweek) 
+	{
+		this.beginweek = beginweek;
+	}
+
+	@InDatabase
+	public int getHoursPerWeek() 
+	{
+		return hoursPerWeek;
+	}
+
+	@OutDatabase
+	public void setHoursPerWeek(int hoursPerWeek)
+	{
+		this.hoursPerWeek = hoursPerWeek;
 	}
 }

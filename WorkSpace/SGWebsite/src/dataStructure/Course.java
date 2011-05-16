@@ -14,9 +14,10 @@ import database.*;
 public class Course implements Databasable,HTMLTablable
 {
 	private String name;
-	private Educator responsible;
+	private Educator educator;
 	private Vector<Subcourse> subcourses;
 	private Vector<Program> programs;
+	private int semester;
 	
 	@Override
 	public boolean equals(Object obj)
@@ -29,7 +30,7 @@ public class Course implements Databasable,HTMLTablable
 		super();
 		this.name = name;
 		this.subcourses = (Vector<Subcourse>) subcourses.clone();
-		this.responsible = responsible;
+		this.educator = responsible;
 		programs = new Vector<Program>();
 	}
 	
@@ -65,15 +66,21 @@ public class Course implements Databasable,HTMLTablable
 	
 	@InDatabase
 	@TableInput(order=2,text="##Responsible_Course_Table##")
-	public Educator getResponsible()
+	public Educator getEducator()
 	{
-		return responsible;
+		return educator;
 	}
 
 	@OutDatabase
-	public void setResponsible(Educator responsible)
+	public void setEducator(Educator educator)
 	{
-		this.responsible = responsible;
+		this.educator = educator;
+	}
+	
+	public void appointEducator(Educator educator)
+	{
+		this.educator = educator;
+		this.educator.getCourses().add(this);
 	}
 	
 	public void addSubcourse(Subcourse subcourse)
@@ -113,5 +120,17 @@ public class Course implements Databasable,HTMLTablable
 	public ID getID()
 	{
 		return id;
+	}
+
+	@OutDatabase
+	public void setSemester(int semester)
+	{
+		this.semester = semester;
+	}
+
+	@InDatabase
+	public int getSemester() 
+	{
+		return semester;
 	}
 }

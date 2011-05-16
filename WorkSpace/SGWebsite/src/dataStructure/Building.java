@@ -16,14 +16,11 @@ public class Building implements Databasable,HTMLTablable
 {
 	private String name;
 	private Vector<Room> rooms;
-	@Deprecated
-	private Vector<Building> neighbours;
 	
 	public Building(String newname)
 	{
 		name = newname;
 		rooms = new Vector<Room>();
-		//neighbours =new Vector<Building>();
 	}
 	
 	public Building()
@@ -62,12 +59,12 @@ public class Building implements Databasable,HTMLTablable
 		this.rooms = (Vector<Room>) rooms.clone();
 	}
 	
-	public void addRooms(Room room)
+	public void addRoom(Room room)
 	{
 		rooms.add(room);
 	}
 	
-	public void removeRooms(Room room)
+	public void removeRoom(Room room)
 	{
 		rooms.remove(room);
 	}

@@ -6,6 +6,11 @@ import java.util.Vector;
 
 import database.*;
 
+/**
+ * 
+ * @author matthiascaenepeel
+ * @version2.0
+ */
 public class Room implements Databasable,HTMLTablable
 {
 	private String location;
@@ -91,5 +96,15 @@ public class Room implements Databasable,HTMLTablable
 	public String toString()
 	{
 		return getLocation();
+	}
+	
+	public void addHardware(Hardware hardware)
+	{
+		presentHardware.add(hardware);
+	}
+	
+	public void removeHardware(Hardware hardware)
+	{
+		presentHardware.remove(hardware);
 	}
 }
