@@ -11,13 +11,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
+import dataStructure.Educator;
+import dataStructure.Student;
+
 /**
  * Represents a MySQLDatabase<br>
  * An object of this class provides methods to read and write objects from and to the database.<br>
  * Read the requirements at {@link Databasable} to enable classes to read and write their objects to a database.
  * 
  * @author Zjef
- * @version 1.1
+ * @version 1.2
  */
 public class Database implements Serializable
 {
@@ -52,6 +55,23 @@ public class Database implements Serializable
 		toLoad=new Vector<Databasable>();
 	}		
 	
+	/**
+	 * Circumvention method for testing
+	 */
+	public void createTestTables()
+	{
+		update(Extract.getNewTable(Student.class).getText());
+		tables.add(Extract.getTableName(Student.class));
+		update(Extract.getNewTable(Educator.class).getText());
+		tables.add(Extract.getTableName(Educator.class));
+	}
+	
+	public static Database getDB()
+	{
+		//TODO replace database values with a read from an xml file
+		return new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
+	}
+	
 	public String getURL()
 	{
 		return url;
@@ -83,8 +103,17 @@ public class Database implements Serializable
 			update(Extract.getNewTable(databasable.getClass()).getText());
 			tables.add(Extract.getTableName(databasable));
 		}
-		update("INSERT INTO "+Extract.getTableName(databasable)+" () VALUES ()");
-		databasable.setID(getLastInsertedID());
+		if (Extract.implementsSomething(databasable.getClass(),DatabasableWithOwnID.class))
+		{
+			int id=((DatabasableWithOwnID)databasable).getOwnID();
+			update("INSERT INTO "+Extract.getTableName(databasable)+" (ID) VALUES ("+id+")");
+			databasable.setID(new ID(id));
+		}
+		else
+		{
+			update("INSERT INTO "+Extract.getTableName(databasable)+" () VALUES ()");
+			databasable.setID(getLastInsertedID());
+		}	
 	}
 	
 	/**
@@ -98,6 +127,11 @@ public class Database implements Serializable
 	 */
 	synchronized public void write(Databasable databasable)
 	{
+		write(databasable,true);
+	}
+	
+	synchronized public void write(Databasable databasable,boolean updateRef)
+	{
 		if (databasable.getID()==null)
 		{
 			create(databasable);
@@ -109,7 +143,10 @@ public class Database implements Serializable
 			if (i.getID()==null)
 			{
 				create(i);
-				write(i);
+				if (updateRef)
+				{
+					write(i,true);
+				}
 			}
 		}
 		update(ins.getText());
