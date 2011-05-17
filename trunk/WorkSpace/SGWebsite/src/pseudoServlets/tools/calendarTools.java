@@ -13,6 +13,13 @@ import database.Databasable;
 
 public class CalendarTools
 {
+	
+	private final static String width="900";
+	private final static String days="5";
+	private final static String starthour="0800";
+	private final static String stophour="1800";
+	
+	
 	public static String generateEditablePHPiCalendarLink(String language,String popupLink)
 	{
 		String calFolder=Globals.calendarFolder;
@@ -23,7 +30,7 @@ public class CalendarTools
 		} catch (UnsupportedEncodingException e)
 		{
 		}
-		return "http://wilma.vub.ac.be/~se5_1011/phpicalendarEditable/week.php?width=1024&lang="+language+"&start=0800&end=1800&days=5&popupLink="+popupLink+"&calPath="+calFolder+"&cal=";
+		return "http://wilma.vub.ac.be/~se5_1011/phpicalendarEditable/week.php?width="+width+"&lang="+language+"&start="+starthour+"&end="+stophour+"&days="+days+"&popupLink="+popupLink+"&calPath="+calFolder+"&cal=";
 	}
 	
 	public static String generateEditablePHPiCalendarLink(Vector<Program>programs,String language,String popupLink)
@@ -71,27 +78,27 @@ public class CalendarTools
 		{
 			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
 			link += CollectCalendarFiles((Student.class.cast(input)));
-			link += "&width=1024&lang=";
+			link += "&width="+width+"&lang=";
 			link+=language;
-			link+="&start=0800&end=1800&days=5";
+			link+="&start="+starthour+"&end="+stophour+"&days="+days;
 			return link;
 		}
 		else if (input instanceof Educator) 
 		{
 			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
 			link += CollectCalendarFiles((Educator) input);
-			link += "&width=1024&lang=";
+			link += "&width="+width+"&lang=";
 			link+=language;
-			link+="&start=0800&end=1800&days=5";
+			link+="&start="+starthour+"&end="+stophour+"&days="+days;
 			return link;
 		}
 		else if (input instanceof Room) 
 		{
 			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
 			link += ((Room) input).getCalendarfile();
-			link += "&width=1024&lang=";
-			link+=language;
-			link+="&start=0800&end=1800&days=5";
+			link += "&width="+width+"&lang=";
+			link +=language;
+			link +="&start="+starthour+"&end="+stophour+"&days="+days;
 			return link;
 		}
 		else //ERROR!!
