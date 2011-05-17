@@ -5,6 +5,8 @@ import htmlInterfaces.HTMLTablable;
 import java.io.Serializable;
 import java.util.Vector;
 
+import calendar.IcsCalendar;
+
 import database.*;
 
 /**
@@ -152,5 +154,13 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	public void removeUnavailableDate()
 	{
 		//TODO
+	}
+	
+	//TODO kijk na of het volledig pad nog nodig is!
+	public IcsCalendar getCalender()
+	{
+		String fileName = id.toString();
+		fileName = 'e'+fileName+IcsCalendar.fileExtension; 
+		return new IcsCalendar(fileName);
 	}
 }
