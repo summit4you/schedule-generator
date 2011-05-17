@@ -59,12 +59,12 @@ public class Building implements Databasable,HTMLTablable
 		this.rooms = (Vector<Room>) rooms.clone();
 	}
 	
-	public void addRoom(Room room)
+	public void addRooms(Room room)
 	{
 		rooms.add(room);
 	}
 	
-	public void removeRoom(Room room)
+	public void removeRooms(Room room)
 	{
 		rooms.remove(room);
 	}
