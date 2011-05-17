@@ -1,6 +1,7 @@
 package htmlBuilder;
 
 import pseudoServlets.PseudoServlet;
+import sessionTracking.Session;
 import xml.ElementWithChildren;
 import xml.ElementWithValue;
 import xml.XMLDocument;
@@ -27,7 +28,7 @@ public class Site
 	
 	private String loginForm;
 	
-	private String logoutForm;
+	private static String logoutForm;
 	
 	private String htmlcode;
 	
@@ -99,20 +100,15 @@ public class Site
 		return form.replace(messageLogin, message);
 	}
 	
-	public String noLogoutForm()
+	public void noLogoutForm()
 	{
-		return htmlPage.replace(logout, "&nbsp;");
+		htmlcode=htmlcode.replace(logout, " ");
 	}
 	
-	public String createLogoutForm(String action)
+	public static String createLogoutForm(String code,Session ses)
 	{
-		return logoutForm.replace(logoutaction,action);
-		
-	}
-	
-	public String addLogoutForm(String action)
-	{
-		return htmlPage.replace(logout,createLogoutForm(action));
+		String form=logoutForm.replace(logoutaction,"?ps=logout&id="+ses.getSessionID());
+		return code.replace(logout,form);
 	}
 	
 	private  void addContent(String content)

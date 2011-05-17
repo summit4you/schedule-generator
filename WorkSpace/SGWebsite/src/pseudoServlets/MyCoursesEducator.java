@@ -71,35 +71,69 @@ public class MyCoursesEducator extends PseudoServlet
 	{
 		if (type==RequestType.POST)
 		{
-			String id = request.getParameter("id");
-			if (id!=null)
+			String edit = request.getParameter("edit");
+			if (edit==null)
 			{
+				String id = request.getParameter("Sid");
+				if (id!=null)
+				{
+					Database db = getDB();
+					db.connect();
+					Search s = new Search(Subcourse.class, id);
+					Subcourse res = db.read(s);
+					db.disconnect();
+					if ((session.getAccount().getData() instanceof Educator)&&(((Educator) session.getAccount().getData()).getSubcourses().contains(res)))
+					{
+						res.setName(request.getParameter("name"));
+						res.setProperties(request.getParameter("properties"));
+						res.setBlockHours(Integer.parseInt(request.getParameter("blockHours")));
+						res.setTotalnumberHours(Integer.parseInt(request.getParameter("totalNumberHours")));
+						Vector<Hardware> neededhardware = new Vector<Hardware>();
+						for (Hardware i : Hardware.getAllHardware())
+						{
+							if (request.getParameter(i.toValue())!=null);
+							{
+								Hardware hw = new Hardware(request.getParameter(i.toValue()));
+								neededhardware.add(hw);
+							}
+						}
+						res.setNeededHardware(neededhardware);
+						db.connect();
+						db.write(res);
+						db.disconnect();
+						// return the updated content of the popup
+						String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
+						response = replaceTags(response, "NAME", res.getName());
+						response = replaceTags(response, "PROPERTIES", res.getProperties());
+						response = replaceTags(response, "TOTALNUMBERHOURS", Integer.toString(res.getTotalnumberHours()));
+						response = replaceTags(response, "BLOCKHOURS", Integer.toString(res.getBlockHours()));
+						response = replaceTags(response, "HARDWARETABLE", makeHardwareTable(res));
+						response = replaceTags(response, "HARDWAREOPTIONS", makeHardwareOptions());
+						response = replaceTags(response, "SUBCOURSEID", res.getID().toString());
+						response = replaceTags(response, "NOTICE","##Edit_done##");
+						return response;
+					}
+					else
+					{
+						return "ERROR, you are not authorised to change that subcourse";
+					}
+				}
+				else
+				{
+					return "ERROR, no id sent";
+				}
+			}
+			else
+			{
+				// the edit button has been clicked, send the contents of the popup
+				String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
 				Database db = getDB();
 				db.connect();
-				Search s = new Search(Subcourse.class, id);
+				database.Search s = new Search(Subcourse.class, edit);
 				Subcourse res = db.read(s);
 				db.disconnect();
-				if ((session.getAccount().getData() instanceof Educator)&&(((Educator) session.getAccount().getData()).getSubcourses().contains(res)))
+				if (res!=null)
 				{
-					res.setName(request.getParameter("name"));
-					res.setProperties(request.getParameter("properties"));
-					res.setBlockHours(Integer.parseInt(request.getParameter("blockHours")));
-					res.setTotalnumberHours(Integer.parseInt(request.getParameter("totalNumberHours")));
-					Vector<Hardware> neededhardware = new Vector<Hardware>();
-					for (Hardware i : Hardware.getAllHardware())
-					{
-						if (request.getParameter(i.toValue())!=null);
-						{
-							Hardware hw = new Hardware(request.getParameter(i.toValue()));
-							neededhardware.add(hw);
-						}
-					}
-					res.setNeededHardware(neededhardware);
-					db.connect();
-					db.write(res);
-					db.disconnect();
-					// return the updated content of the popup
-					String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
 					response = replaceTags(response, "NAME", res.getName());
 					response = replaceTags(response, "PROPERTIES", res.getProperties());
 					response = replaceTags(response, "TOTALNUMBERHOURS", Integer.toString(res.getTotalnumberHours()));
@@ -107,26 +141,21 @@ public class MyCoursesEducator extends PseudoServlet
 					response = replaceTags(response, "HARDWARETABLE", makeHardwareTable(res));
 					response = replaceTags(response, "HARDWAREOPTIONS", makeHardwareOptions());
 					response = replaceTags(response, "SUBCOURSEID", res.getID().toString());
-					response = replaceTags(response, "NOTICE","##Edit_done##");
+					response = replaceTags(response, "NOTICE"," ");
 					return response;
-					
-					
 				}
-				else
+				else 
 				{
-					return "ERROR, you are not authorised to change that subcourse";
+					return "ERROR, subcourse corresponding to ID not found";
 				}
+				
+				
 			}
-			else
-			{
-				return "ERROR, no id sent";
-			}
+			
 		}
 		else
 		{
-				String edit = request.getParameter("edit");
-				if (edit==null)
-				{
+				
 					// a normal request has been sent, send the page back
 					String response = replaceTags(template,"MASTERSERVLET", createLink(session)); 
 					Databasable data = session.getAccount().getData();
@@ -139,35 +168,7 @@ public class MyCoursesEducator extends PseudoServlet
 					{
 						return "ERROR: you are not an educator";
 					}
-				}
-				else
-				{
-					// the edit button has been clicked, send the contents of the popup
-					String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
-					Database db = getDB();
-					db.connect();
-					database.Search s = new Search(Subcourse.class, edit);
-					Subcourse res = db.read(s);
-					db.disconnect();
-					if (res!=null)
-					{
-						response = replaceTags(response, "NAME", res.getName());
-						response = replaceTags(response, "PROPERTIES", res.getProperties());
-						response = replaceTags(response, "TOTALNUMBERHOURS", Integer.toString(res.getTotalnumberHours()));
-						response = replaceTags(response, "BLOCKHOURS", Integer.toString(res.getBlockHours()));
-						response = replaceTags(response, "HARDWARETABLE", makeHardwareTable(res));
-						response = replaceTags(response, "HARDWAREOPTIONS", makeHardwareOptions());
-						response = replaceTags(response, "SUBCOURSEID", res.getID().toString());
-						response = replaceTags(response, "NOTICE"," ");
-						return response;
-					}
-					else 
-					{
-						return "ERROR, subcourse corresponding to ID not found";
-					}
-					
-					
-				}
+				
 			
 		}
 	}

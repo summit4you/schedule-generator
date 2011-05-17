@@ -2,6 +2,7 @@ package htmlBuilder;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import other.Globals;
 
@@ -45,10 +46,8 @@ public class MainServlet extends HttpServlet {
 	public void init() throws ServletException
 	{
 		super.init();
-		UserType.initUserTypes();
-		
+		//UserType.loadUserTypes();
 		PseudoServlet.initEverything();
-		LanguageResolver.LoadDictionaries();
 	}
     private Site makeLoginSite(String m)
     {
@@ -61,6 +60,15 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		// TODO for testing purposes, print request
+		System.out.println("GET");
+		Enumeration<String> e = request.getParameterNames();
+		while (e.hasMoreElements())
+		{
+			String testprint = (String) e.nextElement();
+			System.out.println(testprint + " = " + request.getParameter(testprint));
+		}
+		
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    
@@ -69,8 +77,8 @@ public class MainServlet extends HttpServlet {
 		
 		Session ses = Session.getSession(id);
 		
-		try
-		{
+//		try
+//		{
 		if (id==null || ses==null) 
 		{
 			//TODO uit iframe gaan
@@ -100,18 +108,27 @@ public class MainServlet extends HttpServlet {
 		    	
 		    } 
 		}
-		}
-		catch(Exception e)
-		{
-			out.println(LanguageResolver.translate("##Error_Occured##",ses.getAccount().getLanguage()));
-			
-		}
+//		}
+//		catch(Exception e)
+//		{
+//			out.println(LanguageResolver.translate("##Error_Occured##",ses.getAccount().getLanguage()));
+//			
+//		}
 		
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		// TODO for testing purposes, print request
+		Enumeration<String> e = request.getParameterNames();
+		System.out.println("POST");
+		while (e.hasMoreElements())
+		{
+			String testprint = (String) e.nextElement();
+			System.out.println(testprint + " = " + request.getParameter(testprint));
+		}
+		
 		response.setContentType("text/html");
 	    PrintWriter out = response.getWriter();
 	    
@@ -123,12 +140,11 @@ public class MainServlet extends HttpServlet {
 			if (ps.equals(loginIdentifier))
 			{
 				// guest zit ook in de  database
-				Database db = new Database(Globals.databaseAdress,Globals.databaseName,Globals.databasePassword);
+				Database db = Database.getDB();
 				db.connect();
 				Search s = new Search(Account.class,"getUserName;getPassword",request.getParameter("username"),request.getParameter("password"));
 				Account acc = db.read(s);
 				db.disconnect();
-				
 				if (acc==null)
 				{
 					out.println(LanguageResolver.translate(makeLoginSite(errorMessage).getHtmlCode(),Globals.defaultLanguage ));
@@ -136,7 +152,8 @@ public class MainServlet extends HttpServlet {
 				else
 				{
 					Session ses=new Session(acc);
-					out.println(LanguageResolver.translate(ses.getAccount().getType().buildSite(ses).getHtmlCode(),ses.getAccount().getLanguage()));
+					System.out.println("HALLO!");
+					out.println(Site.createLogoutForm(LanguageResolver.translate(ses.getAccount().getType().buildSite(ses).getHtmlCode(),ses.getAccount().getLanguage()),ses));
 				}
 			}
 			else
@@ -159,7 +176,7 @@ public class MainServlet extends HttpServlet {
 			    } 
 			    else
 			    {
-			    	out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses),ses.getAccount().getLanguage()));
+			    	out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.POST, request,ses),ses.getAccount().getLanguage()));
 			    } 
 			}
 		} 
