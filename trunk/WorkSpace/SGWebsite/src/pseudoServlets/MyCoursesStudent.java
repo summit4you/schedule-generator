@@ -36,7 +36,7 @@ public class MyCoursesStudent extends PseudoServlet
 	protected void init()
 	{
 		super.init();
-		popuptemplate=loadTemplate("EditCourse.tpl");
+		popuptemplate=loadTemplate("AddCourse.tpl");
 	}
 	
 	public MyCoursesStudent()
@@ -63,7 +63,7 @@ public class MyCoursesStudent extends PseudoServlet
 		sel.setName(name);
 		if (name.equals("program"))
 		{
-		sel.setAttribute("onChange", "getCourses()");
+		sel.setId("program").setAttribute("onChange", "getCourses()");
 		}
 		for (Databasable i : list)
 		{
@@ -107,7 +107,7 @@ public class MyCoursesStudent extends PseudoServlet
 				// a course has been sent, add the course to the student
 				Database db = getDB();
 				db.connect();
-				database.Search s = new database.Search(Course.class,"getId",course);
+				database.Search s = new database.Search(Course.class,course);
 				Course res = db.read(s);
 				db.disconnect();
 				if (res!=null)
@@ -154,12 +154,12 @@ public class MyCoursesStudent extends PseudoServlet
 						// program has been sent, return the select with the correct options (courses from program)
 						Database db = getDB();
 						db.connect();
-						database.Search s = new database.Search(Faculty.class,"getId",faculty);
-						Faculty searchresult = db.read(s); 
+						database.Search s = new database.Search(Program.class,program);
+						Program searchresult = db.read(s); 
 						db.disconnect();
 						if (searchresult!=null)
 						{
-							return makeSelect(searchresult.getPrograms(),"program");
+							return makeSelect(searchresult.getCourses(),"course");
 						}
 						else
 						{
@@ -173,7 +173,7 @@ public class MyCoursesStudent extends PseudoServlet
 					// a faculty has been sent, return the select with the correct options (programs from faculty)
 					Database db = getDB();
 					db.connect();
-					database.Search s = new database.Search(Faculty.class,"getId",faculty);
+					database.Search s = new database.Search(Faculty.class,faculty);
 					Faculty searchresult = db.read(s); 
 					db.disconnect();
 					if (searchresult!=null)

@@ -125,4 +125,11 @@ public class Course implements Databasable,HTMLTablable
 	{
 		return id;
 	}
+	
+	
+	@Override
+	public String toString()
+	{
+		return this.name;
+	}
 }
