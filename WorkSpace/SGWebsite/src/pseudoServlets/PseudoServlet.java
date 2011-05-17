@@ -3,11 +3,22 @@ package pseudoServlets;
 import htmlBuilder.Site;
 
 import java.io.File;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import applet.Edit;
+import applet.EditVector;
+import applet.Wrapper;
 
 import login.Account;
 
+import database.Databasable;
 import database.Database;
 import other.FileIO;
 import other.Globals;
@@ -22,7 +33,7 @@ public abstract class PseudoServlet
 	public static enum RequestType {GET,POST};
 	public enum TabName
 	{
-		Login,Search,Schedule,Accounts,Buildings,Educators,Students,Courses,EditCalendar, MyCoursesStudent, MyAccount, MyCoursesEducator, ConstraintsEducator;
+		Login,Search,Schedule,AccountTableEditable,AccountTable,BuildingTable,EducatorTable,StudentTable,CourseTable,EditCalendar,MyCoursesStudent,Account,MyCoursesEducator,ConstraintsEducator;
 		
 		public String toLanguageTag()
 		{
@@ -56,7 +67,8 @@ public abstract class PseudoServlet
 	{
 		Vector<PseudoServlet> pseudos=new Vector<PseudoServlet>(); 
 		//add your pseudoServlets to this vector!
-		pseudos.add(new SingleTable<Account>(Account.class,PseudoServlet.TabName.Accounts));
+		pseudos.add(new AccountTable(false));
+		pseudos.add(new AccountTable(true));
 		pseudos.add(new Search());
 		pseudos.add(new Schedule());
 		pseudos.add(new EducatorTable());
@@ -64,6 +76,9 @@ public abstract class PseudoServlet
 		pseudos.add(new CourseTable());
 		pseudos.add(new StudentTable());
 		pseudos.add(new EditCalendar());
+		pseudos.add(new MyCoursesStudent());
+		pseudos.add(new MyCoursesEducator());
+		pseudos.add(new pseudoServlets.Account());
 		
 		for (PseudoServlet i:pseudos)
 		{
@@ -106,6 +121,65 @@ public abstract class PseudoServlet
 		return template.replaceAll("\\{"+toBeReplaced+"\\}",replacement);
 	}
 	
+	protected static void sendObjectToApplet(HttpServletResponse response,Serializable toWrite)
+	{
+		try 
+		{
+			response.setContentType("application/x-java-serialized-object");
+			OutputStream outstr = response.getOutputStream();
+			ObjectOutputStream oos = new ObjectOutputStream(outstr);
+			oos.writeObject(toWrite);
+			oos.flush();
+			oos.close();
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	protected static Object readObjectFromApplet(HttpServletRequest request)
+	{
+		try 
+		{
+			InputStream in = request.getInputStream();
+			ObjectInputStream inputFromApplet = new ObjectInputStream(in);
+			Object res=inputFromApplet.readObject();
+			in.close();
+			return res;
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	protected void receive(HttpServletRequest request,HttpServletResponse response)
+	{
+		try
+		{
+			EditVector wrappers=(EditVector)readObjectFromApplet(request);
+			Database db=getDB();
+			db.connect();
+			for (Wrapper i:wrappers)
+			{
+				if (i.getEdit()==Edit.deleted)
+				{
+					db.delete((Databasable) i.getObject());
+				}
+				else
+				{
+					db.write((Databasable) i.getObject(),false);
+				}
+			}
+			db.disconnect();
+			sendObjectToApplet(response,"Changes saved");
+		}
+		catch(Exception e)
+		{
+			sendObjectToApplet(response,"An error occured while uploading. Your changes might not have been saved");
+		}
+	}
+	
 	//*********public methods*********************************************************************
 	/**
 	 * Generates the link for this pseudoServlet<br>
@@ -123,7 +197,7 @@ public abstract class PseudoServlet
 	 */
 	public String getIdentifier()
 	{
-		return this.getClass().getSimpleName();
+		return this.getTabName().replaceAll("##","");
 	}
 
 	//*******public static methods*******************************************************************
@@ -188,4 +262,13 @@ public abstract class PseudoServlet
 	 * @return name to display in the tab
 	 */
 	abstract public String getTabName();
+	
+	/**
+	 * To implement by pseudos communicating with their corresponding applet
+	 */
+	public void processAppletRequest(HttpServletRequest request,HttpServletResponse response,Session session)
+	{
+		
+	}
+	
 }

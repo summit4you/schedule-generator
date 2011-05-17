@@ -41,7 +41,7 @@ public class Search extends PseudoServlet
 
 	
 	
-	private Vector<Databasable> DoSearch(Class cl, String firstName, String lastName,Database db)
+	private Vector<? extends Databasable> DoSearch(Class cl, String firstName, String lastName,Database db)
 	{
 		db.connect();
 		Vector<Databasable> searchresult = new Vector<Databasable>();
@@ -72,27 +72,6 @@ public class Search extends PseudoServlet
 		}
 		db.disconnect();
 		return searchresult;
-	}
-	
-	private String ShowResult(String type, Vector<Databasable> searchresult,String response,Session session)
-	{
-		//TODO make it work
-		if ((searchresult==null)||(searchresult.isEmpty()))
-		{
-			response = replaceTags(response, "CALENDAR", "##search_nothingfound##"); 
-		}
-		// als er maar 1 resultaat is, toon de kalender van de persoon
-		else if (searchresult.size()==1)
-		{
-			String link = CalendarTools.GeneratePHPiCalendarLink(searchresult.get(0), session.getAccount().getLanguage());
-			response = replaceTags(response, "CALENDAR", replaceTags(calendarTemplate, "LINK", link)); 
-		}
-		else
-		{	
-			response = replaceTags(response, "CALENDAR", replaceTags(scriptTemplate, "LINK", createLink(session)+"&type=student")); 
-			response = replaceTags(response, "SEARCHRESULTS", HTMLInterfaceTool.changeToDataTable("results", searchresult));
-		}
-		return response;
 	}
 	
 	@Override
