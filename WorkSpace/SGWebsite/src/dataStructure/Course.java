@@ -121,6 +121,7 @@ public class Course implements Databasable,HTMLTablable
 	
 	
 	@Override
+	@TableInput(order=3,text="##ID##")
 	public ID getID()
 	{
 		return id;
