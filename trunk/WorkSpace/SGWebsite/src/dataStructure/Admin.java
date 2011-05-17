@@ -2,6 +2,7 @@ package dataStructure;
 
 import database.*;
 
+@Deprecated
 public class Admin implements Databasable
 {
 	private String name; 

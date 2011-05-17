@@ -3,7 +3,6 @@ package dataStructure;
 import htmlInterfaces.HTMLTablable;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Vector;
 
 import database.*;
@@ -21,8 +20,8 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	private String firstName;
 	private String surName;
 	private int employeeNumber;
-	private Vector<Course> courses;
-	private Vector<Date> unavailableDates;
+	private Vector<Course> courses;	// courses for which the educator is responsible
+	private Vector<Subcourse> subcourses; // subcourses the educator has to give
 
 	public Educator(String firstName, String surName, int employeeNumber)
 	{
@@ -31,6 +30,8 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 		this.surName = surName;
 		this.employeeNumber = employeeNumber;
 		this.courses = new Vector<Course>();
+		this.subcourses = new Vector<Subcourse>();
+
 	}
 
 	public Educator()
@@ -107,6 +108,18 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 		this.courses = (Vector<Course>) courses.clone();
 	}
 
+	@OutDatabase(Subcourse.class)
+	public void setSubcourses(Vector<Subcourse> subcourses)
+	{
+		this.subcourses = (Vector<Subcourse>) subcourses.clone();
+	}
+
+	@InDatabase
+	public Vector<Subcourse> getSubcourses()
+	{
+		return subcourses;
+	}
+	
 	@Override
 	public String toString() 
 	{
@@ -124,26 +137,20 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	{
 		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
-
-	@OutDatabase(Date.class)
-	public void setUnavailableDates(Vector<Date> unavailableDates) 
+	
+	
+	public void getUnavailableDates() 
 	{
-		this.unavailableDates = (Vector<Date>) unavailableDates.clone();
-	}
-
-	@InDatabase
-	public Vector<Date> getUnavailableDates() 
-	{
-		return (Vector<Date>) unavailableDates.clone();
+		//TODO
 	}
 	
-	public void addUnavailableDate(Date date)
+	public void addUnavailableDate()
 	{
-		unavailableDates.add(date);
+		//TODO
 	}
 	
-	public void removeUnavailableDate(Date date)
+	public void removeUnavailableDate()
 	{
-		unavailableDates.remove(date);
+		//TODO
 	}
 }

@@ -14,10 +14,9 @@ import database.*;
 public class Course implements Databasable,HTMLTablable
 {
 	private String name;
-	private Educator educator;
+	private Educator responsible;
 	private Vector<Subcourse> subcourses;
 	private Vector<Program> programs;
-	private int semester;
 	
 	@Override
 	public boolean equals(Object obj)
@@ -30,7 +29,7 @@ public class Course implements Databasable,HTMLTablable
 		super();
 		this.name = name;
 		this.subcourses = (Vector<Subcourse>) subcourses.clone();
-		this.educator = responsible;
+		this.responsible = responsible;
 		programs = new Vector<Program>();
 	}
 	
@@ -66,21 +65,15 @@ public class Course implements Databasable,HTMLTablable
 	
 	@InDatabase
 	@TableInput(order=2,text="##Responsible_Course_Table##")
-	public Educator getEducator()
+	public Educator getResponsible()
 	{
-		return educator;
+		return responsible;
 	}
 
 	@OutDatabase
-	public void setEducator(Educator educator)
+	public void setResponsible(Educator responsible)
 	{
-		this.educator = educator;
-	}
-	
-	public void appointEducator(Educator educator)
-	{
-		this.educator = educator;
-		this.educator.getCourses().add(this);
+		this.responsible = responsible;
 	}
 	
 	public void addSubcourse(Subcourse subcourse)
@@ -109,6 +102,17 @@ public class Course implements Databasable,HTMLTablable
 	private ID id;
 	
 	
+	public void addProgram(Program p)
+	{
+		programs.add(p);
+	}
+	
+	public void removeProgram(Program p)
+	{
+		programs.remove(p);
+	}
+	
+	
 	@Override
 	public void setID(ID id)
 	{
@@ -120,17 +124,5 @@ public class Course implements Databasable,HTMLTablable
 	public ID getID()
 	{
 		return id;
-	}
-
-	@OutDatabase
-	public void setSemester(int semester)
-	{
-		this.semester = semester;
-	}
-
-	@InDatabase
-	public int getSemester() 
-	{
-		return semester;
 	}
 }
