@@ -12,7 +12,7 @@
 	</tr>
 	<tr>
 		<td>
-			<form action="{MASTERSERVLET}" method="post">
+			<form method="post" action="{MASTERSERVLET}">
 				<table align="left" border="0" style="borde-collapse:collapse">
 					<tr>
 						<td align="center" colspan="2">
@@ -24,7 +24,7 @@
 							##new_password##
 						</td>
 						<td>
-							<input type="text" name="pass1">
+							<input type="text" name="pass1"></input>
 						</td>
 					</tr>
 					<tr>
@@ -32,12 +32,12 @@
 							##confirm_password##
 						</td>
 						<td>
-							<input type="text" name="pass2">
+							<input type="text" name="pass2"></input>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" align="left">
-							<input type="submit">
+							<input type="submit"></input>
 						</td>
 					</tr>
 				</table>
@@ -59,7 +59,7 @@
 
 	<tr>
 		<td>
-			<form action="{MASTERSERVLET}" method="post">
+			<form method="post" action="{MASTERSERVLET}" >
 				<table align="left" border="0" style="borde-collapse:collapse">
 					<tr>
 						<td align="center">
@@ -73,7 +73,7 @@
 					</tr>
 					<tr>
 						<td colspan="2" align="left">
-							<input type="submit">
+							<input type="submit"></input>
 						</td>
 					</tr>
 				</table>

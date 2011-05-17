@@ -1,11 +1,11 @@
 <html>
 <head>
 
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/thickbox/thickbox.js"></script>
-<link rel="stylesheet" href="../js/thickbox/thickbox.css" type="text/css" media="screen" />
-<script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
-<script type="text/javascript" language="javascript" src="../js/datatables/jquery-ui-tabs.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/thickbox/thickbox.js"></script>
+<link rel="stylesheet" href="js/thickbox/thickbox.css" type="text/css" media="screen" />
+<script type="text/javascript" language="javascript" src="js/datatables/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="js/datatables/jquery-ui-tabs.js"></script>
 
 
 <script type="text/javascript" charset="utf-8">
@@ -14,7 +14,7 @@
 
 	$(document).ready(function() {
 		/* Init the table */
-		oTable = $('#freecourses').dataTable( );
+		oTable = $('#freecourses').dataTable({"bSort": false,"bFilter": false});
 	
 		/* Add a click handler to the rows - this could be used as a callback */
 		$('#freecourses tbody').click(function(event) {
@@ -29,7 +29,7 @@
 			/* Add a click handler for the delete row */
 			$('#delete').click( function() {
 				var anSelected = fnGetSelected( oTable );
-				oTable.fnDeleteRow( anSelected[0] );
+				
 				var xmlHttp;
 				if (window.XMLHttpRequest)
 				{
@@ -40,6 +40,7 @@
 					xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
 				}
 				var course=oTable.fnGetData(anSelected[0])[2];
+				oTable.fnDeleteRow( anSelected[0] );
 				var url="{MASTERSERVLET}"+"&courseid="+course;
 				xmlHttp.open("GET",url,false);
 				xmlHttp.send();
@@ -93,7 +94,7 @@
 						</td>
 					</form>
 						<td>
-							<input type="button" class="thickbox" value="##add_new_course##" alt="{MASTERSERVLET}&add=true&KeepThis=true&TB_iframe=true&height=400&width=600"></input>
+							<a class="thickbox" href="{MASTERSERVLET}&add=true&KeepThis=true&TB_iframe=true&height=400&width=600">##add_subcourse##</a>
 						</td>
 					</tr>
 			</table>

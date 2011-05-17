@@ -26,12 +26,12 @@
 		<td>
 			<table border="0" style="border-collapse:collapse" width="900">
 				<tr>
-					<form method="get" action="{MASTERSERVLET}">
+					<form method="post" action="{MASTERSERVLET}">
 						<td>
-							<select name="edit">{SUBOURCEOPTIONS}</select>
+							<select name="edit">{SUBCOURSEOPTIONS}</select>
 						</td>
 						<td>
-							<input type="submit" value="##Edit_Subcourse##"/>
+							<input type="submit" value="##Edit_Subcourse##"></input>
 						</td>
 					</form>
 					</tr>

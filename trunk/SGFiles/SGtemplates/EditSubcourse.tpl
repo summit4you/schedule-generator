@@ -1,10 +1,10 @@
 <html>
 <head>
-	<script type="text/javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" src="../js/thickbox/thickbox.js"></script>
-	<link rel="stylesheet" href="../js/thickbox/thickbox.css" type="text/css" media="screen" />
-	<script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/datatables/jquery-ui-tabs.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/thickbox/thickbox.js"></script>
+	<link rel="stylesheet" href="js/thickbox/thickbox.css" type="text/css" media="screen" />
+	<script type="text/javascript" language="javascript" src="js/datatables/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="js/datatables/jquery-ui-tabs.js"></script>
 
 	<script type="text/javascript" charset="utf-8">
 	var oTable;
@@ -119,7 +119,7 @@
 		</tr>
 		<tr>
 			<td colspan="4" align="center">
-				<input type="submit"/><input type="hidden" name="id" value="{SUBCOURSEID}"/>
+				<input type="submit"/><input type="hidden" name="Sid" value="{SUBCOURSEID}"/>
 			</td>
 		</tr>
 		<tr>
