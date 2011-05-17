@@ -71,56 +71,71 @@ public class MyCoursesEducator extends PseudoServlet
 	{
 		if (type==RequestType.POST)
 		{
-			String edit = request.getParameter("edit");
-			if (edit==null)
+			String id = request.getParameter("Sid");
+			if (id!=null)
 			{
-				String id = request.getParameter("Sid");
-				if (id!=null)
+				Database db = getDB();
+				db.connect();
+				Search s = new Search(Subcourse.class, id);
+				Subcourse res = db.read(s);
+				db.disconnect();
+				if ((session.getAccount().getData() instanceof Educator)&&(((Educator) session.getAccount().getData()).getSubcourses().contains(res)))
 				{
-					Database db = getDB();
-					db.connect();
-					Search s = new Search(Subcourse.class, id);
-					Subcourse res = db.read(s);
-					db.disconnect();
-					if ((session.getAccount().getData() instanceof Educator)&&(((Educator) session.getAccount().getData()).getSubcourses().contains(res)))
+					res.setName(request.getParameter("name"));
+					res.setProperties(request.getParameter("properties"));
+					res.setBlockHours(Integer.parseInt(request.getParameter("blockHours")));
+					res.setTotalnumberHours(Integer.parseInt(request.getParameter("totalNumberHours")));
+					Vector<Hardware> neededhardware = new Vector<Hardware>();
+					for (Hardware i : Hardware.getAllHardware())
 					{
-						res.setName(request.getParameter("name"));
-						res.setProperties(request.getParameter("properties"));
-						res.setBlockHours(Integer.parseInt(request.getParameter("blockHours")));
-						res.setTotalnumberHours(Integer.parseInt(request.getParameter("totalNumberHours")));
-						Vector<Hardware> neededhardware = new Vector<Hardware>();
-						for (Hardware i : Hardware.getAllHardware())
+						if (request.getParameter(i.toValue())!=null);
 						{
-							if (request.getParameter(i.toValue())!=null);
-							{
-								Hardware hw = new Hardware(request.getParameter(i.toValue()));
-								neededhardware.add(hw);
-							}
+							Hardware hw = new Hardware(request.getParameter(i.toValue()));
+							neededhardware.add(hw);
 						}
-						res.setNeededHardware(neededhardware);
-						db.connect();
-						db.write(res);
-						db.disconnect();
-						// return the updated content of the popup
-						String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
-						response = replaceTags(response, "NAME", res.getName());
-						response = replaceTags(response, "PROPERTIES", res.getProperties());
-						response = replaceTags(response, "TOTALNUMBERHOURS", Integer.toString(res.getTotalnumberHours()));
-						response = replaceTags(response, "BLOCKHOURS", Integer.toString(res.getBlockHours()));
-						response = replaceTags(response, "HARDWARETABLE", makeHardwareTable(res));
-						response = replaceTags(response, "HARDWAREOPTIONS", makeHardwareOptions());
-						response = replaceTags(response, "SUBCOURSEID", res.getID().toString());
-						response = replaceTags(response, "NOTICE","##Edit_done##");
-						return response;
 					}
-					else
-					{
-						return "ERROR, you are not authorised to change that subcourse";
-					}
+					res.setNeededHardware(neededhardware);
+					db.connect();
+					db.write(res);
+					db.disconnect();
+					// return the updated content of the popup
+					String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
+					response = replaceTags(response, "NAME", res.getName());
+					response = replaceTags(response, "PROPERTIES", res.getProperties());
+					response = replaceTags(response, "TOTALNUMBERHOURS", Integer.toString(res.getTotalnumberHours()));
+					response = replaceTags(response, "BLOCKHOURS", Integer.toString(res.getBlockHours()));
+					response = replaceTags(response, "HARDWARETABLE", makeHardwareTable(res));
+					response = replaceTags(response, "HARDWAREOPTIONS", makeHardwareOptions());
+					response = replaceTags(response, "SUBCOURSEID", res.getID().toString());
+					response = replaceTags(response, "NOTICE","##Edit_done##");
+					return response;
 				}
 				else
 				{
-					return "ERROR, no id sent";
+					return "ERROR, you are not authorised to change that subcourse";
+				}
+			}
+			else
+			{
+				return "ERROR, no id sent";
+			}
+		}
+		else
+		{
+			String Sid = request.getParameter("Sid");
+			if (Sid==null)
+			{
+				// a normal request has been sent, send the page back
+				String response = replaceTags(template,"MASTERSERVLET", createLink(session)); 
+				Databasable data = session.getAccount().getData();
+				if (data instanceof Educator)
+				{
+					response = replaceTags(response, "COURSES",ShowCourses((Educator) data));
+					return replaceTags(response, "SUBCOURSEOPTIONS", ListSubCourses((Educator) data));
+				}
+				else
+				{
+					return "ERROR: you are not an educator";
 				}
 			}
 			else
@@ -129,7 +144,7 @@ public class MyCoursesEducator extends PseudoServlet
 				String response = replaceTags(popuptemplate,"MASTERSERVLET", createLink(session));
 				Database db = getDB();
 				db.connect();
-				database.Search s = new Search(Subcourse.class, edit);
+				database.Search s = new Search(Subcourse.class, Sid);
 				Subcourse res = db.read(s);
 				db.disconnect();
 				if (res!=null)
@@ -148,28 +163,7 @@ public class MyCoursesEducator extends PseudoServlet
 				{
 					return "ERROR, subcourse corresponding to ID not found";
 				}
-				
-				
 			}
-			
-		}
-		else
-		{
-				
-					// a normal request has been sent, send the page back
-					String response = replaceTags(template,"MASTERSERVLET", createLink(session)); 
-					Databasable data = session.getAccount().getData();
-					if (data instanceof Educator)
-					{
-						response = replaceTags(response, "COURSES",ShowCourses((Educator) data));
-						return replaceTags(response, "SUBCOURSEOPTIONS", ListSubCourses((Educator) data));
-					}
-					else
-					{
-						return "ERROR: you are not an educator";
-					}
-				
-			
 		}
 	}
 	
@@ -200,6 +194,7 @@ public class MyCoursesEducator extends PseudoServlet
 		for (Hardware i : res.getNeededHardware())
 		{
 			Input in = new Input();
+			System.out.println(i.toString());
 			in.setType("hidden").setValue(i.toString()).setName(i.toString());
 			Td col = new Td();
 			col.appendChild(in).appendText(i.toString());
