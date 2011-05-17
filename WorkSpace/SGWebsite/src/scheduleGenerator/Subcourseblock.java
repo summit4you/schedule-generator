@@ -92,7 +92,7 @@ public class Subcourseblock
 				sub.setCourse(course);
 				int tot = sub.getTotalnumberHours();
 				int blockhours = sub.getBlockHours();
-				int weekCounter = sub.getBeginweek();
+				int weekCounter = sub.getBeginWeek();
 				int hoursPerWeek = sub.getHoursPerWeek();
 				int hoursInWeek = 0;
 				

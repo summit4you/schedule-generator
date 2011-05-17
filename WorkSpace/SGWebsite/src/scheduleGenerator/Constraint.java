@@ -89,14 +89,17 @@ public class Constraint
 	{
 		boolean b = true;
 		
-		Educator educator = block.getSubcourse().getCourse().getEducator();
+		Vector<Educator> educators = block.getSubcourse().getEducators();
 		Vector<Program> programs = block.getSubcourse().getCourse().getPrograms();
 		
 		for(int h = 0;h < block.getHours(); h++)
 		{
-			if(unavailableHoursForEducator.get(educator).contains(hour+h))
+			for(Educator e:educators)
 			{
-				b = false;
+				if(unavailableHoursForEducator.get(e).contains(hour+h))
+				{
+					b = false;
+				}
 			}
 			
 			for(Program p:programs)
