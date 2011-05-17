@@ -107,8 +107,5 @@
 </LOGIN tag=code>
 
 <LOGOUT tag=code>
-	<form method="GET" action="{}">
-		<input type="hidden" name="ps" value="logout"/>
-		<input type="submit" value="##Logout##"/>
-	</form>
+	<a href="{logout}&ps=logout">##Logout##</a>
 </LOGOUT tag=code>

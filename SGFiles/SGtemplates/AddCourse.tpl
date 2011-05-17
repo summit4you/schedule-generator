@@ -18,7 +18,7 @@ function getPrograms()
   var url="{MASTERSERVLET}"+"&faculty="+fac;
   xmlHttp.open("POST",url,false);
   xmlHttp.send();
-  document.getElementById("program").innerHTML=xmlHttp.responseText;
+  document.getElementById("programdiv").innerHTML=xmlHttp.responseText;
  }
  
  function getCourses()
@@ -59,8 +59,8 @@ function getPrograms()
 				##program##
 			</td>
 			<td>
-				<div id="program">
-					<select name="program" onChange="getCourses()"></select>
+				<div id="programdiv">
+					<select id="program" name="program" onChange="getCourses()"></select>
 				</div>
 			</td>
 		</tr>
