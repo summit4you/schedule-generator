@@ -21,7 +21,9 @@ public class UserType implements DatabasableAsString,Serializable
 	
 	static private final String fileName="UserTypes.xml";
 	
-	final public static String separator=";";
+	static private final String allRights="All";
+	
+	final public static String separator=";";	
 	final public static String mainLabel="UserTypes";
 	final public static String studentType="Student";
 	final public static String educatorType="Educator";
@@ -29,7 +31,7 @@ public class UserType implements DatabasableAsString,Serializable
 	final public static String guestType="Guest";
 	
 	static protected XMLDocument typeDoc;
-	final private static Vector<String> userTypes=loadUserTypes();
+	private static Vector<UserType> userTypes=loadUserTypes();
 	
 	protected Vector<String> pseudos;
 	protected String value;
@@ -39,7 +41,7 @@ public class UserType implements DatabasableAsString,Serializable
 		pseudos = new Vector<String>();
 		value = new String();
 	}
-	
+		
 	public UserType(String value)
 	{
 		pseudos=new Vector<String>();
@@ -59,53 +61,88 @@ public class UserType implements DatabasableAsString,Serializable
 		return null;
 	}
 	
-	private static Vector<String> loadUserTypes()
+	private static Vector<UserType> loadUserTypes()
 	{
-		Vector<String> res=new Vector<String>();
-		res.add(studentType);
-		res.add(educatorType);
-		res.add(guestType);
-		if (typeDoc==null)
-		{
-			loadTypeDoc();
-		}
+		XMLDocument typeDoc=new XMLDocument(Globals.configPath+fileName);
+		Vector<UserType> userTypes = new Vector<UserType>();
+		UserType type;
 		
-		ElementWithChildren admin=(ElementWithChildren) typeDoc.getElement(mainLabel+"."+adminType);
-		for (XMLElement i:admin.getElements())
-		{
-			res.add(adminType+"."+i.getName());
+		if (typeDoc.load())
+		{	
+			for(XMLElement e: ElementWithChildren.class.cast(typeDoc.getElement(mainLabel)).getElements())
+			{
+				try
+				{
+					ElementWithChildren parent = ElementWithChildren.class.cast(e);
+					type = new UserType(parent.getName()); 
+					for(XMLElement ch:parent.getElements())
+					{
+						type.pseudos.add(ElementWithValue.class.cast(ch).getValue());
+					}
+					userTypes.add(type);
+				}
+				catch(Exception exc)
+				{
+					exc.printStackTrace();	
+				}
+			}
 		}
-		return res;
+		if (typeDoc.getElement("UserTypes."+guestType)==null)
+		{
+			type=new UserType(guestType);
+			type.pseudos.add(PseudoServlet.TabName.Search.toString());
+			userTypes.add(type);
+		}
+		return userTypes;	
 	}
 	
-	public static Vector<String> getUserTypes()
+	public static void reloadUserTypes()
+	{
+		userTypes=loadUserTypes();
+	}
+	
+	public static Vector<UserType> getUserTypes()
 	{
 		return userTypes;
 	}
 	
-	private static void loadTypeDoc()
+	public static UserType getUserType(String value)
 	{
-		typeDoc=new XMLDocument(fileName);
-		typeDoc.load();
+		for(UserType u:userTypes)
+		{
+			if (u.value.equals(value))
+			{
+				return u;
+			}
+		}
+		return null;
+	}
+		
+	public static boolean isUserType(String value)
+	{
+		for(UserType u:userTypes)
+		{
+			if (u.value.equals(value))
+			{
+				return true;
+			}
+		}
+		return false;	
 	}
 	
 	public Vector<String> getPseudos()
 	{
 		return pseudos;
 	}
-	
-	public void setPseudos(Vector<String> pseudos)
-	{
-		this.pseudos = pseudos;
-	}
 		
 	public boolean isAuthorized(String ps)
 	{	
-		return pseudos.contains(ps);
+		String[] array = {ps,allRights};
+		return pseudos.contains(array);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Site buildSite(String dummy,Session ses)
+	public Site buildSite(Session ses)
 	{
 		Site site = new Site();
 		for(String p:pseudos)
@@ -114,7 +151,18 @@ public class UserType implements DatabasableAsString,Serializable
 		}
 		return site;
 	}
-
+	
+	public String getValue()
+	{
+		return value;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return value;
+	}
+	
 	@Override
 	public String toValue()
 	{
@@ -124,24 +172,7 @@ public class UserType implements DatabasableAsString,Serializable
 	@Override
 	public void loadFromValue(String value)
 	{
-		pseudos = new Vector<String>();
-	
-		XMLElement el = typeDoc.getElement("UserTypes."+value);
-		if (el!=null)
-		{
-			try
-			{	
-				for(XMLElement child:ElementWithChildren.class.cast(el).getElements())
-				{
-					pseudos.add(ElementWithValue.class.cast(child).getValue());
-				}
-			}
-			catch(Exception e)
-			{
-				pseudos.removeAllElements();
-				e.printStackTrace();
-			}
-			this.value=value;
-		}		
+		this.pseudos=getUserType(value).getPseudos();
+		this.value=getUserType(value).value;
 	}
 }

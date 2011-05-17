@@ -15,22 +15,21 @@
 		<ps>Account</ps>
 	</Educator>
 
-	<Admin>
-		<MainAdmin>
-			<ps>Search</ps>
-			<ps>Schedule</ps>
-			<ps>Account</ps>
-			<ps>AccountTable</ps>
-			<ps>EditableAccountTable</ps>
-			<ps>BuildingTable</ps>
-			<ps>EditableBuildingTable</ps>
-			<ps>StudentTable</ps>
-			<ps>CourseTable</ps>
-		</MainAdmin>
+	<MainAdmin>
+		<ps>Search</ps>
+		<ps>Schedule</ps>
+		<ps>Account</ps>
+		<ps>AccountTable</ps>
+		<ps>EditableAccountTable</ps>
+		<ps>BuildingTable</ps>
+		<ps>EditableBuildingTable</ps>
+		<ps>StudentTable</ps>
+		<ps>CourseTable</ps>
+	</MainAdmin>
 
-		<lesserAdmin>
-			<ps>Search</ps>
-			<ps>BuildingTable</ps>
-		</lesserAdmin>
-	</Admin>
+	<LesserAdmin>
+		<ps>Search</ps>
+		<ps>BuildingTable</ps>
+	</LesserAdmin>
+	
 </UserTypes>
