@@ -24,7 +24,9 @@ public class Subcourse implements Databasable,HTMLTablable
 	private Vector<Hardware> neededHardware;
 	private Vector<Educator> educators;
 	private TypeOfCourse type;
-	
+	private Course course;
+	private int beginWeek;
+	private int hoursPerWeek;
 	
 	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware, Vector<Educator> educators)
 	{
@@ -181,4 +183,39 @@ public class Subcourse implements Databasable,HTMLTablable
 	{
 		return id.toString();
 	}
+	
+	public Course getCourse() 
+	{
+		return course;
+	}
+
+	public void setCourse(Course course) 
+	{
+		this.course = course;
+	}
+
+	@InDatabase
+	public int getBeginWeek() 
+	{
+		return beginWeek;
+	}
+
+	@OutDatabase
+	public void setBeginWeek(int beginWeek)
+	{
+		this.beginWeek = beginWeek;
+	}
+
+	@InDatabase
+	public int getHoursPerWeek() 
+	{
+		return hoursPerWeek;
+	}
+
+	@OutDatabase
+	public void setHoursPerWeek(int hoursPerWeek) 
+	{
+		this.hoursPerWeek = hoursPerWeek;
+	}
+
 }
