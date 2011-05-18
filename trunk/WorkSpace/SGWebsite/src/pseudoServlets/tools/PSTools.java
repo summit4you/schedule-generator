@@ -60,6 +60,15 @@ public class PSTools
 		return (Vector<T>) res;
 	}
 
+	public static <T extends Databasable> Vector<T> loadObjects(Class<T> cl,Class... classes)
+	{
+		Database db=PseudoServlet.getDB();
+		db.connect();
+		Vector<? extends Databasable> res=db.readAll(new Search(cl),classes);
+		db.disconnect();
+		return (Vector<T>) res;
+	}
+	
 	public static String createLanguageOptions()
 	{
 		String res="";

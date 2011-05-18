@@ -69,9 +69,9 @@ public class EducatorTable extends TabAndDrop<Faculty>
 	}
 
 	@Override
-	public String getTabName() 
+	public TabName getTabName() 
 	{	
-		return PseudoServlet.TabName.EducatorTable.toLanguageTag();
+		return TabName.Educators;
 	}
 
 	@Override

@@ -15,12 +15,10 @@ import database.Databasable;
 
 public class CalendarTools
 {
-	
 	private final static String width="900";
 	private final static String days="5";
 	private final static String starthour="0800";
 	private final static String stophour="1800";
-	
 	
 	public static String generateEditablePHPiCalendarLink(String language,String popupLink)
 	{

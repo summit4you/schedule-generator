@@ -1,24 +1,24 @@
 package pseudoServlets;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Vector;
-import htmlBuilder.Site;
 import javax.servlet.http.HttpServletRequest;
-
 import net.fortuna.ical4j.model.property.Uid;
-
 import calendar.IcsCalendar;
 import calendar.SubCourseEvent;
 import calendar.Translator;
 import pseudoServlets.tools.CalendarTools;
 import pseudoServlets.tools.PSTools;
 import dataStructure.Building;
+import dataStructure.Course;
+import dataStructure.Educator;
 import dataStructure.Faculty;
 import dataStructure.Program;
 import dataStructure.Room;
+import dataStructure.Subcourse;
+import database.Databasable;
 import database.Database;
-import database.ID;
 import database.Search;
 import sessionTracking.Session;
 
@@ -26,7 +26,9 @@ public class EditCalendar extends PseudoServlet
 {
 	private static final String programTag="programs";
 	private static final String editPopupTag="editPopup";
+	private static final String createPopupTag="createPopup";
 	private static final String roomSelectorTag="roomSelector";
+	private static final String deleteTag="deleteEvent";
 	private static final String editTag="edit";
 	private static final String newEventTag="newEvent";
 	private static final String templateFilePopup="editCalendarPopup.tpl";
@@ -48,6 +50,10 @@ public class EditCalendar extends PseudoServlet
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request, Session session)
 	{
+		if (request.getParameter(roomSelectorTag)!=null && request.getParameter(roomSelectorTag).equals("true"))
+		{
+			return generateRoomSelector(request);
+		}
 		if (request.getParameter(editTag)!=null && request.getParameter(editTag).equals("true"))
 		{
 			return editEvent(request);
@@ -69,59 +75,129 @@ public class EditCalendar extends PseudoServlet
 		}
 	}
 	
+	private static void repeatWeekly(SubCourseEvent event,IcsCalendar cal,int repTimes)
+	{
+		for (int i=0;i<repTimes-1;i++)
+		{
+			SubCourseEvent v=event.clone();
+			Calendar start=v.getStart();
+			Calendar end=v.getEnd();
+			start.add(Calendar.DAY_OF_YEAR,(i+1)*7);
+			end.add(Calendar.DAY_OF_YEAR,(i+1)*7);
+			v.setTime(start,end);
+			cal.addSubCourseEvent(v);
+		}
+	}
+	
 	private String editEvent(HttpServletRequest request)
 	{
-		//TODO process edit
-		if (request.getParameter(newEventTag)!=null && request.getParameter(newEventTag).equals("true"))
+		boolean newEvent=request.getParameter(newEventTag)!=null && request.getParameter(newEventTag).equals("true");
+		boolean repeat=request.getParameter("weekRep")!=null && request.getParameter("weekRep").equals("on");
+		int repTimes;
+		try
 		{
-			
+			repTimes=Integer.parseInt(request.getParameter("repSpinner"));
+		}
+		catch(Exception e)
+		{
+			repTimes=1;
+		}
+		
+		
+		IcsCalendar cal=Translator.loadSubcourseCalendar(request.getParameter(newEvent?"subcourse":"cal"));
+		
+		SubCourseEvent event=newEvent?new SubCourseEvent():cal.getSubCourseEvent(new Uid(request.getParameter("uid")));
+		
+		if (request.getParameter(deleteTag)!=null && request.getParameter(deleteTag).equals("true"))
+		{
+			cal.removeEvent(event.getEvent());	
 		}
 		else
 		{
-			IcsCalendar cal=Translator.loadSubcourseCalendar(request.getParameter("cal"));
-			SubCourseEvent v=cal.getSubCourseEvent(new Uid(request.getParameter("uid")));
-			v.setTime(request.getParameter("inputDate"),request.getParameter("startTime"),request.getParameter("endTime"),request.getParameter("dateFormat"));
 			Database db=getDB();
 			db.connect();
-			Building b=db.read(new Search(Building.class,request.getParameter("building")));
-			Room r=db.read(new Search(Room.class,request.getParameter("room")));
+			Building b=db.readSingle(new Search(Building.class,request.getParameter("building")));
+			Room r=db.readSingle(new Search(Room.class,request.getParameter("room")));
+			
+			event.setLocation(b.getName(),r.getLocation(),request.getParameter("building"),request.getParameter("room"));
+			event.setTime(request.getParameter("inputDate"),request.getParameter("startTime"),request.getParameter("endTime"),request.getParameter("dateFormat"));
+			
+			if (newEvent)
+			{
+				event.setEducator(PSTools.implodeVector(db.readAll(new Search(request.getParameter("subcourse"),Educator.class,"getSubcourses"),Subcourse.class)));
+				event.setSummary(db.readSingle(new Search(Subcourse.class,request.getParameter("subcourse"))).toString());
+				cal.addSubCourseEvent(event);
+				if (repeat && repTimes>1)
+				{
+					repeatWeekly(event, cal,repTimes);
+				}
+			}
 			db.disconnect();
-			v.setLocation(b.getName(),r.getLocation(),request.getParameter("building"),request.getParameter("room"));
-			cal.write();
-			//TODO update room calendar
 		}
-		return "<html><head></head><body><script>parent.tb_remove(); parent.location.reload(1);</script></body></html>";
+		
+		cal.write();
+		
+		if (newEvent)
+		{
+			return "<html><head></head><body><script>parent.tb_remove(); parent.document.getElementById('calendarFrame').src=parent.document.getElementById('calendarFrame').src;</script></body></html>";
+		}
+		else
+		{
+			return "<html><head></head><body><script>parent.tb_remove(); parent.location.reload(1);</script></body></html>";
+		}
+	}
+	
+	private String generateRoomSelector(HttpServletRequest request)
+	{
+		String res="<select name='room' id='room'>";
+		Database db=getDB();
+		db.connect();
+		Building b=db.read(new Search(Building.class,"getID",request.getParameter("building")),Room.class);
+		db.disconnect();
+		res+=PSTools.createSelectOptions(b.getRooms());
+		res+="</select>";
+		return res;
 	}
 	
 	private String generatePopup(HttpServletRequest request,Session session)
 	{
-		if (request.getParameter(roomSelectorTag)!=null && request.getParameter(roomSelectorTag).equals("true"))
+		boolean create=request.getParameter(createPopupTag)!=null && request.getParameter(createPopupTag).equals("true");
+		
+		String page=replaceTags(templatePopup,"REQUEST_LINK",createLink(session)+"&"+roomSelectorTag+"=true");
+		page=replaceTags(page,"SUBMIT_LINK",createLink(session)+"&"+editTag+"=true"+(create?"&"+newEventTag+"=true":""));
+		page=replaceTags(page,"DELETE_LINK",createLink(session)+"&"+editTag+"=true&"+deleteTag+"=true");
+		page=replaceTags(page,"BUILDINGS",PSTools.createSelectOptions(PSTools.loadObjects(Building.class,true)));
+		page=replaceTags(page,"DATEFORMAT","dd/MM/yyyy");
+		page=replaceTags(page,"INFO",request.getParameter("info")==null?"":request.getParameter("info"));
+		page=replaceTags(page,"INIT_BUILDING",request.getParameter("building")==null?"1":request.getParameter("building"));
+		page=replaceTags(page,"INIT_ROOM",request.getParameter("room")==null?"":request.getParameter("room"));
+		page=replaceTags(page,"CAL",request.getParameter("cal")==null?"":request.getParameter("cal"));
+		if (create)
 		{
-			String res="<select name='room' id='room'>";
+			page=replaceTags(page,"DATE",new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime()));
+			page=replaceTags(page,"START","08:00");
+			page=replaceTags(page,"END","10:00");
+			page=replaceTags(page,"HIDDEN","");
+			page=replaceTags(page,"INVHIDDEN","style='display:none'");
 			Database db=getDB();
 			db.connect();
-			Building b=db.read(new Search(Building.class,"getID",request.getParameter("building")));
+			Program p=db.read(new Search(Program.class,request.getParameter("program")),Course.class,Subcourse.class);
 			db.disconnect();
-			res+=PSTools.createSelectOptions(b.getRooms());	//TODO get rooms which are available on the specified hour
-			res+="</select>";
-			return res;
+			page=replaceTags(page,"COURSES",PSTools.createSelectOptions(p.getCourses()));
+			page=replaceTags(page,"INITLISTS","initCoupledLists('course','subcourse',"+getTexts(p.getCourses(),"getSubcourses",true)+","+getTexts(p.getCourses(),"getSubcourses",false)+")");
 		}
 		else
-		{
-			String page=replaceTags(templatePopup,"REQUEST_LINK",createLink(session)+"&"+roomSelectorTag+"=true"+"&"+editPopupTag+"=true");
-			page=replaceTags(page,"SUBMIT_LINK",createLink(session)+"&"+editTag+"=true");
-			page=replaceTags(page,"BUILDINGS",PSTools.createSelectOptions(PSTools.loadObjects(Building.class)));
-			page=replaceTags(page,"DATEFORMAT","dd/MM/yyyy");
+		{			
+			page=replaceTags(page,"COURSES","");
+			page=replaceTags(page,"HIDDEN","style='display:none'");
+			page=replaceTags(page,"INVHIDDEN","");
+			page=replaceTags(page,"INITLISTS","");
 			page=replaceTags(page,"DATE",request.getParameter("date")==null?"":request.getParameter("date"));
 			page=replaceTags(page,"START",request.getParameter("start")==null?"":request.getParameter("start"));
 			page=replaceTags(page,"END",request.getParameter("end")==null?"":request.getParameter("end"));
-			page=replaceTags(page,"INFO",request.getParameter("info")==null?"":request.getParameter("info"));
-			page=replaceTags(page,"CAL",request.getParameter("cal")==null?"":request.getParameter("cal"));
 			page=replaceTags(page,"UID",request.getParameter("uid")==null?"":request.getParameter("uid"));
-			page=replaceTags(page,"INIT_BUILDING",request.getParameter("building")==null?"":request.getParameter("building"));
-			page=replaceTags(page,"INIT_ROOM",request.getParameter("room")==null?"":request.getParameter("room"));
-			return page;
 		}
+		return page;
 	}
 	
 	private String generateCalendarFramePage(String programs,Session session)
@@ -148,30 +224,37 @@ public class EditCalendar extends PseudoServlet
 		Vector<Faculty> facs=PSTools.loadObjects(Faculty.class);
 		String page=replaceTags(template,"LINK",createLink(session));
 		page=replaceTags(page,"FACULTY_LIST",PSTools.createSelectOptions(facs));
-		page=replaceTags(page,"TEXTS",getTexts(facs,true));
-		page=replaceTags(page,"VALUES",getTexts(facs,false));
+		page=replaceTags(page,"TEXTS",getTexts(facs,"getPrograms",true));
+		page=replaceTags(page,"VALUES",getTexts(facs,"getPrograms",false));
+		page=replaceTags(page,"CREATELINK",createLink(session)+"&"+editPopupTag+"=true&"+createPopupTag+"=true");
 		return page;
 	}
 	
 	/**
 	 * @param texts - true for text, false for value
 	 */
-	private String getTexts(Vector<Faculty> facs,boolean texts)
+	private String getTexts(Vector<? extends Databasable> facs,String submethod,boolean texts)
 	{
 		String res="[";
-		for (Faculty f:facs)
+		for (Databasable f:facs)
 		{
 			res+="[";
-			for (Program p:f.getPrograms())
+			try
 			{
-				if (texts)
+				for (Databasable p:(Vector<? extends Databasable>)f.getClass().getMethod(submethod).invoke(f))
 				{
-					res+="'"+p.getName()+"',";
+					if (texts)
+					{
+						res+="'"+p.toString()+"',";
+					}
+					else
+					{
+						res+="'"+p.getID().toString()+"',";
+					}
 				}
-				else
-				{
-					res+="'"+p.getID().toString()+"',";
-				}
+			} catch (Exception e)
+			{
+				e.printStackTrace();
 			}
 			res=res.substring(0,res.length()-1)+"],";
 		}
@@ -179,8 +262,8 @@ public class EditCalendar extends PseudoServlet
 	}
 	
 	@Override
-	public String getTabName()
+	public TabName getTabName()
 	{
-		return PseudoServlet.TabName.EditCalendar.toLanguageTag();
+		return TabName.EditCalendar;
 	}
 }

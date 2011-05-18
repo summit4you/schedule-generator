@@ -3,6 +3,7 @@ package dataStructure;
 import htmlInterfaces.HTMLTablable;
 import htmlInterfaces.HTMLTablable.*;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import scheduleGenerator.Subcourseblock;
@@ -14,25 +15,25 @@ import database.*;
 /**
  * 
  * @author matthiascaenepeel
- * @version2.0
+ * @version 2.0
  */
 
-public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
+public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper,Serializable
 {
-
+	private static final long serialVersionUID = 1L;
+	
 	private String Name; //Dit wordt vermeld in het rooster.
 	private int studentCounter;
-	@Deprecated
 	private String properties;
 	private int totalnumberHours; //Het hele aantal uren
 	private int blockHours; //Het minimum aantal uren per blok
 	private Vector<Hardware> neededHardware;
 	private Vector<Educator> educators;
-	private TypeOfCourse type;
 	private Course course;
 	private int beginWeek;
 	private int hoursPerWeek;
-	private Vector<Subcourseblock> blocks;
+	private int semester;
+	transient private Vector<Subcourseblock> blocks;
 	
 	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware, Vector<Educator> educators)
 	{
@@ -57,7 +58,7 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 
 	@InDatabase
@@ -96,14 +97,12 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 	}
 
 	@InDatabase
-	@Deprecated
 	public String getProperties()
 	{
 		return properties;
 	}
 
 	@OutDatabase
-	@Deprecated
 	public void setProperties(String properties)
 	{
 		this.properties = properties;
@@ -157,17 +156,6 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 	public void setEducators(Vector<Educator> educators)
 	{
 		this.educators =  (Vector<Educator>) educators.clone();
-	}
-	
-	public void setType(TypeOfCourse type)
-	{
-		this.type = type;
-	}
-	
-	@InDatabase
-	public TypeOfCourse getType()
-	{
-		return type;
 	}
 	
 	private ID id;
@@ -249,6 +237,14 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 	{
 		this.getBlocks().remove(block);
 	}
-	
 
+	public void setSemester(int semester)
+	{
+		this.semester = semester;
+	}
+
+	public int getSemester()
+	{
+		return semester;
+	}
 }

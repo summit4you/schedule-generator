@@ -25,17 +25,16 @@ public class Student implements Databasable,HTMLTablable,DatabasableWithOwnID,Se
 	
 	public Student(int studentNumber, String firstName, String surName) 
 	{
-		super();
+		this();
 		this.studentNumber = studentNumber;
 		this.firstName = firstName;
 		this.surName = surName;
-		programs = new Vector<Program>();
-		courses = new Vector<Course>();
 	}
 
 	public Student()
 	{
-	
+		programs=new Vector<Program>();
+		courses=new Vector<Course>();
 	}
 	
 	@InDatabase
@@ -61,12 +60,6 @@ public class Student implements Databasable,HTMLTablable,DatabasableWithOwnID,Se
 		this.surName = surName;
 	}
 
-	/**
-	 * .clone wordt gebruikt om aan te geven dat men met een kopie werkt, dus gebruik {@link #setPrograms}
-	 * om wijzigingen door te voeren
-	 * 
-	 */
-	
 	@InDatabase
 	public Vector<Program> getPrograms()
 	{
@@ -154,6 +147,6 @@ public class Student implements Databasable,HTMLTablable,DatabasableWithOwnID,Se
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 }

@@ -119,9 +119,9 @@ public class ConstraintsEducator extends PseudoServlet
 	}
 
 	@Override
-	public String getTabName()
+	public TabName getTabName()
 	{
-		return PseudoServlet.TabName.ConstraintsEducator.toLanguageTag();
+		return PseudoServlet.TabName.ConstraintsEducator;
 	}
 
 }

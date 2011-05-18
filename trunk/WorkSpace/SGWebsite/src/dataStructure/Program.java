@@ -1,22 +1,21 @@
 package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
-import htmlInterfaces.HTMLTablable.*;
 
+import java.io.Serializable;
 import java.util.Vector;
-
 import calendar.IcsCalendar;
-
 import database.*;
 
 /**
  * 
  * @author matthiascaenepeel
- * @version2.0
+ * @version 2.0
  */
-
-public class Program implements Databasable,HTMLTablable
+public class Program implements Databasable,HTMLTablable,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private int level;
 	private Vector<Course> courses;
@@ -30,13 +29,13 @@ public class Program implements Databasable,HTMLTablable
 	
 	public Program()
 	{
-		
+		courses=new Vector<Course>();
 	}
 	
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 	
 	@InDatabase
@@ -64,19 +63,6 @@ public class Program implements Databasable,HTMLTablable
 		this.courses = (Vector<Course>) courses.clone();
 	}
 	
-	@InDatabase
-	@TableInput(order=2,text="##Level_Program_Table##")
-	public int getlevel()
-	{
-		return level;
-	}
-	
-	@OutDatabase
-	public void setlevel(int newlevel)
-	{
-		level = newlevel;
-	}
-	
 	private ID id;
 	
 	@Override
@@ -95,11 +81,5 @@ public class Program implements Databasable,HTMLTablable
 	public String toString() 
 	{
 		return getName();
-	}
-
-	public IcsCalendar getCalender()
-	{
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

@@ -103,9 +103,9 @@ public class Account extends PseudoServlet
 		}
 		
 		@Override
-		public String getTabName()
+		public TabName getTabName()
 		{
-			return PseudoServlet.TabName.Account.toLanguageTag();
+			return PseudoServlet.TabName.Account;
 		}
 
 }

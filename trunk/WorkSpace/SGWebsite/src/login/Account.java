@@ -94,7 +94,7 @@ public class Account implements Databasable,HTMLTablable,Serializable
 		this.type = type;
 	}
 	
-	@TableInput(order=5,text="##UserType_Account##")
+	@TableInput(order=2,text="##UserType_Account##")
 	@InDatabase
 	public UserType getType()
 	{
@@ -132,7 +132,7 @@ public class Account implements Databasable,HTMLTablable,Serializable
 	}
 
 	@InDatabase
-	@TableInput(order=6,text="##UserName_Account##")
+	@TableInput(order=3,text="##UserName_Account##")
 	public int getAccountNumber()
 	{
 		return accountNumber;

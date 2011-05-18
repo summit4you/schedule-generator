@@ -2,11 +2,8 @@ package pseudoServlets;
 
 import htmlInterfaces.HTMLInterfaceTool;
 import htmlInterfaces.HTMLTablable;
-
-import java.io.File;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
-import other.FileIO;
 import pseudoServlets.tools.PSTools;
 import sessionTracking.Session;
 import dataStructure.Faculty;

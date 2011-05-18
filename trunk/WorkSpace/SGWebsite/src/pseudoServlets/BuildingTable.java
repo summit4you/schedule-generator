@@ -2,17 +2,36 @@ package pseudoServlets;
 
 import htmlBuilder.Site;
 import htmlInterfaces.HTMLTablable;
+
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.util.Vector;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import applet.Edit;
+import applet.EditVector;
+import applet.Wrapper;
+
+import pseudoServlets.tools.PSTools;
+
+import sessionTracking.Session;
 import dataStructure.Building;
+import dataStructure.Faculty;
 import dataStructure.Hardware;
 import dataStructure.Room;
+import database.Databasable;
+import database.Database;
 
 /**
  * @author Zjef
  * @version 1.0
  */
 public class BuildingTable extends TabAndDrop<Building>
-{
+{		
 	public BuildingTable() 
 	{
 		super(Building.class,Room.class);
@@ -55,11 +74,11 @@ public class BuildingTable extends TabAndDrop<Building>
 	}
 
 	@Override
-	public String getTabName() 
+	public TabName getTabName() 
 	{
-		return PseudoServlet.TabName.BuildingTable.toLanguageTag();
+		return TabName.Buildings;
 	}
-
+	
 	@Override
 	protected String createOnOpen() 
 	{

@@ -1,13 +1,10 @@
 package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
-
 import java.io.Serializable;
 import java.util.Vector;
-
 import calendar.CalendarKeeper;
 import calendar.IcsCalendar;
-
 import database.*;
 
 /**
@@ -28,21 +25,18 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 
 	public Educator(String firstName, String surName, int employeeNumber)
 	{
-		super();
+		this();
 		this.firstName = firstName;
 		this.surName = surName;
-		this.employeeNumber = employeeNumber;
-		this.courses = new Vector<Course>();
-		this.subcourses = new Vector<Subcourse>();
+		this.employeeNumber = employeeNumber;;
 
 	}
 
 	public Educator()
 	{
-		
+		courses=new Vector<Course>();
+		subcourses=new Vector<Subcourse>();
 	}
-	
-	
 	
 	@InDatabase
 	@TableInput(order=3,text="##Number_Educator_Table##")
@@ -138,7 +132,7 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 		
 	@Override
