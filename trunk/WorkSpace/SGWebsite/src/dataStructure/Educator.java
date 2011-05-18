@@ -5,6 +5,7 @@ import htmlInterfaces.HTMLTablable;
 import java.io.Serializable;
 import java.util.Vector;
 
+import calendar.CalendarKeeper;
 import calendar.IcsCalendar;
 
 import database.*;
@@ -15,7 +16,7 @@ import database.*;
  * @version2.0
  */
 
-public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,Serializable
+public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,Serializable,CalendarKeeper
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -139,28 +140,10 @@ public class Educator implements Databasable,HTMLTablable,DatabasableWithOwnID,S
 	{
 		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
-	
-	
-	public void getUnavailableDates() 
+		
+	@Override
+	public IcsCalendar getCalendar()
 	{
-		//TODO
-	}
-	
-	public void addUnavailableDate()
-	{
-		//TODO
-	}
-	
-	public void removeUnavailableDate()
-	{
-		//TODO
-	}
-	
-	//TODO kijk na of het volledig pad nog nodig is!
-	public IcsCalendar getCalender()
-	{
-		String fileName = id.toString();
-		fileName = 'e'+fileName+IcsCalendar.fileExtension; 
-		return new IcsCalendar(fileName);
+		return calendar.Translator.loadEducatorCalendar(id.toString());
 	}
 }

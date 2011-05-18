@@ -5,6 +5,9 @@ import htmlInterfaces.HTMLTablable.*;
 
 import java.util.Vector;
 
+import calendar.CalendarKeeper;
+import calendar.IcsCalendar;
+
 import database.*;
 /**
  * 
@@ -12,7 +15,7 @@ import database.*;
  * @version2.0
  */
 
-public class Subcourse implements Databasable,HTMLTablable
+public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 {
 
 	private String Name; //Dit wordt vermeld in het rooster.
@@ -216,6 +219,12 @@ public class Subcourse implements Databasable,HTMLTablable
 	public void setHoursPerWeek(int hoursPerWeek) 
 	{
 		this.hoursPerWeek = hoursPerWeek;
+	}
+
+	@Override
+	public IcsCalendar getCalendar()
+	{
+		return calendar.Translator.loadSubcourseCalendar(id.toString());
 	}
 
 }

@@ -5,6 +5,8 @@ import htmlInterfaces.HTMLTablable.*;
 
 import java.util.Vector;
 
+import calendar.IcsCalendar;
+
 import database.*;
 
 /**
@@ -93,5 +95,11 @@ public class Program implements Databasable,HTMLTablable
 	public String toString() 
 	{
 		return getName();
+	}
+
+	public IcsCalendar getCalender()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

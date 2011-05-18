@@ -4,9 +4,12 @@ import htmlInterfaces.HTMLTablable;
 
 import java.util.Vector;
 
+import calendar.CalendarKeeper;
+import calendar.IcsCalendar;
+
 import database.*;
 
-public class Room implements Databasable,HTMLTablable
+public class Room implements Databasable,HTMLTablable,CalendarKeeper
 {
 	private String location;
 	private int capacity;
@@ -92,14 +95,16 @@ public class Room implements Databasable,HTMLTablable
 		return id;
 	}	
 	
-	public String getCalendarfile()
-	{
-		return id.toString();
-	}
-	
 	@Override
 	public String toString()
 	{
 		return getLocation();
 	}
+	
+	@Override
+	public IcsCalendar getCalendar()
+	{
+		return calendar.Translator.loadRoomCalendar(id.toString());
+	}
+	
 }
