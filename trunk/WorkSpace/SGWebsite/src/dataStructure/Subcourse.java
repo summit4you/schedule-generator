@@ -5,6 +5,8 @@ import htmlInterfaces.HTMLTablable.*;
 
 import java.util.Vector;
 
+import scheduleGenerator.Subcourseblock;
+
 import calendar.CalendarKeeper;
 import calendar.IcsCalendar;
 
@@ -30,6 +32,7 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 	private Course course;
 	private int beginWeek;
 	private int hoursPerWeek;
+	private Vector<Subcourseblock> blocks;
 	
 	public Subcourse(String name, int studentCounter, String properties, int totalnumberHours, int blockHours,Vector<Hardware> neededHardware, Vector<Educator> educators)
 	{
@@ -226,5 +229,26 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper
 	{
 		return calendar.Translator.loadSubcourseCalendar(id.toString());
 	}
+	
+	public Vector<Subcourseblock> getBlocks() 
+	{
+		return blocks;
+	}
+
+	public void setBlocks(Vector<Subcourseblock> blocks) 
+	{
+		this.blocks = blocks;
+	}
+	
+	public void addBlock(Subcourseblock block)
+	{
+		this.getBlocks().add(block);
+	}
+
+	public void removeBlock(Subcourseblock block)
+	{
+		this.getBlocks().remove(block);
+	}
+	
 
 }
