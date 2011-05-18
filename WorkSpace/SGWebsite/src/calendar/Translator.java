@@ -2,6 +2,7 @@ package calendar;
 
 import other.Globals;
 import dataStructure.Building;
+import dataStructure.Educator;
 import dataStructure.Room;
 import dataStructure.Subcourse;
 
@@ -12,6 +13,7 @@ import dataStructure.Subcourse;
 public class Translator
 {
 	final public static String roomPrefix="R";
+	final public static String educatorPrefix="E";
 	final public static String subcoursePrefix="";
 	
 	public static String brToLocation(Building building,Room room)
@@ -34,9 +36,19 @@ public class Translator
 		return getCalendarFileNameRoom(room.getID().toString());
 	}
 	
+	public static String getCalendarFileName(Educator educator)
+	{
+		return getCalendarFileNameEducator(educator.getID().toString());
+	}
+	
 	public static String getCalendarFileNameRoom(String id)
 	{
 		return Globals.calendarFolder+"/"+roomPrefix+id+IcsCalendar.fileExtension;
+	}
+	
+	public static String getCalendarFileNameEducator(String id)
+	{
+		return Globals.calendarFolder+"/"+educatorPrefix+id+IcsCalendar.fileExtension;
 	}
 	
 	public static String getCalendarFileNameSubcourse(String id)
@@ -49,6 +61,11 @@ public class Translator
 		return IcsCalendar.load(getCalendarFileName(subcourse));
 	}
 	
+	public static IcsCalendar loadSubcourseCalendar(String id)
+	{
+		return IcsCalendar.load(getCalendarFileNameSubcourse(id));
+	}
+	
 	public static IcsCalendar loadRoomCalendar(Room room)
 	{
 		return IcsCalendar.load(getCalendarFileName(room));
@@ -59,8 +76,14 @@ public class Translator
 		return IcsCalendar.load(getCalendarFileNameRoom(id));
 	}
 	
-	public static IcsCalendar loadSubcourseCalendar(String id)
+	public static IcsCalendar loadEducatorCalendar(String id)
 	{
-		return IcsCalendar.load(getCalendarFileNameSubcourse(id));
+		return IcsCalendar.load(getCalendarFileNameEducator(id));
 	}
+	
+	public static IcsCalendar loadEducatorCalendar(Educator educator)
+	{
+		return IcsCalendar.load(getCalendarFileName(educator));
+	}
+
 }
