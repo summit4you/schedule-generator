@@ -80,20 +80,24 @@ public class MyCoursesStudent extends PseudoServlet
 	{
 		Table table = new Table();
 		table.setBorder("0").setStyle("border-collapse:collapse");
-		for (Program i : student.getPrograms())
+		if (!((student.getPrograms()==null)||(student.getPrograms().isEmpty())))
 		{
-			Td col1 = new Td();
-			col1.appendText(i.getName());
-			Tr row1 = new Tr();
-			row1.appendChild(col1);
-			table.appendChild(row1);
-			Td col2 = new Td();
-			col2.appendText(HTMLInterfaceTool.changeToDataTable("courses", i.getCourses()));
-			Tr row2 = new Tr();
-			row2.appendChild(col2);
-			table.appendChild(row2);
+			for (Program i : student.getPrograms())
+			{
+				Td col1 = new Td();
+				col1.appendText(i.getName());
+				Tr row1 = new Tr();
+				row1.appendChild(col1);
+				table.appendChild(row1);
+				Td col2 = new Td();
+				col2.appendText(HTMLInterfaceTool.changeToDataTable("courses", i.getCourses()));
+				Tr row2 = new Tr();
+				row2.appendChild(col2);
+				table.appendChild(row2);
+			}
 		}
 		return table.write();
+		
 	}
 	
 	@Override

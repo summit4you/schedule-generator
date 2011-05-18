@@ -13,6 +13,7 @@ public class RunOnCopyFromSVN
 	{
 		removeSVN(new File(System.getProperty("user.dir")));
 		System.out.println("Done");
+		
 	}
 	
 	private static void removeSVN(File file)

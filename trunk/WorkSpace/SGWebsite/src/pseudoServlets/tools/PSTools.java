@@ -1,6 +1,5 @@
 package pseudoServlets.tools;
 
-import java.util.Dictionary;
 import java.util.Vector;
 
 import language.LanguageResolver;
@@ -15,6 +14,16 @@ import database.Search;
  */
 public class PSTools 
 {
+	public static String implodeVector(Vector<?> objects)
+	{
+		String res="";
+		for (Object i:objects)
+		{
+			res+=i.toString()+",";
+		}
+		return objects.size()>0?res.substring(0,res.length()-1):"";
+	}
+	
 	public static String createTabHeader(Vector<?> tabs)
 	{
 		String res="";
@@ -37,6 +46,20 @@ public class PSTools
 		return res;
 	}
 	
+	public static <T extends Databasable> Vector<T> loadObjects(Class<T> cl)
+	{
+		return loadObjects(cl,false);
+	}
+	
+	public static <T extends Databasable> Vector<T> loadObjects(Class<T> cl,boolean topOnly)
+	{
+		Database db=PseudoServlet.getDB();
+		db.connect();
+		Vector<? extends Databasable> res=topOnly?db.readAllSingle(new Search(cl)):db.readAll(new Search(cl));
+		db.disconnect();
+		return (Vector<T>) res;
+	}
+
 	public static String createLanguageOptions()
 	{
 		String res="";
@@ -45,14 +68,5 @@ public class PSTools
 			res+="<option>"+i.toString()+"</option>";
 		}
 		return res;
-	}
-	
-	public static <T extends Databasable> Vector<T> loadObjects(Class<T> cl)
-	{
-		Database db=PseudoServlet.getDB();
-		db.connect();
-		Vector<? extends Databasable> res=db.readAll(new Search(cl));
-		db.disconnect();
-		return (Vector<T>) res;
 	}
 }

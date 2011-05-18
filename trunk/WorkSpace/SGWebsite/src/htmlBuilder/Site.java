@@ -102,12 +102,12 @@ public class Site
 	
 	public void noLogoutForm()
 	{
-		htmlcode=htmlcode.replace(logout, " ");
+		htmlcode=htmlcode.replace(logout," ");
 	}
 	
 	public static String createLogoutForm(String code,Session ses)
 	{
-		String form=logoutForm.replace(logoutaction,"?ps=logout&id="+ses.getSessionID());
+		String form = logoutForm.replace(logoutaction,"?ps=logout&id="+ses.getSessionID());
 		return code.replace(logout,form);
 	}
 	
