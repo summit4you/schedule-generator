@@ -12,6 +12,7 @@ import dataStructure.Subcourse;
  */
 public class Translator
 {
+	final public static String academicCalendar="AcademicCalendar";
 	final public static String roomPrefix="R";
 	final public static String educatorPrefix="E";
 	final public static String subcoursePrefix="";
@@ -51,6 +52,11 @@ public class Translator
 		return Globals.calendarFolder+"/"+educatorPrefix+id+IcsCalendar.fileExtension;
 	}
 	
+	public static String getCalendarFileNameAcademicCalendar()
+	{
+		return Globals.calendarFolder+"/"+academicCalendar+IcsCalendar.fileExtension;
+	}
+	
 	public static String getCalendarFileNameSubcourse(String id)
 	{
 		return Globals.calendarFolder+"/"+subcoursePrefix+id+IcsCalendar.fileExtension;
@@ -81,9 +87,9 @@ public class Translator
 		return IcsCalendar.load(getCalendarFileNameEducator(id));
 	}
 	
-	public static IcsCalendar loadEducatorCalendar(Educator educator)
+	public static IcsCalendar loadAcademicCalendar()
 	{
-		return IcsCalendar.load(getCalendarFileName(educator));
+		return  IcsCalendar.load(getCalendarFileNameAcademicCalendar());
 	}
 
 }
