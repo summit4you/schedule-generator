@@ -28,6 +28,7 @@ public class SubCourseEvent
 	 */
 	public SubCourseEvent(String descr,Calendar start,Calendar end,String educator,Building building,Room room)
 	{
+		this();
 		this.event=new VEvent(Transformation.calendarToDate(start),Transformation.calendarToDate(end),descr);
 		setLocation(building, room);
 		setEducator(educator);
