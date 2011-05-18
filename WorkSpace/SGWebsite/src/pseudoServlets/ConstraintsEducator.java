@@ -4,6 +4,8 @@ package pseudoServlets;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.fortuna.ical4j.model.property.Uid;
+
 import calendar.UnavailableEvent;
 import calendar.IcsCalendar;
 
@@ -19,6 +21,7 @@ public class ConstraintsEducator extends PseudoServlet
 {
 	private final String dateSeperator="/";
 	private final String hourSeperator=":";
+	private String popup;
 	
 	// DD/MM/YYYY/HH:MM
 	private java.util.Calendar parseDate(String date)
@@ -44,19 +47,37 @@ public class ConstraintsEducator extends PseudoServlet
 	}
 	
 	@Override
+	protected void init()
+	{
+		super.init();		
+		popup=loadTemplate("deleteConstraint.tpl");
+	}
+	
+	@Override
 	public String processRequest(RequestType type, HttpServletRequest request,Session session)
 	{
 		if (type==RequestType.GET)
 		{
-			String response = replaceTags(template, "MASTERSERVLET", createLink(session));
-			//TODO
-			//response = replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink(language, popupLink));
+			if (request.getParameter("delete")==null)
+			{	
+				// een gewone get, stuur de pagina door met de form en huidige kalender
+				String response = replaceTags(template, "MASTERSERVLET", createLink(session));
+				return replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink(session.getAccount().getLanguage(), createLink(session)+"&delete=true"));
+			}
+			else
+			{
+				// een delete request, vraag de gebruiker bevestiging
+				String response = replaceTags(popup, "MASTERSERVLET", createlink(session));
+				return replaceTags(response, "UID", request.getParameter("uid"));
+			}
 		}
 		else if (type==RequestType.POST)
 		{
 			Educator educator = Educator.class.cast(session.getAccount().getData());
 			IcsCalendar calendar = educator.getCalendar();
-			
+			String uid = request.getParameter("uid");
+			if (uid==null)
+			{
 			if (request.getParameter("change").equals("single"))
 			{
 				//TODO 
@@ -84,6 +105,15 @@ public class ConstraintsEducator extends PseudoServlet
 			else
 			{
 				return "ERROR, change type not known";
+			}
+			}
+			else
+			{
+				// a delete confirmation has been sent.
+				Uid ui = new Uid(uid);
+				calendar.removeEvent(calendar.getEvent(ui));
+				calendar.write();
+				return "<html><head></head><body><script>parent.tb_remove(); parent.location.reload(1);</script></body></html>";
 			}
 		}
 	}

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
-
+import other.Globals;
 import dataStructure.Educator;
 import dataStructure.Student;
 
@@ -69,9 +69,8 @@ public class Database implements Serializable
 	public static Database getDB()
 	{
 		//TODO replace database values with a read from an xml file
-		return new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
+		return new Database(Globals.databaseAdress,Globals.databaseName,Globals.databasePassword);
 	}
-	
 	public String getURL()
 	{
 		return url;

@@ -21,7 +21,6 @@ public class UserType implements DatabasableAsString,Serializable
 	
 	static private final String fileName="UserTypes.xml";
 	
-	static private final String allRights="All";
 	
 	final public static String separator=";";	
 	final public static String mainLabel="UserTypes";
@@ -137,8 +136,7 @@ public class UserType implements DatabasableAsString,Serializable
 		
 	public boolean isAuthorized(String ps)
 	{	
-		String[] array = {ps,allRights};
-		return pseudos.contains(array);
+		return pseudos.contains(ps);
 	}
 	
 	@SuppressWarnings("deprecation")

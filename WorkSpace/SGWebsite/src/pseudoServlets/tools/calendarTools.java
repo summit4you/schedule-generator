@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Vector;
 
+import calendar.Translator;
+
 import com.hp.gagawa.java.elements.Input;
 
 import other.Globals;
@@ -31,6 +33,19 @@ public class CalendarTools
 		{
 		}
 		return "http://wilma.vub.ac.be/~se5_1011/phpicalendarEditable/week.php?width="+width+"&lang="+language+"&start="+starthour+"&end="+stophour+"&days="+days+"&popupLink="+popupLink+"&calPath="+calFolder+"&cal=";
+	}
+	
+	public static String generateEditablePHPiCalendarLink(Educator edu,String language,String popupLink)
+	{
+		String calFolder=Globals.calendarFolder;
+		try
+		{
+			popupLink=URLEncoder.encode(popupLink,"UTF-8");
+			calFolder=URLEncoder.encode(calFolder,"UTF-8");
+		} catch (UnsupportedEncodingException e)
+		{
+		}
+		return "http://wilma.vub.ac.be/~se5_1011/phpicalendarEditable/week.php?width="+width+"&lang="+language+"&start="+starthour+"&end="+stophour+"&days="+days+"&popupLink="+popupLink+"&calPath="+calFolder+"&cal="+Translator.getCalendarFileName(edu);
 	}
 	
 	public static String generateEditablePHPiCalendarLink(Vector<Program>programs,String language,String popupLink)
@@ -95,7 +110,7 @@ public class CalendarTools
 		else if (input instanceof Room) 
 		{
 			String link = "http://wilma.vub.ac.be/~se5_1011/phpicalendar/week.php?cal=";
-			link += ((Room) input).getCalendarfile();
+			link += Translator.getCalendarFileName((Room) input);
 			link += "&width="+width+"&lang=";
 			link +=language;
 			link +="&start="+starthour+"&end="+stophour+"&days="+days;
@@ -143,16 +158,20 @@ public class CalendarTools
 	public static String CollectCalendarFiles(Student student)
 	{
 		String link = new String(); 
-		for (Program i : student.getPrograms())
+		if (!((student.getPrograms()==null)||(student.getPrograms().isEmpty())))
 		{
-			for (Course j : i.getCourses())
+			for (Program i : student.getPrograms())
 			{
-				for (Subcourse k : j.getSubcourses())
+				for (Course j : i.getCourses())
 				{
-					link+=k.getCalendarfile()+",";
+					for (Subcourse k : j.getSubcourses())
+					{
+						link+=k.getCalendarfile()+",";
+					}
 				}
 			}
 		}
+		if (!((student.getCourses()==null)||(student.getCourses().isEmpty())))
 		for (Course i : student.getCourses())
 		{
 			for (Subcourse k : i.getSubcourses())
@@ -166,11 +185,14 @@ public class CalendarTools
 	public static String CollectCalendarFiles(Educator educator)
 	{
 		String link = new String();
-		for (Course i : educator.getCourses())
+		if (!((educator.getCourses()==null)||(educator.getCourses().isEmpty())))
 		{
-			for (Subcourse k : i.getSubcourses())
+			for (Course i : educator.getCourses())
 			{
-				link+=k.getCalendarfile()+",";
+				for (Subcourse k : i.getSubcourses())
+				{
+					link+=k.getCalendarfile()+",";
+				}
 			}
 		}
 		return link.substring(0,link.length()-1); 

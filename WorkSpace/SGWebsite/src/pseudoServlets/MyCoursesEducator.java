@@ -86,12 +86,19 @@ public class MyCoursesEducator extends PseudoServlet
 					res.setBlockHours(Integer.parseInt(request.getParameter("blockHours")));
 					res.setTotalnumberHours(Integer.parseInt(request.getParameter("totalNumberHours")));
 					Vector<Hardware> neededhardware = new Vector<Hardware>();
+					System.out.println("----------------------------");
+					// TODO Wat gaat er hier mis, met al die null elementen, ik vind het niet
 					for (Hardware i : Hardware.getAllHardware())
 					{
 						if (request.getParameter(i.toValue())!=null);
 						{
 							Hardware hw = new Hardware(request.getParameter(i.toValue()));
-							neededhardware.add(hw);
+							if (!(hw.toString()==null))
+							{
+								System.out.println(hw.toString());
+								System.out.println("Needed = "+hw.toString());
+								neededhardware.add(hw);
+							}
 						}
 					}
 					res.setNeededHardware(neededhardware);

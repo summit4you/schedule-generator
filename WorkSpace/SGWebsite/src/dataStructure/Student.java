@@ -70,7 +70,14 @@ public class Student implements Databasable,HTMLTablable,DatabasableWithOwnID,Se
 	@InDatabase
 	public Vector<Program> getPrograms()
 	{
-		return (Vector<Program>) programs.clone(); 
+		if (!(programs==null))
+		{
+			return (Vector<Program>) programs.clone(); 
+		}
+		else
+		{
+			return null;
+		}
 	}
 	
 	public void addProgram(Program program)

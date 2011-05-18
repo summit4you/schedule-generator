@@ -32,6 +32,7 @@ public class MainServlet extends HttpServlet {
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
 	public static final String logoutIdentifier="logout";
+	private static final String guestid="Guest";
 		
 	private String noMessage="";
 	private String errorMessage="##WrongID_Login##";
@@ -139,21 +140,32 @@ public class MainServlet extends HttpServlet {
 		{
 			if (ps.equals(loginIdentifier))
 			{
-				// guest zit ook in de  database
-				Database db = Database.getDB();
-				db.connect();
-				Search s = new Search(Account.class,"getUserName;getPassword",request.getParameter("username"),request.getParameter("password"));
-				Account acc = db.read(s);
-				db.disconnect();
-				if (acc==null)
+				if ((request.getParameter("username").equals(guestid))&&(request.getParameter("password").equals(guestid)))
 				{
-					out.println(LanguageResolver.translate(makeLoginSite(errorMessage).getHtmlCode(),Globals.defaultLanguage ));
-				}
+					Account guest = new Account(guestid, guestid, Globals.defaultLanguage, UserType.getUserType(UserType.guestType));
+					Session ses = new Session(guest);
+					out.println(Site.createLogoutForm(LanguageResolver.translate(ses.getAccount().getType().buildSite(ses).getHtmlCode(),ses.getAccount().getLanguage()),ses));
+				}	
 				else
 				{
-					Session ses=new Session(acc);
-					System.out.println("HALLO!");
-					out.println(Site.createLogoutForm(LanguageResolver.translate(ses.getAccount().getType().buildSite(ses).getHtmlCode(),ses.getAccount().getLanguage()),ses));
+					Database db = Database.getDB();
+					db.connect();
+					System.out.println(db.toString());
+					Search s = new Search(Account.class,"getUserName;getPassword",request.getParameter("username"),request.getParameter("password"));
+					System.out.println(s.toString());
+					Account acc = db.read(s);
+					db.disconnect();
+					if (acc==null)
+					{
+						out.println(LanguageResolver.translate(makeLoginSite(errorMessage).getHtmlCode(),Globals.defaultLanguage ));
+					}
+					else
+					{
+						Session ses=new Session(acc);
+						String resp = Site.createLogoutForm(ses.getAccount().getType().buildSite(ses).getHtmlCode(),ses);
+						resp = LanguageResolver.translate(resp ,ses.getAccount().getLanguage());
+						out.println(resp);
+					}
 				}
 			}
 			else
