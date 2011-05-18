@@ -175,10 +175,9 @@ public class Search extends PseudoServlet
 	}
 
 	@Override
-	public String getTabName()
+	public TabName getTabName()
 	{
 		// TODO Auto-generated method stub
-		return PseudoServlet.TabName.Search.toLanguageTag();
+		return PseudoServlet.TabName.Search;
 	}
-
 }

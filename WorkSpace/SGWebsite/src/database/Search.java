@@ -11,6 +11,8 @@ import java.util.Vector;
  */
 public class Search implements Serializable,Syntaxable
 {	
+	private static final long serialVersionUID = 1L;
+	
 	final public static String classSeparator=";";
 	
 	private Class<?extends Databasable> cl;

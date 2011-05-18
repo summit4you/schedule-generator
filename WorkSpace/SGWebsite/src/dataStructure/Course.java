@@ -2,6 +2,7 @@ package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import database.*;
@@ -11,8 +12,10 @@ import database.*;
  * @version2.0
  */
 
-public class Course implements Databasable,HTMLTablable
+public class Course implements Databasable,HTMLTablable,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private Educator responsible;
 	private Vector<Subcourse> subcourses;
@@ -21,7 +24,7 @@ public class Course implements Databasable,HTMLTablable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 	
 	public Course(String name, Vector<Subcourse> subcourses,Educator responsible)

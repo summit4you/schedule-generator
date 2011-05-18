@@ -6,12 +6,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Vector;
-import other.Globals;
 import dataStructure.Educator;
+import dataStructure.Faculty;
 import dataStructure.Student;
 
 /**
@@ -24,6 +22,8 @@ import dataStructure.Student;
  */
 public class Database implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	final private static String driverClassName = "com.mysql.jdbc.Driver";
 
 	private String url,name,password;
@@ -69,8 +69,9 @@ public class Database implements Serializable
 	public static Database getDB()
 	{
 		//TODO replace database values with a read from an xml file
-		return new Database(Globals.databaseAdress,Globals.databaseName,Globals.databasePassword);
+		return new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
 	}
+	
 	public String getURL()
 	{
 		return url;
@@ -270,7 +271,7 @@ public class Database implements Serializable
 	{
 		cache.removeAllElements();
 	}
-
+	
 	protected Databasable getFromCache(Class<? extends Databasable> cl,ID id)
 	{
 		if (id==null)

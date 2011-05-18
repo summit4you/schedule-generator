@@ -1,15 +1,9 @@
 package generators;
 
 import java.util.Vector;
-
-import pseudoServlets.StudentTable;
-
 import login.*;
 import dataStructure.*;
-
-import database.Databasable;
 import database.Database;
-import database.Search;
 
 public class FillDatabase
 {
@@ -23,14 +17,13 @@ public class FillDatabase
 	
 	public static void write()
 	{	
-			
 		
 		Educator rolain = new Educator("Yves", "Rolain",1);
 		Educator gerd = new Educator("Gerd", "Vandersteen",10);
 		Educator pintelon = new Educator("Rik", "Pintelon",9);
 		Educator ragnhild = new Educator("Ragnhild", "Verstraete",3);
 		Educator leo = new Educator("Leo", "Van Biesen",2);
-		Educator hugo = new Educator("Hugo", "Thienpont",0);
+		Educator hugo = new Educator("Hugo", "Thienpont",4);
 		
 		Hardware bord = new Hardware("bord");
 		Hardware beamer = new Hardware("beamer");
@@ -151,40 +144,55 @@ public class FillDatabase
 		matsi.addCourse(softwareengineering);
 		
 		
-		
-		Admin ad = new Admin();
 		//Account ac1 = new Account(name, pass, language, student, educator, admin, type)
-//		Account ac1 = new Account("adam", "tolkien", "dutch", adam , null, null,new UserType("Student"));
-//		Account ac2 = new Account("zjef", "sertyuiop", "english", zjef, null, null,new UserType("Student"));
-//		Account ac3 = new Account("alex", "admin", "dutch", alex, null, null,new UserType("Student"));
-//		Account ac4 = new Account("koningcanis", "kak", "english", matsi, null, null,new UserType("Student"));
-//		Account ac5 = new Account("yves","EMrules","flenglish",null,rolain,null,new UserType("Educator"));
-//		Account ac6 = new Account("rik", "nummer9", "dutch", null, pintelon, null,new UserType("Educator"));
-//		Account ac7 = new Account("ragnhild","acasias", "dutch", null, ragnhild, null,new UserType("Educator"));
-//		Account ac8 = new Account("gerd", "eSYSID", "dutch", null, gerd, null,new UserType("Educator"));
-//		Account ac9 = new Account("leo", "aalstrules", "dutch", null, leo, null,new UserType("Educator"));
-//		Account ac10 = new Account("hugo", "fotonicasucks", "dutch", null, hugo, null,new UserType("Educator"));
-//		Account ac0 = new Account("admin", "admin", "english",null, null, ad,new UserType("Admin"));
-//		Account ac11 = new Account("guest","guest","english",null,null,null,new UserType("Guest"));	
+		Account ac1=new Account("adam","tolkien","dutch",new UserType("Student"));
+		ac1.setAccountNumber(adam.getstudentNumber());
+		Account ac2 = new Account("zjef", "sertyuiop", "english",new UserType("Student"));
+		ac2.setAccountNumber(zjef.getstudentNumber());
+		Account ac3 = new Account("alex", "admin", "dutch",new UserType("Student"));
+		ac3.setAccountNumber(alex.getstudentNumber());
+		Account ac4 = new Account("koningcanis", "kak", "english",new UserType("Student"));
+		ac4.setAccountNumber(matsi.getstudentNumber());
+		Account ac5 = new Account("yves","EMrules","flenglish",new UserType("Educator"));
+		ac5.setAccountNumber(rolain.getemployeeNumber());
+		Account ac6 = new Account("rik", "nummer9", "dutch",new UserType("Educator"));
+		ac6.setAccountNumber(pintelon.getemployeeNumber());
+		Account ac7 = new Account("ragnhild","acasias", "dutch",new UserType("Educator"));
+		ac7.setAccountNumber(ragnhild.getemployeeNumber());
+		Account ac8 = new Account("gerd", "eSYSID", "dutch",new UserType("Educator"));
+		ac8.setAccountNumber(gerd.getemployeeNumber());
+		Account ac9 = new Account("leo", "aalstrules", "dutch",new UserType("Educator"));
+		ac9.setAccountNumber(leo.getemployeeNumber());
+		Account ac10 = new Account("hugo", "fotonicasucks", "dutch",new UserType("Educator"));
+		ac10.setAccountNumber(hugo.getemployeeNumber());
+		Account ac0 = new Account("admin", "admin", "english",new UserType("Admin.MainAdmin"));
+		Account ac11 = new Account("guest","guest","english",new UserType("Guest"));
+		
 		Database db=new Database("wilma.vub.ac.be/se5_1011","se5_1011","nieveGroep");
 		db.connect();
-//		db.write(ac1);
-//		db.write(ac2);
-//		db.write(ac3);
-//		db.write(ac4);
-//		db.write(ac5);
-//		db.write(ac6);
-//		db.write(ac7);
-//		db.write(ac8);
-//		db.write(ac9);
-//		db.write(ac10);
-//		db.write(ac11);
-//		db.write(ac0);
+		db.createTestTables();
+		db.write(ac1);
+		db.write(ac2);
+		db.write(ac3);
+		db.write(ac4);
+		db.write(ac5);
+		db.write(ac6);
+		db.write(ac7);
+		db.write(ac8);
+		db.write(ac9);
+		db.write(ac10);
+		db.write(ac11);
+		db.write(ac0);
 		db.write(k);
 		db.write(l);
 		db.write(d);
 		db.write(IR);
 		db.write(WE);
+		
+		db.write(adam);
+		db.write(zjef);
+		db.write(alex);
+		db.write(matsi);
 		db.disconnect();
 		
 	}
@@ -212,7 +220,6 @@ public class FillDatabase
 		db.deleteTable(Subcourse.class);
 		db.deleteTable(Educator.class);
 		db.deleteTable(Program.class);
-		db.deleteTable(Admin.class);
 		db.deleteTable(Room.class);
 		db.deleteTable(Building.class);
 		db.deleteTable(Faculty.class);

@@ -3,6 +3,7 @@ package dataStructure;
 import htmlInterfaces.HTMLTablable;
 import htmlInterfaces.HTMLTablable.*;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import database.*;
@@ -13,8 +14,10 @@ import database.*;
  * @version2.0
  */
 
-public class Faculty implements Databasable
+public class Faculty implements Databasable,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private Vector<Program> programs;
 	private Vector<Educator> educators;
@@ -28,13 +31,14 @@ public class Faculty implements Databasable
 	
 	public Faculty()
 	{
-		
+		programs=new Vector<Program>();
+		educators=new Vector<Educator>();
 	}
 	
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 	
 	@InDatabase

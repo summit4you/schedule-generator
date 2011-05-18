@@ -139,8 +139,7 @@ public class IcsCalendar
 			return new IcsCalendar(builder.build(in),filename);
 		} catch (Exception e)
 		{
-			e.printStackTrace();
-			return null;
+			return new IcsCalendar(filename);
 		}
 	}
 	

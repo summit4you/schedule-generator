@@ -229,9 +229,9 @@ public class MyCoursesEducator extends PseudoServlet
 	}
 
 	@Override
-	public String getTabName()
+	public TabName getTabName()
 	{
-		return PseudoServlet.TabName.MyCoursesEducator.toLanguageTag();
+		return PseudoServlet.TabName.MyCoursesEducator;
 	}
 }
 

@@ -3,6 +3,8 @@ package calendar;
 import java.net.SocketException;
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Iterator;
+
 import dataStructure.Building;
 import dataStructure.Room;
 import net.fortuna.ical4j.model.Date;
@@ -12,6 +14,7 @@ import net.fortuna.ical4j.model.PropertyFactoryImpl;
 import net.fortuna.ical4j.model.component.VEvent;
 import net.fortuna.ical4j.model.property.DtEnd;
 import net.fortuna.ical4j.model.property.DtStart;
+import net.fortuna.ical4j.model.property.Uid;
 import net.fortuna.ical4j.util.UidGenerator;
 
 /**
@@ -28,8 +31,8 @@ public class SubCourseEvent
 	 */
 	public SubCourseEvent(String descr,Calendar start,Calendar end,String educator,Building building,Room room)
 	{
-		this();
 		this.event=new VEvent(Transformation.calendarToDate(start),Transformation.calendarToDate(end),descr);
+		setUID();
 		setLocation(building, room);
 		setEducator(educator);
 	}
@@ -37,9 +40,20 @@ public class SubCourseEvent
 	public SubCourseEvent()
 	{
 		event=new VEvent();
+		setUID();
+	}
+	
+	private void setUID()
+	{
 		try
 		{
-			event.getProperties().add(new UidGenerator("1").generateUid());
+			Uid newUid=new UidGenerator("1").generateUid();
+			Uid uid=(Uid) event.getProperty(Property.UID);
+			if (uid!=null)
+			{
+				event.getProperties().remove(uid);
+			}
+			event.getProperties().add(newUid);
 		} catch (SocketException e)
 		{
 			e.printStackTrace();
@@ -110,6 +124,26 @@ public class SubCourseEvent
 		return Transformation.dateToCalendar(event.getEndDate().getDate());
 	}
 	
+	public void setTime(Calendar start,Calendar end)
+	{
+		if (event.getStartDate()==null)
+		{
+			event.getProperties().add(new DtStart(new DateTime(start.getTime())));
+		}
+		else
+		{
+			event.getStartDate().getDate().setTime(start.getTime().getTime());
+		}
+		if (event.getEndDate()==null)
+		{
+			event.getProperties().add(new DtEnd(new DateTime(end.getTime())));
+		}
+		else
+		{
+			event.getEndDate().getDate().setTime(end.getTime().getTime());
+		}
+	}
+	
 	public void setTime(String date,String start,String end,String dateFormat)
 	{
 		if (event.getStartDate()==null)
@@ -133,5 +167,29 @@ public class SubCourseEvent
 	public void setSummary(String summary)
 	{
 		setProperty(Property.SUMMARY,summary);
+	}
+	
+	@Override
+	public SubCourseEvent clone()
+	{
+		SubCourseEvent v=new SubCourseEvent();
+		v.event=new VEvent();
+		Iterator it=this.event.getProperties().iterator();
+		while (it.hasNext())
+		{
+			Object o=it.next();
+			try
+			{
+				if (((Property)o).getName()!=Property.DTSTAMP)
+				{
+					v.event.getProperties().add(((Property)o).copy());
+				}
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		v.setUID();
+		return v;
 	}
 }

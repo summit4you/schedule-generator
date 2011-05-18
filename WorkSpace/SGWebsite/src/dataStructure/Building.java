@@ -3,6 +3,7 @@ package dataStructure;
 import htmlInterfaces.HTMLTablable;
 import htmlInterfaces.HTMLTablable.*;
 
+import java.io.Serializable;
 import java.util.Vector;
 import database.*;
 
@@ -12,8 +13,10 @@ import database.*;
  * @version2.0
  */
 
-public class Building implements Databasable,HTMLTablable
+public class Building implements Databasable,HTMLTablable,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private Vector<Room> rooms;
 	
@@ -31,7 +34,7 @@ public class Building implements Databasable,HTMLTablable
 	@Override
 	public boolean equals(Object obj)
 	{
-		return (obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
+		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
 	
 	@InDatabase
@@ -68,8 +71,6 @@ public class Building implements Databasable,HTMLTablable
 	{
 		rooms.remove(room);
 	}
-	
-	//Hier komen de methodes en parameters voor de database.
 	
 	private ID id;
 	

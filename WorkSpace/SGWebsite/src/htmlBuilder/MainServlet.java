@@ -19,6 +19,7 @@ import database.Database;
 import database.Search;
 
 import pseudoServlets.PseudoServlet;
+import pseudoServlets.PseudoServletForApplet;
 import sessionTracking.Session;
 
 /**
@@ -29,6 +30,7 @@ public class MainServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     
+	public static final String appletParamTag="applet";
 	public static final String identifierParamTag="id";
 	public static final String loginIdentifier="login";
 	public static final String logoutIdentifier="logout";
@@ -61,17 +63,9 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO for testing purposes, print request
-		System.out.println("GET");
-		Enumeration<String> e = request.getParameterNames();
-		while (e.hasMoreElements())
-		{
-			String testprint = (String) e.nextElement();
-			System.out.println(testprint + " = " + request.getParameter(testprint));
-		}
 		
-		response.setContentType("text/html");
-	    PrintWriter out = response.getWriter();
+//		response.setContentType("text/html");
+		PrintWriter out = "true".equals(request.getParameter(appletParamTag))?null:response.getWriter();
 	    
 		String ps=request.getParameter(PseudoServlet.pseudoServletParamTag);
 		String id=request.getParameter(identifierParamTag);
@@ -100,7 +94,14 @@ public class MainServlet extends HttpServlet {
 		    {
 		    	if (ses.getAccount().getType().isAuthorized(ps))
 		    	{
-		    		out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses),ses.getAccount().getLanguage()));
+		    		if ("true".equals(request.getParameter(appletParamTag)))
+		    		{
+		    			((PseudoServletForApplet)PseudoServlet.getPseudoServlet(ps)).processAppletRequest(request, response, ses);
+		    		}
+		    		else
+		    		{
+		    			out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.GET, request,ses),ses.getAccount().getLanguage()));
+		    		}
 		    	}
 		    	else
 		    	{
@@ -121,17 +122,8 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO for testing purposes, print request
-		Enumeration<String> e = request.getParameterNames();
-		System.out.println("POST");
-		while (e.hasMoreElements())
-		{
-			String testprint = (String) e.nextElement();
-			System.out.println(testprint + " = " + request.getParameter(testprint));
-		}
-		
-		response.setContentType("text/html");
-	    PrintWriter out = response.getWriter();
+//		response.setContentType("text/html");
+		PrintWriter out = "true".equals(request.getParameter(appletParamTag))?null:response.getWriter();
 	    
 		String ps=request.getParameter(PseudoServlet.pseudoServletParamTag);
 		String id=request.getParameter(identifierParamTag);
@@ -150,7 +142,6 @@ public class MainServlet extends HttpServlet {
 				{
 					Database db = Database.getDB();
 					db.connect();
-					System.out.println(db.toString());
 					Search s = new Search(Account.class,"getUserName;getPassword",request.getParameter("username"),request.getParameter("password"));
 					System.out.println(s.toString());
 					Account acc = db.read(s);
@@ -188,8 +179,15 @@ public class MainServlet extends HttpServlet {
 			    } 
 			    else
 			    {
-			    	out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.POST, request,ses),ses.getAccount().getLanguage()));
-			    } 
+			    	if ("true".equals(request.getParameter(appletParamTag)))
+		    		{
+		    			((PseudoServletForApplet)PseudoServlet.getPseudoServlet(ps)).processAppletRequest(request, response, ses);
+		    		}
+			    	else
+			    	{
+			    		out.println(LanguageResolver.translate(PseudoServlet.getPseudoServlet(ps).processRequest(PseudoServlet.RequestType.POST, request,ses),ses.getAccount().getLanguage()));
+			    	} 
+			    }
 			}
 		} 
 	}

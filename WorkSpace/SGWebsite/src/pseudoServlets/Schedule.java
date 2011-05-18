@@ -36,9 +36,9 @@ public class Schedule extends PseudoServlet
 	}
 
 	@Override
-	public String getTabName()
+	public TabName getTabName()
 	{
-		return PseudoServlet.TabName.Schedule.toLanguageTag();
+		return PseudoServlet.TabName.Schedule;
 	}
 
 }

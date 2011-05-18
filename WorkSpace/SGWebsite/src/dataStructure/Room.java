@@ -2,6 +2,7 @@ package dataStructure;
 
 import htmlInterfaces.HTMLTablable;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import calendar.CalendarKeeper;
@@ -9,17 +10,19 @@ import calendar.IcsCalendar;
 
 import database.*;
 
-public class Room implements Databasable,HTMLTablable,CalendarKeeper
+public class Room implements Databasable,HTMLTablable,CalendarKeeper,Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String location;
 	private int capacity;
 	private Vector<Hardware> presentHardware;
 	
 	public Room(String newlocation,int newcapacity)
 	{
+		this();
 		location = newlocation;
 		capacity = newcapacity;
-		presentHardware = new Vector<Hardware>();
 	}
 	
 	public Room()
@@ -106,5 +109,4 @@ public class Room implements Databasable,HTMLTablable,CalendarKeeper
 	{
 		return calendar.Translator.loadRoomCalendar(id.toString());
 	}
-	
 }
