@@ -92,7 +92,7 @@ public class IcsCalendar
 	public Vector<VEvent> overlap(java.util.Calendar start,java.util.Calendar end)
 	{
 		Period period = new Period(new DateTime(Transformation.calendarToDate(start)),new DateTime(Transformation.calendarToDate(end)));
-		return (Vector<VEvent>) new Filter(new PeriodRule(period)).filter(cal.getComponents(Component.VEVENT));
+		return new Vector<VEvent>(new Filter(new PeriodRule(period)).filter(cal.getComponents(Component.VEVENT)));
 	}
 	
 	/**
