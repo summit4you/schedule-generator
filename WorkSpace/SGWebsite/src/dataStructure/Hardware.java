@@ -3,6 +3,14 @@ package dataStructure;
 import java.io.Serializable;
 import java.util.Vector;
 
+import net.fortuna.ical4j.model.parameter.Value;
+
+import other.Globals;
+import xml.ElementWithChildren;
+import xml.ElementWithValue;
+import xml.XMLDocument;
+import xml.XMLElement;
+
 import database.*;
 
 /**
@@ -13,7 +21,11 @@ public class Hardware implements DatabasableAsString,Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
+	private static final String mainLabel="Hardware";
+	
 	private static Vector<Hardware> allHardware=loadHardwares();
+	
+	private static final String fileName="Hardware.xml";
 	
 	private String materiaaltype;
 	
@@ -29,15 +41,34 @@ public class Hardware implements DatabasableAsString,Serializable
 	
 	private static Vector<Hardware> loadHardwares()
 	{
-		//TODO read from file
+		XMLDocument hardDoc = new XMLDocument(Globals.configPath+fileName);
 		Vector<Hardware> hardware=new Vector<Hardware>();
-		hardware.add(new Hardware("bord"));
-		hardware.add(new Hardware("Spectrum Analyzer"));
-		hardware.add(new Hardware("wulpse vrouwen"));
-		hardware.add(new Hardware("groot bord"));
-		hardware.add(new Hardware("groter bord"));
-		hardware.add(new Hardware("grootste bord ter wereld"));
+		if (hardDoc.load())
+		{
+			try
+			{
+				for(XMLElement e:ElementWithChildren.class.cast(hardDoc.getElement(mainLabel)).getElements())
+				{
+					hardware.add(new Hardware(ElementWithValue.class.cast(e).getValue()));
+				}
+			}
+			catch(Exception exc)
+			{
+				exc.printStackTrace();	
+			}
+		}
+		
 		return hardware;
+	}
+	
+	public static void setAllHardware(Vector<Hardware> allHardware)
+	{
+		Hardware.allHardware = allHardware;
+	}
+
+	public static Vector<Hardware> getAllHardware()
+	{
+		return allHardware;
 	}
 	
 	@Override
@@ -68,16 +99,9 @@ public class Hardware implements DatabasableAsString,Serializable
 	@Override
 	public void loadFromValue(String value) 
 	{
-		this.materiaaltype=value;
-	}
-
-	public static void setAllHardware(Vector<Hardware> allHardware)
-	{
-		Hardware.allHardware = allHardware;
-	}
-
-	public static Vector<Hardware> getAllHardware()
-	{
-		return allHardware;
+		if (allHardware.contains(new Hardware(value)))
+		{
+			this.materiaaltype=value;
+		}
 	}
 }
