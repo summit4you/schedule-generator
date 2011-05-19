@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import net.fortuna.ical4j.model.property.Uid;
 import calendar.IcsCalendar;
 import calendar.SubCourseEvent;
@@ -56,7 +59,7 @@ public class EditCalendar extends PseudoServlet
 		}
 		if (request.getParameter(editTag)!=null && request.getParameter(editTag).equals("true"))
 		{
-			return editEvent(request);
+			return processEdit(request);
 		}
 		else if (request.getParameter(editPopupTag)!=null && request.getParameter(editPopupTag).equals("true"))
 		{
@@ -89,7 +92,7 @@ public class EditCalendar extends PseudoServlet
 		}
 	}
 	
-	private String editEvent(HttpServletRequest request)
+	private void editEvent(IcsCalendar cal,HttpServletRequest request)
 	{
 		boolean newEvent=request.getParameter(newEventTag)!=null && request.getParameter(newEventTag).equals("true");
 		boolean repeat=request.getParameter("weekRep")!=null && request.getParameter("weekRep").equals("on");
@@ -100,13 +103,16 @@ public class EditCalendar extends PseudoServlet
 		}
 		catch(Exception e)
 		{
-			repTimes=1;
-		}
-		
-		
-		IcsCalendar cal=Translator.loadSubcourseCalendar(request.getParameter(newEvent?"subcourse":"cal"));
+			repTimes=0;
+			repeat=false;
+		}	
 		
 		SubCourseEvent event=newEvent?new SubCourseEvent():cal.getSubCourseEvent(new Uid(request.getParameter("uid")));
+		
+		if (event==null)
+		{
+			return;
+		}
 		
 		if (request.getParameter(deleteTag)!=null && request.getParameter(deleteTag).equals("true"))
 		{
@@ -134,16 +140,27 @@ public class EditCalendar extends PseudoServlet
 			}
 			db.disconnect();
 		}
-		
+	
 		cal.write();
+	}
+	
+	private String processEdit(HttpServletRequest request)
+	{
+		boolean newEvent=request.getParameter(newEventTag)!=null && request.getParameter(newEventTag).equals("true");
+		
+		IcsCalendar subcourseCal=Translator.loadSubcourseCalendar(request.getParameter(newEvent?"subcourse":"cal"));
+		IcsCalendar roomCal=Translator.loadRoomCalendar(request.getParameter("room"));
+		
+		editEvent(subcourseCal,request);
+		editEvent(roomCal,request);
 		
 		if (newEvent)
 		{
-			return "<html><head></head><body><script>parent.tb_remove(); parent.document.getElementById('calendarFrame').src=parent.document.getElementById('calendarFrame').src;</script></body></html>";
+			return "<html><head></head><body><script>parent.tb_remove(); parent.document.getElementById('calendarFrame').src=parent.document.getElementById('calendarFrame').src;##Chrome_Error##</script></body></html>";
 		}
 		else
 		{
-			return "<html><head></head><body><script>parent.tb_remove(); parent.location.reload(1);</script></body></html>";
+			return "<html><head></head><body><script>parent.location.reload(1);parent.tb_remove();##Chrome_Error##</script></body></html>";
 		}
 	}
 	
@@ -167,14 +184,14 @@ public class EditCalendar extends PseudoServlet
 		page=replaceTags(page,"SUBMIT_LINK",createLink(session)+"&"+editTag+"=true"+(create?"&"+newEventTag+"=true":""));
 		page=replaceTags(page,"DELETE_LINK",createLink(session)+"&"+editTag+"=true&"+deleteTag+"=true");
 		page=replaceTags(page,"BUILDINGS",PSTools.createSelectOptions(PSTools.loadObjects(Building.class,true)));
-		page=replaceTags(page,"DATEFORMAT","dd/MM/yyyy");
+		page=replaceTags(page,"DATEFORMAT","##DateFormat##");
 		page=replaceTags(page,"INFO",request.getParameter("info")==null?"":request.getParameter("info"));
 		page=replaceTags(page,"INIT_BUILDING",request.getParameter("building")==null?"1":request.getParameter("building"));
 		page=replaceTags(page,"INIT_ROOM",request.getParameter("room")==null?"":request.getParameter("room"));
 		page=replaceTags(page,"CAL",request.getParameter("cal")==null?"":request.getParameter("cal"));
 		if (create)
 		{
-			page=replaceTags(page,"DATE",new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime()));
+			page=replaceTags(page,"DATE",new SimpleDateFormat(request.getParameter("DateFormat")).format(Calendar.getInstance().getTime()));
 			page=replaceTags(page,"START","08:00");
 			page=replaceTags(page,"END","10:00");
 			page=replaceTags(page,"HIDDEN","");
@@ -226,14 +243,14 @@ public class EditCalendar extends PseudoServlet
 		page=replaceTags(page,"FACULTY_LIST",PSTools.createSelectOptions(facs));
 		page=replaceTags(page,"TEXTS",getTexts(facs,"getPrograms",true));
 		page=replaceTags(page,"VALUES",getTexts(facs,"getPrograms",false));
-		page=replaceTags(page,"CREATELINK",createLink(session)+"&"+editPopupTag+"=true&"+createPopupTag+"=true");
+		page=replaceTags(page,"CREATELINK",createLink(session)+"&"+editPopupTag+"=true&"+createPopupTag+"=true&DateFormat=##DateFormat##");
 		return page;
 	}
 	
 	/**
 	 * @param texts - true for text, false for value
 	 */
-	private String getTexts(Vector<? extends Databasable> facs,String submethod,boolean texts)
+	private static String getTexts(Vector<? extends Databasable> facs,String submethod,boolean texts)
 	{
 		String res="[";
 		for (Databasable f:facs)
@@ -241,7 +258,12 @@ public class EditCalendar extends PseudoServlet
 			res+="[";
 			try
 			{
-				for (Databasable p:(Vector<? extends Databasable>)f.getClass().getMethod(submethod).invoke(f))
+				Vector<? extends Databasable> vec=(Vector<? extends Databasable>)f.getClass().getMethod(submethod).invoke(f);
+				if (vec.size()==0)
+				{
+					res+=",";	//dummy character
+				}
+				for (Databasable p:vec)
 				{
 					if (texts)
 					{
@@ -260,7 +282,7 @@ public class EditCalendar extends PseudoServlet
 		}
 		return res.substring(0,res.length()-1)+"]";
 	}
-	
+
 	@Override
 	public TabName getTabName()
 	{

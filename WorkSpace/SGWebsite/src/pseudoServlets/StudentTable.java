@@ -62,19 +62,23 @@ public class StudentTable extends TabAndList<Student>
 	@Override
 	protected Vector<Student> getTableObjects(String faculty, String program) 
 	{
-		//TODO read faculty with only program selected, then read program
 		Database db=getDB();
 		db.connect();
-		Program p=db.read(new database.Search(Program.class,"getName",program));
-		Vector<Student> students=db.readAll(new database.Search(Student.class,"getPrograms",p.getID()));
-		for (Student s:(Vector<Student>)students.clone())
+		Program p=db.read(new database.Search(Program.class,program));
+		if (p==null)
 		{
-			if (!s.getPrograms().contains(p))
-			{
-				students.remove(s);
-			}
+			return new Vector<Student>();
 		}
+		Vector<Student> students=db.readAll(new database.Search(program,Student.class,"getPrograms"));
+//		Vector<Student> students=db.readAll(new database.Search(p.getID().toString(),Student.class,"getPrograms"));
 		db.disconnect();
+//		for (Student s:(Vector<Student>)students.clone())
+//		{
+//			if (!s.getPrograms().contains(p))
+//			{
+//				students.remove(s);
+//			}
+//		}
 		return students;
 	}
 
@@ -83,5 +87,4 @@ public class StudentTable extends TabAndList<Student>
 	{
 		return TabName.Students;
 	}
-
 }

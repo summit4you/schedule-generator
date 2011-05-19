@@ -33,7 +33,7 @@ public abstract class PseudoServlet
 	public static enum RequestType {GET,POST};
 	public enum TabName
 	{
-		Account,Login,Search,Schedule,Accounts,EditAccounts,Buildings,EditBuildings,Educators,EditEducators,Students,EditStudents,Courses,EditCourses,EditCalendar,MyCoursesStudent,MyCoursesEducator,ConstraintsEducator;
+		Account,Login,Search,Schedule,Accounts,EditAccounts,Buildings,EditBuildings,Educators,EditEducators,Students,EditStudents,Courses,EditCourses,EditCalendar, MyCoursesStudent, MyAccount, MyCoursesEducator, ConstraintsEducator;
 
 		public String toLanguageTag()
 		{
@@ -67,24 +67,26 @@ public abstract class PseudoServlet
 	{
 		Vector<PseudoServlet> pseudos=new Vector<PseudoServlet>(); 
 		//add your pseudoServlets to this vector!
-		pseudos.add(new pseudoServlets.Account());
-		pseudos.add(new AccountEditor());
-		pseudos.add(new AccountTable());
-		pseudos.add(new BuildingEditor());
-		pseudos.add(new BuildingTable());
-		pseudos.add(new ConstraintsEducator());
-		pseudos.add(new CourseEditor());
-		pseudos.add(new CourseTable());
-		pseudos.add(new EditCalendar());
-		pseudos.add(new EducatorEditor());
-		pseudos.add(new EducatorTable());
-		pseudos.add(new MyCoursesEducator());
-		pseudos.add(new MyCoursesStudent());
-		pseudos.add(new Schedule());
+		
 		pseudos.add(new Search());
-		pseudos.add(new StudentEditor());
+		pseudos.add(new Schedule());
+		pseudos.add(new EditCalendar());
+		
+		pseudos.add(new AccountTable());
+		pseudos.add(new AccountEditor());
+		pseudos.add(new EducatorTable());
+		pseudos.add(new EducatorEditor());
+		pseudos.add(new BuildingTable());
+		pseudos.add(new BuildingEditor());
+		pseudos.add(new CourseTable());
+		pseudos.add(new CourseEditor());
 		pseudos.add(new StudentTable());
-
+		pseudos.add(new StudentEditor());
+		
+		pseudos.add(new CourseEditor());
+		pseudos.add(new MyCoursesStudent());
+		pseudos.add(new MyCoursesEducator());
+		pseudos.add(new pseudoServlets.Account());
 		
 		for (PseudoServlet i:pseudos)
 		{
@@ -135,7 +137,7 @@ public abstract class PseudoServlet
 	public String createLink(Session session)
 	{
 		//TODO link voor applets heeft meer nodig voor het '?'
-		return "?"+pseudoServletParamTag+"="+getIdentifier()+"&"+"id="+session.getSessionID();
+		return "http://wilma.vub.ac.be:8080/ZVdP/MainServlet"+"?"+pseudoServletParamTag+"="+getIdentifier()+"&"+"id="+session.getSessionID();
 	}
 	
 	/**

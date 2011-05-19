@@ -1,6 +1,5 @@
 package pseudoServlets;
 
-import htmlBuilder.Site;
 import htmlInterfaces.HTMLInterfaceTool;
 import java.util.Vector;
 import dataStructure.Course;

@@ -29,7 +29,7 @@ public class AccountEditor extends PseudoServletForApplet
 	@Override
 	public String processRequest(RequestType type, HttpServletRequest request, Session session)
 	{
-		String res=replaceTags(template,"PARAMS",",userTypes:'"+PSTools.implodeVector(UserType.getUserTypes())+"'");
+		String res=replaceTags(template,"PARAMS",",guest:'"+UserType.guestType+"',educator:'"+UserType.educatorType+"',student:'"+UserType.studentType+"',userTypes:'"+PSTools.implodeVector(UserType.getUserTypes())+"'");
 		res=replaceTags(res,"JNLP",appletName);
 		return replaceTags(res,"URL",createLink(session));
 	}
