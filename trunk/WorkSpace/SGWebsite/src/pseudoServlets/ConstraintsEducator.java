@@ -2,58 +2,78 @@ package pseudoServlets;
 
 
 
+import java.text.ParseException;
+
 import javax.servlet.http.HttpServletRequest;
 
+import pseudoServlets.tools.CalendarTools;
+
+import net.fortuna.ical4j.model.Date;
+import net.fortuna.ical4j.model.Recur;
+import net.fortuna.ical4j.model.WeekDay;
+import net.fortuna.ical4j.model.component.VEvent;
+import net.fortuna.ical4j.model.property.CalScale;
+import net.fortuna.ical4j.model.property.RRule;
 import net.fortuna.ical4j.model.property.Uid;
 
+import calendar.Transformation;
 import calendar.UnavailableEvent;
 import calendar.IcsCalendar;
 
 import dataStructure.Educator;
 
-import pseudoServlets.PseudoServlet.RequestType;
-import pseudoServlets.tools.CalendarTools;
-
 import sessionTracking.Session;
-import sun.util.resources.CalendarData;
 
 public class ConstraintsEducator extends PseudoServlet
 {
-	private final String dateSeperator="/";
-	private final String hourSeperator=":";
+	private final static String dateSeperator="/";
+	private final static String hourSeperator=":";
 	private String popup;
 	
-	// DD/MM/YYYY/HH:MM
-	private java.util.Calendar parseDate(String date)
+	/**
+	 *  <b>Parse method that parses text of the following format DD/MM/YYYY/HH:MM </b></br>
+	 *  If an error occurs the successfully parsed info is returned. 
+	 * @param date format DD/MM/YYYY/HH:MM
+	 * @return Calendar with corresponding date
+	 */
+	private static java.util.Calendar parseDate(String date)
 	{	
-		String day = date.substring(0,date.indexOf(dateSeperator));
-		date=date.substring(date.indexOf("dateSeperator"));
-		
-		String month = date.substring(0,date.indexOf(dateSeperator));
-		date=date.substring(date.indexOf("dateSeperator"));	
-		
-		String year = date.substring(0,date.indexOf(dateSeperator));
-		date=date.substring(date.indexOf("dateSeperator"));
-		
-		String hour = date.substring(0,date.indexOf(hourSeperator));
-		
+		int index = date.indexOf(dateSeperator);
 		java.util.Calendar cal = java.util.Calendar.getInstance();
-		cal.set(java.util.Calendar.YEAR,Integer.parseInt(year));
-		cal.set(java.util.Calendar.MONTH,Integer.parseInt(month));
-		cal.set(java.util.Calendar.DAY_OF_MONTH,Integer.parseInt(day));
-		cal.set(java.util.Calendar.HOUR_OF_DAY,Integer.parseInt(hour));
-
+		try
+		{
+			String day = date.substring(0,index);
+			date=date.substring(index+1);
+			cal.set(java.util.Calendar.DAY_OF_MONTH,Integer.parseInt(day));
+			
+			
+			index = date.indexOf(dateSeperator);
+			String month = date.substring(0,index);
+			date=date.substring(index+1);	
+			cal.set(java.util.Calendar.MONTH,Integer.parseInt(month));
+			
+			index = date.indexOf(dateSeperator);
+			String year = date.substring(0,index);
+			date=date.substring(index+1);
+			cal.set(java.util.Calendar.YEAR,Integer.parseInt(year));
+			
+			index = date.indexOf(hourSeperator);
+			String hour = date.substring(0,index);
+			date=date.substring(index+1);
+			cal.set(java.util.Calendar.HOUR_OF_DAY,Integer.parseInt(hour));
+			
+			String minute=  date;
+			cal.set(java.util.Calendar.MINUTE,Integer.parseInt(minute));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}	
 		return cal;
 	}
 	
 	@Override
-	protected void init()
-	{
-		super.init();		
-		popup=loadTemplate("deleteConstraint.tpl");
-	}
-	
-	@Override
+	//TODO check generated calendars
 	public String processRequest(RequestType type, HttpServletRequest request,Session session)
 	{
 		if (type==RequestType.GET)
@@ -73,39 +93,45 @@ public class ConstraintsEducator extends PseudoServlet
 		}
 		else if (type==RequestType.POST)
 		{
+			String uid = request.getParameter("uid");
 			Educator educator = Educator.class.cast(session.getAccount().getData());
 			IcsCalendar calendar = educator.getCalendar();
-			String uid = request.getParameter("uid");
 			if (uid==null)
 			{
-			if (request.getParameter("change").equals("single"))
-			{
-				//TODO 
-				String date = request.getParameter("inputDate");	  // DD/MM/YYYY
-				String starthour = request.getParameter("startHour"); // starting hour UU:MM
-				String stophour = request.getParameter("stopHour");   // stop hour
-				calendar.addUnavailableEvent(new UnavailableEvent(parseDate(date+dateSeperator+starthour),parseDate(date+dateSeperator+stophour)));
-				
-			}
-			else if (request.getParameter("change").equals("week"))
-			{
-				//TODO aan kalender toevoegen
-				String day = request.getParameter("day"); // day of the week which is not possible 1->7
-				String startweek = request.getParameter("startWeek"); // week at which the unavailability starts, maybe change to date  DD/MM/YYYY
-				String stopweek = request.getParameter("stopWeek"); // week at which the unavailability stops, maybe change to date DD/MM/YYYY
-				String starthour = request.getParameter("starthour"); // hour at which the weekly unavailability starts
-				String stophour = request.getParameter("stophour"); // hour at which the weekly unavailability stops
-			}
-			else if (request.getParameter("change").equals("long"))
-			{
-				String startDate = request.getParameter("startDate");
-				String stopDate = request.getParameter("stopDate");
-				calendar.addUnavailableEvent(new UnavailableEvent(parseDate(startDate+dateSeperator+"00:00"),parseDate(startDate+dateSeperator+"00:00")));
-			}
-			else
-			{
-				return "ERROR, change type not known";
-			}
+				if (request.getParameter("change").equals("single"))
+				{
+					String date = request.getParameter("inputDate");	  
+					String starthour = request.getParameter("startHour"); 
+					String stophour = request.getParameter("stopHour");   
+					calendar.addUnavailableEvent(new UnavailableEvent(parseDate(date+dateSeperator+starthour),parseDate(date+dateSeperator+stophour)));	
+				}
+				else if (request.getParameter("change").equals("week"))
+				{
+					//TODO change day selection to "MO" "TU" "WE" ...
+					String day = request.getParameter("day"); 
+					String startDate = request.getParameter("startDate"); 
+					String stopDate = request.getParameter("stopDate"); 
+					String startHour = request.getParameter("startHour"); 
+					String stopHour = request.getParameter("stopHour"); 
+					
+					Recur recur = new Recur(Recur.WEEKLY, Transformation.calendarToDate(parseDate(startDate+dateSeperator+"00:00")));
+					recur.getDayList().add(new WeekDay(day));
+					recur.setInterval(1);
+					recur.setWeekStartDay(WeekDay.MO.getDay()); 
+					RRule rrule = new RRule(recur); 
+	
+					calendar.addUnavailableEvent(new UnavailableEvent(Transformation.calendarToDate(parseDate(startDate+dateSeperator+startHour)),Transformation.calendarToDate(parseDate(startDate+dateSeperator+stopHour))));
+				}
+				else if (request.getParameter("change").equals("long"))
+				{
+					String startDate = request.getParameter("startDate");
+					String stopDate = request.getParameter("stopDate");
+					calendar.addUnavailableEvent(new UnavailableEvent(parseDate(startDate+dateSeperator+"00:00"),parseDate(startDate+dateSeperator+"24:00")));
+				}
+				else
+				{
+					return "ERROR, change type not known";
+				}
 			}
 			else
 			{
@@ -123,5 +149,4 @@ public class ConstraintsEducator extends PseudoServlet
 	{
 		return PseudoServlet.TabName.ConstraintsEducator;
 	}
-
 }
