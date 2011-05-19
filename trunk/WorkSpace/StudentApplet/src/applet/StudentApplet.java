@@ -295,7 +295,7 @@ public class StudentApplet extends JApplet
 		}
 		for (Course c:s.getCourses())
 		{
-			setCounter(p,editVector,false);
+			setCounter(c,editVector,false);
 		}
 	}
 	
