@@ -22,6 +22,7 @@ import dataStructure.Course;
 import dataStructure.Faculty;
 import dataStructure.Program;
 import dataStructure.Student;
+import dataStructure.Subcourse;
 
 public class StudentPanel extends JPanel
 {
@@ -134,6 +135,7 @@ public class StudentPanel extends JPanel
 				if (p!=null)
 				{
 					student.addProgram(p);
+					StudentApplet.setCounter(p,editVector,true);
 					editVector.add(new Wrapper<Student>(student,Edit.edited));
 					programList.setListData(student.getPrograms());
 				}
@@ -162,6 +164,7 @@ public class StudentPanel extends JPanel
 						else
 						{
 							student.removeProgram((Program) p);
+							StudentApplet.setCounter((Program)p,editVector,false);
 							editVector.add(new Wrapper<Student>(student,Edit.edited));
 						}
 					}
@@ -199,6 +202,7 @@ public class StudentPanel extends JPanel
 				if (s!=null)
 				{
 					student.addCourse(s);
+					StudentApplet.setCounter(s,editVector,true);
 					editVector.add(new Wrapper<Student>(student,Edit.edited));
 					courseList.setListData(student.getCourses());
 				}
@@ -220,6 +224,7 @@ public class StudentPanel extends JPanel
 					for (Object c:sel)
 					{
 						student.removeCourse((Course) c);
+						StudentApplet.setCounter((Course)c,editVector,true);
 						editVector.add(new Wrapper<Student>(student,Edit.edited));
 					}
 					courseList.setListData(student.getCourses());
