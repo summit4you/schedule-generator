@@ -247,4 +247,10 @@ public class Subcourse implements Databasable,HTMLTablable,CalendarKeeper,Serial
 	{
 		return semester;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return Name;
+	}
 }
