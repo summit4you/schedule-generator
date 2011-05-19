@@ -47,10 +47,10 @@ public class IcsCalendar
 		setFilename(filename);
 		if (cal==null)
 		{
-			cal=new Calendar();
-			cal.getProperties().add(new ProdId("Calendar"));
-			cal.getProperties().add(CalScale.GREGORIAN);
-			cal.getProperties().add(Version.VERSION_2_0);
+			this.cal=new Calendar();
+			this.cal.getProperties().add(new ProdId("Calendar"));
+			this.cal.getProperties().add(CalScale.GREGORIAN);
+			this.cal.getProperties().add(Version.VERSION_2_0);
 		}
 		else
 		{
@@ -75,6 +75,7 @@ public class IcsCalendar
 	
 	public void addUnavailableEvent(UnavailableEvent event)
 	{
+		System.out.println(">>>IcsCalednar.addUnavailableEvent: " +cal);
 		cal.getComponents().add(event.getEvent());
 	}
 	
