@@ -6,6 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 
+import other.Globals;
+
 import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
 
 import net.fortuna.ical4j.data.CalendarBuilder;
@@ -166,7 +168,7 @@ public class IcsCalendar
 	{
 		try
 		{
-			FileOutputStream out=new FileOutputStream(filename);
+			FileOutputStream out=new FileOutputStream(Globals.calendarFolder+getFilename());
 			new CalendarOutputter().output(cal,out);
 		} catch (Exception e)
 		{
