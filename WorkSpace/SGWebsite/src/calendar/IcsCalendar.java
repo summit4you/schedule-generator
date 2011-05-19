@@ -68,6 +68,11 @@ public class IcsCalendar
 		cal.getComponents().add(event.getEvent());
 	}
 	
+	public void addUnavailableEvent(UnavailableEvent event)
+	{
+		cal.getComponents().add(event.getEvent());
+	}
+	
 	/**
 	 * @return <code>true</code> if the specified range of time overlaps with any event in the calendar
 	 */

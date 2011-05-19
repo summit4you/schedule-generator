@@ -87,11 +87,11 @@ public class ConstraintsEducator extends PseudoServlet
 			else
 			{
 				// een delete request, vraag de gebruiker bevestiging
-				String response = replaceTags(popup, "MASTERSERVLET", createlink(session));
+				String response = replaceTags(popup, "MASTERSERVLET", createLink(session));
 				return replaceTags(response, "UID", request.getParameter("uid"));
 			}
 		}
-		else if (type==RequestType.POST)
+		else 
 		{
 			String uid = request.getParameter("uid");
 			Educator educator = Educator.class.cast(session.getAccount().getData());
@@ -132,6 +132,8 @@ public class ConstraintsEducator extends PseudoServlet
 				{
 					return "ERROR, change type not known";
 				}
+				String response = replaceTags(template, "MASTERSERVLET", createLink(session));
+				return replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink(session.getAccount().getLanguage(), createLink(session)+"&delete=true"));
 			}
 			else
 			{
