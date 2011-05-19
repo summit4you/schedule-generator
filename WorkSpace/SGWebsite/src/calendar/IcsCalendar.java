@@ -92,7 +92,7 @@ public class IcsCalendar
 	public Vector<VEvent> overlap(java.util.Calendar start,java.util.Calendar end)
 	{
 		Period period = new Period(new DateTime(Transformation.calendarToDate(start)),new DateTime(Transformation.calendarToDate(end)));
-		return new Vector<VEvent>(new Filter(new PeriodRule(period)).filter(cal.getComponents(Component.VEVENT)));
+		return (Vector<VEvent>) new Filter(new PeriodRule(period)).filter(cal.getComponents(Component.VEVENT));
 	}
 	
 	/**
@@ -168,7 +168,7 @@ public class IcsCalendar
 	{
 		try
 		{
-			FileOutputStream out=new FileOutputStream(Globals.calendarFolder+getFilename());
+			FileOutputStream out=new FileOutputStream(filename);
 			new CalendarOutputter().output(cal,out);
 		} catch (Exception e)
 		{
