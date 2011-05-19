@@ -39,7 +39,7 @@ public class IcsCalendar
 	
 	public IcsCalendar(String filename)
 	{
-		this(new Calendar(),filename);
+		this(null,filename);
 	}
 	
 	private IcsCalendar(Calendar cal,String filename)
