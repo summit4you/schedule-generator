@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">
+    <information>
+        <title>Student Editor</title>
+        <vendor>SG Website</vendor>
+    </information>
+    <resources>
+        <!-- Application Resources -->
+        <j2se version="1.6+"
+              href="http://java.sun.com/products/autodl/j2se" />
+        <jar href="StudentApplet.jar" main="true" />
+
+    </resources>
+    <applet-desc 
+         name="Building editor"
+         main-class="applet.StudentApplet"
+         width="900"
+         height="400">
+     </applet-desc>
+     <update check="background"/>
+</jnlp>
