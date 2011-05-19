@@ -40,4 +40,9 @@ public class Transformation
 			return null;
 		}
 	}
+	
+	public static Calendar strToCal(String date,String format,String hour)
+	{
+		return dateToCalendar(strToDate(date,format,hour));
+	}
 }
