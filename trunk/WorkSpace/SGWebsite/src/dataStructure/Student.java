@@ -149,4 +149,10 @@ public class Student implements Databasable,HTMLTablable,DatabasableWithOwnID,Se
 	{
 		return super.equals(obj)||(obj!= null && obj.getClass()==this.getClass()?((this.getID()!=null && this.getID().equals(((Databasable) obj).getID()))):false);
 	}
+	
+	@Override
+	public String toString()
+	{
+		return surName+" "+firstName;
+	}
 }
