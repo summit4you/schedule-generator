@@ -22,9 +22,8 @@ import net.fortuna.ical4j.util.UidGenerator;
  * @author Zjef
  * @version 1.0
  */
-public class SubCourseEvent
+public class SubCourseEvent extends SGEvent
 {
-	private VEvent event;
 	
 	/**
 	 * The specified building and room must have ID's
@@ -63,37 +62,6 @@ public class SubCourseEvent
 	protected SubCourseEvent(VEvent event)
 	{
 		this.event=event;
-	}
-	
-	public VEvent getEvent()
-	{
-		return event;
-	}
-	
-	public void setProperty(String property,String value)
-	{
-		Property p;
-		if ((p=event.getProperty(property))!=null)
-		{
-			try
-			{
-				p.setValue(value);
-			} catch (Exception e)
-			{
-			}
-		}
-		else
-		{
-			PropertyFactoryImpl f=PropertyFactoryImpl.getInstance();
-			p=f.createProperty(property);
-			try
-			{
-				p.setValue(value);
-			} catch (Exception e)
-			{
-			}
-			event.getProperties().add(p);
-		}
 	}
 	
 	/**
