@@ -145,7 +145,14 @@ public class UserType implements DatabasableAsString,Serializable
 		Site site = new Site();
 		for(String p:pseudos)
 		{
-			site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
+			if (!(PseudoServlet.getPseudoServlet(p)==null))
+			{
+				site.addTabWithIFrame(PseudoServlet.getPseudoServlet(p).getTabName(), PseudoServlet.getPseudoServlet(p).createLink(ses));
+			}
+			else
+			{
+				System.out.println("ERROR, pseudoservlet in usertypes not found  in pseudoservlets");
+			}	
 		}
 		return site;
 	}
