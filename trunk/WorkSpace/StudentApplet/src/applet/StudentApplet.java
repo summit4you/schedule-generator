@@ -20,9 +20,12 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import dataStructure.Course;
 import dataStructure.Faculty;
 import dataStructure.Program;
 import dataStructure.Student;
+import dataStructure.Subcourse;
 
 /**
  * @author Zjef
@@ -140,6 +143,7 @@ public class StudentApplet extends JApplet
 					Vector<Student> created=panel.getStudents();
 					for (Student i:created)
 					{
+						setCounter(p, editVector,true);
 						editVector.add(new Wrapper<Student>(i,Edit.added));
 					}
 					students.addAll(created);
@@ -163,6 +167,7 @@ public class StudentApplet extends JApplet
 					for (Object i:studs)
 					{
 						editVector.add(new Wrapper<Student>((Student) i,Edit.deleted));
+						setCounter((Student)i,editVector);
 					}
 					students.removeAll(Arrays.asList(studs));
 					studentList.setListData(students);
@@ -279,6 +284,42 @@ public class StudentApplet extends JApplet
 		} catch (Exception ex) 
 		{
 			ex.printStackTrace();
+		}
+	}
+	
+	public static void setCounter(Student s,EditVector editVector)
+	{
+		for (Program p:s.getPrograms())
+		{
+			setCounter(p,editVector,false);
+		}
+		for (Course c:s.getCourses())
+		{
+			setCounter(p,editVector,false);
+		}
+	}
+	
+	public static void setCounter(Program p,EditVector editVector,boolean inc)
+	{
+		for (Course c:p.getCourses())
+		{
+			setCounter(c,editVector,inc);
+		}
+	}
+	
+	public static void setCounter(Course c,EditVector editVector,boolean inc)
+	{
+		for (Subcourse s:c.getSubcourses())
+		{
+			if (inc)
+			{
+				s.incStudentCounter();
+			}
+			else
+			{
+				s.decStudentCounter();
+			}
+			editVector.add(new Wrapper<Subcourse>(s,Edit.edited));
 		}
 	}
 }

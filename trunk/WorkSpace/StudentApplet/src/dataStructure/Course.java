@@ -5,20 +5,29 @@ import java.util.Vector;
 import database.*;
 
 /**
- * 
  * @author matthiascaenepeel
  * @version 2.0
  */
-public class Course implements Serializable
+public class Course implements Serializable,Cloneable
 {
 	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	private Educator responsible;
+	private Vector<Subcourse> subcourses;
 	private Vector<Program> programs;
+	
+	public Course(String name)
+	{
+		this.name=name;
+		this.subcourses=new Vector<Subcourse>();
+		this.programs=new Vector<Program>();
+	}
 	
 	public Course()
 	{
+		subcourses = new Vector<Subcourse>();
+		programs=new Vector<Program>();
 	}
 	
 	public String getName()
@@ -31,14 +40,32 @@ public class Course implements Serializable
 		this.name = name;
 	}
 	
+	public Vector<Subcourse> getSubcourses()
+	{
+		return (Vector<Subcourse>) subcourses.clone();
+	}
+
+	public void setSubcourses(Vector<Subcourse> subcourses)
+	{
+		this.subcourses = (Vector<Subcourse>) subcourses.clone();
+	}
+	
 	public Educator getResponsible()
 	{
 		return responsible;
 	}
-
-	public void setResponsible(Educator responsible)
+	
+	public void addSubcourse(Subcourse subcourse)
 	{
-		this.responsible = responsible;
+		if (!subcourses.contains(subcourse))
+		{
+			subcourses.add(subcourse);
+		}
+	}
+	
+	public void removeSubcourse(Subcourse subcourse)
+	{
+		subcourses.remove(subcourse);
 	}
 	
 	public Vector<Program> getPrograms()
@@ -67,5 +94,18 @@ public class Course implements Serializable
 	public String toString()
 	{
 		return getName();
+	}
+
+	public void removeProgram(Program p)
+	{
+		programs.remove(p);
+	}
+
+	public void addProgram(Program p)
+	{
+		if (!programs.contains(p))
+		{
+			programs.add(p);
+		}
 	}
 }
