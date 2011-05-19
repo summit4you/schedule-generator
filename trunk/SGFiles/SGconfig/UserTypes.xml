@@ -7,12 +7,15 @@
 		<ps>Search</ps>
 		<ps>Schedule</ps>
 		<ps>Account</ps>
+		<ps>MyCoursesStudent</ps>
 	</Student>
 
 	<Educator>
 		<ps>Search</ps>
 		<ps>Schedule</ps>
 		<ps>Account</ps>
+		<ps>MyCoursesEducator</ps>
+		<ps>MyConstraintsEducator</ps>
 	</Educator>
 
 	<MainAdmin>
