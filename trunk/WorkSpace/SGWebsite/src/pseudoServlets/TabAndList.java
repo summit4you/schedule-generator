@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import pseudoServlets.tools.PSTools;
 import sessionTracking.Session;
 import dataStructure.Faculty;
+import database.Databasable;
+import database.Database;
 
 /**
  * @author Zjef
@@ -65,23 +67,12 @@ abstract public class TabAndList<T extends HTMLTablable> extends PseudoServlet
 		String res=replaceTags(template,"TABS",PSTools.createTabHeader(faculties));
 		res=replaceTags(res,"LINK",createLink(session));
 		res=replaceTags(res,"TABCONTENT",createFacultyTabContent(faculties));
-		res=replaceTags(res,"SIZE",createSizeScript(faculties));
 		return res;
 	}
 	
 	private String createSelectorID(int counter)
 	{
 		return "selector"+counter;
-	}
-	
-	private String createSizeScript(Vector<Faculty> tabs)
-	{
-		String res="";
-		for (Faculty i:tabs)
-		{
-			res+="calcHeight('"+i.toString()+"');";
-		}
-		return res;
 	}
 	
 	private String createFacultyTabContent(Vector<Faculty> tabs)
@@ -99,12 +90,12 @@ abstract public class TabAndList<T extends HTMLTablable> extends PseudoServlet
 		return res;
 	}
 	
-	private String createDropListWJs(Vector<?> options,int size,String js,String id)
+	private String createDropListWJs(Vector<? extends Databasable> options,int size,String js,String id)
 	{
 		String res="<select size='"+size+"' onchange=\""+js+"\" id='"+id+"'>";
-		for (Object i:options)
+		for (Databasable i:options)
 		{
-			res+="<option value='"+i.toString()+"'>"+i.toString()+"</option>";
+			res+="<option value='"+i.getID().toString()+"'>"+i.toString()+"</option>";
 		}
 		res+="</select>";
 		return res;
