@@ -20,19 +20,43 @@
 
 	<MainAdmin>
 		<ps>Search</ps>
-		<ps>Schedule</ps>
 		<ps>Account</ps>
-		<ps>AccountTable</ps>
-		<ps>EditableAccountTable</ps>
-		<ps>BuildingTable</ps>
-		<ps>EditableBuildingTable</ps>
-		<ps>StudentTable</ps>
-		<ps>CourseTable</ps>
+		<ps>EditAccounts</ps>
+		<ps>EditBuildings</ps>
+		<ps>EditEducators</ps>
+		<ps>EditStudents</ps>
+		<ps>EditCourses</ps>
+		<ps>EditCalendar</ps>
 	</MainAdmin>
+
+	<BuildingAdmin>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditBuildings</ps>
+	</BuildingAdmin>
+
+	<StudentManager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditStudents</ps>
+	</StudentManager>
+
+	<FacultyResponsible>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditCourses</ps>
+		<ps>EditCalendar</ps>
+		<ps>EditEducators</ps>
+	</FacultyResponsible>
+
+	<LookAdmin>
+		<ps>Search</ps>
+		<ps>Account</ps>
+	</LookAdmin>
 
 	<LesserAdmin>
 		<ps>Search</ps>
-		<ps>BuildingTable</ps>
+		<ps>Buildings</ps>
 	</LesserAdmin>
 	
 </UserTypes>
