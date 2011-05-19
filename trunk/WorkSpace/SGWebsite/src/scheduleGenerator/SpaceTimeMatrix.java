@@ -114,6 +114,21 @@ public class SpaceTimeMatrix
 		int room = (i%numberOfRooms);
 		return room;
 	}
+	
+	public int giveHourInDay(int i)
+	{
+		int hour = giveHour(i);
+		int hourInDay = startingHour+(hour%(endingHour-startingHour));
+		return hourInDay;
+	}
+	
+	public int giveDay(int i)
+	{
+		int hour = giveHour(i);
+		int hourInDay = giveHourInDay(i);
+		int day = 2+(hour-hourInDay)/(endingHour-startingHour);
+		return day;
+	}
 
 	public int getStartingHour() 
 	{

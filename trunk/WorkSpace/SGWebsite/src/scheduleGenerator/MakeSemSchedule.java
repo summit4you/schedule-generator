@@ -3,6 +3,8 @@ package scheduleGenerator;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import calendar.IcsCalendar;
+
 import dataStructure.Course;
 import dataStructure.Educator;
 import dataStructure.Program;
@@ -43,13 +45,19 @@ public class MakeSemSchedule
 	{
 		for(Subcourseblock block :blocks)
 		{
-			Educator educator = block.getSubcourse().getCourse().getEducator();
-			Vector<Integer> unavailableHours = educator.getCourse().getUnavailableHours();
-			unavailableHoursForEducator.put(educator,unavailableHours);
+			Vector<Educator > educators = block.getSubcourse().getEducators();
+			for(Educator educator: educators)
+			{
+				//Vector<Integer> unavailableHours = educator.getUnavailableHours();
+				IcsCalendar calendar = educator.getCalender();
+				unavailableHoursForEducator.put(educator,unavailableHours);
+			}
+			
 			Vector<Program> programs = block.getSubcourse().getCourse().getPrograms();
 			for(Program program: programs)
 			{
-				Vector<Integer> unavailableHours2 = program.getUnavailableHours();
+				//Vector<Integer> unavailableHours2 = program.getUnavailableHours();
+				IcsCalendar calendar = program.getCalender();
 				unavailableHoursForProgram.put(program,unavailableHours2);
 			}
 		}
@@ -57,12 +65,16 @@ public class MakeSemSchedule
 	
 	public static void addUnavailableBlock(int hour,Subcourseblock block,Hashtable<Educator,Vector<Integer>> unavailableHoursForEducator,Hashtable<Program,Vector<Integer>> unavailableHoursForProgram)
 	{
-		Educator educator = block.getSubcourse().getCourse().getEducator();
+		Vector<Educator> educators = block.getSubcourse().getEducators();
 		Vector<Program> programs = block.getSubcourse().getCourse().getPrograms();
 		
 		for(int h = 0;h < block.getHours(); h++)
 		{
-			unavailableHoursForEducator.get(educator).add(hour+h);
+			for(Educator e:educators)
+			{
+				unavailableHoursForEducator.get(e).add(hour+h);
+			}
+			
 			
 			for(Program p:programs)
 			{
@@ -74,12 +86,15 @@ public class MakeSemSchedule
 	
 	public static void removeUnavailableBlock(int hour,Subcourseblock block,Hashtable<Educator,Vector<Integer>> unavailableHoursForEducator,Hashtable<Program,Vector<Integer>> unavailableHoursForProgram)
 	{
-		Educator educator = block.getSubcourse().getCourse().getEducator();
+		Vector<Educator> educators = block.getSubcourse().getEducators();
 		Vector<Program> programs = block.getSubcourse().getCourse().getPrograms();
 		
 		for(int h = 0;h < block.getHours(); h++)
 		{
-			unavailableHoursForEducator.get(educator).remove(hour+h);
+			for(Educator e:educators)
+			{
+				unavailableHoursForEducator.get(e).remove(hour+h);
+			}
 			
 			for(Program p:programs)
 			{

@@ -3,6 +3,7 @@ package scheduleGenerator;
 import java.util.Vector;
 
 import dataStructure.Course;
+import dataStructure.Room;
 import dataStructure.Subcourse;
 
 /**
@@ -14,6 +15,14 @@ public class Subcourseblock
 {
 	private Subcourse subcourse;
 	private int hours;
+	/**
+	 * Als stmIndex ==-1, wilt dit zeggen dat er geen plaats is toegekend voor deze block.
+	 * */
+	private int stmIndex;
+	private int week;
+	private int hourInDay;
+	private int day;
+	private int room;
 	
 	public Subcourseblock(Subcourse sub, int hours) 
 	{
@@ -62,11 +71,14 @@ public class Subcourseblock
 				{	
 					Subcourseblock block = new Subcourseblock(sub,blockhours);
 					blocks.add(block);
+					sub.getBlocks().add(block);
 					tot = tot-blockhours;
 				}
 				if(tot>0)
 				{
-					blocks.add(new Subcourseblock(sub,tot));
+					Subcourseblock block = new Subcourseblock(sub,tot);
+					blocks.add(block);
+					sub.getBlocks().add(block);
 				}
 			}
 		}
@@ -92,7 +104,7 @@ public class Subcourseblock
 				sub.setCourse(course);
 				int tot = sub.getTotalnumberHours();
 				int blockhours = sub.getBlockHours();
-				int weekCounter = sub.getBeginweek();
+				int weekCounter = sub.getBeginWeek();
 				int hoursPerWeek = sub.getHoursPerWeek();
 				int hoursInWeek = 0;
 				
@@ -101,6 +113,7 @@ public class Subcourseblock
 					Subcourseblock block = new Subcourseblock(sub,blockhours);
 					Vector<Subcourseblock> week = weeks.elementAt(weekCounter);
 					week.add(block);
+					sub.getBlocks().add(block);
 					hoursInWeek = hoursInWeek + blockhours;
 					tot = tot-blockhours;
 					if((hoursInWeek >= hoursPerWeek) && (weekCounter<weeks.size()))
@@ -119,6 +132,7 @@ public class Subcourseblock
 					Subcourseblock block = new Subcourseblock(sub,tot);
 					Vector<Subcourseblock> week = weeks.elementAt(weekCounter);
 					week.add(block);
+					sub.getBlocks().add(block);
 				}
 				
 			}
@@ -126,4 +140,56 @@ public class Subcourseblock
 		
 		return weeks;
 	}
+
+	public void setStmIndex(int stmIndex) 
+	{
+		this.stmIndex = stmIndex;
+	}
+
+	public int getStmIndex() 
+	{
+		return stmIndex;
+	}
+
+	public void setWeek(int week) 
+	{
+		this.week = week;
+	}
+
+	public int getWeek() 
+	{
+		return week;
+	}
+	
+	public int getHourInDay() 
+	{
+		return hourInDay;
+	}
+
+	public void setHourInDay(int hourInDay) 
+	{
+		this.hourInDay = hourInDay;
+	}
+
+	public int getDay() 
+	{
+		return day;
+	}
+
+	public void setDay(int day) 
+	{
+		this.day = day;
+	}
+
+	public void setRoom(int room)
+	{
+		this.room = room;
+	}
+
+	public int getRoom() 
+	{
+		return room;
+	}
+	
+	
 }

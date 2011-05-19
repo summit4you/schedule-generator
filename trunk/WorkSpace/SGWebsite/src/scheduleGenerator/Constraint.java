@@ -1,8 +1,24 @@
 package scheduleGenerator;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Hashtable;
 import java.util.Vector;
 
+import pseudoServlets.tools.PSTools;
+
+import net.fortuna.ical4j.filter.Filter;
+import net.fortuna.ical4j.filter.HasPropertyRule;
+import net.fortuna.ical4j.model.Component;
+import net.fortuna.ical4j.model.component.VEvent;
+import net.fortuna.ical4j.model.property.Summary;
+
+import calendar.IcsCalendar;
+import calendar.SubCourseEvent;
+import calendar.Transformation;
+import calendar.Translator;
+
+import dataStructure.Building;
 import dataStructure.Course;
 import dataStructure.Educator;
 import dataStructure.Program;
@@ -89,21 +105,24 @@ public class Constraint
 	{
 		boolean b = true;
 		
-		Educator educator = block.getSubcourse().getCourse().getEducator();
+		Vector<Educator> educators = block.getSubcourse().getEducators();
 		Vector<Program> programs = block.getSubcourse().getCourse().getPrograms();
 		
 		for(int h = 0;h < block.getHours(); h++)
 		{
-			if(unavailableHoursForEducator.get(educator).contains(hour+h))
+			for(Educator e:educators)
 			{
-				b = false;
+				if(unavailableHoursForEducator.get(e).contains(hour+h))
+				{
+					return b = false;
+				}
 			}
 			
 			for(Program p:programs)
 			{
 				if(unavailableHoursForProgram.get(p).contains(hour+h))
 				{
-					b = false;
+					return b = false;
 				}
 			}
 		
@@ -112,5 +131,44 @@ public class Constraint
 		return b;
 	}
 	
+	public static boolean dateAvailable(int i,int semesterIndex,int week,Subcourseblock block,SpaceTimeMatrix stm,Room room)
+	{
+		boolean b = true;
+		
+		IcsCalendar semesterCalendar = Translator.loadSemesterCalendar();
+		IcsCalendar holidayCalendar = Translator.loadHolidayCalendar();
+		Vector<VEvent> semesterBounds = new Vector<VEvent>(new Filter(new HasPropertyRule(new Summary("START"))).filter(semesterCalendar.getEvents(Component.VEVENT)));
+		int startWeek=Transformation.dateToCalendar(semesterBounds.get(semesterIndex).getStartDate().getDate()).get(Calendar.WEEK_OF_YEAR);
+		int startMonth=Transformation.dateToCalendar(semesterBounds.get(semesterIndex).getStartDate().getDate()).get(Calendar.MONTH);
+		int startYear=Transformation.dateToCalendar(semesterBounds.get(semesterIndex).getStartDate().getDate()).get(Calendar.YEAR);
+		
+		int day = stm.giveDay(i);
+		int hour = stm.giveHourInDay(i);
+		int blockLength = block.getHours();
+		GregorianCalendar start = new GregorianCalendar(startYear,startMonth,startWeek,day,hour);
+		start.add(Calendar.WEEK_OF_YEAR,week);
+		GregorianCalendar end = new GregorianCalendar(startYear,startMonth,startWeek,day,hour+blockLength);
+		end.add(Calendar.WEEK_OF_YEAR,week);
+		
+		if(holidayCalendar.overlaps(start, end))
+		{
+			b = false;
+			return b;
+		}
+		
+		Vector<Educator> educators = block.getSubcourse().getEducators();
+		
+		for(Educator e: educators)
+		{
+			IcsCalendar educatorCalendar = e.getCalendar();
+			if(educatorCalendar.overlaps(start,end))
+			{
+				b = false;
+				return b;
+			}
+		}
+		
+		return b;
+	}
 	
 }
