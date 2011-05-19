@@ -63,6 +63,11 @@ public class IcsCalendar
 		return cal;
 	}
 	
+	public void addSGEvent(SGEvent event)
+	{
+		cal.getComponents().add(event.getEvent());
+	}
+	
 	public void addSubCourseEvent(SubCourseEvent event)
 	{
 		cal.getComponents().add(event.getEvent());
@@ -78,8 +83,13 @@ public class IcsCalendar
 	 */
 	public boolean overlaps(java.util.Calendar start,java.util.Calendar end)
 	{
+		return overlap(start,end).size()>0;
+	}
+	
+	public Vector<VEvent> overlap(java.util.Calendar start,java.util.Calendar end)
+	{
 		Period period = new Period(new DateTime(Transformation.calendarToDate(start)),new DateTime(Transformation.calendarToDate(end)));
-		return new Filter(new PeriodRule(period)).filter(cal.getComponents(Component.VEVENT)).size()>0;
+		return (Vector<VEvent>) new Filter(new PeriodRule(period)).filter(cal.getComponents(Component.VEVENT));
 	}
 	
 	/**
