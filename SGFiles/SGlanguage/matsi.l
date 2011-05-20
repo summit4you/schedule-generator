@@ -122,7 +122,12 @@
 ##Students##=kak;
 ##EditStudents##=kak;
 ##EditCourses##=prot;
-
-
-
-
+##DateFormat##=dd/MM/yyyy;
+##Chrome_Error##=foef;
+##Add Semester Start and stop date##=preut;
+##Semester start##=lul;
+##Semester stop##=stront;
+##StartAlgorithm##=Vliegende kak;
+##ConstraintsAcademic##=kak;
+##UserType_Account##=kak;
+##No Data##=scheet;

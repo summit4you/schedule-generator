@@ -12,10 +12,10 @@
 
 
 
-<table border="1" style="border-collapse:collapse">
+<table border="1" style="border-collapse:collapse" align="center">
 	<tr>
 		<td>
-			<table border="1" style="border-collapse:collapse">
+			<table border="1" style="border-collapse:collapse" align="center">
 				<tbody>
 					<form method="post" action="{MASTERSERVLET}&change=single">
 						<input type="hidden" name="dateFormat" value="##DateFormat##"></input>
@@ -40,7 +40,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input id="inputDate" name="inputDate" type="text" class="slimpicker" autocomplete="off" value="" />
+								<input id="inputDate" name="inputDate" type="text" class="slimpicker" alt="{format:'##DateFormat##'}" autocomplete="off" value="" />
 							</td>
 							<td style="vertical-align:top">
 								<label for="startHour">##start_hour##</label>
@@ -141,10 +141,10 @@
 								</select>
 							</td>
 							<td>
-								<input id="startDate" name="startDate" type="text" class="slimpicker" autocomplete="off" value="" />
+								<input id="startDate" name="startDate" type="text" class="slimpicker" alt="{format:'##DateFormat##'}" autocomplete="off" value="" />
 							</td>
 							<td>
-								<input id="stopDate" name="stopDate" type="text" class="slimpicker" autocomplete="off" value="" />
+								<input id="stopDate" name="stopDate" type="text" class="slimpicker" alt="{format:'##DateFormat##'}" autocomplete="off" value="" />
 							</td>
 							<td>
 								
@@ -245,21 +245,57 @@
 							
 							</td>
 							<td style="vertical-align:top">
-								<input class="slimpicker" name="startDate" id="startDate" type="text"  autocomplete="off"/>
+								<input class="slimpicker" name="startDate" id="startDate" type="text"  alt="{format:'##DateFormat##'}" autocomplete="off"/>
 							</td>
 							<td style="vertical-align:top">
-								 <input class="slimpicker" name="stopDate" id="stopDate" type="text" autocomplete="off"/>
+								 <input class="slimpicker" name="stopDate" id="stopDate" type="text" alt="{format:'##DateFormat##'}" autocomplete="off"/>
 							</td>
 							<td style="vertical-align:top">
 								<input type="submit">
 							</td>
 						</tr>
+					</form>
+					<form method="post" action="{MASTERSERVLET}&change=SemChange">
+						<input type="hidden" name="dateFormat" value="##DateFormat##"></input>
+						<tr>
+							<td colspan="4" height="50" style="vertical-align:bottom">
+								##Add Semester Start and stop date##
+							</td>
+						</tr>
+						<tr>
+							<td style="vertical-align:bottom">
+								
+							</td>
+							<td style="vertical-align:bottom">
+								<label for="SemStartDate">##Semester start##</label>
+							</td>
+							<td style="vertical-align:bottom">
+								<label for="SemStopDate">##Semester stop##</label>
+							</td>
+							<td>
+							
+							</td>
+						</tr>
+						<tr>
+							<td style="vertical-align:top">
+								
+							</td>
+							<td>
+								<input id="SemStartDate" name="startDate" type="text" class="slimpicker" alt="{format:'##DateFormat##'}" autocomplete="off" value="" />
+							</td>
+							<td>
+								<input id="SemStopDate" name="stopDate" type="text" class="slimpicker" alt="{format:'##DateFormat##'}" autocomplete="off" value="" />
+							</td>
+							<td style="vertical-align:top">
+								<input type="submit"></input>
+							</td>
+						</tr>
 						<tr>
 							<td>
 								&nbsp;
-							</td>		
+							</td>
 						</tr>
-					</form>
+					</form>	
 				</tbody>		
 			</table>
 		</td>

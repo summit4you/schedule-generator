@@ -1,10 +1,14 @@
 <html>
 <head>
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/thickbox/thickbox.js"></script>
-	<link rel="stylesheet" href="js/thickbox/thickbox.css" type="text/css" media="screen" />
-	<script type="text/javascript" language="javascript" src="js/datatables/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="js/datatables/jquery-ui-tabs.js"></script>
+	<style type="text/css" title="currentStyle">
+		@import "../js/datatables/css/demo_page.css";
+		@import "../js/datatables/css/demo_table.css";
+	</style>	
+<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/thickbox/thickbox.js"></script>
+	<link rel="stylesheet" href="../js/thickbox/thickbox.css" type="text/css" media="screen" />
+	<script type="text/javascript" language="javascript" src="../js/datatables/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="../js/datatables/jquery-ui-tabs.js"></script>
 
 	<script type="text/javascript" charset="utf-8">
 	var oTable;
@@ -12,7 +16,7 @@
 
 	$(document).ready(function() {
 		/* Init the table */
-		$('#hardware').dataTable({"bSort": false,"bFilter": false});
+		oTable = $('#hardware').dataTable({"bSort": false,"bFilter": false});
 		
 		/* Add a click handler to the rows - this could be used as a callback */
 		$('#hardware tbody').click(function(event) {
@@ -35,7 +39,7 @@
 	} );
 
 	function fnClickAddRow() {
-		var newdata =  [ '<input type=\"hidden\" name=\"' + document.getElementById("selectedhardware").value + '\">' + document.getElementById("selectedhardware").value ];
+		var newdata =  [ '<input type=\"hidden\" name=\"' + document.getElementById("selectedhardware").value + '" value="'+document.getElementById("selectedhardware").value+ '\">' + document.getElementById("selectedhardware").value ];
 		$('#hardware').dataTable().fnAddData(newdata,true);
 	}
 
@@ -59,7 +63,7 @@
 <body>
 
 <form method="post" action="{MASTERSERVLET}">
-	<table border="1" style="border-collapse:collapse">
+	<table border="1" style="border-collapse:collapse" align="center">
 		<tr>
 			<td style="vertical-align:top;text-align:right">
 				##Subcourse_name##
@@ -95,7 +99,7 @@
 			<td colspan="2">
 				{HARDWARETABLE}
 			</td>
-			<td colspan="2">
+			<td colspan="2" style="vertical-align:top">
 				<table border=0 style="border-collapse:collapse">
 					<tr>
 						<td>

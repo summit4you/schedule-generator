@@ -18,28 +18,41 @@
 		<ps>ConstraintsEducator</ps>
 	</Educator>
 
-	<MainAdmin>
-		<ps>Search</ps>
-		<ps>Account</ps>
-		<ps>EditAccounts</ps>
-		<ps>EditBuildings</ps>
-		<ps>EditEducators</ps>
-		<ps>EditStudents</ps>
-		<ps>EditCourses</ps>
-		<ps>EditCalendar</ps>
-	</MainAdmin>
-
 	<BuildingAdmin>
 		<ps>Search</ps>
 		<ps>Account</ps>
 		<ps>EditBuildings</ps>
 	</BuildingAdmin>
 
+	<Accountmanager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditAccounts</ps>
+	</Accountmanager>
+
+	<Schedulemanager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditCalendar</ps>
+	</Schedulemanager>
+
 	<StudentManager>
 		<ps>Search</ps>
 		<ps>Account</ps>
 		<ps>EditStudents</ps>
 	</StudentManager>
+
+	<EducatorManager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditEducators</ps>
+	</EducatorManager>
+
+	<ProgramManager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditCourses</ps>
+	</ProgramManager>
 
 	<FacultyResponsible>
 		<ps>Search</ps>
@@ -52,11 +65,23 @@
 	<LookAdmin>
 		<ps>Search</ps>
 		<ps>Account</ps>
+		<ps>Accounts</ps>
+		<ps>Educators</ps>
+		<ps>Buildings</ps>
+		<ps>Students</ps>
+		<ps>Courses</ps>
 	</LookAdmin>
 
-	<LesserAdmin>
+	<MainAdmin>
 		<ps>Search</ps>
-		<ps>Buildings</ps>
-	</LesserAdmin>
+		<ps>Account</ps>
+		<ps>ConstraintsAcademic</ps>
+		<ps>EditAccounts</ps>
+		<ps>EditBuildings</ps>
+		<ps>EditEducators</ps>
+		<ps>EditStudents</ps>
+		<ps>EditCourses</ps>
+		<ps>EditCalendar</ps>
+	</MainAdmin>
 	
 </UserTypes>
