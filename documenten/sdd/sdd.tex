@@ -281,6 +281,42 @@ ul.tabbernav li.tabberactive a:hover{}
 .tabberlive .tabbertab {}
 \end{verbatim}
 
+\subsection{Interface: XHTML – JavaInterface voor HTMLDatatable}
+
+\subsubsection{Overzicht}
+
+Het doel van deze interface is om op een eenvoudige manier objecten van de zelfde klasse te kunnen oplijsten in HTML tabellen. Elke klasse die de in een tabel moet worden weergeven, implementeert deze interface. Vervolgens wordt via de annotatie  @TableInput aangegeven welke attributen in de tabel moeten verschijnen. Ook de titel van een tabel kan worden geannoteerd via @TableInfo. Tot slot kunnen de statische methodes van HTMLInterfaceTool worden gebruikt om de tabel te genereren.
+
+\begin{figure}%
+\includegraphics[width=\columnwidth]{UML_HTMLInterfaceTools.PNG}%
+\caption{UML Diagramma}%
+\end{figure}
+
+\subsubsection{Klassen}
+\begin{itemize}
+	\item[] \textbf{AnnotationTool} \\
+	Statsiche klasse die dient als hulp tool voor HTMLInterfaceTool. . Wordt gebruikt om annotaties  en methodes uit een klasse te extraheren. 
+	\item[] \textbf{HTMLUtil} \\
+	Statische klasse die dient als hulp tool voor HTMLInterfaceTool. Wordt gebruikt om standaard HTML code te generen.
+	\item[] \textbf{HTMLInterfaceTool} \\
+	Statische klasse die de methodes bevat om HTMLDatatable om ze omzetten in een  tabel. Deze klasse is afhankelijk van  HTMLUtil en AnnotationTool
+\end{itemize}
+
+
+\subsubsection{Annotaties}
+\begin{itemize}
+	\item[] @TableInput \\
+Deze annotatie wordt gebruikt om de getters aan te duiden van de attributen die in een HTML tabel moeten worden weergegeven. De getters mogen geen parameters bevatten. En de annotatie kan enkel worden gebruikt binnen een klasse die HTMLTablable is. De annotatie bevat nog twee parameters: \\
+      	\begin{itemize}
+				\item[Order:] bepaald de volgorde waarin de attributen worden opgelijst.
+       	\item[Text:]  bepaald welke naam het attribuut veld toegewezen krijgt 
+				\end{itemize}
+	 \item[] @TableInfo \\
+Deze annotatie laat toe extra informatie over de tabel te specifieren. Voorlogig enkel de titel van de tabel.
+
+
+\end{itemize}
+
 
 \subsection{Interface: Browser - Server: HTTP}
 
