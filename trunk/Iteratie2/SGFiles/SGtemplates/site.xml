@@ -1,0 +1,111 @@
+<HTMLPAGE tag=code>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+	<title>TestSite</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<script type="text/javascript" src="tabber-minimized.js"></script>
+		<link rel="stylesheet" href="style.css" type="text/css" ></link> 
+		<script type="text/javascript">
+			if (top.location!= self.location) 
+			{
+				top.location = self.location.href
+			}
+		</script>
+</head>
+
+	
+<body style="margin:0px">
+	<table id="container" border="0" align="center" width="1024" style="border-collapse: collapse; min-height:100%" >
+	<tbody>
+	
+		<tr style="height:50px">
+		<td style="text-align: center; vertical-align: top;">
+			<img src="header.png"></img>
+		</td>
+		</tr>
+	
+		<tr style>
+		<td style="text-align: left; vertical-align: top;">
+
+		<div class="tabber">
+		{pagecontent}
+		</div>
+
+		</td></tr>
+		
+		<tr style="height:25px">
+		<td style="text-align: center; vertical-align: center;">
+			&nbsp;
+		</td>
+		</tr>
+	    
+		<tr style="height:30px">
+		<td style="text-align: center; vertical-align: center;">
+			<table style="width:100%;border-collapse:collapse" border="0">
+				<tr>
+					<td width="150" align="left">
+						&nbsp;
+					</td>
+					<td>
+						<div style="font-size:7pt">
+						<a href="http://student.vub.ac.be/~acooman/SE/SE.html">Schedule Generator</a> </br>
+						By: Matthias Caenepeel, Adam Cooman, Alexander De Cock and Zjef Van de Poel
+						</div>
+					</td>
+					<td width="150" align="right">
+						{logout}
+					</td>
+				</tr>
+			</table>
+		</td>
+		</tr>	
+	</tbody>
+</body>
+</html>
+
+</HTMLPAGE tag=code>
+
+<TAB tag=code>
+	<div class="tabbertab" title="{tabtitle}">
+		{tabcontent}
+	</div>
+</TAB tag=code>
+
+<IFRAME tag=code>
+<table border="0" width="1010" height="600" align="center" style="border-collapse:collapse"><tr><td style="text-align: center; vertical-align: top;">
+<iframe src="{framesrc}" height="600" style="width:1000px; border-collapse:collapse; vertical-align:top" frameborder="0">
+<p>##IFrame_error##</p>
+</iframe>
+</td></tr></table>
+
+</IFRAME tag=code>
+
+<LOGIN tag=code>
+	<table border="0">
+		<tr>
+		<td>##userName_Login##</td>
+		<form method="POST" action="{actionlogin}">
+		<td> <input type="text" name="username" /> </td>
+		</tr>
+		<tr>
+		<td>##password_Login##</td>
+		<td><input type="password" name="password" /></td>
+		</tr>
+		<td><input type="submit"/></form></td>
+		
+		<td>
+		<form method="POST" action="{actionlogin}">
+		<input type="hidden" name="username" value="guest"/> 
+		<input type="hidden" name="password" value="guest"/>
+		<input type="submit" value="##Submit_Guest##"/></form>
+		</td>
+		
+		</tr>
+	</table>
+	{messagelogin}
+
+</LOGIN tag=code>
+
+<LOGOUT tag=code>
+	<a href="{logoutaction}&ps=logout">##Logout##</a>
+</LOGOUT tag=code>

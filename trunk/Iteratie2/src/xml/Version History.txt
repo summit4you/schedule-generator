@@ -1,0 +1,5 @@
+Latest version: V3.1
+
+version notes:
+
+v3.1:	Improved way how element searches (parent.child.child) are processed.

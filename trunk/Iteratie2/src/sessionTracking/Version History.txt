@@ -1,0 +1,12 @@
+Latest version: 1.1
+
+Version Notes:
+
+1.2	Added a JUnit test and changed sessionID to a String.
+
+1.1 	Corrected code and removed ManagerClass see SessionClass for more information.
+
+1.0	First version didn't work properly.
+
+
+
