@@ -1,0 +1,2 @@
+Run deze applicatie na het kopieren van de workspace van svn naar je eclipse workspace.
+Deze applicatie verwijdert alle .svn folders in de map (zodat deze niet verkeerd terug mee gekopieerd worden bij het overzetten van je eclipse workspace naar die op svn)

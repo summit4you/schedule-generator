@@ -1,0 +1,11 @@
+Latest version: 0.3C
+
+Version notes:
+
+HTMLBuilder V0.3C: under development
+
+HTMLBuilder V0.2C: raw version of the htmlbuilder is now finished and TestServlet
+		   has been added to illustrate it usage.
+
+HTMLBuilder V0.1C: second version of Alexander. No Xml overhead
+

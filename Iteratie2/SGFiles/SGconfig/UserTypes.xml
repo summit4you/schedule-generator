@@ -1,0 +1,88 @@
+<UserTypes>
+	<Guest>
+		<ps>Search</ps>
+	</Guest>
+
+	<Student>
+		<ps>Search</ps>
+		<ps>Schedule</ps>
+		<ps>Account</ps>
+		<ps>MyCoursesStudent</ps>
+	</Student>
+
+	<Educator>
+		<ps>Search</ps>
+		<ps>Schedule</ps>
+		<ps>Account</ps>
+		<ps>MyCoursesEducator</ps>
+		<ps>ConstraintsEducator</ps>
+	</Educator>
+
+	<BuildingAdmin>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditBuildings</ps>
+	</BuildingAdmin>
+
+	<Accountmanager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditAccounts</ps>
+	</Accountmanager>
+
+	<Schedulemanager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditCalendar</ps>
+	</Schedulemanager>
+
+	<StudentManager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditStudents</ps>
+	</StudentManager>
+
+	<EducatorManager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditEducators</ps>
+	</EducatorManager>
+
+	<ProgramManager>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditCourses</ps>
+	</ProgramManager>
+
+	<FacultyResponsible>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>EditCourses</ps>
+		<ps>EditCalendar</ps>
+		<ps>EditEducators</ps>
+	</FacultyResponsible>
+
+	<LookAdmin>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>Accounts</ps>
+		<ps>Educators</ps>
+		<ps>Buildings</ps>
+		<ps>Students</ps>
+		<ps>Courses</ps>
+	</LookAdmin>
+
+	<MainAdmin>
+		<ps>Search</ps>
+		<ps>Account</ps>
+		<ps>ConstraintsAcademic</ps>
+		<ps>StartAlgorithm</ps>
+		<ps>EditAccounts</ps>
+		<ps>EditBuildings</ps>
+		<ps>EditEducators</ps>
+		<ps>EditStudents</ps>
+		<ps>EditCourses</ps>
+		<ps>EditCalendar</ps>
+	</MainAdmin>
+	
+</UserTypes>

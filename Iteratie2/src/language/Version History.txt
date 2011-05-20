@@ -1,0 +1,9 @@
+Latest version: 1.0
+
+Version Notes:
+
+2.0: reorganized code totally. 
+1.0: Dictionary builds a HashTable out of a language file and uses its table to replace language tags.
+
+
+
