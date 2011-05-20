@@ -597,18 +597,18 @@ Als een gebruiker zich succesvol aanmeldt op de website zal de mainServlet voor 
 
 \subsubsection{Klassen}
 
-\subsubsubsection{Session}
+\paragraph{Session}
 Klasse die een websessie voorstelt.\\
 
 Telkens een gebruiker zich succesvol aanmeldt moet de MainServlet een session creëren. Deze bevat zowel de accountgegevens van de gebruiker als een sessionID. Elke session die wordt aangemaakt wordt automatisch opgeslagen in een statische sessionTable die vervat zit in de Session klasse. Sessies die aanwezig zijn in deze algemene tabel kunnen worden opgevaagt via de methode getSession.\\
 Een session is slecht geldig voor een vooraf bepaalde tijd die men de levenstijd noemt. Als de gebruiker gedurende een volledige levenstijd inactief is gebleven of hij meldt zich af  dan wordt de sessie niet langer als geldig bevonden. Dit heeft als resultaat dat de gebruiker weer naar het login scherm wordt verwezen. Om vervallen sessions automatisch uit de algemene tabel te verwijderen bevat de Session klasse ook een sessionCleaner. Dit laat toe om sessions van gebruikers die zich niet hebben afgemeld maar toch de site hebben verlaten ook te verwijderen uit de tabel.
 
-\subsubsubsection{SessionTable}
+\paragraph{SessionTable}
 Klasse die wordt gebruikt om session in op te slaan.\\
 
 De sessionTable omsluit een hashTable. Als key van de hashTable wordt het sessionID gebruikt.  Als veld wordt een session zelf meegegeven. Het is ook mogelijk om het aantal element in de sessionTabel op te vragen. 
 
-\subsubsubsection{SessionCleaner}
+\paragraph{SessionCleaner}
 Klasse die gebruikt wordt om vervallen sessions automatische te verwijderen.\\
 
 De klasse SessionCleaner implementeert de interface runnable. Dit laat toe om een thread op te starten waarin de run methode van de klasse wordt uitgevoerd. Een sessionCleaner bevat steeds zelf een thread die zijn run methode uit voerd. Het is dus niet nodig om deze extern aan te maken. Tijdens de thread wordt in de toegekende sessionTable sequentieel gezocht naar vervallen sessions. Hierbij is het belangrijk dat de toegewezen tabel op een gesynchroniseerde mannier wordt gewijzigd. 
@@ -627,17 +627,17 @@ Om het mogelijk te maken aan de gebruiker om de taal van de site aan zijn voorke
 
 \subsubsection{Klassen}
 
-\subsubsubsection{LanguageTag}
+\paragraph{LanguageTag}
 Klasse die een vertaalbaar stuk tekst voorstelt.\\
 
-Een languageTag is een string die moet worden vervangen door de languageResolver en wordt gebruikt als een sleutel in een woordenboek. Het format van een languageTag ligt vast en zal worden gecontroleerd als de languageTag wordt gemaakt of gewijzigd. Als het format niet overeenkomt met het verwachte format wordt een DataFormatException gegenereerd. Het huidige format is ##tagname##.
+Een languageTag is een string die moet worden vervangen door de languageResolver en wordt gebruikt als een sleutel in een woordenboek. Het format van een languageTag ligt vast en zal worden gecontroleerd als de languageTag wordt gemaakt of gewijzigd. Als het format niet overeenkomt met het verwachte format wordt een DataFormatException gegenereerd. Het huidige format is \#\#tagname\#\#.
 
-\subsubsubsection{Dictionary}
+\paragraph{Dictionary}
 Klasse die een hashtable omvat met LanguageTags als sleutel en Strings	als waarde\\
 
-Een dictionay wordt gebruikt door de LanguageResolver om LanguageTags te vertalen naar een specifieke taal. Normaal worden Dicitonarys gemaakt aan de hand van taalfbestanden. Deze worden gekenmerkt door de .l extensie. Invoer in een taalbestand moeten van de volgende vorm zijn  ##languageTag##=value; De taal gekoppeld aan het woordenboek zal het zelfde zijn als de naam van het taalbestand (zonder de extensie).
+Een dictionay wordt gebruikt door de LanguageResolver om LanguageTags te vertalen naar een specifieke taal. Normaal worden Dicitonarys gemaakt aan de hand van taalfbestanden. Deze worden gekenmerkt door de .l extensie. Invoer in een taalbestand moeten van de volgende vorm zijn  \#\#languageTag\#\#=value; De taal gekoppeld aan het woordenboek zal het zelfde zijn als de naam van het taalbestand (zonder de extensie).
 
-\subsubsubsection{LanguageResolver}
+\paragraph{LanguageResolver}
 Een statische klasse die gebruikt wordt door de MainServlet om LanguageTags op te lossen \\
 
 De LanguageResolver vertaalt tekst naar een gegeven taal. Dit houdt in dat hij alle LanguageTags in de tekst vervangt door hun overeenkomstige waarde. Hiervoor maakt hij gebruik van een set van Dicitonarys. Deze worden geladen tijdens het maken van het klasse object
