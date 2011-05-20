@@ -122,7 +122,13 @@
 ##Students##=Studenten;
 ##EditStudents##=Edit studenten;
 ##EditCourses##=Edit vakken;
-
-
-
-
+##DateFormat##=dd/MM/yyyy;
+##Chrome_Error##=Google chrome laat niet toe om deze popup automatisch te sluiten en de pagina te verversen. U moet dit zelf doen om de resultaten te zien;
+##Add Semester Start and stop date##=Voeg start- en stopdatum van semester toe;
+##Semester start##=Startdatum;
+##Semester stop##=Stopdatum;
+##StartAlgorithm##=Start algoritme;
+##ConstraintsAcademic##=Academische kalender;
+##UserName_Account##=Gebruikersnaam;
+##UserType_Account##=Gebruikers Type;
+##No Data##=Er werd geen data gevonden;

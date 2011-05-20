@@ -122,7 +122,13 @@
 ##Students##=Students;
 ##EditStudents##=Edit Students;
 ##EditCourses##=Edit Courses;
-
-
-
-
+##DateFormat##=MM/dd/yyyy;
+##Chrome_Error##=Google Chrome doesn't allow to close this popup automatically, please close it and refresh the frame to view the changes;
+##Add Semester Start and stop date##=Add semester Start and stop date;
+##Semester start##=Semester Start;
+##Semester stop##=Semester stop;
+##StartAlgorithm##=Start Algorithm;
+##ConstraintsAcademic##=Academic Calendar;
+##UserName_Account##=UserName;
+##UserType_Account##=UserType;
+##No Data##=No data has been found;
