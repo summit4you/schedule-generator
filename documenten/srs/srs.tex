@@ -9,7 +9,7 @@
 \usepackage{textcomp}
 \title{Software Requirements Specifications voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{03 april 2011 Versie 2.0} 
+\date{20 mei 2011 Versie 3.0} 
 
 \makeatletter
 \renewcommand\paragraph{
@@ -45,12 +45,7 @@
 \item[.] 28/2/2011 versie 1.0: Toevoeging functionele vereisten, verbeteringen doorgevoerd 
 \item[.] 17/3/2011 versie 1.1: Opmerkingen van opdrachtgever in acht genomen en aanpassingen doorgevoerd waar nodig
 \item[.] 03/4/2011 versie 2.0: Volledige revisie van het document
-\end{itemize}
-
-\section*{Nog aan te passen}
-\begin{itemize}
-	\item[.] De inhoud van secties 3.1.1 en 3.1.2 horen eigenlijk thuis in een SDD. Alles in heel sectie 3 moet geformuleerd worden in termen van requirements, dus met een vaste structuur, een unieke ID, pre- en postcondities etc. Een requirement moet zo geformuleerd worden dat ze als het ware kan afgevinkt worden op het einde. \\
-	\item[.] 3.2.12 "Roosterplanner" lijkt ons een heel belangrijk en non-triviaal onderdeel van de opgave. Het lijkt ons hier aangewezen iets gedetailleerdere (en eventueel opgesplitste) requirements te voorzien. Bvb I.5 "Melden van conflicten in het rooster" zou toch specifieker kunnen. Tot hoeveel detail wil je minimaal voorzien, gaat hij exact aan kunnen geven waar en waarom een conflict zich voordoet (soms kan dit complex zijn). \\
+\item[.] 20/5/2011 versie 3.0: Volleidge revisie van het document, status van alle taken ge-update om overeen te komen met het einde van het project
 \end{itemize}
 
 %\section*{Preface}
@@ -598,7 +593,7 @@ Omschrijving: Aangezien de omstandigheden die aanleiding geven tot een beperking
 Status: \textit{Voltooid} \\
 Categorie: \textit{mogelijke invoerfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder, docent} \\
-Omschrijving:Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te wijzigen. \\[-3mm]
+Omschrijving:Aangezien de omstandigheden die aanleiding geven tot een beperking kunnen veranderen, moet het mogelijk zijn faciliteitbeperking te wijzigen. 
 \end{itemize}
 
 \subsubsection{Roosterplanner}
@@ -633,14 +628,13 @@ Status: \textit{Niet voltooid} \\
 Categorie: \textit{mogelijke verwerkingsfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
 Omschrijving: Als de rooster planner geen rooster kan vinden dat voldoet meldt hij dit als een conflict 
-\end{itemize}
 
 \item[I.6] Hard constraints voorzien \\
 Status: \textit{Niet voltooid} \\
 Categorie: \textit{noodzakelijke verwerkingsfunctionaliteit} \\
 Gebruikertype: \textit{Rooster beheerder} \\
 Omschrijving: Hard constraint drukken beperkingen uit die zeker moeten zijn voldaan. bv: feestdagen, geen dubbelboeking, binnen de werkuren,...
-\end{itemize}
+
 
 \item[I.7] Soft constraints voorzien \\
 Status: \textit{Niet voltooid} \\

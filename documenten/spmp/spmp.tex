@@ -11,7 +11,7 @@
 \graphicspath{{fotosklein/}}
 \title{Software project management plan voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{10 mei 2011 Versie 3.0} 
+\date{20 mei 2011 Versie 3.0} 
 \makeatletter
 \renewcommand\paragraph{
    \@startsection{paragraph}{4}{0mm}
@@ -51,6 +51,7 @@
 \item[.] 03/3/2011 versie 1.2: Deadlines toegevoegd om iteratie 1 te verwezenlijken 
 \item[.] 03/3/2011 versie 2.0: Volledige revisie van het document doorgevoerd en grondige aanpassingen gedaan zodat het weer volledig up-to-date is met de huidige stand van het project
 \item[.] 30/4/2011 versie 3.0: Volledige revisie van het document doorgevoerd. Doelstellingen en planning voor iteratie 2 toegevoegd
+\item[.] 20/5/2011 versie 4.0: Volledige revisie van het document doorgevoerd. Laatste deadlines en minutes toegevoegd.
 \end{itemize}
 
 \section*{To do}
@@ -547,7 +548,7 @@ Week 5	& 14/3 & \textbf{	Hoofdtaak:} SCRUM meeting op 16/3, programmeren\\
  \end{tabular}
 \end{center}
  
-Tijdens de twee weken na de SCRUM worden de documenten herbekeken. Het SPMP, SRS en SDD worden up-to-date gebracht om een goed overzicht te krijgen van de status van het programma. Nu het inloggen van gebruikers op de site werkt wordt overgeschakeld op het weergeven van de gegevens uit de database zoals de kalender en lijsten van lessen. \\[-10mm]
+Tijdens de twee weken na de SCRUM worden de documenten herbekeken. Het SPMP, SRS en SDD worden up-to-date gebracht om een goed overzicht te krijgen van de status van het programma. Nu het inloggen van gebruikers op de site werkt wordt overgeschakeld op het weergeven van de gegevens uit de database zoals de kalender en lijsten van lessen. 
 
 \begin{center}
 \begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
@@ -635,7 +636,7 @@ Week 12 & 2/5  &	\textbf{Hoofdtaak:} programmeren\\
  & & \textbf{Revisie van de documenten} \\
  & & ADAM: SPMP herbekijken \\
  & & ALEXANDER: SRS herbekijken \\
- & & ZJF: SDD herbekijken \\
+ & & ZJEF: SDD herbekijken \\
  & & MATTHIAS: SDD aanvullen met info over het algoritme \\
  & & \textbf{Nieuwe functionaliteiten} \\
  & & ZJEF: Werken aan kalender-editor \\
@@ -652,6 +653,11 @@ Week 12 & 2/5  &	\textbf{Hoofdtaak:} programmeren\\
 \hline
 Week 13 &	9/5 &	\textbf{Hoofdtaak:} code afwerken \\
 \hline
+\hline
+ & & ADAM: lay-out verbeteren \\
+ & & ALEXANDER EN MATTHIAS: Alle hard constraints zijn implementeren, core van het backtracken implementeren \\
+ & & ZJEF: Calendar editor afwerken \\
+\hline
 \end{tabular}
 \end{center}
 
@@ -661,6 +667,16 @@ Week 13 &	9/5 &	\textbf{Hoofdtaak:} code afwerken \\
 Week 14 &	16/5 &	\textbf{Hoofdtaak:} afwerken iteratie 2 + presentaties maken \\
  & & \textbf{De tweede iteratie moet af zijn op 20/5} \\
 \hline
+\hline
+ & & ADAM: Logout knop maken \\
+ & & Account tab maken (taal en wachtwoord veranderen) \\
+ & & Vakken tab maken (vakken oplijsten, toevoegen/aanpassen toelaten waar nodig) \\
+ & & Guest uit de database maken en aparte behandeling geven in mainservlet \\
+ & & Layout aanpassing afwerken \\
+ & & ZJEF: Applets schrijven die de verschillende datatypes op de website kunnen aanpassen en pseudoservlets schrijven waar die applets in uitgevoerd worden \\
+ & & ALEXANDER: Usertypes uitbreiden op generische manier informatie doorgeven. \\
+ & & ALEXANDER EN MATTHIAS: Algoritme afwerken. \\
+\hline
 \end{tabular}
 \end{center}
 
@@ -668,6 +684,9 @@ Week 14 &	16/5 &	\textbf{Hoofdtaak:} afwerken iteratie 2 + presentaties maken \\
 \begin{tabular}[t]{|p{1.3cm}|p{0.8cm}|p{9cm}|}
 \hline
 Week 15 &	23/5 &	\textbf{Hoofdtaak:} Presentatie geven op 25/5 \\
+\hline
+\hline
+ & & Presentatie voorbereiden \\
 \hline
 \end{tabular}
 \end{center}
@@ -1535,6 +1554,55 @@ Er werden geen performantie-eisen gevonden die binnen de tijdsbeperking van ons 
 
 Het aanpassen van de gegevens zal vanaf nu verlopen door het uploaden van tekstbestanden die in excell gegenereerd kunnen worden en dan op de server geparsed zullen worden om de nodige aanpassingen te doen. Er moet dan een mogelijkheid zijn om de files te uploaden (zowel overschrijvend als sommerend) en te downloaden.
 Later zal dan de mogelijkheid toegevoegd worden om enkele aanpassingen te doen.
+
+\subsubsection{Vergadering van 09-05-2010}
+
+Punten op de agenda:
+\begin{itemize}
+	\item[-] Besprekingen verwezelijkingen
+	\item[-] Problemen met documenten op SVN
+	\item[-] Uploaden van gegevens op website bespreken
+	\item[-] Nieuwe deadlines opstellen 
+\end{itemize}
+Resultaten:
+\begin{itemize}
+	\item[-] Afgewerkte taken besproken en gedemonstreerd
+	\item[-] Nieuwe deadlines bepaald voor einde project 
+\end{itemize}
+
+\paragraph{Minutes 15:00 tot 15:40}
+
+\subparagraph{Bespreken Verwezelijkingen}
+
+\begin{itemize}
+	\item[Adam] werkte aan de lay-out van de website, door de templates aan te passen. Hij moet nog de templates van Zjef aanpassen om deze taak volledig af te werken 
+	\item[Alexander en Matthias] hebben aan het algoritme gewerkt. Alle hard constraints zijn geimplementeerd, de core van het backtracken is geimplementeerd, zonder heuristiek, dus depth first algoritme. Er word gewerkt aan een procedure die het resultaat controleert en naar caledar files om zet
+	\item[Alexander] is begonnen met tests te maken, maar vond het te saai om verder te werken 
+	\item[Zjef] werkte aan de calendar editor gewerkt. het is nu mogelijk om via de site lessen te wijzigen, aan te maken en te deleten. 
+Bespreken Uploaden van gegevens 
+\end{itemize}
+
+Door de gelinkte structuur van de database is het moeilijk om excel te gebruiken om de data weer te geven. Daarom werd overwogen om een eigen application te schrijven en die te runnen als een applet of op de computer van de secretaresse. Het is voor sommige datatypes gemakkelijk om het met HTML forms te doen. Zjef ging er eens goed over nadenken.
+
+\subparagraph{Nieuwe deadlines tegen 18 mei.}
+
+18 mei is volgens het SPMP het einde van het implementeren. dan moet de code afgewerkt zijn om te beginnen debuggen en om alle documentatie te kunnen schrijven. 
+Doordat Alexander overgestapt is op het algoritme neemt Adam zijn taken over die voor de vorige deadline vastgelegd werden
+\begin{itemize}
+	\item[ADAM] Logout knop maken 
+	\item[ADAM] Account tab maken (taal en wachtwoord veranderen) 
+	\item[ADAM] Vakken tab maken (vakken oplijsten, toevoegen/aanpassen toelaten waar nodig) 
+ 	\item[ADAM] Guest uit de database maken en aparte behandeling geven in mainservlet 
+	\item[ADAM] Layout aanpassing afwerken 
+	\item[ZJEF] zal zich bezig houden met het uploaden van data via applets
+	\item[ALEXANDER] Usertypes uitbreiden op generische manier informatie doorgeven. 
+	\item[ALEXANDER en MATTHIAS] Algoritme afwerken.
+\end{itemize}
+
+
+\subparagraph{Problemen met documenten op SVN}
+
+Het SPMP is corrupted op SVN geraakt, Adam moet het fixen.
 
 
 \end{document}
