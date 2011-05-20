@@ -29,19 +29,33 @@
 \contentsline {paragraph}{Entiteiten}{16}{section*.22}
 \contentsline {paragraph}{Relaties}{16}{section*.23}
 \contentsline {paragraph}{UML Diagrammma}{17}{section*.24}
-\contentsline {section}{\numberline {4}Website/Server Communicatie}{18}{section.4}
-\contentsline {subsection}{\numberline {4.1}Beknopte achtergrond informatie}{18}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Inplementatie en Communicatie}{18}{subsection.4.2}
-\contentsline {section}{\numberline {5}Algoritme voor kalenderplanning}{20}{section.5}
-\contentsline {subsection}{\numberline {5.1}Inleiding}{20}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Overzicht van de klasse SemesterScheduler}{20}{subsection.5.2}
-\contentsline {paragraph}{Variabelen:}{20}{section*.28}
-\contentsline {paragraph}{Methodes:}{21}{section*.29}
-\contentsline {subsection}{\numberline {5.3}De solver (methode solve() )}{22}{subsection.5.3}
-\contentsline {paragraph}{Pseudocode generateBlocksPerWeek}{22}{section*.30}
-\contentsline {paragraph}{Pseudocode solve}{23}{section*.31}
-\contentsline {subsection}{\numberline {5.4}Het backtrackingalgoritme per week (methode makeWeekSchedule)}{23}{subsection.5.4}
-\contentsline {paragraph}{De SpaceTimeMatrix: }{23}{section*.32}
-\contentsline {paragraph}{Het algoritme:}{26}{section*.34}
-\contentsline {paragraph}{Het backtrack algoritme:}{27}{section*.35}
-\contentsline {subsection}{\numberline {5.5}Het aanmaken van Calendarfile (getCalendar() )}{27}{subsection.5.5}
+\contentsline {section}{\numberline {4}Website/Server Communicatie}{17}{section.4}
+\contentsline {subsection}{\numberline {4.1}Beknopte achtergrond informatie}{17}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Inplementatie en Communicatie}{17}{subsection.4.2}
+\contentsline {section}{\numberline {5}Session Tracking}{19}{section.5}
+\contentsline {subsection}{\numberline {5.1}Overzicht}{19}{subsection.5.1}
+\contentsline {paragraph}{UMLDiagrammen}{19}{section*.27}
+\contentsline {paragraph}{Klassen}{19}{section*.29}
+\contentsline {paragraph}{Session}{19}{section*.30}
+\contentsline {paragraph}{SessionTable}{20}{section*.31}
+\contentsline {paragraph}{SessionCleaner}{20}{section*.32}
+\contentsline {section}{\numberline {6}Language Resolving}{21}{section.6}
+\contentsline {subsection}{\numberline {6.1}Overzicht}{21}{subsection.6.1}
+\contentsline {paragraph}{UMLDiagrammen}{21}{section*.33}
+\contentsline {paragraph}{Klassen}{21}{section*.35}
+\contentsline {paragraph}{LanguageTag}{21}{section*.36}
+\contentsline {paragraph}{Dictionary}{21}{section*.37}
+\contentsline {paragraph}{LanguageResolver}{22}{section*.38}
+\contentsline {section}{\numberline {7}Algoritme voor kalenderplanning}{23}{section.7}
+\contentsline {subsection}{\numberline {7.1}Inleiding}{23}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Overzicht van de klasse SemesterScheduler}{23}{subsection.7.2}
+\contentsline {paragraph}{Variabelen:}{23}{section*.39}
+\contentsline {paragraph}{Methodes:}{24}{section*.40}
+\contentsline {subsection}{\numberline {7.3}De solver (methode solve() )}{24}{subsection.7.3}
+\contentsline {paragraph}{Pseudocode generateBlocksPerWeek}{25}{section*.41}
+\contentsline {paragraph}{Pseudocode solve}{25}{section*.42}
+\contentsline {subsection}{\numberline {7.4}Het backtrackingalgoritme per week (methode makeWeekSchedule)}{26}{subsection.7.4}
+\contentsline {paragraph}{De SpaceTimeMatrix: }{26}{section*.43}
+\contentsline {paragraph}{Het algoritme:}{28}{section*.45}
+\contentsline {paragraph}{Het backtrack algoritme:}{30}{section*.46}
+\contentsline {subsection}{\numberline {7.5}Het aanmaken van Calendarfile (getCalendar() )}{30}{subsection.7.5}
