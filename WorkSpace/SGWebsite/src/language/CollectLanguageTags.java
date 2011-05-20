@@ -20,21 +20,20 @@ public class CollectLanguageTags
 	private static String languagefilepath;
 	private static Vector<String> languagereferences;
 	
-	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args)
 	{
-		languagefilepath = "C:/SVN/WorkSpace/SGWebsite/src/language/";
+		languagefilepath = "C:/SVN/SGFiles/SGlanguage/english.l";
 		languagereferences = new Vector<String>();
-		
+		addlanguagetags(FileIO.readFile(languagefilepath));
 		Vector<String> folders = new Vector<String>();
 		folders.add("C:/SVN/WorkSpace/SGWebsite/src/pseudoServlets");
 		folders.add("C:/SGFiles/SGtemplates");
 		folders.add("C:/SVN/WorkSpace/SGWebsite/src/dataStructure");
 		folders.add("C:/SVN/WorkSpace/SGWebsite/src/htmlBuilder");
-		
+		folders.add("C:/SVN/WorkSpace/SGWebsite/src/login");
 		for (String i : folders)
 		{
 			File parent = new File(i);
@@ -43,34 +42,10 @@ public class CollectLanguageTags
 				if (!(f.isDirectory()))
 				{
 					addlanguagetags(FileIO.readFile(f.getAbsolutePath()));
+					System.out.println(f.getName()+" has been processed");
 				}
 			}
 		}
-		
-		
-//		//
-//		for (String i : datastructure)
-//		{
-//			System.out.println("File: "+i);
-//			addlanguagetags(datastructurepath+i);
-//		}
-//		
-//		// voeg de languagefiles uit de pseudoservlets toe
-//		for (String i : pseudoservlets)
-//		{
-//			System.out.println("File: "+i);
-//			addlanguagetags(pseudoservletpath+i);
-//		}
-//		// voeg de language files uit de templates toe
-//		for (String i : templatefiles)
-//		{
-//			System.out.println("File: "+i);
-//			addlanguagetags(templatefilepath+i);
-//		}
-//		
-//		// haal de language references uit site.xml
-//		System.out.println("File: Site.xml");
-//		addlanguagetags("C:/SVN/WorkSpace/SGWebsite/src/htmlBuilder/site.xml");
 		
 		// voeg de tabtitels toe
 		for (PseudoServlet.TabName i : PseudoServlet.TabName.values())
@@ -81,13 +56,15 @@ public class CollectLanguageTags
 			}
 		}
 		
-		// steek de language tags in een string die in een .l bestand kan gezet worden.
+		// steek de nieuwe language tags in een string die in een .l bestand kan gezet worden.
 		String out = new String();
-		for (String i : languagereferences)
+		for (String v : languagereferences)
 		{
-			out += "##"+i+"##=;\n";
+			out += "##"+v+"##=;\n";
 		}
 		System.out.println(out);
+		
+		System.out.println(languagereferences);
 	}
 	
 	static void addlanguagetags(String content)
