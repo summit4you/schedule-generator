@@ -11,51 +11,55 @@
 \contentsline {paragraph}{Initialiseren}{8}{section*.7}
 \contentsline {paragraph}{Gebruiken}{8}{section*.8}
 \contentsline {subsection}{\numberline {2.4}Interface: Javascript - CSS voor tabbladen}{8}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Interface: Browser - Server: HTTP}{9}{subsection.2.5}
-\contentsline {paragraph}{Concerns}{9}{section*.9}
-\contentsline {paragraph}{Attributes}{9}{section*.10}
-\contentsline {paragraph}{GET}{10}{section*.11}
-\contentsline {paragraph}{POST}{10}{section*.12}
-\contentsline {subsection}{\numberline {2.6}Interface: Database interface}{11}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.5}Interface: XHTML – JavaInterface voor HTMLDatatable}{9}{subsection.2.5}
+\contentsline {paragraph}{Overzicht}{9}{section*.9}
+\contentsline {paragraph}{Klassen}{9}{section*.11}
+\contentsline {paragraph}{Annotaties}{9}{section*.12}
+\contentsline {subsection}{\numberline {2.6}Interface: Browser - Server: HTTP}{11}{subsection.2.6}
 \contentsline {paragraph}{Concerns}{11}{section*.13}
-\contentsline {paragraph}{design}{12}{section*.14}
-\contentsline {subsection}{\numberline {2.7}Interface: XML interface}{13}{subsection.2.7}
+\contentsline {paragraph}{Attributes}{11}{section*.14}
+\contentsline {paragraph}{GET}{12}{section*.15}
+\contentsline {paragraph}{POST}{12}{section*.16}
+\contentsline {subsection}{\numberline {2.7}Interface: Database interface}{13}{subsection.2.7}
 \contentsline {paragraph}{Concerns}{13}{section*.17}
-\contentsline {paragraph}{Design}{13}{section*.18}
-\contentsline {paragraph}{Features}{14}{section*.20}
-\contentsline {section}{\numberline {3}Logical}{16}{section.3}
-\contentsline {subsection}{\numberline {3.1}Design concerns}{16}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Elementen}{16}{subsection.3.2}
-\contentsline {paragraph}{Entiteiten}{16}{section*.22}
-\contentsline {paragraph}{Relaties}{16}{section*.23}
-\contentsline {paragraph}{UML Diagrammma}{17}{section*.24}
-\contentsline {section}{\numberline {4}Website/Server Communicatie}{17}{section.4}
-\contentsline {subsection}{\numberline {4.1}Beknopte achtergrond informatie}{17}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Inplementatie en Communicatie}{17}{subsection.4.2}
-\contentsline {section}{\numberline {5}Session Tracking}{19}{section.5}
-\contentsline {subsection}{\numberline {5.1}Overzicht}{19}{subsection.5.1}
-\contentsline {paragraph}{UMLDiagrammen}{19}{section*.27}
-\contentsline {paragraph}{Klassen}{19}{section*.29}
-\contentsline {paragraph}{Session}{19}{section*.30}
-\contentsline {paragraph}{SessionTable}{20}{section*.31}
-\contentsline {paragraph}{SessionCleaner}{20}{section*.32}
-\contentsline {section}{\numberline {6}Language Resolving}{21}{section.6}
-\contentsline {subsection}{\numberline {6.1}Overzicht}{21}{subsection.6.1}
-\contentsline {paragraph}{UMLDiagrammen}{21}{section*.33}
-\contentsline {paragraph}{Klassen}{21}{section*.35}
-\contentsline {paragraph}{LanguageTag}{21}{section*.36}
-\contentsline {paragraph}{Dictionary}{21}{section*.37}
-\contentsline {paragraph}{LanguageResolver}{22}{section*.38}
-\contentsline {section}{\numberline {7}Algoritme voor kalenderplanning}{23}{section.7}
-\contentsline {subsection}{\numberline {7.1}Inleiding}{23}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Overzicht van de klasse SemesterScheduler}{23}{subsection.7.2}
-\contentsline {paragraph}{Variabelen:}{23}{section*.39}
-\contentsline {paragraph}{Methodes:}{24}{section*.40}
-\contentsline {subsection}{\numberline {7.3}De solver (methode solve() )}{24}{subsection.7.3}
-\contentsline {paragraph}{Pseudocode generateBlocksPerWeek}{25}{section*.41}
-\contentsline {paragraph}{Pseudocode solve}{25}{section*.42}
-\contentsline {subsection}{\numberline {7.4}Het backtrackingalgoritme per week (methode makeWeekSchedule)}{26}{subsection.7.4}
-\contentsline {paragraph}{De SpaceTimeMatrix: }{26}{section*.43}
-\contentsline {paragraph}{Het algoritme:}{28}{section*.45}
-\contentsline {paragraph}{Het backtrack algoritme:}{30}{section*.46}
-\contentsline {subsection}{\numberline {7.5}Het aanmaken van Calendarfile (getCalendar() )}{30}{subsection.7.5}
+\contentsline {paragraph}{design}{14}{section*.18}
+\contentsline {subsection}{\numberline {2.8}Interface: XML interface}{15}{subsection.2.8}
+\contentsline {paragraph}{Concerns}{15}{section*.21}
+\contentsline {paragraph}{Design}{15}{section*.22}
+\contentsline {paragraph}{Features}{16}{section*.24}
+\contentsline {section}{\numberline {3}Logical}{18}{section.3}
+\contentsline {subsection}{\numberline {3.1}Design concerns}{18}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Elementen}{18}{subsection.3.2}
+\contentsline {paragraph}{Entiteiten}{18}{section*.26}
+\contentsline {paragraph}{Relaties}{18}{section*.27}
+\contentsline {paragraph}{UML Diagrammma}{19}{section*.28}
+\contentsline {section}{\numberline {4}Website/Server Communicatie}{19}{section.4}
+\contentsline {subsection}{\numberline {4.1}Beknopte achtergrond informatie}{19}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Inplementatie en Communicatie}{19}{subsection.4.2}
+\contentsline {section}{\numberline {5}Session Tracking}{21}{section.5}
+\contentsline {subsection}{\numberline {5.1}Overzicht}{21}{subsection.5.1}
+\contentsline {paragraph}{UMLDiagrammen}{21}{section*.31}
+\contentsline {paragraph}{Klassen}{21}{section*.33}
+\contentsline {paragraph}{Session}{21}{section*.34}
+\contentsline {paragraph}{SessionTable}{22}{section*.35}
+\contentsline {paragraph}{SessionCleaner}{22}{section*.36}
+\contentsline {section}{\numberline {6}Language Resolving}{23}{section.6}
+\contentsline {subsection}{\numberline {6.1}Overzicht}{23}{subsection.6.1}
+\contentsline {paragraph}{UMLDiagrammen}{23}{section*.37}
+\contentsline {paragraph}{Klassen}{23}{section*.39}
+\contentsline {paragraph}{LanguageTag}{23}{section*.40}
+\contentsline {paragraph}{Dictionary}{23}{section*.41}
+\contentsline {paragraph}{LanguageResolver}{24}{section*.42}
+\contentsline {section}{\numberline {7}Algoritme voor kalenderplanning}{25}{section.7}
+\contentsline {subsection}{\numberline {7.1}Inleiding}{25}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Overzicht van de klasse SemesterScheduler}{25}{subsection.7.2}
+\contentsline {paragraph}{Variabelen:}{25}{section*.43}
+\contentsline {paragraph}{Methodes:}{26}{section*.44}
+\contentsline {subsection}{\numberline {7.3}De solver (methode solve() )}{26}{subsection.7.3}
+\contentsline {paragraph}{Pseudocode generateBlocksPerWeek}{27}{section*.45}
+\contentsline {paragraph}{Pseudocode solve}{27}{section*.46}
+\contentsline {subsection}{\numberline {7.4}Het backtrackingalgoritme per week (methode makeWeekSchedule)}{28}{subsection.7.4}
+\contentsline {paragraph}{De SpaceTimeMatrix: }{28}{section*.47}
+\contentsline {paragraph}{Het algoritme:}{30}{section*.49}
+\contentsline {paragraph}{Het backtrack algoritme:}{32}{section*.50}
+\contentsline {subsection}{\numberline {7.5}Het aanmaken van Calendarfile (getCalendar() )}{32}{subsection.7.5}
