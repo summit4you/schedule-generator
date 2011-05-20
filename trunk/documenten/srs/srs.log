@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  10 MAY 2011 18:40
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=pdflatex 2010.10.8)  20 MAY 2011 09:50
 entering extended mode
 **C:/SVN/documenten/srs/srs.tex
 (C:/SVN/documenten/srs/srs.tex
@@ -315,33 +315,23 @@ Overfull \hbox (22.13957pt too wide) in paragraph at lines 45--46
 ver-be-terin-gen doorgevo-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--53
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
-
- []
-
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
+Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--81
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
@@ -355,17 +345,17 @@ Missing character: There is no ï in font cmr10!
 Missing character: There is no ¿ in font cmr10!
 Missing character: There is no ½ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--150
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
 
  []
 
@@ -393,81 +383,67 @@ Missing character: There is no ï in font cmr10!
 Missing character: There is no ¿ in font cmr10!
 Missing character: There is no ½ in font cmr10!
 
-Overfull \hbox (16.08391pt too wide) in paragraph at lines 182--183
+Overfull \hbox (16.08391pt too wide) in paragraph at lines 177--178
 \OT1/cmr/m/n/10 De reeds be-spro-ken ge-bruik-er-types zullen stan-daard aan-we
 zig zijn bij het afgeleverde
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 187--192
+Underfull \hbox (badness 10000) in paragraph at lines 182--187
 
  []
 
-Missing character: There is no ï in font cmr10!
-Missing character: There is no ¿ in font cmr10!
-Missing character: There is no ½ in font cmr10!
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 220--225
+Underfull \hbox (badness 10000) in paragraph at lines 215--220
 
  []
 
 Missing character: There is no ï in font cmr10!
 Missing character: There is no ¿ in font cmr10!
 Missing character: There is no ½ in font cmr10!
-
-Underfull \hbox (badness 10000) in paragraph at lines 244--249
-
- []
-
 [8] [9] [10]
 Missing character: There is no ï in font cmr10!
 Missing character: There is no ¿ in font cmr10!
 Missing character: There is no ½ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--384
+Underfull \hbox (badness 10000) in paragraph at lines 374--379
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--390
+Underfull \hbox (badness 10000) in paragraph at lines 380--385
 
  []
 
 [11]
-Overfull \hbox (27.08408pt too wide) in paragraph at lines 435--440
+Overfull \hbox (27.08408pt too wide) in paragraph at lines 430--435
 \OT1/cmr/m/n/10 Omschrijving: Fa-ciliteiten om-vat-ten les-ben-odigdhe-den zoal
 s pro-jec-tor,computer,
  []
 
-[12] [13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 597--602
-
- []
-
-[16] [17] [18]
+[12] [13] [14] [15] [16] [17] [18]
 Missing character: There is no ë in font cmbx10!
-
-Overfull \hbox (8.3618pt too wide) in paragraph at lines 794--799
+ [19]
+Overfull \hbox (8.3618pt too wide) in paragraph at lines 802--807
 \OT1/cmr/m/n/10 Omschrijving: Als een log-boek is aange-maakt zullen be-lan-gri
 -jke gebeurtenis-
  []
 
-[19]
+[20]
 Missing character: There is no ë in font cmr10!
- [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 874.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 882.
  [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 874.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 882.
  (C:\SVN\documenten\srs\srs.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 874.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 882.
 Package rerunfilecheck Info: File `srs.out' has not changed.
 (rerunfilecheck)             Checksum: 0E52E3D9FF590D4C3AA521DB71B14942;2077.
  ) 
 Here is how much of TeX's memory you used:
- 4866 strings out of 495285
- 74090 string characters out of 3179830
- 144136 words of memory out of 3000000
- 7956 multiletter control sequences out of 15000+200000
+ 4858 strings out of 495285
+ 73994 string characters out of 3179830
+ 144134 words of memory out of 3000000
+ 7949 multiletter control sequences out of 15000+200000
  8594 words of font info for 30 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  31i,6n,28p,542b,396s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -478,9 +454,9 @@ rogram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
  Files (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmsl10.pfb><C:/Program F
 iles (x86)/MiKTeX 2.8/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on srs.pdf (21 pages, 159964 bytes).
+Output written on srs.pdf (21 pages, 159785 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 57 named destinations out of 1000 (max. 500000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 56 named destinations out of 1000 (max. 500000)
  225 words of extra memory for PDF output out of 10000 (max. 10000000)
 

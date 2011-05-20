@@ -8,11 +8,11 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{textcomp}
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{3}
 \graphicspath{{fig/}}
 
 \makeatletter
-\renewcommand\paragraph{%
+\renewcommand\subsubsection{%
    \@startsection{paragraph}{4}{0mm}%
       {-\baselineskip}%
       {.5\baselineskip}%
@@ -21,7 +21,7 @@
 
 \title{Software Design Descriptions voor Schedule-Generator}
 \author{Matthias Caenepeel \and Adam Cooman \and Alexander De Cock \and Zjef Van de Poel}
-\date{28 maart 2011 Versie 2.0} 
+\date{20 mei 2011 Versie 3.0} 
 
 \begin{document}
 
@@ -42,43 +42,24 @@
 \item[.] 28/2/2011 versie 1.0: Verbeteringen doorgevoerd 
 \item[.] 17/3/2011 versie 1.1: Opmerkingen opdrachtgever in acht genomen en nodige aanpassingen gedaan. Gebruik van de GET en POST methode in de Site - Servlet interface grondiger uitgelegd 
 \item[.] 28/3/2011 versie 2.0: Volledige revisie van het document en aanpassingen/toevoegingen doorgevoerd waar nodig.
+\item[.] 20/5/2011 versie 3.0: Volledige revisie van het document. Toevoegine van nieuw algoritme, toevoeging van uitleg over de werking van de servlets op de server, toevoeging van nieuwe klassediagrammas.
 \end{itemize}
 
-\section*{Nog te doen}
-\begin{itemize}
-\item[.] Sectie 1.5 is nog wat karig, hoewel de inhoud die er is alvast interessant is. Wat ontbreekt is nog het eigenlijke design. \\[-3mm]
-\item[.] Component Diagram toevoegen aan design viewpoint 1 \\[-3mm]
-\end{itemize}
-\item[.] UML diagrammas van Alexander toevoegen waar nodig
 %\section*{Preface}
 
 \newpage
 \tableofcontents
 
-%\newpage
-%\section{Introduction}
-%TODO
-%\subsection{Purpose}
-%\subsection{Scope}
-%\subsection{Context}
-%\subsection{Summary}
-
-%\newpage
-%\section{References}
-
-%\newpage
-%\part{Glossary}
-
 \newpage
-\section{Body}
-%\subsection{Identified stakeholders and design concerns}
 
-\subsection{Design viewpoint 1: Compositie}
+%\section{Identified stakeholders and design concerns}
 
-\subsubsection{Design concerns}
+\section{Compositie}
+
+\subsection{Design concerns}
 Het doel van dit ontwerpstandpunt bestaat er in alle componenten van het systeem te identificeren, hun attributen te kenmerken en hun onderlinge verbanden te beschrijven. Deze beschrijving zal gebeuren aan de hand van een \textit{component diagram} en het \textit{deployment diagram}. Beide  zijn een onderdeel van de UML 2.0 modelleertaal.  
 
-\subsubsection{Deployment Diagram}
+\subsection{Deployment Diagram}
 
 Een deployement diagram geeft weer op welke manier de hard- en software wordt geconfigureerd tijdens de normale werking van het systeem. Hieronder volgt een beschrijving van de belangrijkste componenten in het diagram. 
 
@@ -104,7 +85,7 @@ Een deployement diagram geeft weer op welke manier de hard- en software wordt ge
 \end{description}
 
 
-%\subsubsection{Component Diagram}
+%\subsection{Component Diagram}
 
 %Zal later worden toegevoegd
 
@@ -114,7 +95,7 @@ Een deployement diagram geeft weer op welke manier de hard- en software wordt ge
 %------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-\subsection{Design viewpoint 2: Interfaces}
+\section{Interfaces}
 % HTTP
 % Adam schrijft dit het is toegelaten dat je zelf de punten een beke invult
 
@@ -124,7 +105,7 @@ Een deployement diagram geeft weer op welke manier de hard- en software wordt ge
 % HTML met server via HTTP (GET en POST)
 % Servlet via interface van Zjef en MySQL met Database
 
-\subsubsection{Design concerns, algemeen}
+\subsection{Design concerns, algemeen}
 
 \begin{figure}[H]
 \unitlength=0.3\textwidth
@@ -217,8 +198,8 @@ In de structuur van ons programma bestaan verschillende elementen met verschille
 
 Het schema is geen volledig correcte weergave van de werkelijkheid omdat het stylesheet en het script zich ook op de server bevinden en door de browser opgehaald worden van de server via een HTTP protocol. Om volledig correct te zijn zouden die twee onderdelen van het schema zich dus ook op de server moeten bevinden. Om alles overzichtelijk te houden heeft de auteur beslist om ze bij de browser te plaatsen, omdat de browser het ophalen van de server voorziet en niet de gebruiker.
 
-\subsubsection{Interface:  XHTML - CSS voor Layout}
-\paragraph{Initialiseren} 
+\subsection{Interface:  XHTML - CSS voor Layout}
+\subsubsection{Initialiseren} 
 
 Om het .css bestand aan de XHTML pagina te linken moet in de header van de XHTML code het volgende voorzien worden
 \begin{verbatim}
@@ -231,7 +212,7 @@ Hierin zijn de volgende elementen te herkennen:
 \item[] \texttt{href="style.css"}: De naam van het css bestand. Als die zich op een andere locatie bevindt dan de XHTML pagina moet het pad naar die map hierin toegevoegd worden \\[-5mm]
 \end{itemize}
 
-\paragraph{Gebruiken} 
+\subsubsection{Gebruiken} 
 
 In de XHTML code moet niet veel toegevoegd worden om de css op te roepen, enkel een id tag op de volgende manier om onderscheid te maken tussen verschillende gedefini\"{e}erde stijlen in de css code. Als voorbeeld wordt het toevoegen van een id aan een rij van een tabel gegeven om aan te tonen hoe dit moet.
 \begin{verbatim}
@@ -246,8 +227,8 @@ tr#MainBottom {
 }
 \end{verbatim}
 
-\subsubsection{Interface: XHTML - Javascript voor tabbladen}
-\paragraph{Initialiseren} 
+\subsection{Interface: XHTML - Javascript voor tabbladen}
+\subsubsection{Initialiseren} 
 
 Het oproepen van het javascript bestand gebeurt in de header van het XHTML bestand dat de inhoud van de site beschrijft met de volgende code.
 \begin{verbatim}
@@ -259,7 +240,7 @@ Hierin zijn de volgende elementen te herkennen:
 \item[] \texttt{src="tabber-minimized.js"}: De naam van het javascript bestand. Als die zich op een andere locatie bevindt dan de HTML pagina moet het pad naar die map hierin toegevoegd worden \\[-5mm]
 \end{itemize}
 
-\paragraph{Gebruiken}
+\subsubsection{Gebruiken}
 Om dan een tabblad aan te maken en er inhoud in te plaatsen wordt gebruik gemaakt van div elementen in de XHTML code. dit gebeurd op de volgende manier:
 \begin{verbatim}
 <div class="tabber">
@@ -281,7 +262,7 @@ In de binnenste divs, \'{e}\'{e}n per tabblad:
 \item[] \texttt{title="Tabblad 1"}: In het title tag staat de titel van het tabblad die bovenaan weergegeven wordt \\[-5mm]
 \end{itemize}
 
-\subsubsection{Interface: Javascript - CSS voor tabbladen}
+\subsection{Interface: Javascript - CSS voor tabbladen}
 
 Het Javascript tabber dat gebruikt wordt bevat interne links naar het CSS bestand. De exacte werking van de interface is niet gekend omdat tabber een programma is dat geschreven is door derden. De nodige css code werd aan het stijlbestand toegevoegd zodat alles werk. Het is nu mogelijk om de layout van de tabbladen te defini\"{e}ren in het stijlbestand. De nodige onderverdelingen die toegevoegd moeten worden zijn de volgende:
 
@@ -301,12 +282,12 @@ ul.tabbernav li.tabberactive a:hover{}
 \end{verbatim}
 
 
-\subsubsection{Interface: Browser - Server: HTTP}
+\subsection{Interface: Browser - Server: HTTP}
 
-\paragraph{Concerns}
+\subsubsection{Concerns}
 Omdat de algemene kalender en andere gegevens in een database op de server zullen opgeslaan zijn en omdat de gebruiker vanop zijn computer thuis via de website die informatie te zien moet krijgen, moet er een communicatie tussen de server en de browser van de gebruiker zijn. Zoals bij de meeste websites werd gekozen om het het HTTP protocol te werken. We laten niet toe dat de gebruikers rechtstreeks met de database communiceren om te vermijden dat ze informatie te zien krijgen die ze niet mogen zien, en om de informatie op een overzichtelijke manier te structureren. Daarom werken we met Servlets die op server runnen en die de besproken taken verrichten. De volgende paragrafen beschrijven dus de communicatie tussen de browser van de gebruiker en de servlets.
 
-\paragraph{Attributes}
+\subsubsection{Attributes}
 
 Uit het HTTP protocol zullen de GET en POST functies gebruikt worden door onze toepassing. Een HTTP pakket bestaat uit twee delen, de \textit{header} en de \textit{body}.
 \begin{description}
@@ -317,7 +298,7 @@ De manier waarop de informatie doorgestuurd zal worden hangt af van de plaats. G
 
 Andere informatie, zoals het opvragen van het lessenrooster zal via de GET methode gebeuren. De waarden van de zoekactie worden dan in de link geplaatst door een script dat nog ontwikkeld moet worden en waarvan de interface met de XHTML pagina gelijkenissen zal vertonen met die voor de tabbladen. \\
 
-\paragraph{GET}
+\subsubsection{GET}
 
 We gebruiken HttpServlets die de doGet methode bevatten om een Get aanvraag binnen te krijgen en die te beantwoorden. Beschouw als voorbeeld de volgende servlet. Hij stuurt het antwoord Hallo terug naar de gebruiker als die de juiste URL ingegeven heeft. Welke URL dat is wordt beschreven in een XML bestand dat zich op de server bevindt en een bepaalde URL aan een Servlet koppelt.
 
@@ -344,7 +325,7 @@ String ID = request.getParameter("ID");
 \end{verbatim}
 
 
-\paragraph{POST}
+\subsubsection{POST}
 Bij het gebruik van een GET om variabelen aan de servlet door te geven staan de variabelen en hun waarden allemaal in de URL. Voor gevoelige informatie zoals wachtwoorden, of als er zeer veel informatie doorgegeven moet worden (de maximum lengte van een URL in internet explorer is 2083 tekens) is deze methode niet geschikt. Daarvoor zal de POST methode gebruikt worden.\\
 
 Er zal dus enkel gebruik gemaakt worden van de POST methode bij het verzenden van een HTML Form. Deze HTML structuur bevat velden die ingevuld kunnen worden door de gebruiker en een knop waar de gebruiker op moet klikken om de informatie door te sturen. Om een variabele PASS door te sturen met een POST naar de servlet zou de code voor de form er als volgt uitzien:
@@ -368,16 +349,16 @@ String ID = request.getParameter("PASS");
 Om meer variabelen mee te sturen met een form, is het mogelijk om onzichtbare INPUT tags te defini\"{e}ren in het HTML Form. daarmee kan aan de Servlet bijvoorbeeld meegegeven worden welk Form ingevuld is. 
 
 
-\subsubsection{Interface: Database interface}
+\subsection{Interface: Database interface}
 
-\paragraph{Concerns}
+\subsubsection{Concerns}
 De interface met de MySQL database wordt geleverd door de reeds bestaande java library MySQL Connector/J1 \footnote{http://dev.mysql.com/downloads/connector/j/}.
 Deze biedt de mogelijkheid om queries uit te voeren vanuit Java code en de resultaten van deze query uit te lezen.
 
 Om eenvoudig en flexibel te kunnen werken met de database vanuit de object georiënteerde code is er een extra interface geschreven rond de MySQL Connector.
 Deze levert op een eenvoudig te implementeren manier de mogelijkheid om rechtstreeks Java objecten op te slaan en deze ook dusdanig als objecten uit te lezen, met inbegrip van alle onderlinge verbanden tussen de objecten.
 
-\paragraph{design}
+\subsubsection{design}
 
 \begin{figure}[H]%
 \includegraphics[width=\columnwidth]{DATA1.jpg}%
@@ -424,7 +405,7 @@ Alle voorwaarden om de Databasable interface correct te implementeren zijn te vi
 Voorbeelden van correcte implementatie zijn te vinden in de google-code repository bij:
 trunk/Database/Voorbeeld
 
-%\paragraph{Elementen}
+%\subsubsection{Elementen}
 %
 %\begin{itemize}
 %\item[-] Database \\[-5mm]
@@ -443,14 +424,14 @@ trunk/Database/Voorbeeld
 %		
 %*: Java terminologie
 
-\subsubsection{Interface: XML interface}
+\subsection{Interface: XML interface}
 
-\paragraph{Concerns}
+\subsubsection{Concerns}
 
 Er bestaan reeds talloze XML parsers, maar omwille van flexibiliteit en modificeerbaarheid is er een eigen parser geschreven.
 Zo is het huidige format niet meer zuiver xml, maar zijn extra features toegevoegd die extra functionaliteiten toevoegen, maar op een manier dat 'echte' xml parsers de door deze parser gegenereerde xml nog steeds kan weergeven.
 
-\paragraph{Design}
+\subsubsection{Design}
 
 Een boomstructuur van java objecten wordt opgesteld vanuit een xml bestand, of omgekeerd.
 Uitgedrukt in BNF:
@@ -468,7 +449,7 @@ Uitgedrukt in BNF:
 \caption{Voorbeeld van XMLDocument}%
 \end{figure}
 
-\paragraph{Features}
+\subsubsection{Features}
 \textbf{Tags}
 Specifieke tags kunnen toegevoegd worden aan de elementen:
 \begin{verbatim}
@@ -490,7 +471,7 @@ Zie voorbeeld hieronder:
 
 Na het inladen van File1.xml heeft 'element' de waarde 'The selected language is Dutch'.
 
-%\paragraph{Elementen}
+%\subsubsection{Elementen}
 %
 %\begin{itemize}
 %\item[-] \textbf{XMLDocument}: Object verwijzende naar een XML bestand. Een XMLDocument bevat een lijst van 	XMLElement \\[-5mm]
@@ -502,7 +483,7 @@ Na het inladen van File1.xml heeft 'element' de waarde 'The selected language is
 %\item[-] \textbf{XMLParser}: Levert methodes om een XML bestand, gecreëerd met deze interface, weer in te laden naar 	een XMLDocument 
 %\end{itemize}
 %
-%\paragraph{Schema}
+%\subsubsection{Schema}
 %
 %\begin{figure}[H]
 %\includegraphics[width=\columnwidth]{XML.png}%
@@ -513,12 +494,12 @@ Na het inladen van File1.xml heeft 'element' de waarde 'The selected language is
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Design viewpoint 3: Logical}
-\subsubsection{Design concerns}
+\section{Logical}
+\subsection{Design concerns}
 Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses nodig die alle verschillende participerende objecten voorstellen.
 
-\subsubsection{Elementen}
-\paragraph{Entiteiten}
+\subsection{Elementen}
+\subsubsection{Entiteiten}
 
 \begin{itemize}
 	\item[-] Lessen structuur \\[-5mm]
@@ -544,7 +525,7 @@ Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses 
 	\end{itemize}
 \end{itemize}
 
-\paragraph{Relaties}
+\subsubsection{Relaties}
 
 \begin{itemize}
 \item[-] Lessen structuur \\[-5mm]
@@ -564,7 +545,7 @@ Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses 
 \end{itemize}		
 \end{itemize}
 
-\paragraph{UML Diagrammma}
+\subsubsection{UML Diagrammma}
 
 \begin{figure}[H]%
 \includegraphics[width=\columnwidth]{UML_DataClasses.png}%
@@ -577,6 +558,27 @@ Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses 
 \end{figure}
 
 
+\section{Website/Server Communicatie}
+
+\subsection{Beknopte achtergrond informatie}
+
+De webpagina’s worden op de server gegenereerd door een Java Servlet. Deze ontvangt de requests van de website.
+De website is modulair opgebouwd door middel van tabbladen. Elk tabblad vervult een afgebakende functie (zoals het bekijken van de eigen kalender, het beheer van de cursussen voor de admins,…). De tabbladen die een gebruiker te zien krijgt is afhankelijk van zijn gebruikerstype.
+
+\subsection{Inplementatie en Communicatie}
+
+Om de benodigde modulariteit te implementeren bestaat er een aparte java klasse/object voor elke functionaliteit/tabblad. Deze ontvangen de request van de browser wanneer het tabblad zijn pagina opvraagt en genereren aan de hand hiervan een pagina als antwoord. Deze pagina bestaat uit een statisch deel, die uit een template file gelezen wordt. Het dynamische deel wordt aangevuld aan deze template. \\
+Om de beveiliging te controleren (gebruikers die tabbladen opvragen waarvoor ze niet gemachtigd zijn) en om de site in verschillende talen te kunnen weergeven, is er een centraal punt nodig die deze taken, gemeenschappelijk aan alle functies, op zich neemt. \\
+Hiervoor is er een centrale servlet, \textit{MainServlet}, opgesteld die alle request van de browser ontvangt. \\
+De taken zelf worden uitgevoerd door \textit{PseudoServlets}. De MainServlet stuurt de binnengekregen request door naar de correcte PseudoServlet (\textit{public String processRequest(…)}), op basis van een tag in de query string. Doordat alle requests gebundeld worden door de MainServlet, kan deze op basis van de account nagaan of deze de gevraagde PseudoServlet toegankelijk is voor de gebruiker; zo niet kan deze de request tegenhouden en niet doorsturen naar de desbetreffende PseudoServlet. \\
+De PseudoServlet krijgt via de methode processRequest(…)  de opdracht om een String te genereren die de html pagina voorstelt. Vooraleer deze String naar de browser wordt doorgestuurd door de MainServlet, zal deze eerst door een vertaler gestuurd worden, zodat elke gebruiker zijn eigen taal kan instellen, zonder dat elke PseudoServlet hier apart rekening mee moet houden. \\
+Verder bestaan er ook \textit{PseudoServletsForApplets} (subklasse van PseudoServlet). Deze genereren via processRequest(…) een html pagina waarin een Java applet geladen wordt. De applet zelf kan communicatie aangaan met de PseudoServlet om meer informatie in te laden of om zelf informatie door te sturen onder de vorm van geserialiseerde Java objecten. Dit delegeert de MainServlet naar de PseudoServlet via processAppletRequest(…). \\
+De generatie van de totale pagina gebeurt nu eenvoudig. De MainServlet krijgt een request binnen waarvan de ‘id’ niet is ingesteld. Dit triggert de creatie van een login pagina. Na het inloggen krijgt de gebruiker een id toegewezen die hij met alle requests zal doorsturen ter identificatie (de id wordt gekoppeld aan een account aan de server zijde). Na het inloggen genereert de MainServlet een pagina waarvoor er voor elke PseudoServlet van de gebruiker een tabblad voorzien is.
+In elk tabblad zit er een iframe waarbij de url naar de desbetreffende PseudoServlet verwijst. De webpagina zal nu alle correcte tabbladen kunnen inladen.
+
+\begin{figure}%
+\includegraphics[width=\columnwidth]{UML_MainServlet_Dependencies.PNG}%
+\end{figure}
 
 \newpage
 
@@ -585,43 +587,266 @@ Om de lessenrooster op te stellen en uit te lezen zijn er verschillende klasses 
 
 %-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\subsection{Design viewpoint 4: Algoritme voor kalenderplanning}
-% Matthias schrijft dit wel
-\subsubsection{Design concerns}
+\section{Algoritme voor kalenderplanning}
 
-Het algoritme dient in staat te zijn om een lessenrooster te maken dat aan bepaalde voorwaarden (constraints) voldoet. Het is daarom belangrijk dat deze eerst bepaald worden. Men kan een indeling maken in deze voorwaarden. Zo zijn er de \textit{fixed} constraints aan deze moeten zeker voldaan zijn, anders klopt het lessen rooster niet. \textit{Hard constraints} deze moeten zo goed mogelijk vervuld zijn en dan zijn er nog \textit{soft constraints} deze staan onderaan de ladder en hoeven dus niet noodzakelijk vervuld te zijn. Aan de hand van deze voorwaarden kan men dan nagaan hoe goed het lessenrooster is. Dit doet men aan de hand van een \textit{fitnessvalue}. Zo krijgt een geplaatste les 3 punten als aan een \textit{fixed constraint} voldaan is, 2 voor een hard en 1 voor een soft. Aangezien de \textit{fixed constraints} zeker voldaan moeten zijn, moet een geplaatste les al zeker 12 punten hebben. Op die manier kan men het resultaat evalueren.
+\subsection{Inleiding}
+
+Het doel is om op basis van informatie uit de Database een lessenrooster op te stellen dat aan bepaalde vereisten voldoet. Deze informatie zal via een webinterface kunnen worden ingevoerd door daartoe bevoegde personen. De lessenroosters zullen per semester worden opgesteld. Dit gebeurt in door een object van een klasse die SemesterScheduler heet. Dit object zal dan per semester CalendarFiles genereren die het lessenrooster beschrijven en deze zullen dan worden opgeslagen in de Database.
+
+\subsection{Overzicht van de klasse SemesterScheduler}
+
+\subsubsection{Variabelen:}
 
 \begin{itemize}
-\item[] \textit{Fixed constraints}\\[-3mm]
-\begin{enumerate}
-	\item Er mag nooit meer dan 1 les gepland zijn in een leslokaal \\[-3mm]
-	\item Een docent (educator) kan niet meer dan 1 les geven  \\[-3mm]
-	\item Een leslokaal (room) moet groot genoeg zijn voor het aantal studenten \\[-3mm]
-	\item Als een les bepaald materiaal vereist (zoals computer, laboratorium,...) moet hier aan worden tegemoet gekomen. \\[-3mm]
-\end{enumerate}
-\item[] \textit{Hard constraints} \\[-3mm]
-\begin{enumerate}
- \item Het lessenrooster van een student mag niet overlappen. \\[-3mm]
- \item Er mag van een vak bijvoorbeeld hoogstens 4 uur per dag gegeven worden. \\[-3mm]
- \item Student mogen bijvoorbeeld maximum 8 uur les per dag krijgen. \\[-3mm]
-\end{enumerate}
-\item[] \textit{Soft constraints} \\[-3mm]
-\begin{enumerate}
- \item De werkcolleges mogen pas na of gelijktijdig met de theoriecolleges beginnen. \\[-3mm]
-\end{enumerate}
+	\item[] Vector$<$Educator$>$ educators  (lijst van de docenten) 
+	\item[] Vector$<$Program$>$ programs  (lijst van de programma’s: bv. 1 Ma EIT) 
+	\item[] Vector$<$Room$>$ rooms  (lijst van de lokalen) 
+	\item[] Vector$<$Course$>$ courses  (lijst van de vakken die moeten ingedeeld worden) 
 \end{itemize}
 
-Voor iedere week van het academisch jaar zal de lessenrooster een tabel bevatten voor elke student die bestaat uit 5 dagen (maandag t.e.m. vrijdag) waar voor elke dag de uren bijstaan (er kan les gegeven worden van 8u t.e.m. 18u). \\
+Bovenstaande vectoren bevatten variabelen uit het package DataStructure, deze klassen bevatten de informatie die nodig is om het lessenrooster op te stellen. Ze zullen uit de Database worden ingeladen met de methode loadData().
 
-Het algoritme zal deze tabel in een eerste fase zo opbouwen dat er aan de fixed constraints voldaan is en dan in een tweede fase proberen om de totale fitnessvalue op te drijven.
+\begin{itemize}
+	\item[] int numberOfweeks
+	\item[] int startingHour
+	\item[] int endingHour
+\end{itemize}
 
-\subsubsection{Design elements}
+Deze drie integers bepalen enkele tijdsdimensies van het lessenrooster. numberOfWeeks bepaalt het aantal weken van de semester. startingHour en endingHour resp. het begin- en einduur per dag (bv. van 8 tot 18 uur)
 
-Om het algoritme te kunnen uitvoeren is er natuurlijk de nodige informatie nodig om tot een lessenrooster te kunnen komen. De informatie die nodig is, zal uit een database worden gehaald en dan in klassenstructuur gegoten worden. Deze klassenstructuur is besproken in "Design Viewpoint 2: Logical".
-Het schema en bijbehorende uitleg kan daar gevonden worden.
-Deze structuur zal nog worden uitgebreid met methode die de rooster opstellen en dan hieruit vertrekkende de fitnessvalue bepalen. De bovenstaande structuur zal met andere woorden nog worden uitgebreid.
+\begin{itemize}
+	\item[] Hashtable$<$Educator,Vector$<$Integer$>>$ unavailableHoursForEducator 
+	\item[] Hashtable$<$Program,Vector$<$Integer$>>$ unavailableHoursForProgram 
+\end{itemize}
 
-%\subsection{Design rationale}
+Deze  hashing tables zullen bijhouden welke uren er niet meer beschikbaar zijn voor een programma of een docent. Dit om dubbelboekingen te bekomen. Voor de docenten bestaat de mogelijkheid om via de webinterface data in te geven waarop hij of zij niet beschikbaar is. (Zie ook verder bij de klasse Constraint.)
+
+\subsubsection{Methodes:}
+\begin{itemize}
+	\item[] \textit{SemesterScheduler(int startingHour, int endingHour, int numberOfweeks)}  \\
+	De constructor waaraan de tijdsvariabelen worden meegegeven.
+	\item[]\textit{solve()} \\
+	Deze methode zal het lessenrooster voor heel de semester opstellen en dan de bekomen CalendarFiles wegschrijven in de Database.
+\end{itemize}
+
+De lijst van onderstaande methoden zullen verder in dit document worden aangehaald en dan daar worden uitgelegd.
+\begin{itemize}
+	\item[] generateCalendars() 
+	\item[] loadData() 
+	\item[] createBlocks() 
+	\item[] initializeUnavailableHours(...) 
+	\item[] calcNextNewSpace(...) 
+	\item[] addUnavailableBlock(...) 
+	\item[] removeUnavailableBlock(...) 
+	\item[] makeWeekSchedule(...)
+\end{itemize}
+
+\subsection{De solver (methode solve() )}
+
+Deze methode zal uiteindelijk alle methoden bevatten die ervoor zorgen dat er een lessenrooster wordt opgesteld. In de constructor is de nodige data reeds ingeladen a.d.h.v. de methode \textit{loadData()}. 
+
+De bedoeling is dat er nu per week een lessenrooster wordt opgesteld. Hiervoor is het dus nodig dat de data over het aantal weken worden verdeeld. Het algoritme dat het rooster per week opstelt is een backtrackingalgoritme. 
+
+De vector courses bevat alle vakken die moet ingedeeld worden per semester. De klasse course bevat echter nog eens een vector met daarin de klasse Subcourse. Deze klasse geeft aan over welk type les (hoorcollege, werkcollege, labo,...) gaat en bevat ook hoeveel uren er van dit type zijn en hoe lang een minimum blok moet zijn. Per Subcourse zullen er dan object van de klasse Subcourseblock gegenereerd worden. Deze klasse heeft een verwijzing naar zijn Subcourse en bevat de lengte van het blok. Deze blocks moeten dan over het lessenrooster verdeeld worden. Deze blocks moeten echter ook nog eens per week ingedeeld worden. Daarom heeft elk object van Subcourse een veld met daarin een beginweek (geeft aan wanneer deze lessen beginnen) en een minimum aantal uur per week. Er zal hiervoor een methode worden opgeroepen die \textit{createBlocks()} heet. Deze geeft een Vector$<$Vector$<$Subcourseblock$>>$ terug. Dit interpreteert men als volgt: elke week heeft een vector van Subcourseblocks. De index van de buitenste vector geeft de week aan. \\
+
+Vector$<$Course$> \rightarrow$ Vector$<$Subcourse$> \rightarrow$ Vector$<$Vector$<$Subcourseblock$>>$ \\
+
+De methode \textit{createBlocks()} roept een methode op uit de klasse Subcourseblock; \textit{generateBlocksPerWeek(Vector$<$Course$>$ courses, int NumberOfWeeks)}.
+
+\subsubsection{Pseudocode generateBlocksPerWeek}
+
+\begin{verbatim}
+weeks =  new Vector<Vector<Subcourseblock>>
+Maak voor elke week een Vector<Subcourseblock> (for lus)
+  Vraag voor elke Course zijn Subcourses op. (for lus1)
+    Ga elke Subcourse af. (for lus2)
+      Genereer zijn Subcourseblocks (while lus)
+		
+        Verdeel ze over de weken a.d.h.v. zijn beginweek 
+        en minimum aantal uur per week.
+        Voeg de Subcourseblock toe bij de juiste week
+		
+      End (while lus)
+    End (for lus2)
+  End (for lus1)
+End (for lus)  
+Return weeks
+\end{verbatim}
+
+Vervolgens zal in \textit{solve()} voor elke week de daarbij horende vector van Subcourseblocks worden de methode \textit{makeWeekSchedule(Vector$<$Subcourseblock$>$ blocks, Vector$<$Room$>$ rooms, int numberOfDays)} opgeroepen. Deze methode zal dan het backtrackingalgoritme uitvoeren en de bekomen resultaten omzetten in calendarfiles. (Meer over deze methode in de volgende paragraaf.)
+
+\subsubsection{Pseudocode solve}
+
+\begin{verbatim}
+Maak de Subcourseblocks en verdeel ze over de weken.
+
+(Vector<Vector<Subcourseblock>>  weeks  = createBlocks())
+
+Ga de vector weeks af en haal er per week de blocks uit. 
+Los dan vervolgens het probleem op per week. (for lus)
+
+    Vector<Subcourseblock> = blocks
+    makeWeekSchedule(...)
+
+End (for lus)
+\end{verbatim}
+
+
+\subsection{Het backtrackingalgoritme per week (methode makeWeekSchedule)}
+
+Deze methode zal een vector van Subcourseblocks invullen in lessenrooster. Men geeft de vector mee. Bovendien geeft men ook een vector mee met daarin het aantal beschikbare lokalen. Men geeft ook mee over hoeveel dagen het lessenrooster gespreid is.
+
+\subsubsection{De SpaceTimeMatrix: }
+
+De methode beschikt reeds over een lijst van blocks die moeten ingedeeld worden in het lessenrooster. Het lessenrooster zelf is echt nog niet voorgesteld. Om dit te doen bestaat er een klasse die SpaceTimeMatrix heeft. Deze klasse zal variabelen bevatten die de tijd-ruimte structuur van het rooster voorstellen, alsook methoden voor een geplaatste Subcourseblock het uur, de dag en het lokaal in de week teruggegeven. De belangrijktse variabele van deze klasse is de array Matrix met daarin booleans. De booleans geven weer of de plaats in het lessenrooster al dan niet is ingenomen (true == nog vrij, false == reeds ingenomen). De index van de array stelt de tijd-ruimte structuur voor. 
+
+Dit gebeurt als volgt:
+
+\begin{figure}%
+\includegraphics[width=\columnwidth]{spacetime.png}%
+\caption{De SpaceTimeMatrix}%
+\end{figure}
+
+\begin{itemize}
+	\item[] Hour loopt van 1 tot (numberOfDays*(endingHour-startingHour)-1):  bv. 0 tot 39 (Dit stelt dan 40 uur voor. 5 werkdage en elke dag 8 uur) 
+	\item[] numberOfRooms is het aantal lokalen (rooms.size() ) 
+	\item[] roomNumber is de index van de room in rooms. 
+	\item[] index = hour * numberOfRooms + roomNumber (1) 
+	\item[] Uit (1) haalt men dan de informatie voor het lessenrooster als volgt: 
+	\item[] roomNumber = index mod numberOfRooms 
+	\item[] hour = (index – (index mod numberOfRooms)) / numberOfRooms 
+	\item[] hourInDay = hour mod (endingHour-startingHour) (bv. 4e uur van een dag) 
+	\item[] Day = (hour – hourInDay) / (endingHour-startingHour)
+\end{itemize}
+
+Deze klasse stelt dan het eigenlijke lessenrooster voor. Per Subcourseblock zullen dan de indices worden opgeslagen van de toegekende plaatsen en hieruit haalt men dan de tijdsinformatie.
+
+Overzicht van de klasse SpaceTimeMatrix
+\begin{itemize}
+	\item[] \textbf{Variabelen:} 
+\item[] \begin{itemize}
+	\item[] \textit{Boolean[] Matrix}
+	\item[] \textit{int startingHour}
+	\item[] \textit{int endingHour}
+	\item[] \textit{int numberOfDays}
+	\item[] \textit{int numberOfRooms}
+\end{itemize}
+\item[] \textbf{Methoden:} \\
+\item[]
+\begin{itemize}
+	\item[] \begin{itemize}
+	\item[] \textit{SpaceTimeMatrix(int startingHour, int endingHour, int numberOfDays, int numberOfRooms)} 
+\end{itemize}
+	\item[] Methoden om dingen op te vragen of aan te passen in de SpaceTimeMatrix
+	\item[] \begin{itemize}
+		\item[] \textit{changeBlockAt(int i, Boolean b, int blocksize)}
+		\item[] \textit{checkBlockAt(int i, Boolean b, int blocksize)}
+		\item[] \textit{isWithinRange(int i)} 
+	\end{itemize}
+	\item[] Methoden om de indices om te zetten.
+	\item[] \begin{itemize}
+		\item[] \textit{giveHour(int i)}
+		\item[] \textit{giveRoom(int i)}
+		\item[]\textit{ giveHourInDay(int i)}
+		\item[] \textit{giveDay(int i) }
+\end{itemize}
+	
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Het algoritme:}
+
+Het algoritme om een weeklessenrooster is pure backtracking. Om dit op een efficiënte manier te kunnen verwezenlijken heeft men de klasse Node ontwikkeld. Deze klasse bevat de toegekende Subcourseblock, de plaats in het lessenrooster (m.a.w. de index in de SpaceTimeMatrix) en een verwijzing naar de vorig toegekende Node. Aan de hand van deze verwijzing kan men dan teruggaan naar een vorige stap, als men op een doodlopend spoor terecht komt.
+
+Het algoritme zal een vector van Subcourseblocks afgaan en dan steeds een plaats zoeken voor elke Subcourseblock in het lessenrooster; deze gegevens dan in een Node steken en dan naar de volgende Subcourseblock overgaan. Om een plaats te zoeken scant men de SpaceTimeMatrix af en gaat men telkens na of een bepaalde plaats voor die Subcourseblock in aanmerking komt. Om na te gaan of een bepaalde plaats in aanmerking komt, moet men de vereisten voor het lessenrooster nagaan. Deze vereisten worden in de onderstaande kader weergegeven.
+
+Vereisten waaraan het rooster moet voldoen: 
+\begin{itemize}
+	\item[(1)] Er mag geen dubbelboeking van een lokaal optreden. 
+	\item[(2)] Het lokaal moet groot genoeg zijn voor het aantal studenten. 
+	\item[(3)] Het lokaal moet het nodige materiaal voor een les bevatten. 
+	\item[(4)] Programma’s mogen niet dubbel geboekt zijn.
+	\item[(5)] Een docent mag niet dubbelgeboekt zijn.
+	\item[(6)] Een docent moet beschikbaar zijn.
+	\item[(7)] Op vakantiedagen mag er niets gepland zijn.
+\end{itemize}
+
+Om deze vereisten na te kunnen gaan, als men een Subcourseblock in een het lessenrooster wilt plaatsen, heeft men de klasse Constraint gecreëerd. Deze klasse is een verzameling van staticsche methodes die steeds een Boolean terug gegeven om aan te geven of er al dan niet aan de vereisten voldaan is (false indien niet, true indien wel).
+
+Overzicht van de klasse Constraint
+\begin{itemize}
+	\item[] \textit{int i} \\
+	Dit is de index in de SpaceTimeMatrix die men evalueert. Hieruit kan men alle nodige informatie afleiden (zie ook SpaceTimeMatrix).
+	\item[] \textit{roomAvailableAtBlock(int i, Room room, Subcourseblock block)}
+	Deze methode checkt of het lokaal gedurende periode van het Subcourseblock nog beschikbaar is. (1)
+	\item[] \textit{roomSufficient(int i, Room room, Subcourseblock block)} \\
+	Deze methode checkt of het lokaal groot genoeg is en het vereiste materiaal bevat. (2) en (3)
+	\item[] \textit{hourAvailable(int i, Subcourseblock block, Hashtable hoursAvailableForEducator, Hashtable hoursAvailableForProgram)}
+	Deze methode gaat na of er geen dubbelboekingen zijn voor de docent of voor het programma. hoursAvailableForEducator en hoursAvailableForProgram zijn objecten van de klasse Hashtable (hashingtables) waarin de vectoren zijn opgeslagen met daarin de reeds toegekende uren voor een docent of voor een programma. (4) en (5) 
+\item[] \textit{dateAvailable(int i, Subcourseblock block)} \\
+Deze methode gaat na of de dag waarop men iets wilt zetten geen verlofdag is en of de docent op die dag wel beschikbaar is. Dit gebeurt aan de hand van Calendarfiles. Elke docent heeft een persoonlijke Calendarfile en er is een algemene Calendarfile met daarin de verlofdagen voor een semester. Deze methode gaat overlappingen na. Indien er een overlapping is, is er niet aan deze vereiste voldaan. (6) en (7)
+\end{itemize}
+Tijdens het backtracken, zal er steeds vooraleer men een Subcourseblock kan plaatsen de methode calcNext(int i) worden opgeroepen. Deze methode zal steeds de volgende beschikbare plek in het lessenrooster teruggegeven. Ze gaat de indices van de SpaceTimeMatrix af en de eerst mogelijke die voldoet aan de vereisten wordt teruggegeven. De index die men meegeeft is de laatst toegekende plek in het rooster.
+
+\subsubsection{Het backtrack algoritme:}
+
+\begin{verbatim}
+Zolang niet elke block is toegekend (while lus)
+
+Zoek een plek in het rooster
+
+    Plek gevonden: 
+    Vul deze plek in SpaceTimeMatrix
+    Maak een Node aan
+    Zorg dat de uren voor de docent en het programma onbeschikbaar zijn
+
+End (while lus)
+\end{verbatim}
+
+Aan elke Subcourseblock zal zijn plaats de SpaceTimeMatrix worden toegekend. Aan de hand van deze	informatie zal hij dan de dag, het uur in die dag en het lokaal kennen. Zijn week kent hij ook. Op die manier zal elke Subcourseblock alle informatie bevatten om in een Calendarfile te plaatsen.
+
+\subsection{Het aanmaken van Calendarfile (getCalendar() )}
+
+Elke Subcourseblock heeft nu een plek in het rooster. Nu moet dit nog omgezet worden in een bruikbare structuur die door gebruikers kan worden geraadpleegd. Hiervoor zal men per Subcourse een Calendarfile maken. De som van al deze Calendarfiles zal dan het hele lessenrooster voor de hele universiteit zijn. 
+
+De methode \textit{getCalendar()} zal alle Subcourseblocks afscannen en dan steeds hun Subcourse opvragen. Hiervan vraagt men dan de Calendarfile op en het Subcourseblock zal dan hieraan worden toegekend.
+
+% Matthias schrijft dit wel
+%\subsection{Design concerns}
+%
+%Het algoritme dient in staat te zijn om een lessenrooster te maken dat aan bepaalde voorwaarden (constraints) voldoet. Het is daarom belangrijk dat deze eerst bepaald worden. Men kan een indeling maken in deze voorwaarden. Zo zijn er de \textit{fixed} constraints aan deze moeten zeker voldaan zijn, anders klopt het lessen rooster niet. \textit{Hard constraints} deze moeten zo goed mogelijk vervuld zijn en dan zijn er nog \textit{soft constraints} deze staan onderaan de ladder en hoeven dus niet noodzakelijk vervuld te zijn. Aan de hand van deze voorwaarden kan men dan nagaan hoe goed het lessenrooster is. Dit doet men aan de hand van een \textit{fitnessvalue}. Zo krijgt een geplaatste les 3 punten als aan een \textit{fixed constraint} voldaan is, 2 voor een hard en 1 voor een soft. Aangezien de \textit{fixed constraints} zeker voldaan moeten zijn, moet een geplaatste les al zeker 12 punten hebben. Op die manier kan men het resultaat evalueren.
+%
+%\begin{itemize}
+%\item[] \textit{Fixed constraints}\\[-3mm]
+%\begin{enumerate}
+%	\item Er mag nooit meer dan 1 les gepland zijn in een leslokaal \\[-3mm]
+%	\item Een docent (educator) kan niet meer dan 1 les geven  \\[-3mm]
+%	\item Een leslokaal (room) moet groot genoeg zijn voor het aantal studenten \\[-3mm]
+%	\item Als een les bepaald materiaal vereist (zoals computer, laboratorium,...) moet hier aan worden tegemoet gekomen. \\[-3mm]
+%\end{enumerate}
+%\item[] \textit{Hard constraints} \\[-3mm]
+%\begin{enumerate}
+% \item Het lessenrooster van een student mag niet overlappen. \\[-3mm]
+% \item Er mag van een vak bijvoorbeeld hoogstens 4 uur per dag gegeven worden. \\[-3mm]
+% \item Student mogen bijvoorbeeld maximum 8 uur les per dag krijgen. \\[-3mm]
+%\end{enumerate}
+%\item[] \textit{Soft constraints} \\[-3mm]
+%\begin{enumerate}
+% \item De werkcolleges mogen pas na of gelijktijdig met de theoriecolleges beginnen. \\[-3mm]
+%\end{enumerate}
+%\end{itemize}
+%
+%Voor iedere week van het academisch jaar zal de lessenrooster een tabel bevatten voor elke student die bestaat uit 5 dagen (maandag t.e.m. vrijdag) waar voor elke dag de uren bijstaan (er kan les gegeven worden van 8u t.e.m. 18u). \\
+%
+%Het algoritme zal deze tabel in een eerste fase zo opbouwen dat er aan de fixed constraints voldaan is en dan in een tweede fase proberen om de totale fitnessvalue op te drijven.
+%
+%\subsection{Design elements}
+%
+%Om het algoritme te kunnen uitvoeren is er natuurlijk de nodige informatie nodig om tot een lessenrooster te kunnen komen. De informatie die nodig is, zal uit een database worden gehaald en dan in klassenstructuur gegoten worden. Deze klassenstructuur is besproken in "Design Viewpoint 2: Logical".
+%Het schema en bijbehorende uitleg kan daar gevonden worden.
+%Deze structuur zal nog worden uitgebreid met methode die de rooster opstellen en dan hieruit vertrekkende de fitnessvalue bepalen. De bovenstaande structuur zal met andere woorden nog worden uitgebreid.
+
+%\section{Design rationale}
 
 
 %\begin{figure}
