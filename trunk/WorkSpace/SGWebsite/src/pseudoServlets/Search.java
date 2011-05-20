@@ -122,7 +122,6 @@ public class Search extends PseudoServlet
 			else if (classtype.equals("educator")) 
 			{
 				String result = request.getParameter("searchresult");
-
 				if (result==null)
 				{
 					Database db = getDB();
@@ -177,7 +176,6 @@ public class Search extends PseudoServlet
 	@Override
 	public TabName getTabName()
 	{
-		// TODO Auto-generated method stub
 		return PseudoServlet.TabName.Search;
 	}
 }

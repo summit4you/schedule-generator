@@ -6,6 +6,8 @@ import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import other.Globals;
+
 import pseudoServlets.tools.CalendarTools;
 
 import net.fortuna.ical4j.model.Date;
@@ -26,63 +28,40 @@ import sessionTracking.Session;
 
 public class ConstraintsEducator extends PseudoServlet
 {
-	private final static String dateSeperator="/";
-	private final static String hourSeperator=":";
 	private String popup;
 	
-	/**
-	 *  <b>Parse method that parses text of the following format DD/MM/YYYY/HH:MM </b></br>
-	 *  If an error occurs the successfully parsed info is returned. 
-	 * @param date format DD/MM/YYYY/HH:MM
-	 * @return Calendar with corresponding date
-	 */
-	private static java.util.Calendar parseDate(String date)
-	{	
-		int index = date.indexOf(dateSeperator);
-		java.util.Calendar cal = java.util.Calendar.getInstance();
-		try
-		{
-			String day = date.substring(0,index);
-			date=date.substring(index+1);
-			cal.set(java.util.Calendar.DAY_OF_MONTH,Integer.parseInt(day));
-			
-			
-			index = date.indexOf(dateSeperator);
-			String month = date.substring(0,index);
-			date=date.substring(index+1);	
-			cal.set(java.util.Calendar.MONTH,Integer.parseInt(month));
-			
-			index = date.indexOf(dateSeperator);
-			String year = date.substring(0,index);
-			date=date.substring(index+1);
-			cal.set(java.util.Calendar.YEAR,Integer.parseInt(year));
-			
-			index = date.indexOf(hourSeperator);
-			String hour = date.substring(0,index);
-			date=date.substring(index+1);
-			cal.set(java.util.Calendar.HOUR_OF_DAY,Integer.parseInt(hour));
-			
-			String minute=  date;
-			cal.set(java.util.Calendar.MINUTE,Integer.parseInt(minute));
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}	
-		return cal;
+	public ConstraintsEducator()
+	{
+		templateFile="ConstraintsEducator.tpl";
+	}
+	
+	@Override
+	protected void init()
+	{
+		super.init();		
+		popup=loadTemplate("deleteConstraint.tpl");
 	}
 	
 	@Override
 	//TODO check generated calendars
 	public String processRequest(RequestType type, HttpServletRequest request,Session session)
 	{
+		System.out.println(type);
+		
 		if (type==RequestType.GET)
 		{
 			if (request.getParameter("delete")==null)
 			{	
 				// een gewone get, stuur de pagina door met de form en huidige kalender
 				String response = replaceTags(template, "MASTERSERVLET", createLink(session));
-				return replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink(session.getAccount().getLanguage(), createLink(session)+"&delete=true"));
+				if (session.getAccount().getData() instanceof Educator)
+				{
+				return replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink((Educator) session.getAccount().getData(),session.getAccount().getLanguage(), Globals.MainSiteLink+createLink(session)+"&delete=true"));
+				}
+				else
+				{
+					return "ERROR, user is not an educator";
+				}
 			}
 			else
 			{
@@ -93,17 +72,19 @@ public class ConstraintsEducator extends PseudoServlet
 		}
 		else 
 		{
-			String uid = request.getParameter("uid");
+			String uid = request.getParameter("UID");
 			Educator educator = Educator.class.cast(session.getAccount().getData());
 			IcsCalendar calendar = educator.getCalendar();
 			if (uid==null)
 			{
+				String dateFormat=request.getParameter("dateFormat");	
 				if (request.getParameter("change").equals("single"))
 				{
 					String date = request.getParameter("inputDate");	  
 					String starthour = request.getParameter("startHour"); 
-					String stophour = request.getParameter("stopHour");   
-					calendar.addUnavailableEvent(new UnavailableEvent(parseDate(date+dateSeperator+starthour),parseDate(date+dateSeperator+stophour)));	
+					String stophour = request.getParameter("stopHour");  
+					System.out.println(date +" "+starthour+" "+stophour);
+					calendar.addUnavailableEvent(new UnavailableEvent(Transformation.strToCal(date,dateFormat,starthour),Transformation.strToCal(date,dateFormat,stophour)));	
 				}
 				else if (request.getParameter("change").equals("week"))
 				{
@@ -114,26 +95,29 @@ public class ConstraintsEducator extends PseudoServlet
 					String startHour = request.getParameter("startHour"); 
 					String stopHour = request.getParameter("stopHour"); 
 					
-					Recur recur = new Recur(Recur.WEEKLY, Transformation.calendarToDate(parseDate(startDate+dateSeperator+"00:00")));
+					System.out.println(day+startDate+stopDate+startHour+stopHour);
+					
+					Recur recur = new Recur(Recur.WEEKLY, Transformation.strToDate(stopDate,dateFormat,stopHour));
 					recur.getDayList().add(new WeekDay(day));
 					recur.setInterval(1);
 					recur.setWeekStartDay(WeekDay.MO.getDay()); 
 					RRule rrule = new RRule(recur); 
 	
-					calendar.addUnavailableEvent(new UnavailableEvent(Transformation.calendarToDate(parseDate(startDate+dateSeperator+startHour)),Transformation.calendarToDate(parseDate(startDate+dateSeperator+stopHour))));
+					calendar.addUnavailableEvent(new UnavailableEvent(Transformation.strToCal(startDate,dateFormat,startHour),Transformation.strToCal(startDate,dateFormat,stopHour)));
 				}
 				else if (request.getParameter("change").equals("long"))
 				{
 					String startDate = request.getParameter("startDate");
 					String stopDate = request.getParameter("stopDate");
-					calendar.addUnavailableEvent(new UnavailableEvent(parseDate(startDate+dateSeperator+"00:00"),parseDate(startDate+dateSeperator+"24:00")));
+					calendar.addUnavailableEvent(new UnavailableEvent(Transformation.strToCal(startDate,dateFormat,"00:00"),Transformation.strToCal(stopDate,dateFormat,"23:00")));	
 				}
 				else
 				{
 					return "ERROR, change type not known";
 				}
+				calendar.write();
 				String response = replaceTags(template, "MASTERSERVLET", createLink(session));
-				return replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink(session.getAccount().getLanguage(), createLink(session)+"&delete=true"));
+				return replaceTags(response, "CALENDARLINK", CalendarTools.generateEditablePHPiCalendarLink((Educator) session.getAccount().getData(),session.getAccount().getLanguage(), Globals.MainSiteLink+createLink(session)+"&delete=true"));
 			}
 			else
 			{

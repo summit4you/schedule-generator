@@ -53,7 +53,9 @@ public class MyCoursesEducator extends PseudoServlet
 		for (Course i : educator.getCourses())
 		{
 			Td col1 = new Td();
-			col1.appendText(i.getName());
+			B bold = new B();
+			bold.appendText(i.getName());
+			col1.appendChild(bold);
 			Tr row1 = new Tr();
 			row1.appendChild(col1);
 			table.appendChild(row1);
@@ -86,8 +88,6 @@ public class MyCoursesEducator extends PseudoServlet
 					res.setBlockHours(Integer.parseInt(request.getParameter("blockHours")));
 					res.setTotalnumberHours(Integer.parseInt(request.getParameter("totalNumberHours")));
 					Vector<Hardware> neededhardware = new Vector<Hardware>();
-					System.out.println("----------------------------");
-					// TODO Wat gaat er hier mis, met al die null elementen, ik vind het niet
 					for (Hardware i : Hardware.getAllHardware())
 					{
 						if (request.getParameter(i.toValue())!=null);
@@ -95,8 +95,6 @@ public class MyCoursesEducator extends PseudoServlet
 							Hardware hw = new Hardware(request.getParameter(i.toValue()));
 							if (!(hw.toString()==null))
 							{
-								System.out.println(hw.toString());
-								System.out.println("Needed = "+hw.toString());
 								neededhardware.add(hw);
 							}
 						}
@@ -201,7 +199,6 @@ public class MyCoursesEducator extends PseudoServlet
 		for (Hardware i : res.getNeededHardware())
 		{
 			Input in = new Input();
-			System.out.println(i.toString());
 			in.setType("hidden").setValue(i.toString()).setName(i.toString());
 			Td col = new Td();
 			col.appendChild(in).appendText(i.toString());

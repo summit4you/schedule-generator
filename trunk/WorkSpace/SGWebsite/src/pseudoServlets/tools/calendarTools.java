@@ -46,6 +46,8 @@ public class CalendarTools
 		return "http://wilma.vub.ac.be/~se5_1011/phpicalendarEditable/week.php?width="+width+"&lang="+language+"&start="+starthour+"&end="+stophour+"&days="+days+"&popupLink="+popupLink+"&calPath="+calFolder+"&cal="+Translator.getCalendarFileName(edu);
 	}
 	
+	
+	
 	public static String generateEditablePHPiCalendarLink(Vector<Program>programs,String language,String popupLink)
 	{
 		String link=generateEditablePHPiCalendarLink(language,popupLink);
